@@ -56,13 +56,13 @@
 		0B6C8E191E8F6E0D00D76B4E /* xxword */ = {
 			isa = PBXGroup;
 			children = (
+				0BD604741E9AA04F001F364B /* LoginViewController.swift */,
 				0B6C8E1A1E8F6E0D00D76B4E /* AppDelegate.swift */,
 				0B6C8E1C1E8F6E0D00D76B4E /* ViewController.swift */,
 				0B6C8E1E1E8F6E0D00D76B4E /* Main.storyboard */,
 				0B6C8E211E8F6E0D00D76B4E /* Assets.xcassets */,
 				0B6C8E231E8F6E0D00D76B4E /* LaunchScreen.storyboard */,
 				0B6C8E261E8F6E0D00D76B4E /* Info.plist */,
-				0BD604741E9AA04F001F364B /* LoginViewController.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";

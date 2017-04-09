@@ -10,6 +10,10 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    var outNumTextField:UITextField!
+    var outPwdTextField:UITextField!
+    var outLoginButton:UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +28,9 @@ class LoginViewController: UIViewController {
     }
     
     func initLgv() {
+        // phone number
+        outNumTextField = UITextField()
+        self.view.addSubview(outNumTextField)
         
     }
 
