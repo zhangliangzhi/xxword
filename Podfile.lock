@@ -1,0 +1,15 @@
+PODS:
+  - SnapKit (3.2.0)
+  - UMengAnalytics-NO-IDFA (4.2.5)
+
+DEPENDENCIES:
+  - SnapKit (~> 3.2.0)
+  - UMengAnalytics-NO-IDFA
+
+SPEC CHECKSUMS:
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
+
+PODFILE CHECKSUM: 2669619c0ee40f91d9f970fffce3cf8c6afd08f1
+
+COCOAPODS: 1.2.0
