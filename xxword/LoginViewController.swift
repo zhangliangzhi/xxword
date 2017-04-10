@@ -126,10 +126,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         outLoginButton.addTarget(self, action: #selector(btnGoSignIn), for: .touchUpInside)
         
         // 注册按钮
-        let outSignUp = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 100, height: 30), btButtonType: .Info)
+        let outSignUp = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 120, height: 30), btButtonType: .Info)
         v.addSubview(outSignUp)
         outSignUp.snp.makeConstraints { (make) in
-            make.width.equalTo(100)
+            make.width.equalTo(120)
             make.height.equalTo(30)
             make.top.equalTo(outLoginButton.snp.bottom).offset(25)
             make.right.equalTo(outLoginButton).offset(-10)
