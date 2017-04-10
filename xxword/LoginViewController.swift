@@ -61,7 +61,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         outNumTextField.borderStyle = .roundedRect
         outNumTextField.backgroundColor = UIColor.white
         outNumTextField.autocapitalizationType = .none
-        outNumTextField.placeholder = "输入手机号码"
+        outNumTextField.placeholder = "请输入手机号码"
         
         outPwdTextField = UITextField()
         v.addSubview(outPwdTextField)
@@ -79,7 +79,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         outPwdTextField.borderStyle = .roundedRect
         outPwdTextField.backgroundColor = UIColor.white
         outPwdTextField.autocapitalizationType = .none
-        outPwdTextField.placeholder = "输入密码"
+        outPwdTextField.placeholder = "请输入密码"
         outPwdTextField.isSecureTextEntry = true
         
         // image
@@ -124,6 +124,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         outLoginButton.setTitle("登录", for: .normal)
         outLoginButton.addTarget(self, action: #selector(btnGoSignIn), for: .touchUpInside)
+        
+        // 注册按钮
+        let outSignUp = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 100, height: 30), btButtonType: .Info)
+        v.addSubview(outSignUp)
+        outSignUp.snp.makeConstraints { (make) in
+            make.width.equalTo(100)
+            make.height.equalTo(30)
+            make.top.equalTo(outLoginButton.snp.bottom).offset(25)
+            make.right.equalTo(outLoginButton).offset(-10)
+        }
+        outSignUp.setTitle("立即注册", for: .normal)
     }
     
     func delNumTextField() {
@@ -158,7 +169,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         // 手机是数字,香港手机8位数
         let num = Int64(strNum)
-        if num == nil || num! < 10000000 {
+        if num == nil || num! < 10000000 || strNum.characters.count > 20{
             Toast(str: "输入的是一个无效的手机号码")
             return
         }
@@ -167,7 +178,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             Toast(str: "密码不能为空")
             return
         }
-        if strPwd.characters.count < 6 {
+        if strPwd.characters.count < 6 || strPwd.characters.count > 20 {
             Toast(str: "密码要大于6位数")
             return
         }
