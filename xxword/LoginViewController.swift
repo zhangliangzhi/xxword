@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Toast_Swift
+import Foundation
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -79,6 +80,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         outPwdTextField.backgroundColor = UIColor.white
         outPwdTextField.autocapitalizationType = .none
         outPwdTextField.placeholder = "输入密码"
+        outPwdTextField.isSecureTextEntry = true
         
         // image
         let numImage = UIImageView(frame: CGRect(x: 6, y: 0, width: 25, height: 25))
@@ -143,11 +145,88 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     // 登入
     func btnGoSignIn() {
+        // 去除头尾空格
+        var strNum:String = outNumTextField.text!
+        strNum = strNum.trimmingCharacters(in: .whitespaces)
+        var strPwd:String = outPwdTextField.text!
+        strPwd = strPwd.trimmingCharacters(in: .whitespaces)
         
+        // 不为空
+        if strNum == "" {
+            Toast(str: "手机号码不能为空")
+            return
+        }
+        // 手机是数字,香港手机8位数
+        let num = Int64(strNum)
+        if num == nil || num! < 10000000 {
+            Toast(str: "输入的是一个无效的手机号码")
+            return
+        }
+        // 密码不为空
+        if strPwd == "" {
+            Toast(str: "密码不能为空")
+            return
+        }
+        if strPwd.characters.count < 6 {
+            Toast(str: "密码要大于6位数")
+            return
+        }
+
+
+    }
+    
+    func Toast(str:String) {
+        self.view.makeToast(str, duration: 1.2, position: .init(x: self.view.bounds.size.width / 2.0, y: 100))
     }
     
     // 注册
     func btnGoSignUp() {
         
+    }
+    
+    enum Validate {
+        case email(_: String)
+        case phoneNum(_: String)
+        case carNum(_: String)
+        case username(_: String)
+        case password(_: String)
+        case nickname(_: String)
+        
+        case URL(_: String)
+        case IP(_: String)
+        
+        var isRight: Bool {
+            var predicateStr:String!
+            var currObject:String!
+            switch self {
+            case let .email(str):
+                predicateStr = "^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$"
+                currObject = str
+            case let .phoneNum(str):
+                predicateStr = "^((13[0-9])|(15[^4,\\D]) |(17[0,0-9])|(18[0,0-9]))\\d{8}$"
+                currObject = str
+            case let .carNum(str):
+                predicateStr = "^[A-Za-z]{1}[A-Za-z_0-9]{5}$"
+                currObject = str
+            case let .username(str):
+                predicateStr = "^[A-Za-z0-9]{6,20}+$"
+                currObject = str
+            case let .password(str):
+                predicateStr = "^[a-zA-Z0-9]{6,20}+$"
+                currObject = str
+            case let .nickname(str):
+                predicateStr = "^[\\u4e00-\\u9fa5]{4,8}$"
+                currObject = str
+            case let .URL(str):
+                predicateStr = "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$"
+                currObject = str
+            case let .IP(str):
+                predicateStr = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+                currObject = str
+            }
+            
+            let predicate =  NSPredicate(format: "SELF MATCHES %@" ,predicateStr)
+            return predicate.evaluate(with: currObject)
+        }
     }
 }
