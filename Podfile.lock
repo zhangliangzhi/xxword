@@ -1,15 +1,18 @@
 PODS:
   - SnapKit (3.2.0)
+  - Toast-Swift (2.0.0)
   - UMengAnalytics-NO-IDFA (4.2.5)
 
 DEPENDENCIES:
   - SnapKit (~> 3.2.0)
+  - Toast-Swift (~> 2.0.0)
   - UMengAnalytics-NO-IDFA
 
 SPEC CHECKSUMS:
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
 
-PODFILE CHECKSUM: 2669619c0ee40f91d9f970fffce3cf8c6afd08f1
+PODFILE CHECKSUM: 3ffbcdd97402fbe3e98997308bff4c86abf6aa87
 
 COCOAPODS: 1.2.0
