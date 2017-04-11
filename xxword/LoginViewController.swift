@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Toast_Swift
 import Foundation
+import Alamofire
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -135,6 +136,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             make.right.equalTo(outLoginButton).offset(-10)
         }
         outSignUp.setTitle("立即注册", for: .normal)
+        outSignUp.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
     }
     
     func delNumTextField() {
@@ -183,8 +185,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
-
+        netConnectSignIn()
     }
+
     
     func Toast(str:String) {
         self.view.makeToast(str, duration: 1.2, position: .init(x: self.view.bounds.size.width / 2.0, y: 100))
@@ -192,7 +195,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // 注册
     func btnGoSignUp() {
-        
+
     }
     
     enum Validate {
@@ -240,4 +243,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return predicate.evaluate(with: currObject)
         }
     }
+    
+    
+    // 网络请求
+    func netConnectSignIn() {
+
+        
+    }
+    
+    
+        
 }
