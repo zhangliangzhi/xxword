@@ -12,7 +12,7 @@ import Toast_Swift
 import Foundation
 import Alamofire
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     var v:UIView!
     var outNumTextField:UITextField!
@@ -115,7 +115,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //        outNumTextField.becomeFirstResponder()
         
         // 登入按钮
-        outLoginButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 150, height: 40), btButtonType: .Success)
+        outLoginButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 150, height: 40), btButtonType: .Info)
         v.addSubview(outLoginButton)
         outLoginButton.snp.makeConstraints { (make) in
             make.width.equalTo(outPwdTextField)
@@ -123,11 +123,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             make.centerX.equalTo(outPwdTextField)
             make.top.equalTo(outPwdTextField.snp.bottom).offset(40)
         }
-        outLoginButton.setTitle("登录", for: .normal)
-        outLoginButton.addTarget(self, action: #selector(btnGoSignIn), for: .touchUpInside)
+        outLoginButton.setTitle("立即注册", for: .normal)
+        outLoginButton.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
         
-        // 注册按钮
-        let outSignUp = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 120, height: 30), btButtonType: .Info)
+        // 登录按钮
+        let outSignUp = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 120, height: 30), btButtonType: .Success)
         v.addSubview(outSignUp)
         outSignUp.snp.makeConstraints { (make) in
             make.width.equalTo(120)
@@ -135,8 +135,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             make.top.equalTo(outLoginButton.snp.bottom).offset(25)
             make.right.equalTo(outLoginButton).offset(-10)
         }
-        outSignUp.setTitle("立即注册", for: .normal)
-        outSignUp.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
+        outSignUp.setTitle("登录界面", for: .normal)
+        outSignUp.addTarget(self, action: #selector(btnGoSignIn), for: .touchUpInside)
+        
+        // 取消按钮
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(closeV))
+    }
+    
+    func closeV(){
+        self.navigationController?.popViewController(animated: true)
     }
     
     func delNumTextField() {
@@ -156,8 +163,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    // 登入
-    func btnGoSignIn() {
+    // 注册
+    func btnGoSignUp() {
         // 去除头尾空格
         var strNum:String = outNumTextField.text!
         strNum = strNum.trimmingCharacters(in: .whitespaces)
@@ -193,9 +200,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.makeToast(str, duration: 1.2, position: .init(x: self.view.bounds.size.width / 2.0, y: 100))
     }
     
-    // 注册
-    func btnGoSignUp() {
-
+    // 登入
+    func btnGoSignIn() {
+        navigationController?.popViewController(animated: true)
     }
     
     enum Validate {

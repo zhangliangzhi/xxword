@@ -137,6 +137,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         outSignUp.setTitle("立即注册", for: .normal)
         outSignUp.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
+        
+        // 右上角 注册按钮
+        let rightBtn = UIBarButtonItem(title: "立即注册", style: .plain, target: self, action: #selector(btnGoSignUp))
+        self.navigationItem.rightBarButtonItem = rightBtn
     }
     
     func delNumTextField() {
@@ -195,7 +199,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // 注册
     func btnGoSignUp() {
-
+        self.view.makeToastActivity(.center)
+        self.view.hideToastActivity()
+        //        navigationController?.pushViewController(SignUpViewController(), animated: true)
+//        self.view.maketoastdisa
     }
     
     enum Validate {

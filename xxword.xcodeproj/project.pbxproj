@@ -12,6 +12,7 @@
 		0B6C8E201E8F6E0D00D76B4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6C8E1E1E8F6E0D00D76B4E /* Main.storyboard */; };
 		0B6C8E221E8F6E0D00D76B4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B6C8E211E8F6E0D00D76B4E /* Assets.xcassets */; };
 		0B6C8E251E8F6E0D00D76B4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6C8E231E8F6E0D00D76B4E /* LaunchScreen.storyboard */; };
+		0B9A30301E9C9E690091D7B0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */; };
 		0BD604751E9AA04F001F364B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD604741E9AA04F001F364B /* LoginViewController.swift */; };
 		0BD6047A1E9BA09F001F364B /* BootstrapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD604791E9BA09F001F364B /* BootstrapButton.swift */; };
 		75AF06A683A708C84E55D089 /* Pods_xxword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228065594F704138570DAF96 /* Pods_xxword.framework */; };
@@ -25,6 +26,8 @@
 		0B6C8E211E8F6E0D00D76B4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B6C8E241E8F6E0D00D76B4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B6C8E261E8F6E0D00D76B4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0BCDDF3E1E9CB31D003DEB80 /* xxword-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "xxword-Bridging-Header.h"; sourceTree = "<group>"; };
 		0BD604741E9AA04F001F364B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0BD604791E9BA09F001F364B /* BootstrapButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapButton.swift; sourceTree = "<group>"; };
 		228065594F704138570DAF96 /* Pods_xxword.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xxword.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +54,7 @@
 				0B6C8E181E8F6E0D00D76B4E /* Products */,
 				5A3D727E897860820BB029A6 /* Pods */,
 				635763797A6F5C26EF275D32 /* Frameworks */,
+				0BCDDF3E1E9CB31D003DEB80 /* xxword-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +69,7 @@
 		0B6C8E191E8F6E0D00D76B4E /* xxword */ = {
 			isa = PBXGroup;
 			children = (
+				0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */,
 				0BD604741E9AA04F001F364B /* LoginViewController.swift */,
 				0B6C8E1A1E8F6E0D00D76B4E /* AppDelegate.swift */,
 				0B6C8E1C1E8F6E0D00D76B4E /* ViewController.swift */,
@@ -130,6 +135,7 @@
 					0B6C8E161E8F6E0D00D76B4E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = ZNVH9D6AWM;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -222,6 +228,7 @@
 				0B6C8E1D1E8F6E0D00D76B4E /* ViewController.swift in Sources */,
 				0BD6047A1E9BA09F001F364B /* BootstrapButton.swift in Sources */,
 				0B6C8E1B1E8F6E0D00D76B4E /* AppDelegate.swift in Sources */,
+				0B9A30301E9C9E690091D7B0 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,12 +352,15 @@
 			baseConfigurationReference = D25065F2A0961C42A9AED138 /* Pods-xxword.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ZNVH9D6AWM;
 				INFOPLIST_FILE = xxword/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xigk.xxword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "xxword-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -360,12 +370,14 @@
 			baseConfigurationReference = 3375C031DF91B6152A20BFD2 /* Pods-xxword.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ZNVH9D6AWM;
 				INFOPLIST_FILE = xxword/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xigk.xxword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "xxword-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
