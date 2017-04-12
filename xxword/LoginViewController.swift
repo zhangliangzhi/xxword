@@ -199,10 +199,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // 注册
     func btnGoSignUp() {
-        self.view.makeToastActivity(.center)
-        self.view.hideToastActivity()
-        //        navigationController?.pushViewController(SignUpViewController(), animated: true)
-//        self.view.maketoastdisa
+        navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
     
     enum Validate {
@@ -255,7 +252,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // 网络请求
     func netConnectSignIn() {
 
-        
     }
     
     

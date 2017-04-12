@@ -254,7 +254,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // 网络请求
     func netConnectSignIn() {
-
+        self.view.makeToastActivity(.center)
+        
+        self.view.hideToastActivity()
         
     }
     
