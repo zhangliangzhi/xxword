@@ -23,5 +23,8 @@ func rootResponse(strjson:String, id:PBID) {
 
 // 注册
 func respLogin(strjson:String){
-    
+    if let data = resRegisterData.deserialize(from: strjson){
+        let userid:Int = data.userid!
+        print(userid)
+    }
 }

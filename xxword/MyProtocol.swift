@@ -13,30 +13,30 @@ import HandyJSON
 
 
 // 注册
-struct reqRegisterData {
+struct reqRegisterData: HandyJSON {
     var id: PBID = PBID.register            // 协议id
     var phoneID: String?
     var pwd: String?
 }
-struct resRegisterData {
+struct resRegisterData: HandyJSON {
     var userid: Int?
 }
 
 // 登录
-struct reqLoginData {
+struct reqLoginData: HandyJSON {
     var id: PBID = PBID.login
     var phoneID: String?
     var pwd: String?
 }
 
 // 改名
-struct reqChangeNameData {
+struct reqChangeNameData: HandyJSON {
     var id: PBID = PBID.changeName
     var name: String?
 }
 
 // 改密码
-struct reqChangePwdData {
+struct reqChangePwdData: HandyJSON{
     var id: PBID = PBID.changePwd
     var pwd: String?
 }
