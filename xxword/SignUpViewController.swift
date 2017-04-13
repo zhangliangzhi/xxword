@@ -11,6 +11,7 @@ import SnapKit
 import Toast_Swift
 import Foundation
 import Alamofire
+import HandyJSON
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -32,6 +33,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.white
         initLgv()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -202,7 +204,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // 登入
     func btnGoSignIn() {
-        navigationController?.popViewController(animated: true)
+        //test
+        netConnectSignIn()
+//        navigationController?.popViewController(animated: true)
     }
     
     enum Validate {
@@ -255,9 +259,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     // 网络请求
     func netConnectSignIn() {
         self.view.makeToastActivity(.center)
-        
-        self.view.hideToastActivity()
-        
+        Alamofire.request("https://xx5000.duapp.com/404.php").responseString { (response) in
+            if response.result.isSuccess {
+                let str:String = response.result.value!
+                rootResponse(strjson: str, id: PBID.register)
+            }else {
+                print("get protocol fail")
+            }
+            self.view.hideToastActivity()
+        }
     }
     
     

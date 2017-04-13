@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B6136551E9EA5DB00FF31F2 /* MyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6136541E9EA5DB00FF31F2 /* MyProtocol.swift */; };
+		0B6136571E9F3A2600FF31F2 /* MyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6136561E9F3A2600FF31F2 /* MyResponse.swift */; };
+		0B6136591E9F3F3200FF31F2 /* MypbID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6136581E9F3F3200FF31F2 /* MypbID.swift */; };
 		0B6C8E1B1E8F6E0D00D76B4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6C8E1A1E8F6E0D00D76B4E /* AppDelegate.swift */; };
 		0B6C8E1D1E8F6E0D00D76B4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6C8E1C1E8F6E0D00D76B4E /* ViewController.swift */; };
 		0B6C8E201E8F6E0D00D76B4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6C8E1E1E8F6E0D00D76B4E /* Main.storyboard */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B6136541E9EA5DB00FF31F2 /* MyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProtocol.swift; sourceTree = "<group>"; };
+		0B6136561E9F3A2600FF31F2 /* MyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyResponse.swift; sourceTree = "<group>"; };
+		0B6136581E9F3F3200FF31F2 /* MypbID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MypbID.swift; sourceTree = "<group>"; };
 		0B6C8E171E8F6E0D00D76B4E /* xxword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxword.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6C8E1A1E8F6E0D00D76B4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B6C8E1C1E8F6E0D00D76B4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +84,9 @@
 				0B6C8E231E8F6E0D00D76B4E /* LaunchScreen.storyboard */,
 				0B6C8E261E8F6E0D00D76B4E /* Info.plist */,
 				0BD604791E9BA09F001F364B /* BootstrapButton.swift */,
+				0B6136541E9EA5DB00FF31F2 /* MyProtocol.swift */,
+				0B6136561E9F3A2600FF31F2 /* MyResponse.swift */,
+				0B6136581E9F3F3200FF31F2 /* MypbID.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -225,8 +234,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BD604751E9AA04F001F364B /* LoginViewController.swift in Sources */,
+				0B6136571E9F3A2600FF31F2 /* MyResponse.swift in Sources */,
 				0B6C8E1D1E8F6E0D00D76B4E /* ViewController.swift in Sources */,
 				0BD6047A1E9BA09F001F364B /* BootstrapButton.swift in Sources */,
+				0B6136591E9F3F3200FF31F2 /* MypbID.swift in Sources */,
+				0B6136551E9EA5DB00FF31F2 /* MyProtocol.swift in Sources */,
 				0B6C8E1B1E8F6E0D00D76B4E /* AppDelegate.swift in Sources */,
 				0B9A30301E9C9E690091D7B0 /* SignUpViewController.swift in Sources */,
 			);

@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import HandyJSON
+
+// 处理收到的协议
+func rootResponse(strjson:String, id:PBID) {
+    switch id {
+    case PBID.login:
+        respLogin(strjson: strjson)
+        
+        
+    default:
+        print("no protocol")
+    }
+}
+
+// 注册
+func respLogin(strjson:String){
+    
+}

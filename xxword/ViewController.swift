@@ -29,6 +29,9 @@ class ViewController: UIViewController {
         //设置按钮文字
         button.setTitle("按钮", for:.normal)
         self.view.addSubview(button)
+        
+        //test
+        self.navigationController?.pushViewController(SignUpViewController(), animated: false)
     }
 
     override func didReceiveMemoryWarning() {
