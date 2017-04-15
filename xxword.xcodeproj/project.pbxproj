@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */; };
+		0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */; };
+		0B4606391EA14FAA0071FBEA /* INSPersistentStoreDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */; };
+		0B46063A1EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606361EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift */; };
+		0B46063D1EA14FD70071FBEA /* xxword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B46063B1EA14FD70071FBEA /* xxword.xcdatamodeld */; };
 		0B6136551E9EA5DB00FF31F2 /* MyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6136541E9EA5DB00FF31F2 /* MyProtocol.swift */; };
 		0B6136571E9F3A2600FF31F2 /* MyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6136561E9F3A2600FF31F2 /* MyResponse.swift */; };
 		0B6136591E9F3F3200FF31F2 /* MypbID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6136581E9F3F3200FF31F2 /* MypbID.swift */; };
@@ -22,6 +27,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSDataStackContainer.swift; sourceTree = "<group>"; };
+		0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentContainer.swift; sourceTree = "<group>"; };
+		0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentStoreDescription.swift; sourceTree = "<group>"; };
+		0B4606361EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+iOS10Additions.swift"; sourceTree = "<group>"; };
+		0B46063C1EA14FD70071FBEA /* xxword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = xxword.xcdatamodel; sourceTree = "<group>"; };
 		0B6136541E9EA5DB00FF31F2 /* MyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProtocol.swift; sourceTree = "<group>"; };
 		0B6136561E9F3A2600FF31F2 /* MyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyResponse.swift; sourceTree = "<group>"; };
 		0B6136581E9F3F3200FF31F2 /* MypbID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MypbID.swift; sourceTree = "<group>"; };
@@ -53,6 +63,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B4606321EA14FAA0071FBEA /* INSPersistentContainer */ = {
+			isa = PBXGroup;
+			children = (
+				0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */,
+				0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */,
+				0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */,
+				0B4606361EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift */,
+			);
+			path = INSPersistentContainer;
+			sourceTree = "<group>";
+		};
 		0B6C8E0E1E8F6E0D00D76B4E = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +108,8 @@
 				0B6136541E9EA5DB00FF31F2 /* MyProtocol.swift */,
 				0B6136561E9F3A2600FF31F2 /* MyResponse.swift */,
 				0B6136581E9F3F3200FF31F2 /* MypbID.swift */,
+				0B46063B1EA14FD70071FBEA /* xxword.xcdatamodeld */,
+				0B4606321EA14FAA0071FBEA /* INSPersistentContainer */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -233,11 +256,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B4606391EA14FAA0071FBEA /* INSPersistentStoreDescription.swift in Sources */,
 				0BD604751E9AA04F001F364B /* LoginViewController.swift in Sources */,
 				0B6136571E9F3A2600FF31F2 /* MyResponse.swift in Sources */,
 				0B6C8E1D1E8F6E0D00D76B4E /* ViewController.swift in Sources */,
 				0BD6047A1E9BA09F001F364B /* BootstrapButton.swift in Sources */,
 				0B6136591E9F3F3200FF31F2 /* MypbID.swift in Sources */,
+				0B46063D1EA14FD70071FBEA /* xxword.xcdatamodeld in Sources */,
+				0B46063A1EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift in Sources */,
+				0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */,
+				0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */,
 				0B6136551E9EA5DB00FF31F2 /* MyProtocol.swift in Sources */,
 				0B6C8E1B1E8F6E0D00D76B4E /* AppDelegate.swift in Sources */,
 				0B9A30301E9C9E690091D7B0 /* SignUpViewController.swift in Sources */,
@@ -416,6 +444,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0B46063B1EA14FD70071FBEA /* xxword.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0B46063C1EA14FD70071FBEA /* xxword.xcdatamodel */,
+			);
+			currentVersion = 0B46063C1EA14FD70071FBEA /* xxword.xcdatamodel */;
+			path = xxword.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0B6C8E0F1E8F6E0D00D76B4E /* Project object */;
 }

@@ -7,6 +7,15 @@
 //
 
 import UIKit
+import CoreData
+import Alamofire
+
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+let context = appDelegate.persistentContainer.viewContext
+var arrGlobalSet:[CurGlobalSet] = []
+var arrStudyWord:[StudyWord] = []
+var nowGlobalSet:CurGlobalSet?
+
 
 class ViewController: UIViewController {
 
@@ -33,7 +42,13 @@ class ViewController: UIViewController {
         //test
         self.navigationController?.pushViewController(SignUpViewController(), animated: false)
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getCoreData()
+        firstOpenAPP()
+        initDataFromCoreData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,6 +60,56 @@ class ViewController: UIViewController {
 //            print("hi")
 //        }
         self.navigationController?.pushViewController(LoginViewController(), animated: true)
+    }
+    
+    func initDataFromCoreData() {
+        print(nowGlobalSet?.diamond)
+    }
+    
+    func getCoreData() -> Void {
+        arrStudyWord = []
+        arrGlobalSet = []
+        
+        do {
+            arrStudyWord = try context.fetch(StudyWord.fetchRequest())
+        }catch {
+            print("StudyWord coreData error")
+        }
+        
+        do {
+            arrGlobalSet = try context.fetch(CurGlobalSet.fetchRequest())
+        }catch {
+            print("Setting coreData error")
+        }
+        
+        if arrGlobalSet.count > 0 {
+            nowGlobalSet = arrGlobalSet[0]
+        }
+        
+        //        print(nowGlobalSet)
+    }
+    
+    // 第一次打开app，加入测试数据
+    func firstOpenAPP() -> Void {
+        // 初始化
+        if arrGlobalSet.count > 0 {
+            return
+        }
+        
+        let oneGlobalSet = NSEntityDescription.insertNewObject(forEntityName: "CurGlobalSet", into: context) as! CurGlobalSet
+        
+        oneGlobalSet.coin = 0
+        oneGlobalSet.diamond = 0
+        oneGlobalSet.exp = 0
+        oneGlobalSet.phone = ""
+        oneGlobalSet.pwd = ""
+        oneGlobalSet.token = ""
+        oneGlobalSet.vip = 0
+        
+        
+        context.insert(oneGlobalSet)
+        appDelegate.saveContext()
+        getCoreData()
     }
 }
 
