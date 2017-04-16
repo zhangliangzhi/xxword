@@ -119,7 +119,7 @@ class ViewController: UIViewController {
         let strToken:String = (nowGlobalSet?.token!)!
         let strNum:String = (nowGlobalSet?.phone!)!
         let strPwd:String = (nowGlobalSet?.pwd!)!
-        
+
         if strToken == "" {
             // 游客注册 register2
             self.view.makeToastActivity(.center)

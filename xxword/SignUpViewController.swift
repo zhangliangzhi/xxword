@@ -168,6 +168,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     // 注册
     func btnGoSignUp() {
+        outNumTextField.resignFirstResponder()
+        outPwdTextField.resignFirstResponder()
+        
         // 去除头尾空格
         var strNum:String = outNumTextField.text!
         strNum = strNum.trimmingCharacters(in: .whitespaces)
