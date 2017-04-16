@@ -9,36 +9,29 @@
 import Foundation
 import HandyJSON
 
-// 游客注册
-
-
 // 注册
-struct reqRegisterData: HandyJSON {
-    var id: PBID = PBID.register            // 协议id
-    var phoneID: String?
-    var pwd: String?
+
+// 游客注册
+// {"code":"0","token":"AKAqng6ELdPqpVAk7dVa"}
+struct resRegisterTouristData:HandyJSON {
+    var code:Int?
+    var token:String?
 }
-struct resRegisterData: HandyJSON {
-    var userid: Int?
+
+// 游客绑定
+struct resRegisterBindTouristData:HandyJSON {
+    var code:Int?
+    var token:String?
 }
 
 // 登录
-struct reqLoginData: HandyJSON {
-    var id: PBID = PBID.login
-    var phoneID: String?
-    var pwd: String?
+struct resLoginData:HandyJSON {
+    var code:Int?
+    var uid:String?
+    var token:String?
 }
 
-// 改名
-struct reqChangeNameData: HandyJSON {
-    var id: PBID = PBID.changeName
-    var name: String?
-}
+// 游客登录
 
-// 改密码
-struct reqChangePwdData: HandyJSON{
-    var id: PBID = PBID.changePwd
-    var pwd: String?
-}
 
 

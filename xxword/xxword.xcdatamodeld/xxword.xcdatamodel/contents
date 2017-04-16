@@ -7,6 +7,7 @@
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pwd" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vip" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="StudyWord" representedClassName="StudyWord" syncable="YES" codeGenerationType="class">
@@ -16,7 +17,7 @@
         <attribute name="word" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurGlobalSet" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="CurGlobalSet" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="StudyWord" positionX="-54" positionY="45" width="128" height="105"/>
     </elements>
 </model>

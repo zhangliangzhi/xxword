@@ -13,6 +13,7 @@ import Foundation
 import Alamofire
 import HandyJSON
 
+// 注册页面, 游客绑定手机，密码
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     var v:UIView!
@@ -194,7 +195,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
-        netConnectSignIn()
+        netConnectSignIn(phone: strNum, pwd: strPwd)
     }
 
     
@@ -204,9 +205,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // 登入
     func btnGoSignIn() {
-        //test
-        netConnectSignIn()
-//        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     enum Validate {
@@ -256,13 +255,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    // 网络请求
-    func netConnectSignIn() {
+    // 网络请求, 已注册者绑定手机密码
+    func netConnectSignIn(phone:String, pwd:String) {
         self.view.makeToastActivity(.center)
-        Alamofire.request("https://xx5000.duapp.com/404.php").responseString { (response) in
+        let url = rootUrl + "register3.php"
+        Alamofire.request(url, method: .get, parameters: ["phone": phone, "pwd": pwd]).responseString { (response) in
             if response.result.isSuccess {
                 let str:String = response.result.value!
-                rootResponse(strjson: str, id: PBID.register)
+                rootResponse(strjson: str, id: PBID.registerBindPhone)
             }else {
                 print("get protocol fail")
             }

@@ -189,7 +189,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
-        netConnectSignIn()
+        netConnectSignIn(phone: strNum, pwd: strPwd)
     }
 
     
@@ -249,11 +249,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    // 网络请求
-    func netConnectSignIn() {
+    // 网络请求 手机密码登录
+    func netConnectSignIn(phone:String, pwd:String) {
+        self.view.makeToastActivity(.center)
+        let url = rootUrl + "login1.php"
+        Alamofire.request(url, method: .get, parameters: ["phone": phone, "pwd": pwd]).responseString { (response) in
+            if response.result.isSuccess {
+                let str:String = response.result.value!
+                nowGlobalSet?.phone = phone
+                nowGlobalSet?.pwd = pwd
+                appDelegate.saveContext()
+                rootResponse(strjson: str, id: PBID.loginPhone)
+            }else {
+                print("get protocol fail")
+            }
+            self.view.hideToastActivity()
+        }
 
     }
     
     
-        
+    
+    
 }
