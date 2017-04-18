@@ -8,7 +8,7 @@ DerivedData/
 azip/
 test/
 Pods/
-
+*.txt
 
 ## Various settings
 *.pbxuser
