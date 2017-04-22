@@ -7,29 +7,32 @@
 //
 
 import UIKit
+import SnapKit
 
 class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.view.backgroundColor = UIColor(colorLiteralRed: 233/255, green: 228/255, blue: 217/255, alpha: 1)
+        initHomeView() 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
-    */
+    
+    func initHomeView() {
+        let btn = BootstrapBtn(frame: CGRect(x: 100, y: 100, width: 100, height: 50), btButtonType: .Default)
+        self.view.addSubview(btn)
+        btn.setTitle("主页", for: .normal)
+        btn.snp.makeConstraints { (make) in
+            make.center.equalTo(self.view)
+        }
+    }
 
 }

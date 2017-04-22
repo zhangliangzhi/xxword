@@ -21,6 +21,10 @@
 		0B6C8E221E8F6E0D00D76B4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B6C8E211E8F6E0D00D76B4E /* Assets.xcassets */; };
 		0B6C8E251E8F6E0D00D76B4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6C8E231E8F6E0D00D76B4E /* LaunchScreen.storyboard */; };
 		0B9A30301E9C9E690091D7B0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */; };
+		0BCE0C1F1EAB97770049A01C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */; };
+		0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C201EABAF780049A01C /* RootTabBarController.swift */; };
+		0BCE0C231EABB22F0049A01C /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C221EABB22F0049A01C /* ShopViewController.swift */; };
+		0BCE0C251EABB2AA0049A01C /* FavorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C241EABB2AA0049A01C /* FavorViewController.swift */; };
 		0BD604751E9AA04F001F364B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD604741E9AA04F001F364B /* LoginViewController.swift */; };
 		0BD6047A1E9BA09F001F364B /* BootstrapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD604791E9BA09F001F364B /* BootstrapButton.swift */; };
 		75AF06A683A708C84E55D089 /* Pods_xxword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228065594F704138570DAF96 /* Pods_xxword.framework */; };
@@ -44,6 +48,10 @@
 		0B6C8E261E8F6E0D00D76B4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0BCDDF3E1E9CB31D003DEB80 /* xxword-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "xxword-Bridging-Header.h"; sourceTree = "<group>"; };
+		0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0BCE0C201EABAF780049A01C /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		0BCE0C221EABB22F0049A01C /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		0BCE0C241EABB2AA0049A01C /* FavorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorViewController.swift; sourceTree = "<group>"; };
 		0BD604741E9AA04F001F364B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0BD604791E9BA09F001F364B /* BootstrapButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapButton.swift; sourceTree = "<group>"; };
 		228065594F704138570DAF96 /* Pods_xxword.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xxword.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +104,9 @@
 		0B6C8E191E8F6E0D00D76B4E /* xxword */ = {
 			isa = PBXGroup;
 			children = (
+				0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */,
+				0BCE0C221EABB22F0049A01C /* ShopViewController.swift */,
+				0BCE0C241EABB2AA0049A01C /* FavorViewController.swift */,
 				0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */,
 				0BD604741E9AA04F001F364B /* LoginViewController.swift */,
 				0B6C8E1A1E8F6E0D00D76B4E /* AppDelegate.swift */,
@@ -110,6 +121,7 @@
 				0B6136581E9F3F3200FF31F2 /* MypbID.swift */,
 				0B46063B1EA14FD70071FBEA /* xxword.xcdatamodeld */,
 				0B4606321EA14FAA0071FBEA /* INSPersistentContainer */,
+				0BCE0C201EABAF780049A01C /* RootTabBarController.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -260,9 +272,13 @@
 				0BD604751E9AA04F001F364B /* LoginViewController.swift in Sources */,
 				0B6136571E9F3A2600FF31F2 /* MyResponse.swift in Sources */,
 				0B6C8E1D1E8F6E0D00D76B4E /* ViewController.swift in Sources */,
+				0BCE0C231EABB22F0049A01C /* ShopViewController.swift in Sources */,
 				0BD6047A1E9BA09F001F364B /* BootstrapButton.swift in Sources */,
+				0BCE0C1F1EAB97770049A01C /* HomeViewController.swift in Sources */,
 				0B6136591E9F3F3200FF31F2 /* MypbID.swift in Sources */,
+				0BCE0C251EABB2AA0049A01C /* FavorViewController.swift in Sources */,
 				0B46063D1EA14FD70071FBEA /* xxword.xcdatamodeld in Sources */,
+				0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */,
 				0B46063A1EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift in Sources */,
 				0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */,
 				0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */,
@@ -394,6 +410,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ZNVH9D6AWM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/xxword/Framework",
+					"$(PROJECT_DIR)/xxword/Lottie",
+				);
 				INFOPLIST_FILE = xxword/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -412,6 +433,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ZNVH9D6AWM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/xxword/Framework",
+					"$(PROJECT_DIR)/xxword/Lottie",
+				);
 				INFOPLIST_FILE = xxword/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

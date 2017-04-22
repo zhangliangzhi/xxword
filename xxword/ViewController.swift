@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Alamofire
+import ESTabBarController_swift
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let context = appDelegate.persistentContainer.viewContext
@@ -40,7 +41,8 @@ class ViewController: UIViewController {
         self.view.addSubview(button)
         
         //test
-        self.navigationController?.pushViewController(SignUpViewController(), animated: false)
+//        self.navigationController?.pushViewController(SignUpViewController(), animated: false)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -164,5 +166,8 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    
+ 
 }
 
