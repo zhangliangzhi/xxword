@@ -9,6 +9,7 @@ azip/
 test/
 Pods/
 *.txt
+*.bat
 
 ## Various settings
 *.pbxuser
