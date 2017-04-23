@@ -13,6 +13,7 @@ class RootTabBarController: UITabBarController {
         super.viewDidLoad()
         
         creatSubViewControllers()
+        // rgb 241,235,223
     }
     
     func creatSubViewControllers(){
