@@ -25,6 +25,7 @@
 		0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C201EABAF780049A01C /* RootTabBarController.swift */; };
 		0BCE0C231EABB22F0049A01C /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C221EABB22F0049A01C /* ShopViewController.swift */; };
 		0BCE0C251EABB2AA0049A01C /* FavorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C241EABB2AA0049A01C /* FavorViewController.swift */; };
+		0BCE0C271EACEA1D0049A01C /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C261EACEA1D0049A01C /* MyColor.swift */; };
 		0BD604751E9AA04F001F364B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD604741E9AA04F001F364B /* LoginViewController.swift */; };
 		0BD6047A1E9BA09F001F364B /* BootstrapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD604791E9BA09F001F364B /* BootstrapButton.swift */; };
 		75AF06A683A708C84E55D089 /* Pods_xxword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228065594F704138570DAF96 /* Pods_xxword.framework */; };
@@ -52,6 +53,7 @@
 		0BCE0C201EABAF780049A01C /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		0BCE0C221EABB22F0049A01C /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		0BCE0C241EABB2AA0049A01C /* FavorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorViewController.swift; sourceTree = "<group>"; };
+		0BCE0C261EACEA1D0049A01C /* MyColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
 		0BD604741E9AA04F001F364B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0BD604791E9BA09F001F364B /* BootstrapButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapButton.swift; sourceTree = "<group>"; };
 		228065594F704138570DAF96 /* Pods_xxword.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xxword.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 				0B46063B1EA14FD70071FBEA /* xxword.xcdatamodeld */,
 				0B4606321EA14FAA0071FBEA /* INSPersistentContainer */,
 				0BCE0C201EABAF780049A01C /* RootTabBarController.swift */,
+				0BCE0C261EACEA1D0049A01C /* MyColor.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				0BCE0C251EABB2AA0049A01C /* FavorViewController.swift in Sources */,
 				0B46063D1EA14FD70071FBEA /* xxword.xcdatamodeld in Sources */,
 				0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */,
+				0BCE0C271EACEA1D0049A01C /* MyColor.swift in Sources */,
 				0B46063A1EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift in Sources */,
 				0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */,
 				0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */,
