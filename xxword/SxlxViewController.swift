@@ -13,7 +13,8 @@ class SxlxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = BG1_COLOR
+        
     }
 
     override func didReceiveMemoryWarning() {

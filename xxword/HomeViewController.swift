@@ -513,6 +513,9 @@ class HomeViewController: UIViewController {
     // 点击 顺序学习
     func callbackNormalStudy() -> Void {
         print("normal Study")
+        self.present(SxlxViewController(), animated: true) { 
+            print("go sxlx")
+        }
     }
     // 点击 顺序学习
     func callbackMnks() -> Void {

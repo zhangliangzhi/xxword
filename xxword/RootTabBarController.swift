@@ -17,7 +17,7 @@ class RootTabBarController: UITabBarController {
     }
     
     func creatSubViewControllers(){
-        let v1  = HomeViewController ()
+        let v1  = HomeViewController()
         let item1 : UITabBarItem = UITabBarItem (title: "第一页面", image: UIImage(named: "home"), selectedImage: UIImage(named: "home_1"))
         v1.tabBarItem = item1
         
