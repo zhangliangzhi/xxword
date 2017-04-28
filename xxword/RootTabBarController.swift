@@ -21,6 +21,7 @@ class RootTabBarController: UITabBarController {
         let item1 : UITabBarItem = UITabBarItem (title: "第一页面", image: UIImage(named: "home"), selectedImage: UIImage(named: "home_1"))
         v1.tabBarItem = item1
         
+        
         let v2 = ShopViewController()
         let item2 : UITabBarItem = UITabBarItem (title: "第二页面", image: UIImage(named: "favor"), selectedImage: UIImage(named: "favor_1"))
         v2.tabBarItem = item2
@@ -29,7 +30,8 @@ class RootTabBarController: UITabBarController {
         let item3 : UITabBarItem = UITabBarItem (title: "第三页面", image: UIImage(named: "me"), selectedImage: UIImage(named: "me_1"))
         v3.tabBarItem = item3
         
-        let tabArray = [v1, v2, v3]
+        let n1 = UINavigationController(rootViewController: v1)
+        let tabArray = [n1, v2, v3]
         self.viewControllers = tabArray
     }
 }

@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "象形单词"
         // root view
         v = UIView()
         self.view.addSubview(v)
@@ -513,9 +514,10 @@ class HomeViewController: UIViewController {
     // 点击 顺序学习
     func callbackNormalStudy() -> Void {
         print("normal Study")
-        self.present(SxlxViewController(), animated: true) { 
+        self.present(StudyTabBarController(), animated: false) {
             print("go sxlx")
         }
+        
     }
     // 点击 顺序学习
     func callbackMnks() -> Void {

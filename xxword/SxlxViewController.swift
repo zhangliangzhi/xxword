@@ -15,6 +15,9 @@ class SxlxViewController: UIViewController {
 
         self.view.backgroundColor = BG1_COLOR
         
+        
+//        self.navigationController?.navigationBar.barTintColor = UIColor.gray
+
     }
 
     override func didReceiveMemoryWarning() {
