@@ -15,6 +15,8 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let context = appDelegate.persistentContainer.viewContext
 var arrGlobalSet:[CurGlobalSet] = []
 var arrStudyWord:[StudyWord] = []
+var arrMyErrorID:[MyErrorID] = []
+var arrMyFavorID:[MyFavorID] = []
 var nowGlobalSet:CurGlobalSet?
 let rootUrl = "https://xx5000.duapp.com/xx/"
 
@@ -71,10 +73,11 @@ class HomeViewController: UIViewController {
     
     func initHomeView() {
         
-        
         // 顺序练习
         addNormalBtn()
         
+        // 文本按数据显示正确
+        changeTexValue()
     }
     
     func addNormalBtn() {
@@ -558,17 +561,42 @@ class HomeViewController: UIViewController {
     // 第几排单词 1k,2k,3k,4k,5k
     func segmentDidchange(_ segmented:UISegmentedControl){
         //获得选项的索引
-        print(segmented.selectedSegmentIndex)
+//        print(segmented.selectedSegmentIndex)
         //获得选择的文字
-        print(segmented.titleForSegment(at: segmented.selectedSegmentIndex))
+//        print(segmented.titleForSegment(at: segmented.selectedSegmentIndex))
         
         nowGlobalSet?.indexPage = Int32(segmented.selectedSegmentIndex)
         appDelegate.saveContext()
+        
+        // 改变文本标签
+        changeTexValue()
+    }
+    
+    func changeTexValue() {
+        // 做了多少题目, 我的错题目
+        var errCount = 0
+        for one in arrMyErrorID {
+            if one.indexPage == nowGlobalSet?.indexPage {
+                errCount += 1
+            }
+        }
+        // 我的收藏
+        var favorCount = 0
+        for one in arrMyFavorID {
+            if one.indexPage == nowGlobalSet?.indexPage {
+                favorCount += 1
+            }
+        }
+        
+        labelWrongNum.text = "\(errCount)"
+        labelFavorNum.text = "\(favorCount)"
     }
     
     func getCoreData() -> Void {
         arrStudyWord = []
         arrGlobalSet = []
+        arrMyErrorID = []
+        arrMyFavorID = []
         
         do {
             arrStudyWord = try context.fetch(StudyWord.fetchRequest())
@@ -580,6 +608,18 @@ class HomeViewController: UIViewController {
             arrGlobalSet = try context.fetch(CurGlobalSet.fetchRequest())
         }catch {
             print("Setting coreData error")
+        }
+        
+        do {
+            arrMyErrorID = try context.fetch(MyErrorID.fetchRequest())
+        }catch {
+            print("MyErrorID coreData error")
+        }
+        
+        do {
+            arrMyFavorID = try context.fetch(MyFavorID.fetchRequest())
+        }catch {
+            print("MyFavorID coreData error")
         }
         
         if arrGlobalSet.count > 0 {
