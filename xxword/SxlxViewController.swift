@@ -17,6 +17,7 @@ class SxlxViewController: UIViewController {
         
         
 //        self.navigationController?.navigationBar.barTintColor = UIColor.gray
+        
 
     }
 

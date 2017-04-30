@@ -130,10 +130,10 @@
 				0B46063B1EA14FD70071FBEA /* xxword.xcdatamodeld */,
 				0B4606321EA14FAA0071FBEA /* INSPersistentContainer */,
 				0BCE0C261EACEA1D0049A01C /* MyColor.swift */,
+				0B0003771EB60DB100046B3A /* MyWord.swift */,
 				0BD0679F1EAE1161000F975F /* SxlxViewController.swift */,
 				0BCE0C201EABAF780049A01C /* RootTabBarController.swift */,
 				0BD067A11EB251A8000F975F /* StudyTabBarController.swift */,
-				0B0003771EB60DB100046B3A /* MyWord.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
