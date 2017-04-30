@@ -7,16 +7,7 @@
 //
 
 import UIKit
-import CoreData
-import Alamofire
-import ESTabBarController_swift
 
-let appDelegate = UIApplication.shared.delegate as! AppDelegate
-let context = appDelegate.persistentContainer.viewContext
-var arrGlobalSet:[CurGlobalSet] = []
-var arrStudyWord:[StudyWord] = []
-var nowGlobalSet:CurGlobalSet?
-let rootUrl = "https://xx5000.duapp.com/xx/"
 
 class ViewController: UIViewController {
 
@@ -40,16 +31,9 @@ class ViewController: UIViewController {
         button.setTitle("按钮", for:.normal)
         self.view.addSubview(button)
         
-        //test
-//        self.navigationController?.pushViewController(SignUpViewController(), animated: false)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getCoreData()
-        firstOpenAPP()
-        getUserInfo()
-        initDataFromCoreData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,108 +47,6 @@ class ViewController: UIViewController {
 //            print("hi")
 //        }
         self.navigationController?.pushViewController(LoginViewController(), animated: true)
-    }
-    
-    func initDataFromCoreData() {
-        print(nowGlobalSet?.diamond)
-    }
-    
-    func getCoreData() -> Void {
-        arrStudyWord = []
-        arrGlobalSet = []
-        
-        do {
-            arrStudyWord = try context.fetch(StudyWord.fetchRequest())
-        }catch {
-            print("StudyWord coreData error")
-        }
-        
-        do {
-            arrGlobalSet = try context.fetch(CurGlobalSet.fetchRequest())
-        }catch {
-            print("Setting coreData error")
-        }
-        
-        if arrGlobalSet.count > 0 {
-            nowGlobalSet = arrGlobalSet[0]
-        }
-        
-        //        print(nowGlobalSet)
-    }
-    
-    // 第一次打开app，加入测试数据
-    func firstOpenAPP() -> Void {
-        // 初始化
-        if arrGlobalSet.count > 0 {
-            return
-        }
-        
-        let oneGlobalSet = NSEntityDescription.insertNewObject(forEntityName: "CurGlobalSet", into: context) as! CurGlobalSet
-        
-        oneGlobalSet.coin = 0
-        oneGlobalSet.diamond = 0
-        oneGlobalSet.exp = 0
-        oneGlobalSet.phone = ""
-        oneGlobalSet.pwd = ""
-        oneGlobalSet.token = ""
-        oneGlobalSet.vip = 0
-        oneGlobalSet.uid = ""
-        
-        
-        context.insert(oneGlobalSet)
-        appDelegate.saveContext()
-        getCoreData()
-    }
-    
-    // request account info
-    func getUserInfo() {
-        let strToken:String = (nowGlobalSet?.token!)!
-        let strNum:String = (nowGlobalSet?.phone!)!
-        let strPwd:String = (nowGlobalSet?.pwd!)!
-
-        if strToken == "" {
-            // 游客注册 register2
-            self.view.makeToastActivity(.center)
-            let url = rootUrl + "register2.php"
-            Alamofire.request(url).responseString(completionHandler: { (response) in
-                if response.result.isSuccess {
-                    let str:String = response.result.value!
-                    rootResponse(strjson: str, id: PBID.registerTourist)
-                    // 游客登录下
-                    Alamofire.request(rootUrl + "login2.php", method: .get, parameters: ["token": nowGlobalSet?.token!])
-                }else {
-                    print("get protocol fail")
-                }
-                self.view.hideToastActivity()
-            })
-        } else if nowGlobalSet?.phone == "" {
-            // 游客登录
-            self.view.makeToastActivity(.center)
-            let url = rootUrl + "login2.php"
-            Alamofire.request(url, method: .get, parameters: ["token": strToken]).responseString { (response) in
-                if response.result.isSuccess {
-                    let str:String = response.result.value!
-                    // 游客登录不需要处理
-                    rootResponse(strjson: str, id: PBID.loginTourist)
-                }else {
-                    print("get protocol fail")
-                }
-                self.view.hideToastActivity()
-            }
-        } else {
-            // 手机登录 use phone login
-            self.view.makeToastActivity(.center)
-            let url = rootUrl + "login1.php"
-            Alamofire.request(url, method: .get, parameters: ["phone": strNum, "pwd": strPwd]).responseString { (response) in
-                if response.result.isSuccess {
-                    let str:String = response.result.value!
-                    rootResponse(strjson: str, id: PBID.loginPhone)
-                }else {
-                    print("get protocol fail")
-                }
-                self.view.hideToastActivity()
-            }
-        }
     }
     
     

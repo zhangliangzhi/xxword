@@ -8,6 +8,16 @@
 
 import UIKit
 import SnapKit
+import CoreData
+import Alamofire
+
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+let context = appDelegate.persistentContainer.viewContext
+var arrGlobalSet:[CurGlobalSet] = []
+var arrStudyWord:[StudyWord] = []
+var nowGlobalSet:CurGlobalSet?
+let rootUrl = "https://xx5000.duapp.com/xx/"
+
 
 class HomeViewController: UIViewController {
 
@@ -29,8 +39,6 @@ class HomeViewController: UIViewController {
         
         // background
         self.view.backgroundColor = BG1_COLOR
-        // init something
-        initHomeView() 
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +46,13 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        getCoreData()
+        firstOpenAPP()
+//        getUserInfo()
+        initDataFromCoreData()
         
+        // init something
+        initHomeView()
     }
     
     func initHomeView() {
@@ -50,6 +64,22 @@ class HomeViewController: UIViewController {
     }
     
     func addNormalBtn() {
+        // segment 按钮
+        let sitems = ["1-1000", "1k-2k", "2k-3k", "3k-4k", "4001-5004"]
+        let segment = UISegmentedControl(items: sitems)
+        v.addSubview(segment)
+        segment.snp.makeConstraints { (make) in
+            make.top.equalTo(v).offset(64)
+            make.width.equalTo(v)
+            
+        }
+        segment.center = self.view.center
+//        segment.tintColor = WZ1_COLOR
+        //默认选中
+        segment.selectedSegmentIndex = Int((nowGlobalSet?.indexPage)!)
+        //添加值改变监听
+        segment.addTarget(self, action: #selector(segmentDidchange(_:)), for: .valueChanged)
+        
         // 顺序学习按钮
         let btnNormalStudy = UIButton(type: .system)
         v.addSubview(btnNormalStudy)
@@ -57,7 +87,7 @@ class HomeViewController: UIViewController {
             make.width.equalTo(v.snp.width).multipliedBy(0.33)
             make.height.equalTo(v.snp.width).multipliedBy(0.415)
             make.left.equalTo(v)
-            make.top.equalTo(v).offset(64)
+            make.top.equalTo(v).offset(64+80)
         }
         btnNormalStudy.backgroundColor = BG2_COLOR
         btnNormalStudy.addTarget(self, action: #selector(callbackNormalStudy), for: .touchUpInside)
@@ -509,6 +539,121 @@ class HomeViewController: UIViewController {
         lblJtbz.textAlignment = .center
         lblJtbz.text = "交通标志"
         lblJtbz.textColor = WZ1_COLOR
+    }
+    
+    // 第几排单词 1k,2k,3k,4k,5k
+    func segmentDidchange(_ segmented:UISegmentedControl){
+        //获得选项的索引
+        print(segmented.selectedSegmentIndex)
+        //获得选择的文字
+        print(segmented.titleForSegment(at: segmented.selectedSegmentIndex))
+        
+        nowGlobalSet?.indexPage = Int32(segmented.selectedSegmentIndex)
+        appDelegate.saveContext()
+    }
+    
+    func getCoreData() -> Void {
+        arrStudyWord = []
+        arrGlobalSet = []
+        
+        do {
+            arrStudyWord = try context.fetch(StudyWord.fetchRequest())
+        }catch {
+            print("StudyWord coreData error")
+        }
+        
+        do {
+            arrGlobalSet = try context.fetch(CurGlobalSet.fetchRequest())
+        }catch {
+            print("Setting coreData error")
+        }
+        
+        if arrGlobalSet.count > 0 {
+            nowGlobalSet = arrGlobalSet[0]
+        }
+        
+        //        print(nowGlobalSet)
+    }
+    
+    // 第一次打开app，加入测试数据
+    func firstOpenAPP() -> Void {
+        // 初始化
+        if arrGlobalSet.count > 0 {
+            return
+        }
+        
+        let oneGlobalSet = NSEntityDescription.insertNewObject(forEntityName: "CurGlobalSet", into: context) as! CurGlobalSet
+        
+        oneGlobalSet.coin = 0
+        oneGlobalSet.diamond = 0
+        oneGlobalSet.exp = 0
+        oneGlobalSet.phone = ""
+        oneGlobalSet.pwd = ""
+        oneGlobalSet.token = ""
+        oneGlobalSet.vip = 0
+        oneGlobalSet.uid = ""
+        oneGlobalSet.indexPage = 0
+        oneGlobalSet.indexType = 0  // 0--5k, 1--9k
+        
+        
+        context.insert(oneGlobalSet)
+        appDelegate.saveContext()
+        getCoreData()
+    }
+    
+    func initDataFromCoreData() {
+        
+    }
+    
+    // request account info
+    func getUserInfo() {
+        let strToken:String = (nowGlobalSet?.token!)!
+        let strNum:String = (nowGlobalSet?.phone!)!
+        let strPwd:String = (nowGlobalSet?.pwd!)!
+        
+        if strToken == "" {
+            // 游客注册 register2
+            self.view.makeToastActivity(.center)
+            let url = rootUrl + "register2.php"
+            Alamofire.request(url).responseString(completionHandler: { (response) in
+                if response.result.isSuccess {
+                    let str:String = response.result.value!
+                    rootResponse(strjson: str, id: PBID.registerTourist)
+                    // 游客登录下
+                    Alamofire.request(rootUrl + "login2.php", method: .get, parameters: ["token": nowGlobalSet?.token!])
+                }else {
+                    print("get protocol fail")
+                }
+                self.view.hideToastActivity()
+            })
+        } else if nowGlobalSet?.phone == "" {
+            // 游客登录
+            self.view.makeToastActivity(.center)
+            let url = rootUrl + "login2.php"
+            Alamofire.request(url, method: .get, parameters: ["token": strToken]).responseString { (response) in
+                if response.result.isSuccess {
+                    let str:String = response.result.value!
+                    // 游客登录不需要处理
+                    rootResponse(strjson: str, id: PBID.loginTourist)
+                }else {
+                    print("get protocol fail")
+                }
+                self.view.hideToastActivity()
+            }
+        } else {
+            // 手机登录 use phone login
+            self.view.makeToastActivity(.center)
+            let url = rootUrl + "login1.php"
+            Alamofire.request(url, method: .get, parameters: ["phone": strNum, "pwd": strPwd]).responseString { (response) in
+                if response.result.isSuccess {
+                    let str:String = response.result.value!
+                    rootResponse(strjson: str, id: PBID.loginPhone)
+                }else {
+                    print("get protocol fail")
+                }
+                self.view.hideToastActivity()
+            }
+        }
     }
     
     // 点击 顺序学习
