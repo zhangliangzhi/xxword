@@ -16,8 +16,12 @@ class SxlxViewController: UIViewController {
         self.view.backgroundColor = BG1_COLOR
         
         
-//        self.navigationController?.navigationBar.barTintColor = UIColor.gray
+        let id:Int = Int((nowGlobalSet?.sxlxIndex)!)
         
+        
+//        self.navigationController?.navigationBar.barTintColor = UIColor.gray
+
+        print(cWord.getWord()[id])
 
     }
 
@@ -26,6 +30,9 @@ class SxlxViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func getIndexStudy() {
+        
+    }
 
     /*
     // MARK: - Navigation

@@ -648,6 +648,7 @@ class HomeViewController: UIViewController {
         oneGlobalSet.uid = ""
         oneGlobalSet.indexPage = 0
         oneGlobalSet.indexType = 0  // 0--5k, 1--9k
+        oneGlobalSet.sxlxIndex = 0  // 顺序练习 开始id
         
         
         context.insert(oneGlobalSet)
