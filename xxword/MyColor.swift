@@ -19,3 +19,5 @@ let WZ1_COLOR = UIColor(colorLiteralRed: 120/255, green: 105/255, blue: 90/255, 
 
 // 首页文字2
 let WZ2_COLOR = UIColor(colorLiteralRed: 181/255, green: 172/255, blue: 149/255, alpha: 1)
+
+

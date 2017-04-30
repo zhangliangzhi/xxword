@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0003781EB60DB100046B3A /* MyWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0003771EB60DB100046B3A /* MyWord.swift */; };
 		0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */; };
 		0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */; };
 		0B4606391EA14FAA0071FBEA /* INSPersistentStoreDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0003771EB60DB100046B3A /* MyWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWord.swift; sourceTree = "<group>"; };
 		0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSDataStackContainer.swift; sourceTree = "<group>"; };
 		0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentContainer.swift; sourceTree = "<group>"; };
 		0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentStoreDescription.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				0BD0679F1EAE1161000F975F /* SxlxViewController.swift */,
 				0BCE0C201EABAF780049A01C /* RootTabBarController.swift */,
 				0BD067A11EB251A8000F975F /* StudyTabBarController.swift */,
+				0B0003771EB60DB100046B3A /* MyWord.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				0BCE0C1F1EAB97770049A01C /* HomeViewController.swift in Sources */,
 				0BD067A21EB251A8000F975F /* StudyTabBarController.swift in Sources */,
 				0BD067A01EAE1161000F975F /* SxlxViewController.swift in Sources */,
+				0B0003781EB60DB100046B3A /* MyWord.swift in Sources */,
 				0B6136591E9F3F3200FF31F2 /* MypbID.swift in Sources */,
 				0BCE0C251EABB2AA0049A01C /* FavorViewController.swift in Sources */,
 				0B46063D1EA14FD70071FBEA /* xxword.xcdatamodeld in Sources */,

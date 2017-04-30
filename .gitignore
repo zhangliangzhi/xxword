@@ -10,6 +10,7 @@ test/
 Pods/
 *.txt
 *.bat
+MyWord.swift
 
 ## Various settings
 *.pbxuser
