@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     var labelWrongNum:UILabel!
     var labelFavorNum:UILabel!
     let svh:CGFloat = 1.1
+    var segment:UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,22 @@ class HomeViewController: UIViewController {
         if UIDevice.current.orientation.isPortrait {
         }
         v.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.width * svh + 50)
+        
+        // 横竖的时候顶部按钮的变化
+        segment.snp.updateConstraints { (make) in
+            if UIDevice.current.orientation.isLandscape {
+                make.top.equalTo(self.view).offset(44)
+            }else {
+                make.top.equalTo(self.view).offset(64)
+            }
+        }
+        v.snp.updateConstraints { (make) in
+            if UIDevice.current.orientation.isLandscape {
+                make.top.equalTo(self.view).offset(44+30)
+            }else {
+                make.top.equalTo(self.view).offset(64+30)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,14 +103,13 @@ class HomeViewController: UIViewController {
     func addNormalBtn() {
         // segment 按钮
         let sitems = ["1-1000", "1k-2k", "2k-3k", "3k-4k", "4001-5004"]
-        let segment = UISegmentedControl(items: sitems)
+        segment = UISegmentedControl(items: sitems)
         self.view.addSubview(segment)
         segment.snp.makeConstraints { (make) in
             make.top.equalTo(self.view).offset(64)
             make.width.equalTo(self.view)
-            
+            make.height.equalTo(30)
         }
-        segment.center = self.view.center
 //        segment.tintColor = WZ1_COLOR
         //默认选中
         segment.selectedSegmentIndex = Int((nowGlobalSet?.indexPage)!)
