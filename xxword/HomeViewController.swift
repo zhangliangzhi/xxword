@@ -44,6 +44,11 @@ class HomeViewController: UIViewController {
         v.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.width * svh + 50)
         
 
+        // init something
+        getCoreData()
+        firstOpenAPP()
+        initHomeView()
+        
         // background
         self.view.backgroundColor = BG1_COLOR
         // 检测设备方向
@@ -65,10 +70,8 @@ class HomeViewController: UIViewController {
         getCoreData()
         firstOpenAPP()
 //        getUserInfo()
-        initDataFromCoreData()
         
-        // init something
-        initHomeView()
+
     }
     
     func initHomeView() {
@@ -648,7 +651,12 @@ class HomeViewController: UIViewController {
         oneGlobalSet.uid = ""
         oneGlobalSet.indexPage = 0
         oneGlobalSet.indexType = 0  // 0--5k, 1--9k
-        oneGlobalSet.sxlxIndex = 0  // 顺序练习 开始id
+        // 顺序练习 开始id
+        oneGlobalSet.curIndex0 = 0
+        oneGlobalSet.curIndex1 = 1000
+        oneGlobalSet.curIndex2 = 2000
+        oneGlobalSet.curIndex3 = 3000
+        oneGlobalSet.curIndex4 = 4000
         
         
         context.insert(oneGlobalSet)
@@ -656,9 +664,7 @@ class HomeViewController: UIViewController {
         getCoreData()
     }
     
-    func initDataFromCoreData() {
-        
-    }
+
     
     // request account info
     func getUserInfo() {
@@ -713,10 +719,9 @@ class HomeViewController: UIViewController {
     
     // 点击 顺序学习
     func callbackNormalStudy() -> Void {
-        print("normal Study")
-        self.present(StudyTabBarController(), animated: false) {
-            print("go sxlx")
-        }
+        // 太聪明了，赞
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = StudyTabBarController()
         
     }
     // 点击 顺序学习

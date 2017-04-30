@@ -14,15 +14,27 @@ class SxlxViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = BG1_COLOR
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(backHome))
         
-        
-        let id:Int = Int((nowGlobalSet?.sxlxIndex)!)
-        
-        
+        let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
+        var curIndex:Int32 = 0
+        if (indexPage == 0) {
+            curIndex = (nowGlobalSet?.curIndex0)!
+        }else if(indexPage == 1) {
+            curIndex = (nowGlobalSet?.curIndex1)!
+        }else if(indexPage == 2) {
+            curIndex = (nowGlobalSet?.curIndex2)!
+        }else if(indexPage == 3) {
+            curIndex = (nowGlobalSet?.curIndex3)!
+        }else if(indexPage == 4) {
+            curIndex = (nowGlobalSet?.curIndex4)!
+        }else{
+            
+        }
 //        self.navigationController?.navigationBar.barTintColor = UIColor.gray
-
-        print(cWord.getWord()[id])
-
+        let id:Int = Int(curIndex)
+        let ew = cWord.getWord()[id]
+        self.title = ew
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +44,11 @@ class SxlxViewController: UIViewController {
     
     func getIndexStudy() {
         
+    }
+    
+    func backHome() {
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = RootTabBarController()
     }
 
     /*
