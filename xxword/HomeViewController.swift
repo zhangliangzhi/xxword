@@ -21,26 +21,40 @@ let rootUrl = "https://xx5000.duapp.com/xx/"
 
 class HomeViewController: UIViewController {
 
-    var v:UIView!
+    var v:UIScrollView!
     var labelWrongNum:UILabel!
     var labelFavorNum:UILabel!
+    let svh:CGFloat = 1.1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "象形单词"
+        self.automaticallyAdjustsScrollViewInsets = false
         // root view
-        v = UIView()
+        v = UIScrollView()
         self.view.addSubview(v)
         v.snp.makeConstraints { (make) in
-            make.center.equalTo(self.view)
-            make.width.height.equalTo(self.view)
+            make.top.equalTo(self.view).offset(64+30)
+            make.bottom.equalTo(self.view)
+            make.width.equalTo(self.view)
         }
+        v.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.width * svh + 50)
         
+
         // background
         self.view.backgroundColor = BG1_COLOR
+        // 检测设备方向
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedRotation), name: .UIDeviceOrientationDidChange, object: nil)
     }
 
+    //通知监听触发的方法
+    func receivedRotation(){
+        if UIDevice.current.orientation.isPortrait {
+        }
+        v.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.width * svh + 50)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -67,10 +81,10 @@ class HomeViewController: UIViewController {
         // segment 按钮
         let sitems = ["1-1000", "1k-2k", "2k-3k", "3k-4k", "4001-5004"]
         let segment = UISegmentedControl(items: sitems)
-        v.addSubview(segment)
+        self.view.addSubview(segment)
         segment.snp.makeConstraints { (make) in
-            make.top.equalTo(v).offset(64)
-            make.width.equalTo(v)
+            make.top.equalTo(self.view).offset(64)
+            make.width.equalTo(self.view)
             
         }
         segment.center = self.view.center
@@ -87,7 +101,7 @@ class HomeViewController: UIViewController {
             make.width.equalTo(v.snp.width).multipliedBy(0.33)
             make.height.equalTo(v.snp.width).multipliedBy(0.415)
             make.left.equalTo(v)
-            make.top.equalTo(v).offset(64+80)
+            make.top.equalTo(v.snp.top).offset(6)
         }
         btnNormalStudy.backgroundColor = BG2_COLOR
         btnNormalStudy.addTarget(self, action: #selector(callbackNormalStudy), for: .touchUpInside)
