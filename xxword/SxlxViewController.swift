@@ -10,6 +10,7 @@ import UIKit
 
 class SxlxViewController: UIViewController {
 
+    var sv:UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,8 +34,10 @@ class SxlxViewController: UIViewController {
         }
 //        self.navigationController?.navigationBar.barTintColor = UIColor.gray
         let id:Int = Int(curIndex)
-        let ew = cWord.getWord()[id]
+        let ew =  cWord.getWord()[id]
         self.title = ew
+        
+        initWordData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,8 +45,10 @@ class SxlxViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func getIndexStudy() {
-        
+    func initWordData() {
+        sv = UIScrollView()
+        self.view.addSubview(sv)
+
     }
     
     func backHome() {
