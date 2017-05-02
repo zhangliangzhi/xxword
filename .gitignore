@@ -11,6 +11,9 @@ Pods/
 *.txt
 *.bat
 MyWord.swift
+YdWord.swift
+YdWords.swift
+JsWord.swift
 
 ## Various settings
 *.pbxuser
