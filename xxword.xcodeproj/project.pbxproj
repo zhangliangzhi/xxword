@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B0003781EB60DB100046B3A /* MyWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0003771EB60DB100046B3A /* MyWord.swift */; };
+		0B2AEE061EBA776700E1A9F1 /* ocr.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AEE051EBA776700E1A9F1 /* ocr.m */; };
 		0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */; };
 		0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */; };
 		0B4606391EA14FAA0071FBEA /* INSPersistentStoreDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */; };
@@ -37,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		0B0003771EB60DB100046B3A /* MyWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWord.swift; sourceTree = "<group>"; };
+		0B2AEE051EBA776700E1A9F1 /* ocr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ocr.m; sourceTree = "<group>"; };
+		0B2AEE071EBA777500E1A9F1 /* ocr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ocr.h; sourceTree = "<group>"; };
 		0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSDataStackContainer.swift; sourceTree = "<group>"; };
 		0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentContainer.swift; sourceTree = "<group>"; };
 		0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentStoreDescription.swift; sourceTree = "<group>"; };
@@ -137,6 +140,8 @@
 				0BD0679F1EAE1161000F975F /* SxlxViewController.swift */,
 				0BCE0C201EABAF780049A01C /* RootTabBarController.swift */,
 				0BD067A11EB251A8000F975F /* StudyTabBarController.swift */,
+				0B2AEE051EBA776700E1A9F1 /* ocr.m */,
+				0B2AEE071EBA777500E1A9F1 /* ocr.h */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				0BCE0C271EACEA1D0049A01C /* MyColor.swift in Sources */,
 				0B46063A1EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift in Sources */,
 				0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */,
+				0B2AEE061EBA776700E1A9F1 /* ocr.m in Sources */,
 				0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */,
 				0B6136551E9EA5DB00FF31F2 /* MyProtocol.swift in Sources */,
 				0B6C8E1B1E8F6E0D00D76B4E /* AppDelegate.swift in Sources */,

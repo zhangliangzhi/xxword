@@ -9,5 +9,7 @@
 #ifndef ocr_h
 #define ocr_h
 
+int ocseed(int seed);
+int ocrand();
 
 #endif /* ocr_h */

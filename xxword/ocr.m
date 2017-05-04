@@ -7,3 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+
+void ocseed(int seed) {
+    srand(seed);
+}
+int ocrand() {
+    return rand();
+}

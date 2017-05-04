@@ -6,5 +6,5 @@
 //#import "MBProgressHUD/MBProgressHUD.h"
 
 
-
+#import "ocr.h"
 #import "UMMobClick/MobClick.h"
