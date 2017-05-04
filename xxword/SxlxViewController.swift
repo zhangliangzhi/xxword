@@ -18,6 +18,7 @@ class SxlxViewController: UIViewController {
     var arrOther:[Int] = [] // 4个解释意思
     var rightIndex = 0  // 对的abcd -> 0123
     var arrImg:[UIImageView] = []
+    var centerLabel:LTMorphingLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,9 +61,12 @@ class SxlxViewController: UIViewController {
         
         // 初始化界面
         initWordData()
-        createLzLabel()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        createLzLabel()
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -266,16 +270,20 @@ class SxlxViewController: UIViewController {
     
     // 动态粒子字体
     func createLzLabel() {
+        if centerLabel != nil {
+            centerLabel.removeFromSuperview()
+            centerLabel = nil
+        }
         let ew =  cWord.getWord()[wid]
-        let lzLabel = LTMorphingLabel()
-        lzLabel.morphingEffect = .anvil
-        v.addSubview(lzLabel)
-        lzLabel.snp.makeConstraints { (make) in
+        centerLabel = LTMorphingLabel()
+        centerLabel.morphingEffect = .anvil
+        v.addSubview(centerLabel)
+        centerLabel.snp.makeConstraints { (make) in
             make.center.equalTo(v)
         }
-        lzLabel.text = ew
-        lzLabel.font = UIFont.systemFont(ofSize: 25)
-        lzLabel.textColor = SX3_COLOR
+        centerLabel.text = ew
+        centerLabel.font = UIFont.systemFont(ofSize: 25)
+        centerLabel.textColor = SX3_COLOR
     }
     
     
