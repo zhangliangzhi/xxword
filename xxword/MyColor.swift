@@ -22,6 +22,7 @@ let WZ2_COLOR = UIColor(colorLiteralRed: 181/255, green: 172/255, blue: 149/255,
 
 // 成功颜色
 let WZ3_COLOR = UIColor(red: 102/255, green: 184/255, blue: 77/255, alpha: 1)
+let INFO_COLOR = UIColor(red: 99/255, green: 191/255, blue: 225/255, alpha: 1)
 
 // 单词颜色
 let WZ4_COLOR = UIColor(red: 150/255, green: 154/255, blue: 153/255, alpha: 1)

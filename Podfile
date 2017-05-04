@@ -10,4 +10,5 @@ target 'xxword' do
   pod 'Alamofire', '~> 4.4'
   pod 'HandyJSON', '~> 1.6.1'
   pod "ESTabBarController-swift"
+  pod 'LTMorphingLabel'
 end

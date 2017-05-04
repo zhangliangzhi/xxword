@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LTMorphingLabel
 
 class SxlxViewController: UIViewController {
 
@@ -266,13 +267,15 @@ class SxlxViewController: UIViewController {
     // 动态粒子字体
     func createLzLabel() {
         let ew =  cWord.getWord()[wid]
-        let lzLabel = UILabel()
+        let lzLabel = LTMorphingLabel()
+        lzLabel.morphingEffect = .anvil
         v.addSubview(lzLabel)
         lzLabel.snp.makeConstraints { (make) in
             make.center.equalTo(v)
         }
         lzLabel.text = ew
-        lzLabel.font = UIFont.systemFont(ofSize: 30)
+        lzLabel.font = UIFont.systemFont(ofSize: 25)
+        lzLabel.textColor = SX3_COLOR
     }
     
     
