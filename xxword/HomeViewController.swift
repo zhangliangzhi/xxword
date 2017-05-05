@@ -20,6 +20,8 @@ var arrMyFavorID:[MyFavorID] = []
 var nowGlobalSet:CurGlobalSet?
 let rootUrl = "https://xx5000.duapp.com/xx/"
 
+let gWord = ocGetWord() as! [String]
+let gDetail = ocGetDetail() as! [[String]]
 
 class HomeViewController: UIViewController {
 

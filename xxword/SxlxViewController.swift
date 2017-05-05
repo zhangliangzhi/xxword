@@ -44,13 +44,9 @@ class SxlxViewController: UIViewController {
         wid = Int(curIndex)
         
 //        self.navigationController?.navigationBar.barTintColor = UIColor.gray
-        let ew =  cWord.getWord()[wid]
+        let ew = gWord[wid]
         self.title = ew
         
-        let a = ocGetWord() as! [String]
-        print(a.count)
-        let b = ocGetDetail() as! [String]
-        print(b.count)
         
         // 随机3个其他解释
         initOther3Word()
@@ -178,7 +174,7 @@ class SxlxViewController: UIViewController {
         for i in 0..<4 {
             let inv = arrV[i]
             let nid = arrOther[i]
-            let arrS = cDetail.getD()[nid]
+            let arrS = gDetail[nid]
             let sl1 = getStr(arr: arrS)
             let label1 = UILabel()
             inv.addSubview(label1)
@@ -247,8 +243,7 @@ class SxlxViewController: UIViewController {
 
     func initOther3Word() {
         arrOther.append(wid)
-        //test 17 -> 5000
-        let allwordcount:Int32 = 17
+        let allwordcount:Int32 = 5000
         ocseed(Int32(wid))
         for i in 0..<3 {
             var iran:Int = Int(ocrand() % allwordcount)
@@ -264,7 +259,7 @@ class SxlxViewController: UIViewController {
         arrOther.sort { (_, _) -> Bool in
             arc4random() > arc4random()
         }
-//        print(arrOther)
+        print(arrOther)
         for i in 0..<4 {
             if arrOther[i] == wid {
                 rightIndex = i
@@ -279,7 +274,7 @@ class SxlxViewController: UIViewController {
             centerLabel.removeFromSuperview()
             centerLabel = nil
         }
-        let ew =  cWord.getWord()[wid]
+        let ew =  gWord[wid]
         centerLabel = LTMorphingLabel()
         centerLabel.morphingEffect = .anvil
         v.addSubview(centerLabel)
