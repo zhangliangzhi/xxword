@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        self.window = UIWindow(frame: UIScreen.main.bounds)
 //        self.window?.makeKeyAndVisible()
-        let root  = RootTabBarController()
+        let root  = StudyTabBarController()
         self.window?.rootViewController = root
         
         
