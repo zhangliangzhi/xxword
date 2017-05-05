@@ -29,7 +29,7 @@ class StudyTabBarController: UITabBarController {
         let item1 : UITabBarItem = UITabBarItem (title: "本题答案", image: UIImage(named: "home"), selectedImage: UIImage(named: "home_1"))
         v1.tabBarItem = item1
         
-        let v2 = ShopViewController()
+        let v2 = XxViewController()
         let item2 : UITabBarItem = UITabBarItem (title: "0/1000", image: UIImage(named: "favor"), selectedImage: UIImage(named: "favor_1"))
         v2.tabBarItem = item2
         
