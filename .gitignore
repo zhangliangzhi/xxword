@@ -13,6 +13,9 @@ Pods/
 MyWord.swift
 YdWords.swift
 JsWords.swift
+orc.m
+orc.h
+
 
 ## Various settings
 *.pbxuser
