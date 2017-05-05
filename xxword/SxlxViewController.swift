@@ -47,6 +47,11 @@ class SxlxViewController: UIViewController {
         let ew =  cWord.getWord()[wid]
         self.title = ew
         
+        let a = ocGetWord() as! [String]
+        print(a.count)
+        let b = ocGetDetail() as! [String]
+        print(b.count)
+        
         // 随机3个其他解释
         initOther3Word()
         

@@ -7,4 +7,5 @@
 
 
 #import "ocr.h"
+#import "ocword.h"
 #import "UMMobClick/MobClick.h"
