@@ -39,14 +39,10 @@ class XxCollectionViewCell: UICollectionViewCell {
         }else{
         }
         wid = Int(curIndex)
-        
-        // 随机3个其他解释
-        initOther3Word()
-        
-        // 根视图
         self.backgroundColor = BG1_COLOR
+        
         // 初始化界面
-        initWordData()
+//        initWordData()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -55,6 +51,9 @@ class XxCollectionViewCell: UICollectionViewCell {
     
 
     func initWordData() {
+        // 随机3个其他解释
+        initOther3Word()
+        
         let v = self
         // 4个选项
         let v1 = UIButton(type: .system)

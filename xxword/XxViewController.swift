@@ -14,6 +14,8 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     var rootv:UIView!
     var collectionView:UICollectionView!
     let colayout = UICollectionViewFlowLayout()
+    var indexPage:Int!
+    var originalID:Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,18 +26,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         NotificationCenter.default.addObserver(self, selector: #selector(receivedRotation), name: .UIDeviceOrientationDidChange, object: nil)
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
-//        rootv = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-//        self.view.addSubview(rootv)
-//        rootv.snp.makeConstraints { (make) in
-//            make.width.equalTo(self.view)
-//            make.top.equalTo(self.view).offset(44)
-//            make.bottom.equalTo(self.view).offset(-49)
-//        }
-//        rootv.backgroundColor = UIColor.red
-        
-        
-        
-//        let layout = UICollectionViewFlowLayout()
+
         collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: colayout)
         self.view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
@@ -57,7 +48,22 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         colayout.itemSize = CGSize(width: self.view.frame.width, height: self.view.frame.height-93)
 //        colayout.minimumInteritemSpacing = 0 // 同行内小cell之间的距离
         
- 
+        // 获取id [0,5004)
+        indexPage = Int((nowGlobalSet?.indexPage)!)
+        var curIndex:Int32 = 0
+        if (indexPage == 0) {
+            curIndex = (nowGlobalSet?.curIndex0)!
+        }else if(indexPage == 1) {
+            curIndex = (nowGlobalSet?.curIndex1)!
+        }else if(indexPage == 2) {
+            curIndex = (nowGlobalSet?.curIndex2)!
+        }else if(indexPage == 3) {
+            curIndex = (nowGlobalSet?.curIndex3)!
+        }else if(indexPage == 4) {
+            curIndex = (nowGlobalSet?.curIndex4)!
+        }else{
+        }
+        originalID = Int(curIndex)
     }
     
     //通知监听触发的方法
@@ -90,8 +96,12 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) 
+        let cell:XxCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! XxCollectionViewCell
         
+        let startID = originalID % 1000
+        cell.wid = startID + indexPath.row
+        cell.initWordData()
+        cell.createLzLabel()
         
         return cell
     }
