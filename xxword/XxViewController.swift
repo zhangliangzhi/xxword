@@ -47,15 +47,15 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         collectionView.register(XxCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
         collectionView.dataSource = self
-//        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = BG1_COLOR
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         colayout.scrollDirection = .horizontal
-//        layout.minimumLineSpacing = 0
+        colayout.minimumLineSpacing = 0
         colayout.itemSize = self.view.frame.size
         
         colayout.itemSize = CGSize(width: self.view.frame.width, height: self.view.frame.height-93)
-//        layout.minimumInteritemSpacing = 0 // 同行内小cell之间的距离
+//        colayout.minimumInteritemSpacing = 0 // 同行内小cell之间的距离
         
  
     }
