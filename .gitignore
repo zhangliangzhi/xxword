@@ -13,8 +13,8 @@ Pods/
 MyWord.swift
 YdWords.swift
 JsWords.swift
-orc.m
-orc.h
+orword.m
+orword.h
 
 
 ## Various settings
