@@ -117,7 +117,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         // 滚到默认位置先, 在给个提示.
         if firstScroll == false {
             firstScroll = true
-            let ati = originalID - (indexPage * 1000)
+            let ati:Int = originalID - (indexPage * 1000)
             collectionView.scrollToItem(at: IndexPath(item: ati, section: 0), at: .left, animated: false)
         }
         return cell
