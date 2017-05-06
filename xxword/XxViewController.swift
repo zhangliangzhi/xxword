@@ -98,13 +98,23 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:XxCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! XxCollectionViewCell
         
-        let startID = originalID % 1000
+        let startID = indexPage * 1000
         cell.wid = startID + indexPath.row
         cell.initWordData()
         cell.createLzLabel()
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let index = indexPath.row
+        print("will display",index)
+        
+        let cell:XxCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! XxCollectionViewCell
+        cell.createLzLabel()
+        // 将要显示的界面
+    }
+    
 
     /*
     // MARK: - Navigation

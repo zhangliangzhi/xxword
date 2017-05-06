@@ -144,7 +144,6 @@
 				0BCE0C261EACEA1D0049A01C /* MyColor.swift */,
 				0B0003771EB60DB100046B3A /* MyWord.swift */,
 				0B48CB091EB8A09800A05E65 /* YdWords.swift */,
-				0BD0679F1EAE1161000F975F /* SxlxViewController.swift */,
 				0BD909D21EBCDD98007467F0 /* XxViewController.swift */,
 				0BD909D01EBCA4D1007467F0 /* XxCollectionViewCell.swift */,
 				0BCE0C201EABAF780049A01C /* RootTabBarController.swift */,
@@ -153,6 +152,7 @@
 				0B2AEE071EBA777500E1A9F1 /* ocr.h */,
 				0BD909CB1EBC886F007467F0 /* ocword.m */,
 				0BD909CD1EBC8884007467F0 /* ocword.h */,
+				0BD0679F1EAE1161000F975F /* SxlxViewController.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";

@@ -236,7 +236,7 @@ class XxCollectionViewCell: UICollectionViewCell {
         arrOther.sort { (_, _) -> Bool in
             arc4random() > arc4random()
         }
-        print(arrOther)
+//        print(arrOther)
         for i in 0..<4 {
             if arrOther[i] == wid {
                 rightIndex = i
