@@ -16,6 +16,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     let colayout = UICollectionViewFlowLayout()
     var indexPage:Int!
     var originalID:Int!
+    var firstScroll = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,14 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         }else{
         }
         originalID = Int(curIndex)
+        
+        //test将视图滚动到默认单词上, 额这个没起效果 我去
+//        collectionView.scrollToItem(at: IndexPath(item: originalID, section: 0), at: .left, animated: false)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     //通知监听触发的方法
@@ -103,6 +112,14 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         cell.initWordData()
         cell.createLzLabel()
         
+//        print("return cell:",indexPath.row)
+        
+        // 滚到默认位置先, 在给个提示.
+        if firstScroll == false {
+            firstScroll = true
+            let ati = originalID - (indexPage * 1000)
+            collectionView.scrollToItem(at: IndexPath(item: ati, section: 0), at: .left, animated: false)
+        }
         return cell
     }
     
@@ -113,7 +130,9 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         let cell:XxCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! XxCollectionViewCell
         cell.createLzLabel()
         // 将要显示的界面
+        
     }
+    
     
 
     /*
