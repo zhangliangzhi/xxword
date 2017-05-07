@@ -17,6 +17,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     var indexPage:Int!
     var originalID:Int!
     var firstScroll = false
+    var arrTagIndex:[Int:Int] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,11 +107,11 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:XxCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! XxCollectionViewCell
-        
+
         let startID = indexPage * 1000
         cell.wid = startID + indexPath.row
         cell.initWordData()
-        cell.createLzLabel()
+//        cell.createLzLabel(itype: 1)
         
 //        print("return cell:",indexPath.row)
         
@@ -119,6 +120,15 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
             firstScroll = true
             let ati:Int = originalID - (indexPage * 1000)
             collectionView.scrollToItem(at: IndexPath(item: ati, section: 0), at: .left, animated: false)
+//            print("first open")
+        }
+        
+        if arrTagIndex[cell.wid] == nil {
+            // 没点击过
+            cell.clickCount = 0
+        }else {
+            // 点击过了
+            cell.selTag(selIndex: arrTagIndex[cell.wid]!)
         }
         return cell
     }
@@ -128,11 +138,21 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         print("will display",index)
         
         let cell:XxCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! XxCollectionViewCell
-        cell.createLzLabel()
+        cell.createLzLabel(itype: 1)
         // 将要显示的界面
         
     }
     
+    
+    
+    func setTabBarTxt() -> Void {
+        
+    }
+    
+    func addOneUse(wid:Int, tag:Int) -> Void {
+        print("add one use", tag)
+        arrTagIndex[wid] = tag
+    }
     
 
     /*

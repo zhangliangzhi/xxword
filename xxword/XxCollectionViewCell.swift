@@ -12,12 +12,13 @@ import LTMorphingLabel
 
 class XxCollectionViewCell: UICollectionViewCell {
 
-    
+    // 在外面的会重复利用, 要在init里面赋值才可以!注意
     var wid:Int = 0  // 获取id [0,5004)
     var arrOther:[Int] = [] // 4个解释意思
     var rightIndex = 0  // 对的abcd -> 0123
     var arrImg:[UIImageView] = []
     var centerLabel:LTMorphingLabel!
+    var clickCount:Int = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,8 +42,7 @@ class XxCollectionViewCell: UICollectionViewCell {
         wid = Int(curIndex)
         self.backgroundColor = BG1_COLOR
         
-        // 初始化界面
-//        initWordData()
+//        print("create cell", clickCount)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,8 +53,10 @@ class XxCollectionViewCell: UICollectionViewCell {
     func initWordData() {
         // 随机3个其他解释
         initOther3Word()
+        // 初始化 点击次数
+        clickCount = 0
         
-        let v = self
+        let v = self.contentView
         // 4个选项
         let v1 = UIButton(type: .system)
         v.addSubview(v1)
@@ -194,11 +196,24 @@ class XxCollectionViewCell: UICollectionViewCell {
     
     
     func selButton(_ button:UIButton) -> Void {
+        if clickCount > 0 {
+            print(clickCount)
+            return
+        }
+        
         let selIndex = button.tag - 1
+        selTag(selIndex: selIndex)
+        let sv = firstViewController() as! XxViewController
+        sv.addOneUse(wid: wid, tag: selIndex)
+    }
+    
+    func selTag(selIndex:Int) {
+        clickCount += 1
         if selIndex == rightIndex {
             // 正确 ✅
             let img = arrImg[rightIndex]
             img.image = UIImage(named: "success_gx")
+//            createLzLabel(itype: 1)
         }else {
             // 错误
             let rimg = arrImg[selIndex]
@@ -206,9 +221,21 @@ class XxCollectionViewCell: UICollectionViewCell {
             
             let img = arrImg[rightIndex]
             img.image = UIImage(named: "success_gx")
+//            createLzLabel(itype: 2)
         }
-        //        print(button.tag)
     }
+    
+    func firstViewController() -> UIViewController? {
+        for view in sequence(first: self.superview, next: { $0?.superview }) {
+            if let responder = view?.next {
+                if responder.isKind(of: UIViewController.self){
+                    return responder as? UIViewController
+                }
+            }
+        }
+        return nil
+    }
+    
     
     func getStr(arr:[String]) -> String {
         var ret:String = ""
@@ -246,17 +273,22 @@ class XxCollectionViewCell: UICollectionViewCell {
     }
     
     // 动态粒子字体
-    func createLzLabel() {
+    func createLzLabel(itype:Int) {
         if centerLabel != nil {
             centerLabel.removeFromSuperview()
             centerLabel = nil
         }
         let ew =  gWord[wid]
         centerLabel = LTMorphingLabel()
-        centerLabel.morphingEffect = .anvil
-        self.addSubview(centerLabel)
+        if itype == 1 {
+            centerLabel.morphingEffect = .anvil
+        }else{
+            centerLabel.morphingEffect = .burn
+        }
+        
+        self.contentView.addSubview(centerLabel)
         centerLabel.snp.makeConstraints { (make) in
-            make.center.equalTo(self)
+            make.center.equalTo(self.contentView)
         }
         centerLabel.text = ew
         centerLabel.font = UIFont.systemFont(ofSize: 25)
