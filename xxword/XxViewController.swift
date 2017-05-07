@@ -129,18 +129,18 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         }else {
             // 点击过了
             cell.selTag(selIndex: arrTagIndex[cell.wid]!)
+            
         }
+        cell.createLzLabel(itype: 1)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let index = indexPath.row
-        print("will display",index)
-        
-        let cell:XxCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! XxCollectionViewCell
-        cell.createLzLabel(itype: 1)
         // 将要显示的界面
-        
+        let index = indexPath.row
+//        print("will display",index)
+        let wid = indexPage*1000 + index
+        self.title = gWord[wid]
     }
     
     
@@ -152,6 +152,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     func addOneUse(wid:Int, tag:Int) -> Void {
         print("add one use", tag)
         arrTagIndex[wid] = tag
+        
     }
     
 
