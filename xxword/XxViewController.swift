@@ -145,11 +145,12 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         let wid = indexPage*1000 + index
 //        self.title = gWord[wid]
         self.navigationItem.title = gWord[wid]
+        self.tabBarItem.title = "\(wid+1)" + "/5004"
     }
     
     
     
-    func setTabBarTxt() -> Void {
+    func setTabBarTxt(wid:Int) {
         
     }
     

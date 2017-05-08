@@ -37,6 +37,7 @@
 		0BD909D11EBCA4D1007467F0 /* XxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D01EBCA4D1007467F0 /* XxCollectionViewCell.swift */; };
 		0BD909D31EBCDD98007467F0 /* XxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D21EBCDD98007467F0 /* XxViewController.swift */; };
 		0BD909D51EC048CC007467F0 /* TipsSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D41EC048CC007467F0 /* TipsSwift.swift */; };
+		0BD909D71EC0A835007467F0 /* WordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D61EC0A835007467F0 /* WordsViewController.swift */; };
 		75AF06A683A708C84E55D089 /* Pods_xxword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228065594F704138570DAF96 /* Pods_xxword.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		0BD909D01EBCA4D1007467F0 /* XxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XxCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BD909D21EBCDD98007467F0 /* XxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XxViewController.swift; sourceTree = "<group>"; };
 		0BD909D41EC048CC007467F0 /* TipsSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsSwift.swift; sourceTree = "<group>"; };
+		0BD909D61EC0A835007467F0 /* WordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordsViewController.swift; sourceTree = "<group>"; };
 		228065594F704138570DAF96 /* Pods_xxword.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xxword.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3375C031DF91B6152A20BFD2 /* Pods-xxword.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xxword.release.xcconfig"; path = "Pods/Target Support Files/Pods-xxword/Pods-xxword.release.xcconfig"; sourceTree = "<group>"; };
 		D25065F2A0961C42A9AED138 /* Pods-xxword.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xxword.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xxword/Pods-xxword.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				0B48CB091EB8A09800A05E65 /* YdWords.swift */,
 				0BD909D21EBCDD98007467F0 /* XxViewController.swift */,
 				0BD909D01EBCA4D1007467F0 /* XxCollectionViewCell.swift */,
+				0BD909D61EC0A835007467F0 /* WordsViewController.swift */,
 				0BCE0C201EABAF780049A01C /* RootTabBarController.swift */,
 				0BD067A11EB251A8000F975F /* StudyTabBarController.swift */,
 				0B2AEE051EBA776700E1A9F1 /* ocr.m */,
@@ -320,6 +323,7 @@
 				0BCE0C251EABB2AA0049A01C /* FavorViewController.swift in Sources */,
 				0B46063D1EA14FD70071FBEA /* xxword.xcdatamodeld in Sources */,
 				0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */,
+				0BD909D71EC0A835007467F0 /* WordsViewController.swift in Sources */,
 				0BCE0C271EACEA1D0049A01C /* MyColor.swift in Sources */,
 				0B46063A1EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift in Sources */,
 				0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */,
