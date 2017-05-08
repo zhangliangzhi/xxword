@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import LTMorphingLabel
+import CoreData
 
 class XxCollectionViewCell: UICollectionViewCell {
 
@@ -25,21 +26,21 @@ class XxCollectionViewCell: UICollectionViewCell {
         
         
         // 获取id [0,5004)
-        let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
-        var curIndex:Int32 = 0
-        if (indexPage == 0) {
-            curIndex = (nowGlobalSet?.curIndex0)!
-        }else if(indexPage == 1) {
-            curIndex = (nowGlobalSet?.curIndex1)!
-        }else if(indexPage == 2) {
-            curIndex = (nowGlobalSet?.curIndex2)!
-        }else if(indexPage == 3) {
-            curIndex = (nowGlobalSet?.curIndex3)!
-        }else if(indexPage == 4) {
-            curIndex = (nowGlobalSet?.curIndex4)!
-        }else{
-        }
-        wid = Int(curIndex)
+//        let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
+//        var curIndex:Int32 = 0
+//        if (indexPage == 0) {
+//            curIndex = (nowGlobalSet?.curIndex0)!
+//        }else if(indexPage == 1) {
+//            curIndex = (nowGlobalSet?.curIndex1)!
+//        }else if(indexPage == 2) {
+//            curIndex = (nowGlobalSet?.curIndex2)!
+//        }else if(indexPage == 3) {
+//            curIndex = (nowGlobalSet?.curIndex3)!
+//        }else if(indexPage == 4) {
+//            curIndex = (nowGlobalSet?.curIndex4)!
+//        }else{
+//        }
+//        wid = Int(curIndex)
         self.backgroundColor = BG1_COLOR
         
 //        print("create cell", clickCount)
@@ -197,7 +198,7 @@ class XxCollectionViewCell: UICollectionViewCell {
     
     func selButton(_ button:UIButton) -> Void {
         if clickCount > 0 {
-            print(clickCount)
+//            print(clickCount)
             return
         }
         
@@ -205,6 +206,68 @@ class XxCollectionViewCell: UICollectionViewCell {
         selTag(selIndex: selIndex)
         let sv = firstViewController() as! XxViewController
         sv.addOneUse(wid: wid, tag: selIndex)
+        
+        // 插入数据
+        let oneWrong = NSEntityDescription.insertNewObject(forEntityName: "MyErrorID", into: context) as! MyErrorID
+        oneWrong.wid = Int32(wid)
+        oneWrong.indexPage = Int32(wid / 1000)
+        oneWrong.date = NSDate()
+        if selIndex == rightIndex {
+            oneWrong.isRight = true
+            // 正确的话自动跳转到下一页去
+        }else{
+            oneWrong.isRight = false
+        }
+        context.insert(oneWrong)
+        
+        let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
+        var iNextWid:Int = 0
+        var isEnd = false
+        if (indexPage == 0) {
+            // 显示是1-1000, 实际是0-999
+            nowGlobalSet?.curIndex0 = Int32(wid + 1)
+            if (nowGlobalSet?.curIndex0)! >= 999 {
+                nowGlobalSet?.curIndex0 = 999
+                isEnd = true
+            }
+            iNextWid = Int((nowGlobalSet?.curIndex0)!)
+        }else if(indexPage == 1) {
+            nowGlobalSet?.curIndex1 = Int32(wid + 1)
+            if (nowGlobalSet?.curIndex1)! >= 1999 {
+                nowGlobalSet?.curIndex1 = 1999
+                isEnd = true
+            }
+            iNextWid = Int((nowGlobalSet?.curIndex1)!)
+        }else if(indexPage == 2) {
+            nowGlobalSet?.curIndex2 = Int32(wid + 1)
+            if (nowGlobalSet?.curIndex2)! >= 2999 {
+                nowGlobalSet?.curIndex2 = 2999
+                isEnd = true
+            }
+            iNextWid = Int((nowGlobalSet?.curIndex2)!)
+        }else if(indexPage == 3) {
+            nowGlobalSet?.curIndex3 = Int32(wid + 1)
+            if (nowGlobalSet?.curIndex3)! >= 3999 {
+                nowGlobalSet?.curIndex3 = 3999
+                isEnd = true
+            }
+            iNextWid = Int((nowGlobalSet?.curIndex3)!)
+        }else if(indexPage == 4) {
+            nowGlobalSet?.curIndex4 = Int32(wid + 1)
+            if (nowGlobalSet?.curIndex4)! >= 5003 {
+                nowGlobalSet?.curIndex4 = 5003
+                isEnd = true
+            }
+            iNextWid = Int((nowGlobalSet?.curIndex4)!)
+        }else{
+        }
+        
+        appDelegate.saveContext()
+        // 是否自动跳到下一题
+        if oneWrong.isRight && (isEnd == false) {
+            sv.goNextWord(nextId: iNextWid)
+        }
+        
     }
     
     func selTag(selIndex:Int) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CurGlobalSet" representedClassName="CurGlobalSet" syncable="YES" codeGenerationType="class">
         <attribute name="coin" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="curIndex0" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -19,8 +19,9 @@
     </entity>
     <entity name="MyErrorID" representedClassName="MyErrorID" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="indexPage" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRight" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="wid" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="MyFavorID" representedClassName="MyFavorID" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -35,7 +36,7 @@
     </entity>
     <elements>
         <element name="CurGlobalSet" positionX="-63" positionY="-18" width="128" height="270"/>
-        <element name="MyErrorID" positionX="-54" positionY="54" width="128" height="90"/>
+        <element name="MyErrorID" positionX="-54" positionY="54" width="128" height="105"/>
         <element name="MyFavorID" positionX="-45" positionY="63" width="128" height="90"/>
         <element name="StudyWord" positionX="-54" positionY="45" width="128" height="105"/>
     </elements>

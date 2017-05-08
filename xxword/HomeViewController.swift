@@ -597,7 +597,7 @@ class HomeViewController: UIViewController {
         // 做了多少题目, 我的错题目
         var errCount = 0
         for one in arrMyErrorID {
-            if one.indexPage == nowGlobalSet?.indexPage {
+            if (one.indexPage == nowGlobalSet?.indexPage) && one.isRight == false {
                 errCount += 1
             }
         }

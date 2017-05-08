@@ -119,8 +119,11 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         if firstScroll == false {
             firstScroll = true
             let ati:Int = originalID - (indexPage * 1000)
-            collectionView.scrollToItem(at: IndexPath(item: ati, section: 0), at: .left, animated: false)
-//            print("first open")
+            if (originalID % 1000 ) != 0 {
+                collectionView.scrollToItem(at: IndexPath(item: ati, section: 0), at: .left, animated: false)
+                //            print("first open")
+                TipsSwift.showBottomWithText("自动跳转到上次学习位置", duration: 2)
+            }
         }
         
         if arrTagIndex[cell.wid] == nil {
@@ -140,7 +143,8 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         let index = indexPath.row
 //        print("will display",index)
         let wid = indexPage*1000 + index
-        self.title = gWord[wid]
+//        self.title = gWord[wid]
+        self.navigationItem.title = gWord[wid]
     }
     
     
@@ -150,11 +154,13 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     func addOneUse(wid:Int, tag:Int) -> Void {
-        print("add one use", tag)
+//        print("add one use", tag)
         arrTagIndex[wid] = tag
         
     }
-    
+    func goNextWord(nextId:Int) -> Void {
+        collectionView.scrollToItem(at: IndexPath(item: nextId, section: 0), at: .left, animated: true)
+    }
 
     /*
     // MARK: - Navigation
