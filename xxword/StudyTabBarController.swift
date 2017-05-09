@@ -31,7 +31,7 @@ class StudyTabBarController: UITabBarController {
         v1.tabBarItem = item1
         
         let v2 = WordsViewController()
-        let item2 : UITabBarItem = UITabBarItem (title: "进度", image: UIImage(named: "favor"), selectedImage: UIImage(named: "favor_1"))
+        let item2 : UITabBarItem = UITabBarItem (title: "进度", image: UIImage(named: "wrodlist"), selectedImage: UIImage(named: "wrodlist"))
         v2.tabBarItem = item2
         
         let v3 = FavorViewController()
