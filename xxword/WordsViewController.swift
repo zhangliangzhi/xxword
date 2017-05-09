@@ -145,7 +145,8 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         appDelegate.saveContext()
         
         // 跳转到第一个界面
-        self.tabBarController?.selectedIndex = 0
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = StudyTabBarController()
     }
     
     func getWid() -> Int {
