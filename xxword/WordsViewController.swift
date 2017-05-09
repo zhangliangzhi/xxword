@@ -13,12 +13,14 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
 
     var collectionView:UICollectionView!
     var colayout = UICollectionViewFlowLayout()
+    var indexPage:Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = BG1_COLOR
+        indexPage = Int((nowGlobalSet?.indexPage)!)
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(backHome))
         // 检测设备方向
         NotificationCenter.default.addObserver(self, selector: #selector(receivedRotation), name: .UIDeviceOrientationDidChange, object: nil)
@@ -46,6 +48,7 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         colayout.itemSize = CGSize(width: self.view.frame.width/7, height: 30)
         
         colayout.sectionInset = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +56,10 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        indexPage = Int((nowGlobalSet?.indexPage)!)
+        collectionView.reloadData()
+    }
 
     /*
     // MARK: - Navigation
@@ -80,21 +87,25 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return gWord.count
+        if(indexPage == 4) {
+            return 1004
+        }else{
+            return 1000
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-//        cell.backgroundColor = UIColor.gray
-        
-        let row = indexPath.row
+
+        let startID = indexPage * 1000
+        let wid = startID + indexPath.row
         let btn = UIButton(type: .system)
         cell.addSubview(btn)
         btn.snp.makeConstraints { (make) in
             make.edges.equalTo(cell)
         }
         
-        let wstatue = getWordStatue(wid: row)
+        let wstatue = getWordStatue(wid: wid)
         if wstatue == 0 {
             btn.backgroundColor = INFO_COLOR
         }else if wstatue == 1{
@@ -103,36 +114,36 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
             btn.backgroundColor = DANG_COLOR
         }
         
-        btn.setTitle("\(row+1)", for: .normal)
+        btn.setTitle("\(wid+1)", for: .normal)
         btn.tintColor = UIColor.white
         btn.layer.cornerRadius = 5
-        if row == getWid() {
+        if wid == getWid() {
             btn.layer.borderColor = WARN_COLOR.cgColor
             btn.layer.borderWidth = 2
         }
-        btn.tag = row
+        btn.tag = wid
         btn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)
         return cell
     }
     
     func clickBtn(_ button:UIButton) {
-        let row = button.tag
-        print("click row", row)
+        let wid = button.tag
+        print("click wid", wid)
+        self.tabBarController?.selectedIndex = 0
     }
     
     func getWid() -> Int {
         // 获取id [0,5004)
-        let windexPage = Int((nowGlobalSet?.indexPage)!)
         var curIndex:Int32 = 0
-        if (windexPage == 0) {
+        if (indexPage == 0) {
             curIndex = (nowGlobalSet?.curIndex0)!
-        }else if(windexPage == 1) {
+        }else if(indexPage == 1) {
             curIndex = (nowGlobalSet?.curIndex1)!
-        }else if(windexPage == 2) {
+        }else if(indexPage == 2) {
             curIndex = (nowGlobalSet?.curIndex2)!
-        }else if(windexPage == 3) {
+        }else if(indexPage == 3) {
             curIndex = (nowGlobalSet?.curIndex3)!
-        }else if(windexPage == 4) {
+        }else if(indexPage == 4) {
             curIndex = (nowGlobalSet?.curIndex4)!
         }else{
         }
