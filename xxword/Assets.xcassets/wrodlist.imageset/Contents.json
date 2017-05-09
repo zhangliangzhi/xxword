@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "shezhi.png",
+      "filename" : "wrodlist.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "shezhi2.png",
+      "filename" : "wordlist2.png",
       "scale" : "2x"
     },
     {
