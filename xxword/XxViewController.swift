@@ -15,7 +15,6 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     var collectionView:UICollectionView!
     let colayout = UICollectionViewFlowLayout()
     var indexPage:Int!
-    var originalID:Int!
     var firstScroll = false
     var arrTagIndex:[Int:Int] = [:]
     
@@ -50,22 +49,9 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         colayout.itemSize = CGSize(width: self.view.frame.width, height: self.view.frame.height-93)
 //        colayout.minimumInteritemSpacing = 0 // 同行内小cell之间的距离
         
-        // 获取id [0,5004)
+        
         indexPage = Int((nowGlobalSet?.indexPage)!)
-        var curIndex:Int32 = 0
-        if (indexPage == 0) {
-            curIndex = (nowGlobalSet?.curIndex0)!
-        }else if(indexPage == 1) {
-            curIndex = (nowGlobalSet?.curIndex1)!
-        }else if(indexPage == 2) {
-            curIndex = (nowGlobalSet?.curIndex2)!
-        }else if(indexPage == 3) {
-            curIndex = (nowGlobalSet?.curIndex3)!
-        }else if(indexPage == 4) {
-            curIndex = (nowGlobalSet?.curIndex4)!
-        }else{
-        }
-        originalID = Int(curIndex)
+        
         
         //test将视图滚动到默认单词上, 额这个没起效果 我去
 //        collectionView.scrollToItem(at: IndexPath(item: originalID, section: 0), at: .left, animated: false)
@@ -74,6 +60,9 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     
     override func viewWillAppear(_ animated: Bool) {
         indexPage = Int((nowGlobalSet?.indexPage)!)
+        HomeViewController.getCoreData()
+        collectionView.reloadData()
+//        goNextWord(nextId: getWid())
     }
     
     //通知监听触发的方法
@@ -122,8 +111,9 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         // 滚到默认位置先, 在给个提示.
         if firstScroll == false {
             firstScroll = true
-            let ati:Int = originalID - (indexPage * 1000)
-            if (originalID % 1000 ) != 0 {
+            let wid = getWid()
+            let ati:Int = wid - (indexPage * 1000)
+            if (wid % 1000 ) != 0 {
                 collectionView.scrollToItem(at: IndexPath(item: ati, section: 0), at: .left, animated: false)
                 //            print("first open")
                 TipsSwift.showBottomWithText("自动跳转到上次学习位置", duration: 2)
@@ -177,6 +167,23 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     }
     */
     
-    
+    func getWid() -> Int {
+        // 获取id [0,5004)
+        var curIndex:Int32 = 0
+        if (indexPage == 0) {
+            curIndex = (nowGlobalSet?.curIndex0)!
+        }else if(indexPage == 1) {
+            curIndex = (nowGlobalSet?.curIndex1)!
+        }else if(indexPage == 2) {
+            curIndex = (nowGlobalSet?.curIndex2)!
+        }else if(indexPage == 3) {
+            curIndex = (nowGlobalSet?.curIndex3)!
+        }else if(indexPage == 4) {
+            curIndex = (nowGlobalSet?.curIndex4)!
+        }else{
+        }
+        let wid = Int(curIndex)
+        return wid
+    }
 
 }

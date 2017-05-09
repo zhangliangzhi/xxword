@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
         
 
         // init something
-        getCoreData()
+        HomeViewController.getCoreData()
         firstOpenAPP()
         initHomeView()
         
@@ -86,7 +86,7 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getCoreData()
+        HomeViewController.getCoreData()
         firstOpenAPP()
 //        getUserInfo()
         
@@ -613,7 +613,7 @@ class HomeViewController: UIViewController {
         labelFavorNum.text = "\(favorCount)"
     }
     
-    func getCoreData() -> Void {
+    static func getCoreData() -> Void {
         arrStudyWord = []
         arrGlobalSet = []
         arrMyErrorID = []
@@ -679,7 +679,7 @@ class HomeViewController: UIViewController {
         
         context.insert(oneGlobalSet)
         appDelegate.saveContext()
-        getCoreData()
+        HomeViewController.getCoreData()
     }
     
 

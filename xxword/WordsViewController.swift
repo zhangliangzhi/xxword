@@ -58,6 +58,7 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewWillAppear(_ animated: Bool) {
         indexPage = Int((nowGlobalSet?.indexPage)!)
+        HomeViewController.getCoreData()
         collectionView.reloadData()
     }
 
@@ -128,7 +129,22 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func clickBtn(_ button:UIButton) {
         let wid = button.tag
-        print("click wid", wid)
+        if (indexPage == 0) {
+            // 显示是1-1000, 实际是0-999
+            nowGlobalSet?.curIndex0 = Int32(wid)
+        }else if(indexPage == 1) {
+            nowGlobalSet?.curIndex1 = Int32(wid)
+        }else if(indexPage == 2) {
+            nowGlobalSet?.curIndex2 = Int32(wid)
+        }else if(indexPage == 3) {
+            nowGlobalSet?.curIndex3 = Int32(wid)
+        }else if(indexPage == 4) {
+            nowGlobalSet?.curIndex4 = Int32(wid)
+        }else{
+        }
+        appDelegate.saveContext()
+        
+        // 跳转到第一个界面
         self.tabBarController?.selectedIndex = 0
     }
     
