@@ -80,16 +80,82 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 800
+        return gWord.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = UICollectionViewCell()
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = UIColor.gray
+//        cell.backgroundColor = UIColor.gray
+        
+        let row = indexPath.row
+        let btn = UIButton(type: .system)
+        cell.addSubview(btn)
+        btn.snp.makeConstraints { (make) in
+            make.edges.equalTo(cell)
+        }
+        
+        let wstatue = getWordStatue(wid: row)
+        if wstatue == 0 {
+            btn.backgroundColor = INFO_COLOR
+        }else if wstatue == 1{
+            btn.backgroundColor = CG_COLOR
+        }else if wstatue == 2{
+            btn.backgroundColor = DANG_COLOR
+        }
+        
+        btn.setTitle("\(row+1)", for: .normal)
+        btn.tintColor = UIColor.white
+        btn.layer.cornerRadius = 5
+        if row == getWid() {
+            btn.layer.borderColor = WARN_COLOR.cgColor
+            btn.layer.borderWidth = 2
+        }
+        btn.tag = row
+        btn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)
         return cell
     }
     
+    func clickBtn(_ button:UIButton) {
+        let row = button.tag
+        print("click row", row)
+    }
     
+    func getWid() -> Int {
+        // 获取id [0,5004)
+        let windexPage = Int((nowGlobalSet?.indexPage)!)
+        var curIndex:Int32 = 0
+        if (windexPage == 0) {
+            curIndex = (nowGlobalSet?.curIndex0)!
+        }else if(windexPage == 1) {
+            curIndex = (nowGlobalSet?.curIndex1)!
+        }else if(windexPage == 2) {
+            curIndex = (nowGlobalSet?.curIndex2)!
+        }else if(windexPage == 3) {
+            curIndex = (nowGlobalSet?.curIndex3)!
+        }else if(windexPage == 4) {
+            curIndex = (nowGlobalSet?.curIndex4)!
+        }else{
+        }
+        let wid = Int(curIndex)
+        return wid
+    }
+    
+    func getWordStatue(wid:Int) -> Int {
+        // 未做题
+        var ret = 0
+        for one in arrMyErrorID {
+            if one.wid == Int32(wid) {
+                if one.isRight {
+                    // 对
+                    ret = 1
+                }else{
+                    // 错
+                    ret = 2
+                    break
+                }
+            }
+        }
+        return ret
+    }
     
 }
