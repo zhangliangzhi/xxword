@@ -73,7 +73,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        indexPage = Int((nowGlobalSet?.indexPage)!)
     }
     
     //通知监听触发的方法
@@ -102,7 +102,11 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1000
+        if(indexPage == 4) {
+            return 1004
+        }else{
+            return 1000
+        }
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
