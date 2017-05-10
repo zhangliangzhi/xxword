@@ -667,6 +667,8 @@ class HomeViewController: UIViewController {
         oneGlobalSet.token = ""
         oneGlobalSet.vip = 0
         oneGlobalSet.uid = ""
+        oneGlobalSet.ismusic = true     // 播放单词声音
+        oneGlobalSet.iskipword = true   // 正确自动跳转
         oneGlobalSet.indexPage = 0
         oneGlobalSet.indexType = 0  // 0--5k, 1--9k
         // 顺序练习 开始id

@@ -38,7 +38,7 @@ class StudyTabBarController: UITabBarController {
         let item3 : UITabBarItem = UITabBarItem (title: "收藏", image: UIImage(named: "favor"), selectedImage: UIImage(named: "favor_1"))
         v3.tabBarItem = item3
         
-        let v4 = FavorViewController()
+        let v4 = StudySetViewController()
         let item4 : UITabBarItem = UITabBarItem (title: "设置", image: UIImage(named: "shezhi"), selectedImage: UIImage(named: "shezhi"))
         v4.tabBarItem = item4
         

@@ -11,6 +11,8 @@
         <attribute name="exp" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="indexPage" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="indexType" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="iskipword" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="ismusic" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pwd" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
@@ -35,7 +37,7 @@
         <attribute name="word" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurGlobalSet" positionX="-63" positionY="-18" width="128" height="270"/>
+        <element name="CurGlobalSet" positionX="-63" positionY="-18" width="128" height="300"/>
         <element name="MyErrorID" positionX="-54" positionY="54" width="128" height="105"/>
         <element name="MyFavorID" positionX="-45" positionY="63" width="128" height="90"/>
         <element name="StudyWord" positionX="-54" positionY="45" width="128" height="105"/>
