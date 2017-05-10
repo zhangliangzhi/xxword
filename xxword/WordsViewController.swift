@@ -14,6 +14,7 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
     var collectionView:UICollectionView!
     var colayout = UICollectionViewFlowLayout()
     var indexPage:Int!
+    var firstsTo = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,9 +122,16 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         if wid == getWid() {
             btn.layer.borderColor = WARN_COLOR.cgColor
             btn.layer.borderWidth = 2
+            
         }
         btn.tag = wid
         btn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)
+        
+        // 跳转到第几个单词
+        if firstsTo == false {
+            firstsTo = true
+            collectionView.scrollToItem(at: IndexPath.init(row: getWid(), section: 0), at: .top, animated: true)
+        }
         return cell
     }
     
