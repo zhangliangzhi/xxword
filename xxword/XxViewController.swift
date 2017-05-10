@@ -17,6 +17,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     var indexPage:Int!
     var firstScroll = false
     var arrTagIndex:[Int:Int] = [:]
+    var newImage:UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
