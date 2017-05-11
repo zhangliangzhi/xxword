@@ -124,7 +124,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
             cell.clickCount = 0
         }else {
             // 点击过了
-            cell.selTag(selIndex: arrTagIndex[cell.wid]!)
+//            cell.selTag(selIndex: arrTagIndex[cell.wid]!)
             
         }
         cell.createLzLabel(itype: 1)
@@ -134,7 +134,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // 将要显示的界面
         let index = indexPath.row
-        print("will display",index)
+//        print("will display",index)
         let wid = indexPage*1000 + index
 //        self.title = gWord[wid]
         self.navigationItem.title = gWord[wid]
