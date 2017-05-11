@@ -27,7 +27,7 @@ class RootTabBarController: UITabBarController {
         v2.tabBarItem = item2
         
         
-        let v3 = PlayLogViewController()
+        let v3 = FavorViewController()
         let item3 : UITabBarItem = UITabBarItem (title: "交流", image: UIImage(named: "message"), selectedImage: UIImage(named: "message_1"))
         v3.tabBarItem = item3
 
