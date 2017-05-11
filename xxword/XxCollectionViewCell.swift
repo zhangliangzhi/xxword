@@ -265,7 +265,9 @@ class XxCollectionViewCell: UICollectionViewCell {
         appDelegate.saveContext()
         // 是否自动跳到下一题
         if oneWrong.isRight && (isEnd == false) {
-            sv.goNextWord(nextId: iNextWid)
+            if (nowGlobalSet?.iskipword)! {
+                sv.goNextWord(nextId: iNextWid)
+            }
         }
         
     }

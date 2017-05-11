@@ -62,8 +62,6 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     override func viewWillAppear(_ animated: Bool) {
         indexPage = Int((nowGlobalSet?.indexPage)!)
         HomeViewController.getCoreData()
-        collectionView.reloadData()
-//        goNextWord(nextId: getWid())
     }
     
     //通知监听触发的方法
