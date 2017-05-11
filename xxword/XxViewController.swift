@@ -18,6 +18,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     var firstScroll = false
     var arrTagIndex:[Int:Int] = [:]
     var newImage:UIImageView!
+    var curwid = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +68,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     override func viewWillAppear(_ animated: Bool) {
         indexPage = Int((nowGlobalSet?.indexPage)!)
         HomeViewController.getCoreData()
+        setRightWrongCount(wid: curwid)
     }
     
     //通知监听触发的方法
@@ -138,16 +140,16 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // 将要显示的界面
-        let index = indexPath.row
+        let currow = indexPath.row
 //        print("will display",index)
-        let wid = indexPage*1000 + index
+        let wid = indexPage*1000 + currow
 //        self.title = gWord[wid]
         self.navigationItem.title = gWord[wid]
         self.tabBarItem.title = "\(wid+1)" + "/5004"
         
-        
+        curwid = wid
         HomeViewController.getCoreData()
-        setRightWrongCount(wid: wid)
+        setRightWrongCount(wid: curwid)
     }
     
     
@@ -213,6 +215,6 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         self.navigationItem.rightBarButtonItem?.title = txt
     }
     func checkPlayCount() {
-        
+        self.navigationController?.pushViewController(PlayLogViewController(), animated: true)
     }
 }
