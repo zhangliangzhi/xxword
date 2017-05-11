@@ -215,6 +215,8 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         self.navigationItem.rightBarButtonItem?.title = txt
     }
     func checkPlayCount() {
-        self.navigationController?.pushViewController(PlayLogViewController(), animated: true)
+        let pv = PlayLogViewController()
+        pv.wid = curwid
+        self.navigationController?.pushViewController(pv, animated: true)
     }
 }

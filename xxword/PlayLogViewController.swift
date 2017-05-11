@@ -32,10 +32,8 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         tablev.delegate = self
         tablev.dataSource = self
         
-        wid = 0
         getLog()
     }
-    
     
     
     override func willChangeValue(forKey key: String) {
@@ -90,7 +88,7 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
                         context.delete(one)
                         appDelegate.saveContext()
                         tablev.deleteRows(at: [indexPath], with: .fade)
-                        print("del ok", indexPath.row)
+                        TipsSwift.showTopWithText("成功删除一条学习记录")
                         return
                     }
                     toidx += 1
