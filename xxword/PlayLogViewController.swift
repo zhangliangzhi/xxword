@@ -20,6 +20,8 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.automaticallyAdjustsScrollViewInsets = false
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(delAllLog))
+        
         tablev = UITableView()
         self.view.addSubview(tablev)
         tablev.snp.makeConstraints { (make) in
@@ -31,6 +33,7 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tablev.delegate = self
         tablev.dataSource = self
+        tablev.backgroundColor = BG1_COLOR
         
         getLog()
     }
@@ -50,7 +53,7 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
+        let cell = UITableViewCell()
         let nameLabel = UILabel()
         cell.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) in
@@ -58,6 +61,23 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         }
         nameLabel.text = gWord[wid]
+        
+        let one = arrLog[indexPath.row]
+        
+        // 显示时间
+        let dformatter = DateFormatter()
+        dformatter.dateFormat = "YYYY-MM-dd \n hh:mm:ss"
+        dformatter.timeZone = NSTimeZone.system
+        let datestr:String = dformatter.string(from: one.date! as Date)
+        let dateLabel = UILabel()
+        cell.addSubview(dateLabel)
+        dateLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(cell).offset(10)
+            make.centerY.equalTo(cell)
+        }
+        dateLabel.text = datestr
+        dateLabel.font = UIFont.systemFont(ofSize: 14)
+        dateLabel.numberOfLines = 0
         
         return cell
     }
@@ -78,7 +98,7 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        print("del", indexPath.row)
+//        print("del", indexPath.row)
         var toidx = 0
         if editingStyle == .delete {
             arrLog.remove(at: indexPath.row)
@@ -88,7 +108,7 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
                         context.delete(one)
                         appDelegate.saveContext()
                         tablev.deleteRows(at: [indexPath], with: .fade)
-                        TipsSwift.showTopWithText("成功删除一条学习记录")
+                        TipsSwift.showCenterWithText("成功删除一条学习记录", duration: 2)
                         return
                     }
                     toidx += 1
@@ -99,12 +119,19 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func delAllLog() {
+        if arrLog.count == 0 {
+            TipsSwift.showCenterWithText("没有学习记录可删除", duration: 3)
+            return
+        }
         for one in arrMyErrorID {
             if one.wid == Int32(wid) {
                 context.delete(one)
             }
         }
         appDelegate.saveContext()
+        arrLog = []
+        tablev.reloadData()
+        TipsSwift.showCenterWithText("已删除单词所有学习记录", duration: 2)
     }
     
     

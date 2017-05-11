@@ -650,6 +650,12 @@ class HomeViewController: UIViewController {
         //        print(nowGlobalSet)
     }
     
+    static func goStudyingUI() {
+        // 跳转到第一个界面
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = StudyTabBarController()
+    }
+    
     // 第一次打开app，加入测试数据
     func firstOpenAPP() -> Void {
         // 初始化

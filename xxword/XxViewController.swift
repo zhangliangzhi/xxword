@@ -68,7 +68,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     override func viewWillAppear(_ animated: Bool) {
         indexPage = Int((nowGlobalSet?.indexPage)!)
         HomeViewController.getCoreData()
-        setRightWrongCount(wid: curwid)
+        setRightWrongCount()
     }
     
     //通知监听触发的方法
@@ -149,7 +149,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         
         curwid = wid
         HomeViewController.getCoreData()
-        setRightWrongCount(wid: curwid)
+        setRightWrongCount()
     }
     
     
@@ -161,6 +161,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     func addOneUse(wid:Int, tag:Int) -> Void {
 //        print("add one use", tag)
         arrTagIndex[wid] = tag
+        
         
     }
     func goNextWord(nextId:Int) -> Void {
@@ -196,14 +197,14 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         return wid
     }
 
-    func setRightWrongCount(wid:Int) {
+    func setRightWrongCount() {
         if (nowGlobalSet?.isShowwrCount)! == false {
             return
         }
         var rcount = 0
         var wcount = 0
         for one in arrMyErrorID {
-            if one.wid == Int32(wid){
+            if one.wid == Int32(curwid){
                 if one.isRight {
                     rcount += 1
                 }else {

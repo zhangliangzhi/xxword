@@ -263,6 +263,13 @@ class XxCollectionViewCell: UICollectionViewCell {
         }
         
         appDelegate.saveContext()
+        // 保存后, 数据马上更新到最新的
+        HomeViewController.getCoreData()
+        if oneWrong.isRight == false {
+            // 答错 更新次数
+            sv.setRightWrongCount()
+        }
+        
         // 是否自动跳到下一题
         if oneWrong.isRight && (isEnd == false) {
             if (nowGlobalSet?.iskipword)! {
