@@ -12,6 +12,7 @@ class StudySetViewController: UIViewController {
 
     var switchMusic:UISwitch!
     var switchSkip:UISwitch!
+    var switchRw:UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +60,7 @@ class StudySetViewController: UIViewController {
         switchMusic.isOn = (nowGlobalSet?.ismusic)!
         switchMusic.addTarget(self, action: #selector(changeMusic), for: .valueChanged)
         
-        // 文字1
+        // 文字2
         let skipLabel = UILabel()
         rootv.addSubview(skipLabel)
         skipLabel.snp.makeConstraints { (make) in
@@ -76,10 +77,30 @@ class StudySetViewController: UIViewController {
         }
         switchSkip.isOn = (nowGlobalSet?.iskipword)!
         switchSkip.addTarget(self, action: #selector(changeSkipWord), for: .valueChanged)
+        
+        // 文字3
+        let rwLabel = UILabel()
+        rootv.addSubview(rwLabel)
+        rwLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(rootv).offset(-40)
+            make.top.equalTo(skipLabel.snp.bottom).offset(20)
+        }
+        rwLabel.text = "显示正确错误次数:"
+        
+        switchRw = UISwitch(frame: CGRect(x: 0, y: 0, width: 40, height: 60))
+        rootv.addSubview(switchRw)
+        switchRw.snp.makeConstraints { (make) in
+            make.centerY.equalTo(rwLabel)
+            make.left.equalTo(rwLabel.snp.right).offset(20)
+        }
+        switchRw.isOn = (nowGlobalSet?.isShowwrCount)!
+        switchRw.addTarget(self, action: #selector(changeRw), for: .valueChanged)
+        
+        
     }
 
     func changeMusic() {
-        print(switchMusic.isOn)
+//        print(switchMusic.isOn)
         nowGlobalSet?.ismusic = switchMusic.isOn
         appDelegate.saveContext()
     }
@@ -89,5 +110,12 @@ class StudySetViewController: UIViewController {
         appDelegate.saveContext()
     }
     
+    func changeRw() {
+        nowGlobalSet?.isShowwrCount = switchRw.isOn
+        appDelegate.saveContext()
+        // 跳转到第一个界面
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = StudyTabBarController()
+    }
     
 }

@@ -24,6 +24,11 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         
         self.view.backgroundColor = BG1_COLOR
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(backHome))
+        
+        if (nowGlobalSet?.isShowwrCount)! {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "0✅ 0❎", style: .plain, target: self, action: #selector(checkPlayCount))
+        }
+        
         // 检测设备方向
         NotificationCenter.default.addObserver(self, selector: #selector(receivedRotation), name: .UIDeviceOrientationDidChange, object: nil)
         self.automaticallyAdjustsScrollViewInsets = false
@@ -141,7 +146,8 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         self.tabBarItem.title = "\(wid+1)" + "/5004"
         
         
-        
+        HomeViewController.getCoreData()
+        setRightWrongCount(wid: wid)
     }
     
     
@@ -188,4 +194,25 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         return wid
     }
 
+    func setRightWrongCount(wid:Int) {
+        if (nowGlobalSet?.isShowwrCount)! == false {
+            return
+        }
+        var rcount = 0
+        var wcount = 0
+        for one in arrMyErrorID {
+            if one.wid == Int32(wid){
+                if one.isRight {
+                    rcount += 1
+                }else {
+                    wcount += 1
+                }
+            }
+        }
+        let txt:String = "\(rcount)" + "✅ " + "\(wcount)" + "❎"
+        self.navigationItem.rightBarButtonItem?.title = txt
+    }
+    func checkPlayCount() {
+        
+    }
 }
