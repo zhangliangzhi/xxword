@@ -17,6 +17,8 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = BG1_COLOR
+        self.title = "学习次数"
+        
         
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -28,12 +30,13 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.width.equalTo(self.view)
             make.bottom.equalTo(self.view)
             make.centerX.equalTo(self.view)
-            make.top.equalTo(self.view).offset(64)
+            make.top.equalTo(self.view).offset(64+30)
         }
         
         tablev.delegate = self
         tablev.dataSource = self
         tablev.backgroundColor = BG1_COLOR
+        addHeadV()
         
         getLog()
     }
@@ -54,11 +57,13 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        
+        // 单词
         let nameLabel = UILabel()
         cell.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) in
-            make.center.equalTo(cell)
-            
+            make.centerY.equalTo(cell)
+            make.centerX.equalTo(cell).offset(-10)
         }
         nameLabel.text = gWord[wid]
         
@@ -66,13 +71,13 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // 显示时间
         let dformatter = DateFormatter()
-        dformatter.dateFormat = "YYYY-MM-dd\nhh:mm:ss"
+        dformatter.dateFormat = "YYYY-MM-dd\n  hh:mm:ss"
         dformatter.timeZone = NSTimeZone.system
         let datestr:String = dformatter.string(from: one.date! as Date)
         let dateLabel = UILabel()
         cell.addSubview(dateLabel)
         dateLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(cell).offset(-10)
+            make.right.equalTo(cell).offset(-15)
             make.centerY.equalTo(cell)
         }
         dateLabel.text = datestr
@@ -103,6 +108,47 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         return cell
+    }
+    
+    func addHeadV() {
+        let hv = UIView(frame: CGRect(x: 0, y: 0, width: tablev.frame.width, height: 30))
+//        tablev.tableHeaderView = hv
+        self.view.addSubview(hv)
+        hv.snp.makeConstraints { (make) in
+            make.centerX.equalTo(tablev)
+            make.width.equalTo(tablev)
+            make.height.equalTo(30)
+            make.bottom.equalTo(tablev.snp.top)
+        }
+        hv.backgroundColor = BG2_COLOR
+        
+        let wordLabel = UILabel()
+        hv.addSubview(wordLabel)
+        wordLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(hv)
+            make.centerX.equalTo(hv).offset(-10)
+        }
+        wordLabel.text = "单词"
+        
+        let dateLabel = UILabel()
+        hv.addSubview(dateLabel)
+        dateLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(wordLabel)
+            make.right.equalTo(hv).offset(-15)
+        }
+        dateLabel.text = "学习时间"
+        
+        let rwLabel = UILabel()
+        hv.addSubview(rwLabel)
+        rwLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(wordLabel)
+            make.left.equalTo(hv).offset(10)
+        }
+        rwLabel.text = "是否正确"
+        
+        wordLabel.textColor = WZ2_COLOR
+        dateLabel.textColor = WZ2_COLOR
+        rwLabel.textColor = WZ2_COLOR
     }
     
     func getLog() {
