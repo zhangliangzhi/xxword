@@ -130,7 +130,7 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         // 跳转到第几个单词
         if firstsTo == false {
             firstsTo = true
-            collectionView.scrollToItem(at: IndexPath.init(row: getWid(), section: 0), at: .top, animated: true)
+            collectionView.scrollToItem(at: IndexPath.init(row: getWid(), section: 0), at: .centeredVertically, animated: true)
         }
         return cell
     }

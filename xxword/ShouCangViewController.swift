@@ -15,6 +15,17 @@ class ShouCangViewController: UIViewController {
         
         self.view.backgroundColor = BG1_COLOR
         
+        // 发声
+        let wb = UIWebView()
+        self.view.addSubview(wb)
+        wb.snp.makeConstraints { (make) in
+            make.width.height.equalTo(self.view)
+            make.center.equalTo(self.view)
+        }
+//        let url:URL = URL(string: "https://dict.youdao.com/dictvoice?audio=success&type=1")!
+        
+        let url:URL = URL(string: "https://fanyi.baidu.com/#en/zh/success")!
+        wb.loadRequest(URLRequest(url: url))
     }
 
     override func viewWillAppear(_ animated: Bool) {

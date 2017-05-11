@@ -134,11 +134,14 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // 将要显示的界面
         let index = indexPath.row
-//        print("will display",index)
+        print("will display",index)
         let wid = indexPage*1000 + index
 //        self.title = gWord[wid]
         self.navigationItem.title = gWord[wid]
         self.tabBarItem.title = "\(wid+1)" + "/5004"
+        
+        
+        
     }
     
     

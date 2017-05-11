@@ -311,6 +311,7 @@ class XxCollectionViewCell: UICollectionViewCell {
     }
     
     func initOther3Word() {
+        arrOther = []
         arrOther.append(wid)
         let allwordcount:Int32 = 5000
         ocseed(Int32(wid))
