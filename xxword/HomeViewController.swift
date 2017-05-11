@@ -603,11 +603,13 @@ class HomeViewController: UIViewController {
         }
         // 我的收藏
         var favorCount = 0
+        // 去除重复的收藏
+        var setFavorID = Set<Int>()
         for one in arrMyFavorID {
-            if one.indexPage == nowGlobalSet?.indexPage {
-                favorCount += 1
-            }
+            setFavorID.insert(Int(one.wid))
         }
+        favorCount = setFavorID.count
+        
         
         labelWrongNum.text = "\(errCount)"
         labelFavorNum.text = "\(favorCount)"
