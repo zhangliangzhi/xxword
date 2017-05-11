@@ -17,6 +17,7 @@ var arrGlobalSet:[CurGlobalSet] = []
 var arrStudyWord:[StudyWord] = []
 var arrMyErrorID:[MyErrorID] = []
 var arrMyFavorID:[MyFavorID] = []
+var setFavorID = Set<Int>()
 var nowGlobalSet:CurGlobalSet?
 let rootUrl = "https://xx5000.duapp.com/xx/"
 
@@ -603,11 +604,6 @@ class HomeViewController: UIViewController {
         }
         // 我的收藏
         var favorCount = 0
-        // 去除重复的收藏
-        var setFavorID = Set<Int>()
-        for one in arrMyFavorID {
-            setFavorID.insert(Int(one.wid))
-        }
         favorCount = setFavorID.count
         
         
@@ -641,6 +637,11 @@ class HomeViewController: UIViewController {
         
         do {
             arrMyFavorID = try context.fetch(MyFavorID.fetchRequest())
+            // 去除重复的收藏
+            setFavorID.removeAll()
+            for one in arrMyFavorID {
+                setFavorID.insert(Int(one.wid))
+            }
         }catch {
             print("MyFavorID coreData error")
         }
