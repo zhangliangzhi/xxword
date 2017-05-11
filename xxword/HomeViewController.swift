@@ -104,7 +104,7 @@ class HomeViewController: UIViewController {
     
     func addNormalBtn() {
         // segment 按钮
-        let sitems = ["1-1000", "1k-2k", "2k-3k", "3k-4k", "4001-5004"]
+        let sitems = ["1-1000", "1k-2k", "2k-3k", "3k-4k", "4k-5004"]
         segment = UISegmentedControl(items: sitems)
         self.view.addSubview(segment)
         segment.snp.makeConstraints { (make) in
@@ -435,7 +435,7 @@ class HomeViewController: UIViewController {
         v.addSubview(btnWdct)
         btnWdct.snp.makeConstraints { (make) in
             make.width.equalTo(v).multipliedBy(0.25)
-            make.height.equalTo(btnKsjl)
+            make.height.equalTo(btnKsjl).multipliedBy(1.2)
             make.left.equalTo(v)
             make.top.equalTo(btnMnks.snp.bottom).offset(10)
         }

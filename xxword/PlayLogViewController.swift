@@ -66,18 +66,41 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // 显示时间
         let dformatter = DateFormatter()
-        dformatter.dateFormat = "YYYY-MM-dd \n hh:mm:ss"
+        dformatter.dateFormat = "YYYY-MM-dd\nhh:mm:ss"
         dformatter.timeZone = NSTimeZone.system
         let datestr:String = dformatter.string(from: one.date! as Date)
         let dateLabel = UILabel()
         cell.addSubview(dateLabel)
         dateLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(cell).offset(10)
+            make.right.equalTo(cell).offset(-10)
             make.centerY.equalTo(cell)
         }
         dateLabel.text = datestr
         dateLabel.font = UIFont.systemFont(ofSize: 14)
         dateLabel.numberOfLines = 0
+        dateLabel.textColor = BG2_COLOR
+        
+        // 是否正确
+        let rwLabel = UILabel()
+        cell.addSubview(rwLabel)
+        rwLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(cell)
+            
+            make.left.equalTo(cell).offset(10)
+        }
+        if one.isRight {
+            rwLabel.text = "✅"
+        }else {
+            rwLabel.text = "❎"
+        }
+        
+        // 颜色
+        if one.isRight {
+            cell.backgroundColor = CG_COLOR
+        }else {
+            cell.backgroundColor = DANG_COLOR
+        }
+        
         
         return cell
     }
