@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -66,6 +67,7 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.centerX.equalTo(cell).offset(-10)
         }
         nameLabel.text = gWord[wid]
+        nameLabel.textColor = SX3_COLOR
         
         let one = arrLog[indexPath.row]
         
@@ -203,5 +205,18 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         TipsSwift.showCenterWithText("已删除单词所有学习记录", duration: 2)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("sel row", indexPath.row)
+        let one = NSEntityDescription.insertNewObject(forEntityName: "MyFavorID", into: context) as! MyFavorID
+        one.wid = Int32(wid)
+        one.date = NSDate()
+        one.indexPage = (nowGlobalSet?.indexPage)!
+        context.insert(one)
+        appDelegate.saveContext()
+        HomeViewController.getCoreData()
+//        print("favor count: ", arrMyFavorID.count)
+        
+        TipsSwift.showCenterWithText("成功加入收藏夹1️⃣次")
+    }
     
 }
