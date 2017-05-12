@@ -687,7 +687,15 @@ class HomeViewController: UIViewController {
         oneGlobalSet.curIndex2 = 2000
         oneGlobalSet.curIndex3 = 3000
         oneGlobalSet.curIndex4 = 4000
+        oneGlobalSet.curIndex11 = 0 // 象形9000
+        oneGlobalSet.curIndex12 = 0
+        oneGlobalSet.curIndex13 = 0
+        oneGlobalSet.curIndex14 = 0
+        oneGlobalSet.curIndex15 = 0
+        oneGlobalSet.curIndex16 = 0
         
+        oneGlobalSet.curFavorIndex = 0  // 收藏 学到哪了
+        oneGlobalSet.curWrongIndex = 0  // 错误的 学到哪了
         
         context.insert(oneGlobalSet)
         appDelegate.saveContext()

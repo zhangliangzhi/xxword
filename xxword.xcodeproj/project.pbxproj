@@ -10,6 +10,7 @@
 		0B0003781EB60DB100046B3A /* MyWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0003771EB60DB100046B3A /* MyWord.swift */; };
 		0B2AEE061EBA776700E1A9F1 /* ocr.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AEE051EBA776700E1A9F1 /* ocr.m */; };
 		0B38C6361EC4D55F00C3B140 /* PlayLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6351EC4D55F00C3B140 /* PlayLogViewController.swift */; };
+		0B38C6381EC55C4B00C3B140 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */; };
 		0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */; };
 		0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */; };
 		0B4606391EA14FAA0071FBEA /* INSPersistentStoreDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */; };
@@ -49,6 +50,7 @@
 		0B2AEE051EBA776700E1A9F1 /* ocr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ocr.m; sourceTree = "<group>"; };
 		0B2AEE071EBA777500E1A9F1 /* ocr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ocr.h; sourceTree = "<group>"; };
 		0B38C6351EC4D55F00C3B140 /* PlayLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayLogViewController.swift; sourceTree = "<group>"; };
+		0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSDataStackContainer.swift; sourceTree = "<group>"; };
 		0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentContainer.swift; sourceTree = "<group>"; };
 		0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentStoreDescription.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				0B2AEE071EBA777500E1A9F1 /* ocr.h */,
 				0BD909CD1EBC8884007467F0 /* ocword.h */,
 				0BD909CB1EBC886F007467F0 /* ocword.m */,
+				0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */,
 				0B38C6351EC4D55F00C3B140 /* PlayLogViewController.swift */,
 			);
 			path = xxword;
@@ -329,6 +332,7 @@
 				0BD067A01EAE1161000F975F /* SxlxViewController.swift in Sources */,
 				0BD909CC1EBC886F007467F0 /* ocword.m in Sources */,
 				0B0003781EB60DB100046B3A /* MyWord.swift in Sources */,
+				0B38C6381EC55C4B00C3B140 /* CustomViewController.swift in Sources */,
 				0B6136591E9F3F3200FF31F2 /* MypbID.swift in Sources */,
 				0BD909D51EC048CC007467F0 /* TipsSwift.swift in Sources */,
 				0BCE0C251EABB2AA0049A01C /* FavorViewController.swift in Sources */,

@@ -20,6 +20,7 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
     var arrTagIndex:[Int:Int] = [:]
     var newImage:UIImageView!
     var curwid = 0
+    var itype = 0   // 1-错误, 2-收藏
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,36 +99,26 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(indexPage == 4) {
-            return 1004
-        }else{
-            return 1000
-        }
+        return arrIds.count
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:XxCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! XxCollectionViewCell
 
-        let startID = indexPage * 1000
-        cell.wid = startID + indexPath.row
+        cell.wid = arrIds[indexPath.row]
         cell.initWordData()
-//        cell.createLzLabel(itype: 1)
-        
-//        print("return cell:",indexPath.row)
         
         // 滚到默认位置先, 在给个提示.
         if firstScroll == false {
             firstScroll = true
-            let wid = getWid()
-            let ati:Int = wid - (indexPage * 1000)
-            if (wid % 1000 ) != 0 {
-                collectionView.scrollToItem(at: IndexPath(item: ati, section: 0), at: .left, animated: false)
-                //            print("first open")
-                TipsSwift.showBottomWithText("自动跳转到上次学习位置", duration: 2)
+            let curid = getCurIndex()
+            if indexPath.row == curid {
+                collectionView.scrollToItem(at: IndexPath(item: curid, section: 0), at: .left, animated: false)
+                TipsSwift.showBottomWithText("跳转到上次错题位置", duration: 2)
             }
         }
         
-        if arrTagIndex[cell.wid] == nil {
+        if arrTagIndex[indexPath.row] == nil {
             // 没点击过
             cell.clickCount = 0
         }else {
@@ -141,12 +132,10 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // 将要显示的界面
-        let currow = indexPath.row
-//        print("will display",index)
-        let wid = indexPage*1000 + currow
+        let wid = arrIds[indexPath.row]
 //        self.title = gWord[wid]
         self.navigationItem.title = gWord[wid]
-        self.tabBarItem.title = "\(wid+1)" + "/5004"
+        self.tabBarItem.title = "\(indexPath.row+1)" + "/" + "\(arrIds.count)"
         
         curwid = wid
         HomeViewController.getCoreData()
@@ -179,23 +168,16 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     */
     
-    func getWid() -> Int {
+    func getCurIndex() -> Int {
         // 获取id [0,5004)
         var curIndex:Int32 = 0
-        if (indexPage == 0) {
-            curIndex = (nowGlobalSet?.curIndex0)!
-        }else if(indexPage == 1) {
-            curIndex = (nowGlobalSet?.curIndex1)!
-        }else if(indexPage == 2) {
-            curIndex = (nowGlobalSet?.curIndex2)!
-        }else if(indexPage == 3) {
-            curIndex = (nowGlobalSet?.curIndex3)!
-        }else if(indexPage == 4) {
-            curIndex = (nowGlobalSet?.curIndex4)!
-        }else{
+        if (itype == 1) {
+            curIndex = (nowGlobalSet?.curWrongIndex)!
+        }else if (itype == 2) {
+            curIndex = (nowGlobalSet?.curFavorIndex)!
         }
-        let wid = Int(curIndex)
-        return wid
+        let curid = Int(curIndex)
+        return curid
     }
 
     func setRightWrongCount() {
