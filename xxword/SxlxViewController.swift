@@ -242,31 +242,37 @@ class SxlxViewController: UIViewController {
     }
 
     func initOther3Word() {
-        arrOther.append(wid)
+        ocseed(Int32(wid*8 + 8888))
+        
+        var setID = Set<Int>()
         let allwordcount:Int32 = 5000
-        ocseed(Int32(wid))
-        for i in 0..<3 {
-            var iran:Int = Int(ocrand() % allwordcount)
-            if (i == 0) && (iran == arrOther[0] ) {
-                iran = Int(ocrand() % allwordcount)
-            }else if (i == 1) && (iran == arrOther[0] || iran == arrOther[1]) {
-                iran = Int(ocrand() % allwordcount)
-            }else if (i == 2) && (iran == arrOther[0] || iran == arrOther[1] || iran == arrOther[2]) {
-                iran = Int(ocrand() % allwordcount)
+        for _ in 0..<100 {
+            let iran:Int = Int(ocrand() % allwordcount)
+            setID.insert(iran)
+            setID.remove(wid)
+            if setID.count >= 3 {
+                break
             }
-            arrOther.append(iran)
         }
+        arrOther = []
+        arrOther.append(wid)
+        for oid in setID {
+            arrOther.append(oid)
+        }
+        
+        // 乱排序
         arrOther.sort { (_, _) -> Bool in
             arc4random() > arc4random()
         }
-        print(arrOther)
+        //        print(arrOther)
         for i in 0..<4 {
             if arrOther[i] == wid {
                 rightIndex = i
             }
         }
-//        print(rightIndex)
+        //        print(rightIndex)
     }
+
     
     // 动态粒子字体
     func createLzLabel() {

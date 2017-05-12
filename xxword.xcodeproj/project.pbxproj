@@ -163,17 +163,17 @@
 				0BD909D01EBCA4D1007467F0 /* XxCollectionViewCell.swift */,
 				0BD909D61EC0A835007467F0 /* WordsViewController.swift */,
 				0BD909D81EC3005B007467F0 /* ShouCangViewController.swift */,
-				0BD0679F1EAE1161000F975F /* SxlxViewController.swift */,
 				0B58FB0E1EC3077B006F56AE /* StudySetViewController.swift */,
+				0B38C6351EC4D55F00C3B140 /* PlayLogViewController.swift */,
 				0BCE0C201EABAF780049A01C /* RootTabBarController.swift */,
 				0BD067A11EB251A8000F975F /* StudyTabBarController.swift */,
 				0B2AEE051EBA776700E1A9F1 /* ocr.m */,
 				0B2AEE071EBA777500E1A9F1 /* ocr.h */,
+				0BD0679F1EAE1161000F975F /* SxlxViewController.swift */,
 				0BD909CD1EBC8884007467F0 /* ocword.h */,
 				0BD909CB1EBC886F007467F0 /* ocword.m */,
 				0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */,
 				0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */,
-				0B38C6351EC4D55F00C3B140 /* PlayLogViewController.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
