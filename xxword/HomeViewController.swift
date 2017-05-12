@@ -18,6 +18,7 @@ var arrStudyWord:[StudyWord] = []
 var arrMyErrorID:[MyErrorID] = []
 var arrMyFavorID:[MyFavorID] = []
 var setFavorID = Set<Int>()
+var setWrongID = Set<Int>()
 var nowGlobalSet:CurGlobalSet?
 let rootUrl = "https://xx5000.duapp.com/xx/"
 
@@ -595,17 +596,24 @@ class HomeViewController: UIViewController {
     }
     
     func changeTexValue() {
-        // 做了多少题目, 我的错题目
-        var errCount = 0
+        // 更新最新数据
+        setWrongID.removeAll()
         for one in arrMyErrorID {
             if (one.indexPage == nowGlobalSet?.indexPage) && one.isRight == false {
-                errCount += 1
+                setWrongID.insert(Int(one.wid))
             }
         }
-        // 我的收藏
-        var favorCount = 0
-        favorCount = setFavorID.count
+        setFavorID.removeAll()
+        for one in arrMyFavorID {
+            if (one.indexPage == nowGlobalSet?.indexPage)  {
+                setFavorID.insert(Int(one.wid))
+            }
+        }
         
+        // 做了多少题目, 我的错题目
+        let errCount = setWrongID.count
+        // 我的收藏
+        let favorCount = setFavorID.count
         
         labelWrongNum.text = "\(errCount)"
         labelFavorNum.text = "\(favorCount)"
@@ -637,11 +645,6 @@ class HomeViewController: UIViewController {
         
         do {
             arrMyFavorID = try context.fetch(MyFavorID.fetchRequest())
-            // 去除重复的收藏
-            setFavorID.removeAll()
-            for one in arrMyFavorID {
-                setFavorID.insert(Int(one.wid))
-            }
         }catch {
             print("MyFavorID coreData error")
         }
@@ -806,14 +809,8 @@ class HomeViewController: UIViewController {
         tabbar.itype = 1
         
         // 错的单词
-        var arrSetIds = Set<Int>()
-        for one in arrMyErrorID {
-            if (one.indexPage == nowGlobalSet?.indexPage) && one.isRight == false {
-                arrSetIds.insert(Int(one.wid))
-            }
-        }
         var arrIds:[Int] = []
-        for one in arrSetIds {
+        for one in setWrongID {
             arrIds.append(one)
         }
         tabbar.arrIds = arrIds

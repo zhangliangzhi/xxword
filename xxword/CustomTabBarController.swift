@@ -32,7 +32,13 @@ class CustomTabBarController: UITabBarController {
         v1.tabBarItem = item1
         
         let v2 = WordsViewController()
-        let item2 : UITabBarItem = UITabBarItem (title: "进度", image: UIImage(named: "wrodlist"), selectedImage: UIImage(named: "wrodlist"))
+        var t2 = "单词列表"
+        if itype == 1{
+            t2 = "错题列表"
+        }else if itype == 2{
+            t2 = "收藏列表"
+        }
+        let item2 : UITabBarItem = UITabBarItem (title: t2, image: UIImage(named: "wrodlist"), selectedImage: UIImage(named: "wrodlist"))
         v2.tabBarItem = item2
         
         let v3 = FavorViewController()
