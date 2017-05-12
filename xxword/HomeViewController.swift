@@ -774,7 +774,7 @@ class HomeViewController: UIViewController {
     func callbackZxlx() -> Void {
         print("zxlx Study")
     }
-    // 点击 为做题
+    // 点击 未做题
     func callbackWzt() -> Void {
         print("Wzt Study")
     }
@@ -802,6 +802,26 @@ class HomeViewController: UIViewController {
     // 点击 我的错题
     func callbackWdct() -> Void {
         print("wdct Study")
+        let tabbar = CustomTabBarController()
+        tabbar.itype = 1
+        
+        // 错的单词
+        var arrSetIds = Set<Int>()
+        for one in arrMyErrorID {
+            if (one.indexPage == nowGlobalSet?.indexPage) && one.isRight == false {
+                arrSetIds.insert(Int(one.wid))
+            }
+        }
+        var arrIds:[Int] = []
+        for one in arrSetIds {
+            arrIds.append(one)
+        }
+        tabbar.arrIds = arrIds
+        
+        tabbar.creatSubViewControllers()
+        // 跳转到自定义 错题界面
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = tabbar
     }
     // 点击 我的收藏
     func callbackWdsc() -> Void {

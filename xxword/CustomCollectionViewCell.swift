@@ -195,6 +195,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
         let oneWrong = NSEntityDescription.insertNewObject(forEntityName: "MyErrorID", into: context) as! MyErrorID
         oneWrong.wid = Int32(wid)
         oneWrong.indexPage = Int32(wid / 1000)
+        if oneWrong.indexPage == 5 {
+            oneWrong.indexPage = 4
+        }
         oneWrong.date = NSDate()
         if selIndex == rightIndex {
             oneWrong.isRight = true
@@ -203,48 +206,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
             oneWrong.isRight = false
         }
         context.insert(oneWrong)
-        
-        let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
-        var iNextWid:Int = 0
-        var isEnd = false
-        if (indexPage == 0) {
-            // 显示是1-1000, 实际是0-999
-            nowGlobalSet?.curIndex0 = Int32(wid + 1)
-            if (nowGlobalSet?.curIndex0)! >= 999 {
-                nowGlobalSet?.curIndex0 = 999
-                isEnd = true
-            }
-            iNextWid = Int((nowGlobalSet?.curIndex0)!)
-        }else if(indexPage == 1) {
-            nowGlobalSet?.curIndex1 = Int32(wid + 1)
-            if (nowGlobalSet?.curIndex1)! >= 1999 {
-                nowGlobalSet?.curIndex1 = 1999
-                isEnd = true
-            }
-            iNextWid = Int((nowGlobalSet?.curIndex1)!)
-        }else if(indexPage == 2) {
-            nowGlobalSet?.curIndex2 = Int32(wid + 1)
-            if (nowGlobalSet?.curIndex2)! >= 2999 {
-                nowGlobalSet?.curIndex2 = 2999
-                isEnd = true
-            }
-            iNextWid = Int((nowGlobalSet?.curIndex2)!)
-        }else if(indexPage == 3) {
-            nowGlobalSet?.curIndex3 = Int32(wid + 1)
-            if (nowGlobalSet?.curIndex3)! >= 3999 {
-                nowGlobalSet?.curIndex3 = 3999
-                isEnd = true
-            }
-            iNextWid = Int((nowGlobalSet?.curIndex3)!)
-        }else if(indexPage == 4) {
-            nowGlobalSet?.curIndex4 = Int32(wid + 1)
-            if (nowGlobalSet?.curIndex4)! >= 5003 {
-                nowGlobalSet?.curIndex4 = 5003
-                isEnd = true
-            }
-            iNextWid = Int((nowGlobalSet?.curIndex4)!)
-        }else{
-        }
         
         appDelegate.saveContext()
         // 保存后, 数据马上更新到最新的
@@ -255,9 +216,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
         }
         
         // 是否自动跳到下一题
-        if oneWrong.isRight && (isEnd == false) {
+        if oneWrong.isRight {
             if (nowGlobalSet?.iskipword)! {
-                sv.goNextWord(nextId: iNextWid)
+                sv.goNextWord(nextIdIndex: self.curIndexId+1)
             }
         }
         

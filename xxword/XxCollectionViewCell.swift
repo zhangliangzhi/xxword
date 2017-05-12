@@ -195,6 +195,9 @@ class XxCollectionViewCell: UICollectionViewCell {
         let oneWrong = NSEntityDescription.insertNewObject(forEntityName: "MyErrorID", into: context) as! MyErrorID
         oneWrong.wid = Int32(wid)
         oneWrong.indexPage = Int32(wid / 1000)
+        if oneWrong.indexPage == 5 {
+            oneWrong.indexPage = 4
+        }
         oneWrong.date = NSDate()
         if selIndex == rightIndex {
             oneWrong.isRight = true

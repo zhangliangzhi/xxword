@@ -15,7 +15,6 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
     var rootv:UIView!
     var collectionView:UICollectionView!
     let colayout = UICollectionViewFlowLayout()
-    var indexPage:Int!
     var firstScroll = false
     var arrTagIndex:[Int:Int] = [:]
     var newImage:UIImageView!
@@ -54,21 +53,12 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
         colayout.scrollDirection = .horizontal
         colayout.minimumLineSpacing = 0
         colayout.itemSize = self.view.frame.size
-        
         colayout.itemSize = CGSize(width: self.view.frame.width, height: self.view.frame.height-93)
-//        colayout.minimumInteritemSpacing = 0 // 同行内小cell之间的距离
-        
-        
-        indexPage = Int((nowGlobalSet?.indexPage)!)
-        
-        
-        //test将视图滚动到默认单词上, 额这个没起效果 我去
-//        collectionView.scrollToItem(at: IndexPath(item: originalID, section: 0), at: .left, animated: false)
+
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        indexPage = Int((nowGlobalSet?.indexPage)!)
         HomeViewController.getCoreData()
         setRightWrongCount()
     }
@@ -112,10 +102,15 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
         // 滚到默认位置先, 在给个提示.
         if firstScroll == false {
             firstScroll = true
-            let curid = getCurIndex()
-            if indexPath.row == curid {
-                collectionView.scrollToItem(at: IndexPath(item: curid, section: 0), at: .left, animated: false)
-                TipsSwift.showBottomWithText("跳转到上次错题位置", duration: 2)
+            let curidIndex = getCurIndex()
+            if indexPath.row == curidIndex {
+                collectionView.scrollToItem(at: IndexPath(item: curidIndex, section: 0), at: .left, animated: false)
+                if itype == 1{
+                    TipsSwift.showBottomWithText("跳转到上次错题位置", duration: 2)
+                }else if itype == 2{
+                    TipsSwift.showBottomWithText("跳转到上次收藏位置", duration: 2)
+                }
+                
             }
         }
         
@@ -155,8 +150,11 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         
     }
-    func goNextWord(nextId:Int) -> Void {
-        collectionView.scrollToItem(at: IndexPath(item: nextId, section: 0), at: .left, animated: true)
+    func goNextWord(nextIdIndex:Int) -> Void {
+        if nextIdIndex >= arrIds.count {
+            return
+        }
+        collectionView.scrollToItem(at: IndexPath(item: nextIdIndex, section: 0), at: .left, animated: true)
     }
 
     /*
@@ -170,15 +168,18 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
     */
     
     func getCurIndex() -> Int {
-        // 获取id [0,5004)
         var curIndex:Int32 = 0
         if (itype == 1) {
             curIndex = (nowGlobalSet?.curWrongIndex)!
         }else if (itype == 2) {
             curIndex = (nowGlobalSet?.curFavorIndex)!
         }
-        let curid = Int(curIndex)
-        return curid
+        // 删除了, 就返回打开第一个吧
+        var curidIndex = Int(curIndex)
+        if curidIndex >= arrIds.count {
+            curidIndex = 0
+        }
+        return curidIndex
     }
 
     func setRightWrongCount() {
