@@ -206,7 +206,7 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("sel row", indexPath.row)
+//        print("sel row", indexPath.row)
         let one = NSEntityDescription.insertNewObject(forEntityName: "MyFavorID", into: context) as! MyFavorID
         one.wid = Int32(wid)
         one.date = NSDate()
@@ -216,7 +216,14 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         HomeViewController.getCoreData()
 //        print("favor count: ", arrMyFavorID.count)
         
-        TipsSwift.showCenterWithText("成功加入收藏夹1️⃣次")
+        var count = 0
+        for item in arrMyFavorID {
+            if one.wid == item.wid {
+                count += 1
+            }
+        }
+        let txt = "加入收藏夹1️⃣次, 共收藏 " + "\(count)" + " 次"
+        TipsSwift.showCenterWithText(txt)
     }
     
 }
