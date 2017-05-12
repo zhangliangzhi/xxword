@@ -11,6 +11,7 @@
 		0B2AEE061EBA776700E1A9F1 /* ocr.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AEE051EBA776700E1A9F1 /* ocr.m */; };
 		0B38C6361EC4D55F00C3B140 /* PlayLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6351EC4D55F00C3B140 /* PlayLogViewController.swift */; };
 		0B38C6381EC55C4B00C3B140 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */; };
+		0B38C63A1EC5665700C3B140 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */; };
 		0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */; };
 		0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */; };
 		0B4606391EA14FAA0071FBEA /* INSPersistentStoreDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */; };
@@ -51,6 +52,7 @@
 		0B2AEE071EBA777500E1A9F1 /* ocr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ocr.h; sourceTree = "<group>"; };
 		0B38C6351EC4D55F00C3B140 /* PlayLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayLogViewController.swift; sourceTree = "<group>"; };
 		0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSDataStackContainer.swift; sourceTree = "<group>"; };
 		0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentContainer.swift; sourceTree = "<group>"; };
 		0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentStoreDescription.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				0BD909CD1EBC8884007467F0 /* ocword.h */,
 				0BD909CB1EBC886F007467F0 /* ocword.m */,
 				0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */,
+				0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */,
 				0B38C6351EC4D55F00C3B140 /* PlayLogViewController.swift */,
 			);
 			path = xxword;
@@ -327,6 +330,7 @@
 				0B6C8E1D1E8F6E0D00D76B4E /* ViewController.swift in Sources */,
 				0BCE0C231EABB22F0049A01C /* ShopViewController.swift in Sources */,
 				0BD6047A1E9BA09F001F364B /* BootstrapButton.swift in Sources */,
+				0B38C63A1EC5665700C3B140 /* CustomCollectionViewCell.swift in Sources */,
 				0BCE0C1F1EAB97770049A01C /* HomeViewController.swift in Sources */,
 				0BD067A21EB251A8000F975F /* StudyTabBarController.swift in Sources */,
 				0BD067A01EAE1161000F975F /* SxlxViewController.swift in Sources */,

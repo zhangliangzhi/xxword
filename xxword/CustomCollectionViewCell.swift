@@ -14,36 +14,21 @@ import CoreData
 class CustomCollectionViewCell: UICollectionViewCell {
 
     // 在外面的会重复利用, 要在init里面赋值才可以!注意
+    var curIndexId = 0  // 序列号
     var wid:Int = 0  // 获取id [0,5004)
     var arrOther:[Int] = [] // 4个解释意思
     var rightIndex = 0  // 对的abcd -> 0123
     var arrImg:[UIImageView] = []
     var centerLabel:LTMorphingLabel!
     var clickCount:Int = 0
+    var itype = 0   // 1-错误, 2-收藏
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         
-        // 获取id [0,5004)
-//        let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
-//        var curIndex:Int32 = 0
-//        if (indexPage == 0) {
-//            curIndex = (nowGlobalSet?.curIndex0)!
-//        }else if(indexPage == 1) {
-//            curIndex = (nowGlobalSet?.curIndex1)!
-//        }else if(indexPage == 2) {
-//            curIndex = (nowGlobalSet?.curIndex2)!
-//        }else if(indexPage == 3) {
-//            curIndex = (nowGlobalSet?.curIndex3)!
-//        }else if(indexPage == 4) {
-//            curIndex = (nowGlobalSet?.curIndex4)!
-//        }else{
-//        }
-//        wid = Int(curIndex)
         self.backgroundColor = BG1_COLOR
         
-//        print("create cell", clickCount)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -198,14 +183,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     func selButton(_ button:UIButton) -> Void {
         if clickCount > 0 {
-//            print(clickCount)
             return
         }
         
         let selIndex = button.tag - 1
         selTag(selIndex: selIndex)
-        let sv = firstViewController() as! XxViewController
-        sv.addOneUse(wid: wid, tag: selIndex)
+        let sv = firstViewController() as! CustomViewController
+        sv.addOneUse(curid: curIndexId, tag: selIndex)
         
         // 插入数据
         let oneWrong = NSEntityDescription.insertNewObject(forEntityName: "MyErrorID", into: context) as! MyErrorID

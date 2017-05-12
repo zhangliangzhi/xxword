@@ -45,7 +45,7 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
             make.top.equalTo(self.view).offset(44)
             make.bottom.equalTo(self.view).offset(-49)
         }
-        collectionView.register(XxCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = BG1_COLOR
@@ -103,10 +103,11 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell:XxCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! XxCollectionViewCell
+        let cell:CustomCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
 
         cell.wid = arrIds[indexPath.row]
         cell.initWordData()
+        cell.curIndexId = indexPath.row
         
         // 滚到默认位置先, 在给个提示.
         if firstScroll == false {
@@ -148,9 +149,9 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
     
-    func addOneUse(wid:Int, tag:Int) -> Void {
+    func addOneUse(curid:Int, tag:Int) -> Void {
 //        print("add one use", tag)
-        arrTagIndex[wid] = tag
+        arrTagIndex[curid] = tag
         
         
     }
