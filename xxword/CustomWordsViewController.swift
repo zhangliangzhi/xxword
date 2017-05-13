@@ -1,5 +1,5 @@
 //
-//  WordsViewController.swift
+//  CustomWordsViewController.swift
 //  xxword
 //
 //  Created by ZhangLiangZhi on 2017/5/8.
@@ -9,8 +9,12 @@
 import UIKit
 import SnapKit
 
-class WordsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    var arrIds:[Int] = []
+    var itype = 0   // 1-错误, 2-收藏
+    var curIndexId = 0
+    
     var collectionView:UICollectionView!
     var colayout = UICollectionViewFlowLayout()
     var indexPage:Int!
@@ -40,14 +44,10 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         collectionView.backgroundColor = BG1_COLOR
         collectionView.isPagingEnabled = false
         colayout.scrollDirection = .vertical
-        
         colayout.minimumLineSpacing = self.view.frame.width / 20
         colayout.minimumInteritemSpacing = colayout.minimumLineSpacing
         colayout.itemSize = self.view.frame.size
-        
-        
         colayout.itemSize = CGSize(width: self.view.frame.width/7, height: 30)
-        
         colayout.sectionInset = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
         
     }
@@ -89,24 +89,20 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(indexPage == 4) {
-            return 1004
-        }else{
-            return 1000
-        }
+        return arrIds.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
 
-        let startID = indexPage * 1000
-        let wid = startID + indexPath.row
+        let wid = arrIds[indexPath.row]
         let btn = UIButton(type: .system)
         cell.addSubview(btn)
         btn.snp.makeConstraints { (make) in
             make.edges.equalTo(cell)
         }
         
+        curIndexId = getCurIndex()
         let wstatue = getWordStatue(wid: wid)
         if wstatue == 0 {
             btn.backgroundColor = INFO_COLOR
@@ -116,10 +112,10 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
             btn.backgroundColor = DANG_COLOR
         }
         
-        btn.setTitle("\(wid+1)", for: .normal)
+        btn.setTitle("\(wid)", for: .normal)
         btn.tintColor = UIColor.white
         btn.layer.cornerRadius = 5
-        if wid == getWid() {
+        if curIndexId == indexPath.row {
             btn.layer.borderColor = WARN_COLOR.cgColor
             btn.layer.borderWidth = 2
             
@@ -130,50 +126,47 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         // 跳转到第几个单词
         if firstsTo == false {
             firstsTo = true
-            collectionView.scrollToItem(at: IndexPath.init(row: getWid(), section: 0), at: .centeredVertically, animated: true)
+            collectionView.scrollToItem(at: IndexPath.init(row: curIndexId, section: 0), at: .centeredVertically, animated: true)
         }
         return cell
     }
     
     func clickBtn(_ button:UIButton) {
-        let wid = button.tag
-        if (indexPage == 0) {
-            // 显示是1-1000, 实际是0-999
-            nowGlobalSet?.curIndex0 = Int32(wid)
-        }else if(indexPage == 1) {
-            nowGlobalSet?.curIndex1 = Int32(wid)
-        }else if(indexPage == 2) {
-            nowGlobalSet?.curIndex2 = Int32(wid)
-        }else if(indexPage == 3) {
-            nowGlobalSet?.curIndex3 = Int32(wid)
-        }else if(indexPage == 4) {
-            nowGlobalSet?.curIndex4 = Int32(wid)
-        }else{
+        var nextIndexId:Int = curIndexId + 1
+        if itype == 1 {
+            if nextIndexId >= setWrongID.count {
+                nextIndexId = curIndexId
+            }
+            nowGlobalSet?.curWrongIndex = Int32(nextIndexId)
+        }else if itype == 2 {
+            if nextIndexId >= setFavorID.count {
+                nextIndexId = curIndexId
+            }
+            nowGlobalSet?.curFavorIndex = Int32(nextIndexId)
         }
         appDelegate.saveContext()
         
         // 跳转到第一个界面
+        let tabbar = CustomTabBarController()
+        tabbar.itype = itype
+        tabbar.arrIds = arrIds
         appDelegate.window?.rootViewController?.removeFromParentViewController()
-        appDelegate.window?.rootViewController = StudyTabBarController()
+        appDelegate.window?.rootViewController = tabbar
     }
     
-    func getWid() -> Int {
-        // 获取id [0,5004)
+    func getCurIndex() -> Int {
         var curIndex:Int32 = 0
-        if (indexPage == 0) {
-            curIndex = (nowGlobalSet?.curIndex0)!
-        }else if(indexPage == 1) {
-            curIndex = (nowGlobalSet?.curIndex1)!
-        }else if(indexPage == 2) {
-            curIndex = (nowGlobalSet?.curIndex2)!
-        }else if(indexPage == 3) {
-            curIndex = (nowGlobalSet?.curIndex3)!
-        }else if(indexPage == 4) {
-            curIndex = (nowGlobalSet?.curIndex4)!
-        }else{
+        if (itype == 1) {
+            curIndex = (nowGlobalSet?.curWrongIndex)!
+        }else if (itype == 2) {
+            curIndex = (nowGlobalSet?.curFavorIndex)!
         }
-        let wid = Int(curIndex)
-        return wid
+        // 删除了, 就返回打开第一个吧
+        var curidIndex = Int(curIndex)
+        if curidIndex >= arrIds.count {
+            curidIndex = 0
+        }
+        return curidIndex
     }
     
     func getWordStatue(wid:Int) -> Int {

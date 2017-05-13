@@ -31,13 +31,15 @@ class CustomTabBarController: UITabBarController {
         let item1 : UITabBarItem = UITabBarItem (title: "1/1000", image: UIImage(named: "fangkuai"), selectedImage: UIImage(named: "fangkuai"))
         v1.tabBarItem = item1
         
-        let v2 = WordsViewController()
+        let v2 = CustomWordsViewController()
         var t2 = "单词列表"
-        if itype == 1{
+        if itype == 1 {
             t2 = "错题列表"
-        }else if itype == 2{
+        }else if itype == 2 {
             t2 = "收藏列表"
         }
+        v2.arrIds = arrIds
+        v2.itype = itype
         let item2 : UITabBarItem = UITabBarItem (title: t2, image: UIImage(named: "wrodlist"), selectedImage: UIImage(named: "wrodlist"))
         v2.tabBarItem = item2
         

@@ -13,6 +13,7 @@
 		0B38C6381EC55C4B00C3B140 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */; };
 		0B38C63A1EC5665700C3B140 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */; };
 		0B38C63C1EC623C200C3B140 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C63B1EC623C200C3B140 /* CustomTabBarController.swift */; };
+		0B38C6401EC6B05700C3B140 /* CustomWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C63F1EC6B05700C3B140 /* CustomWordsViewController.swift */; };
 		0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */; };
 		0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */; };
 		0B4606391EA14FAA0071FBEA /* INSPersistentStoreDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */; };
@@ -55,6 +56,7 @@
 		0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B38C63B1EC623C200C3B140 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		0B38C63F1EC6B05700C3B140 /* CustomWordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomWordsViewController.swift; sourceTree = "<group>"; };
 		0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSDataStackContainer.swift; sourceTree = "<group>"; };
 		0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentContainer.swift; sourceTree = "<group>"; };
 		0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentStoreDescription.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */,
 				0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */,
 				0B38C63B1EC623C200C3B140 /* CustomTabBarController.swift */,
+				0B38C63F1EC6B05700C3B140 /* CustomWordsViewController.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				0BCE0C231EABB22F0049A01C /* ShopViewController.swift in Sources */,
 				0BD6047A1E9BA09F001F364B /* BootstrapButton.swift in Sources */,
 				0B38C63A1EC5665700C3B140 /* CustomCollectionViewCell.swift in Sources */,
+				0B38C6401EC6B05700C3B140 /* CustomWordsViewController.swift in Sources */,
 				0BCE0C1F1EAB97770049A01C /* HomeViewController.swift in Sources */,
 				0B38C63C1EC623C200C3B140 /* CustomTabBarController.swift in Sources */,
 				0BD067A21EB251A8000F975F /* StudyTabBarController.swift in Sources */,

@@ -804,7 +804,7 @@ class HomeViewController: UIViewController {
     
     // 点击 我的错题
     func callbackWdct() -> Void {
-        print("wdct Study")
+//        print("wdct Study")
         let tabbar = CustomTabBarController()
         tabbar.itype = 1
         
