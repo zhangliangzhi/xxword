@@ -805,8 +805,9 @@ class HomeViewController: UIViewController {
     // 点击 我的错题
     func callbackWdct() -> Void {
 //        print("wdct Study")
+        
         if setWrongID.count == 0 {
-            TipsSwift.showCenterWithText("没有做错的题目", duration: 3)
+            TipsSwift.showCenterWithText("没有答错的单词", duration: 3)
             return
         }
         let tabbar = CustomTabBarController()
@@ -818,9 +819,7 @@ class HomeViewController: UIViewController {
             arrIds.append(one)
         }
         arrIds.sort(by: {$0<$1})
-        
         tabbar.arrIds = arrIds
-        
         tabbar.creatSubViewControllers()
         // 跳转到自定义 错题界面
         appDelegate.window?.rootViewController?.removeFromParentViewController()
@@ -828,7 +827,25 @@ class HomeViewController: UIViewController {
     }
     // 点击 我的收藏
     func callbackWdsc() -> Void {
-        print("wdsc Study")
+//        print("wdsc Study")
+        if setWrongID.count == 0 {
+            TipsSwift.showCenterWithText("没有收藏的单词", duration: 3)
+            return
+        }
+        let tabbar = CustomTabBarController()
+        tabbar.itype = 2
+        
+        // 单词列表
+        var arrIds:[Int] = []
+        for one in setFavorID {
+            arrIds.append(one)
+        }
+        arrIds.sort(by: {$0<$1})
+        tabbar.arrIds = arrIds
+        tabbar.creatSubViewControllers()
+        // 跳转到自定义 错题界面
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = tabbar
     }
     // 点击 学习统计
     func callbackXxtj() -> Void {
