@@ -77,6 +77,7 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func backHome() {
+        gClickIndex = 0
         appDelegate.window?.rootViewController?.removeFromParentViewController()
         appDelegate.window?.rootViewController = RootTabBarController()
     }
@@ -177,7 +178,11 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
             curIndex = (nowGlobalSet?.curWrongIndex)!
         }else if (itype == 2) {
             curIndex = (nowGlobalSet?.curFavorIndex)!
+        } else {
+            // 没编号itype的
+            curIndex = gClickIndex
         }
+        
         // 删除了, 就返回打开第一个吧
         var curidIndex = Int(curIndex)
         if curidIndex >= arrIds.count {

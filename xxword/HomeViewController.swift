@@ -21,6 +21,7 @@ var setFavorID = Set<Int>()
 var setWrongID = Set<Int>()
 var nowGlobalSet:CurGlobalSet?
 let rootUrl = "https://xx5000.duapp.com/xx/"
+var gClickIndex:Int32 = 0 // 临时点击的值,没编号itype的
 
 let gWord = ocGetWord() as! [String]
 let gDetail = ocGetDetail() as! [[String]]
@@ -771,7 +772,32 @@ class HomeViewController: UIViewController {
     }
     // 点击 随机练习
     func callbackSjlx() -> Void {
-        print("sjlx Study")
+//        print("sjlx Study")
+        
+        let tabbar = CustomTabBarController()
+        tabbar.itype = 3
+        
+        var total = 1000
+        let page = Int((nowGlobalSet?.indexPage)!)
+        if  page == 4 {
+            total = 1004
+        }
+        let startID = page*1000
+        let endID = startID + total
+        // 单词列表
+        var arrIds:[Int] = []
+        for i in startID..<endID {
+            arrIds.append(i)
+        }
+        arrIds.sort(by: { (_, _) -> Bool in
+            arc4random() > arc4random()
+        })
+        
+        tabbar.arrIds = arrIds
+        tabbar.creatSubViewControllers()
+        // 跳转到自定义 错题界面
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = tabbar
     }
     // 点击 专项练习
     func callbackZxlx() -> Void {

@@ -134,6 +134,7 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
     func clickBtn(_ button:UIButton) {
         let tag = button.tag
         let clickIndexID = Int32(tag)
+        gClickIndex = clickIndexID
         if itype == 1 {
             nowGlobalSet?.curWrongIndex = clickIndexID
         }else if itype == 2 {
@@ -156,7 +157,11 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
             curIndex = (nowGlobalSet?.curWrongIndex)!
         }else if (itype == 2) {
             curIndex = (nowGlobalSet?.curFavorIndex)!
+        }else {
+            // 没编号itype的
+            curIndex = gClickIndex
         }
+        
         // 删除了, 就返回打开第一个吧
         var curidIndex = Int(curIndex)
         if curidIndex >= arrIds.count {
