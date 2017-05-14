@@ -28,7 +28,7 @@ class CustomTabBarController: UITabBarController {
         let v1  = CustomViewController()
         v1.itype = self.itype
         v1.arrIds = self.arrIds
-        let item1 : UITabBarItem = UITabBarItem (title: "1/1000", image: UIImage(named: "fangkuai"), selectedImage: UIImage(named: "fangkuai"))
+        let item1 : UITabBarItem = UITabBarItem (title: "1/1", image: UIImage(named: "fangkuai"), selectedImage: UIImage(named: "fangkuai"))
         v1.tabBarItem = item1
         
         let v2 = CustomWordsViewController()

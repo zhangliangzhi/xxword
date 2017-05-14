@@ -101,6 +101,7 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.initWordData()
         cell.curIndexId = indexPath.row
         cell.allCount = arrIds.count
+        cell.itype = itype
         
         // 滚到默认位置先, 在给个提示.
         if firstScroll == false {

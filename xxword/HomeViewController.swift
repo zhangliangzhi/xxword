@@ -805,6 +805,10 @@ class HomeViewController: UIViewController {
     // 点击 我的错题
     func callbackWdct() -> Void {
 //        print("wdct Study")
+        if setWrongID.count == 0 {
+            TipsSwift.showCenterWithText("没有做错的题目", duration: 3)
+            return
+        }
         let tabbar = CustomTabBarController()
         tabbar.itype = 1
         
