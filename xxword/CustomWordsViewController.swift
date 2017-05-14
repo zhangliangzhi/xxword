@@ -120,7 +120,7 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
             btn.layer.borderWidth = 2
             
         }
-        btn.tag = wid
+        btn.tag = indexPath.row
         btn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)
         
         // 跳转到第几个单词
@@ -132,17 +132,12 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func clickBtn(_ button:UIButton) {
-        var nextIndexId:Int = curIndexId + 1
+        let tag = button.tag
+        let clickIndexID = Int32(tag)
         if itype == 1 {
-            if nextIndexId >= setWrongID.count {
-                nextIndexId = curIndexId
-            }
-            nowGlobalSet?.curWrongIndex = Int32(nextIndexId)
+            nowGlobalSet?.curWrongIndex = clickIndexID
         }else if itype == 2 {
-            if nextIndexId >= setFavorID.count {
-                nextIndexId = curIndexId
-            }
-            nowGlobalSet?.curFavorIndex = Int32(nextIndexId)
+            nowGlobalSet?.curFavorIndex = clickIndexID
         }
         appDelegate.saveContext()
         

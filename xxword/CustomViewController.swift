@@ -12,6 +12,8 @@ import SnapKit
 class CustomViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     var arrIds:[Int] = []
+    var itype = 0   // 1-错误, 2-收藏
+    
     var rootv:UIView!
     var collectionView:UICollectionView!
     let colayout = UICollectionViewFlowLayout()
@@ -19,7 +21,7 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
     var arrTagIndex:[Int:Int] = [:]
     var newImage:UIImageView!
     var curwid = 0
-    var itype = 0   // 1-错误, 2-收藏
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,12 +100,13 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.wid = arrIds[indexPath.row]
         cell.initWordData()
         cell.curIndexId = indexPath.row
+        cell.allCount = arrIds.count
         
         // 滚到默认位置先, 在给个提示.
         if firstScroll == false {
             firstScroll = true
             let curidIndex = getCurIndex()
-            if indexPath.row == curidIndex {
+            if curidIndex != 0 {
                 collectionView.scrollToItem(at: IndexPath(item: curidIndex, section: 0), at: .left, animated: false)
                 if itype == 1{
                     TipsSwift.showBottomWithText("跳转到上次错题位置", duration: 2)

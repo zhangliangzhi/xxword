@@ -22,6 +22,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     var centerLabel:LTMorphingLabel!
     var clickCount:Int = 0
     var itype = 0   // 1-错误, 2-收藏
+    var allCount = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -206,6 +207,19 @@ class CustomCollectionViewCell: UICollectionViewCell {
             oneWrong.isRight = false
         }
         context.insert(oneWrong)
+        // 保持学习到的当前序号
+        var nextIndexId = curIndexId + 1
+        if itype == 1 {
+            if nextIndexId >= allCount {
+                nextIndexId -= 1
+            }
+            nowGlobalSet?.curWrongIndex = Int32(nextIndexId)
+        }else if itype == 2 {
+            if nextIndexId >= allCount {
+                nextIndexId -= 1
+            }
+            nowGlobalSet?.curFavorIndex = Int32(nextIndexId)
+        }
         
         appDelegate.saveContext()
         // 保存后, 数据马上更新到最新的
