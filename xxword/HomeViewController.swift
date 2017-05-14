@@ -813,6 +813,8 @@ class HomeViewController: UIViewController {
         for one in setWrongID {
             arrIds.append(one)
         }
+        arrIds.sort(by: {$0<$1})
+        
         tabbar.arrIds = arrIds
         
         tabbar.creatSubViewControllers()

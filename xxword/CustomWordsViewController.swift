@@ -112,7 +112,7 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
             btn.backgroundColor = DANG_COLOR
         }
         
-        btn.setTitle("\(wid)", for: .normal)
+        btn.setTitle("\(wid+1)", for: .normal)
         btn.tintColor = UIColor.white
         btn.layer.cornerRadius = 5
         if curIndexId == indexPath.row {
@@ -150,6 +150,7 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
         let tabbar = CustomTabBarController()
         tabbar.itype = itype
         tabbar.arrIds = arrIds
+        tabbar.creatSubViewControllers()
         appDelegate.window?.rootViewController?.removeFromParentViewController()
         appDelegate.window?.rootViewController = tabbar
     }
