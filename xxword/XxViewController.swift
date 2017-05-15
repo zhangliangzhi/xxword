@@ -110,6 +110,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         let startID = indexPage * 1000
         cell.wid = startID + indexPath.row
         cell.initWordData()
+        cell.curIndexId = indexPath.row
 //        cell.createLzLabel(itype: 1)
         
 //        print("return cell:",indexPath.row)
@@ -164,8 +165,16 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         
         
     }
-    func goNextWord(nextId:Int) -> Void {
-        collectionView.scrollToItem(at: IndexPath(item: nextId, section: 0), at: .left, animated: true)
+    func goNextWord(nextIndexId:Int) -> Void {
+        var total = 1000
+        if(indexPage == 4) {
+            total = 1004
+        }
+        var nid = nextIndexId
+        if nid >= total {
+            nid -= 1
+        }
+        collectionView.scrollToItem(at: IndexPath(item: nid, section: 0), at: .left, animated: true)
     }
 
     /*

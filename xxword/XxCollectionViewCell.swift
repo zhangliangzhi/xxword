@@ -20,6 +20,7 @@ class XxCollectionViewCell: UICollectionViewCell {
     var arrImg:[UIImageView] = []
     var centerLabel:LTMorphingLabel!
     var clickCount:Int = 0
+    var curIndexId = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -185,6 +186,7 @@ class XxCollectionViewCell: UICollectionViewCell {
 //            print(clickCount)
             return
         }
+        clickCount += 1
         
         let selIndex = button.tag - 1
         selTag(selIndex: selIndex)
@@ -260,7 +262,7 @@ class XxCollectionViewCell: UICollectionViewCell {
         // 是否自动跳到下一题
         if oneWrong.isRight && (isEnd == false) {
             if (nowGlobalSet?.iskipword)! {
-                sv.goNextWord(nextId: iNextWid)
+                sv.goNextWord(nextIndexId: self.curIndexId + 1)
             }
         }
         

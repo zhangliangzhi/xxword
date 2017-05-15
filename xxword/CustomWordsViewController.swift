@@ -139,6 +139,8 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
             nowGlobalSet?.curWrongIndex = clickIndexID
         }else if itype == 2 {
             nowGlobalSet?.curFavorIndex = clickIndexID
+        }else if itype == 5 {
+            
         }
         appDelegate.saveContext()
         
