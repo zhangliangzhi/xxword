@@ -19,6 +19,7 @@ var arrMyErrorID:[MyErrorID] = []
 var arrMyFavorID:[MyFavorID] = []
 var setFavorID = Set<Int>()
 var setWrongID = Set<Int>()
+var setDoneId = Set<Int>()
 var nowGlobalSet:CurGlobalSet?
 let rootUrl = "https://xx5000.duapp.com/xx/"
 var gClickIndex:Int32 = 0 // 临时点击的值,没编号itype的
@@ -599,9 +600,12 @@ class HomeViewController: UIViewController {
     func changeTexValue() {
         // 更新最新数据
         setWrongID.removeAll()
+        setDoneId.removeAll()
         for one in arrMyErrorID {
+            let wid:Int = Int(one.wid)
+            setDoneId.insert(wid)
             if (one.indexPage == nowGlobalSet?.indexPage) && one.isRight == false {
-                setWrongID.insert(Int(one.wid))
+                setWrongID.insert(wid)
             }
         }
         setFavorID.removeAll()
@@ -805,7 +809,34 @@ class HomeViewController: UIViewController {
     }
     // 点击 未做题
     func callbackWzt() -> Void {
-        print("Wzt Study")
+//        print("Wzt Study")
+        let tabbar = CustomTabBarController()
+        tabbar.itype = 4
+        
+        var total = 1000
+        let page = Int((nowGlobalSet?.indexPage)!)
+        if  page == 4 {
+            total = 1004
+        }
+        let startID = page*1000
+        let endID = startID + total
+        // 单词列表
+        var arrIds:[Int] = []
+        for i in startID..<endID {
+            if setDoneId.contains(i) == false {
+                arrIds.append(i)
+            }
+        }
+//        arrIds.sort(by: { (a, b) -> Bool in
+//            a<b
+//        })
+        arrIds.sort(by: {$0<$1})
+        
+        tabbar.arrIds = arrIds
+        tabbar.creatSubViewControllers()
+        // 跳转到自定义 错题界面
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = tabbar
     }
     // 点击 精选难题
     func callbackJxnt() -> Void {
