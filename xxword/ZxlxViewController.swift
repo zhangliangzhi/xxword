@@ -169,22 +169,33 @@ class ZxlxViewController: UIViewController {
     }
     
     func callbackAdj() {
-        
+        goStudyCustomWords(arrIds: arrOnePageAdj)
     }
 
     func callbackAdv() {
-        
+        goStudyCustomWords(arrIds: arrOnePageAdv)
     }
     
     func callbackVt() {
-        
+        goStudyCustomWords(arrIds: arrOnePageVt)
     }
     
     func callbackVi() {
-        
+        goStudyCustomWords(arrIds: arrOnePageVi)
     }
     
     func callbackN() {
-        
+        goStudyCustomWords(arrIds: arrOnePageN)
+    }
+    
+    func goStudyCustomWords(arrIds:[Int]) {
+        let tabbar = CustomTabBarController()
+        tabbar.itype = 6
+        tabbar.arrIds = arrIds
+        tabbar.arrIds.sort(by: {$0<$1})
+        tabbar.creatSubViewControllers()
+        // 跳转到自定义 错题界面
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = tabbar
     }
 }

@@ -806,6 +806,7 @@ class HomeViewController: UIViewController {
     // 点击 专项练习
     func callbackZxlx() -> Void {
 //        print("zxlx Study")
+        // itype为6
         navigationController?.pushViewController(ZxlxViewController(), animated: true)
     }
     
