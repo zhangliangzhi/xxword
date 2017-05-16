@@ -305,7 +305,7 @@ class HomeViewController: UIViewController {
             make.height.equalTo(20)
         }
         lblJxnt.textAlignment = .center
-        lblJxnt.text = "精选难题"
+        lblJxnt.text = "精选难词"
         lblJxnt.textColor = WZ1_COLOR
         lblJxnt.font = UIFont.systemFont(ofSize: 18)
         
@@ -840,7 +840,31 @@ class HomeViewController: UIViewController {
     }
     // 点击 精选难题
     func callbackJxnt() -> Void {
-        print("Jxnt Study")
+//        print("Jxnt Study")
+        let tabbar = CustomTabBarController()
+        tabbar.itype = 5
+        
+        var total = 1000
+        let page = Int((nowGlobalSet?.indexPage)!)
+        if  page == 4 {
+            total = 1004
+        }
+        let startID = page*1000
+        let endID = startID + total
+        // 单词列表
+        var arrIds:[Int] = []
+        for i in startID..<endID {
+            let word = gWord[i]
+            if (word.characters.count >= 8) && (word.contains("/") == false) {
+                arrIds.append(i)
+            }
+        }
+        arrIds.sort(by: {$0<$1})
+        tabbar.arrIds = arrIds
+        tabbar.creatSubViewControllers()
+        // 跳转到自定义 错题界面
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = tabbar
     }
     // 点击 考试记录
     func callbackKsjl() -> Void {
