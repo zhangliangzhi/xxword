@@ -14,6 +14,7 @@
 		0B38C63A1EC5665700C3B140 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */; };
 		0B38C63C1EC623C200C3B140 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C63B1EC623C200C3B140 /* CustomTabBarController.swift */; };
 		0B38C6401EC6B05700C3B140 /* CustomWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C63F1EC6B05700C3B140 /* CustomWordsViewController.swift */; };
+		0B38C6421ECAC7F100C3B140 /* ZxlxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6411ECAC7F100C3B140 /* ZxlxViewController.swift */; };
 		0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */; };
 		0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */; };
 		0B4606391EA14FAA0071FBEA /* INSPersistentStoreDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */; };
@@ -57,6 +58,7 @@
 		0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B38C63B1EC623C200C3B140 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		0B38C63F1EC6B05700C3B140 /* CustomWordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomWordsViewController.swift; sourceTree = "<group>"; };
+		0B38C6411ECAC7F100C3B140 /* ZxlxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZxlxViewController.swift; sourceTree = "<group>"; };
 		0B4606331EA14FAA0071FBEA /* INSDataStackContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSDataStackContainer.swift; sourceTree = "<group>"; };
 		0B4606341EA14FAA0071FBEA /* INSPersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentContainer.swift; sourceTree = "<group>"; };
 		0B4606351EA14FAA0071FBEA /* INSPersistentStoreDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INSPersistentStoreDescription.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */,
 				0B38C63B1EC623C200C3B140 /* CustomTabBarController.swift */,
 				0B38C63F1EC6B05700C3B140 /* CustomWordsViewController.swift */,
+				0B38C6411ECAC7F100C3B140 /* ZxlxViewController.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				0B4606391EA14FAA0071FBEA /* INSPersistentStoreDescription.swift in Sources */,
 				0BD604751E9AA04F001F364B /* LoginViewController.swift in Sources */,
 				0BD909D11EBCA4D1007467F0 /* XxCollectionViewCell.swift in Sources */,
+				0B38C6421ECAC7F100C3B140 /* ZxlxViewController.swift in Sources */,
 				0B6136571E9F3A2600FF31F2 /* MyResponse.swift in Sources */,
 				0B58FB0F1EC3077B006F56AE /* StudySetViewController.swift in Sources */,
 				0BD909D91EC3005B007467F0 /* ShouCangViewController.swift in Sources */,

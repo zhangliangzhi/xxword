@@ -805,8 +805,10 @@ class HomeViewController: UIViewController {
     }
     // 点击 专项练习
     func callbackZxlx() -> Void {
-        print("zxlx Study")
+//        print("zxlx Study")
+        navigationController?.pushViewController(ZxlxViewController(), animated: true)
     }
+    
     // 点击 未做题
     func callbackWzt() -> Void {
 //        print("Wzt Study")
