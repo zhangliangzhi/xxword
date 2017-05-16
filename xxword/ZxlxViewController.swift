@@ -11,6 +11,18 @@ import UIKit
 class ZxlxViewController: UIViewController {
 
     var rootv:UIView!
+    var arrAdj:[Int] = []
+    var arrAdv:[Int] = []
+    var arrVt:[Int] = []
+    var arrVi:[Int] = []
+    var arrN:[Int] = []
+    
+    var arrOnePageAdj:[Int] = []
+    var arrOnePageAdv:[Int] = []
+    var arrOnePageVt:[Int] = []
+    var arrOnePageVi:[Int] = []
+    var arrOnePageN:[Int] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = BG1_COLOR
@@ -26,6 +38,64 @@ class ZxlxViewController: UIViewController {
             make.bottom.equalTo(self.view)
         }
     
+        arrAdj  = ocGetWordAdj() as! [Int]
+        arrAdv  = ocGetWordAdv() as! [Int]
+        arrVt   = ocGetWordVt() as! [Int]
+        arrVi   = ocGetWordVi() as! [Int]
+        arrN    = ocGetWordN() as! [Int]
+        
+        var total = 1000
+        let page = Int((nowGlobalSet?.indexPage)!)
+        if  page == 4 {
+            total = 1004
+        }
+        let startID = page*1000
+        let endID = startID + total
+        // 单词分类 这个for循环好快
+        for one in arrAdj {
+            if one >= startID && one < endID {
+                arrOnePageAdj.append(one)
+            }
+        }
+        for one in arrAdv {
+            if one >= startID && one < endID {
+                arrOnePageAdv.append(one)
+            }
+        }
+        for one in arrVt {
+            if one >= startID && one < endID {
+                arrOnePageVt.append(one)
+            }
+        }
+        for one in arrVi {
+            if one >= startID && one < endID {
+                arrOnePageVi.append(one)
+            }
+        }
+        for one in arrN {
+            if one >= startID && one < endID {
+                arrOnePageN.append(one)
+            }
+        }
+        // 这个contains太慢了,5,6秒钟
+//        for i in startID..<endID {
+//            if arrAdj.contains(i) {
+//                arrOnePageAdj.append(i)
+//            }
+//            if arrAdv.contains(i) {
+//                arrOnePageAdv.append(i)
+//            }
+//            if arrVt.contains(i) {
+//                arrOnePageVt.append(i)
+//            }
+//            if arrVi.contains(i) {
+//                arrOnePageVi.append(i)
+//            }
+//            if arrN.contains(i) {
+//                arrOnePageN.append(i)
+//            }
+//        }
+        
         initUI()
     }
 
@@ -44,7 +114,8 @@ class ZxlxViewController: UIViewController {
             make.height.equalTo(38)
             make.top.equalTo(rootv).offset(20)
         }
-        buttonAdj.setTitle("adj.", for: .normal)
+        let adjtxt = "adj.    " + "\(arrOnePageAdj.count)" + "个单词"
+        buttonAdj.setTitle(adjtxt, for: .normal)
         buttonAdj.addTarget(self, action: #selector(callbackAdj), for: .touchUpInside)
         
         // 2. adv
@@ -55,7 +126,8 @@ class ZxlxViewController: UIViewController {
             make.centerX.equalTo(buttonAdj)
             make.top.equalTo(buttonAdj.snp.bottom).offset(18)
         }
-        buttonAdv.setTitle("adv.", for: .normal)
+        let advtxt = "adv.    " + "\(arrOnePageAdv.count)" + "个单词"
+        buttonAdv.setTitle(advtxt, for: .normal)
         buttonAdv.addTarget(self, action: #selector(callbackAdv), for: .touchUpInside)
         
         // 3. vt
@@ -66,7 +138,8 @@ class ZxlxViewController: UIViewController {
             make.centerX.equalTo(buttonAdj)
             make.top.equalTo(buttonAdv.snp.bottom).offset(18)
         }
-        buttonVt.setTitle("vt.", for: .normal)
+        let vttxt = "vt.    " + "\(arrOnePageVt.count)" + "个单词"
+        buttonVt.setTitle(vttxt, for: .normal)
         buttonVt.addTarget(self, action: #selector(callbackVt), for: .touchUpInside)
         
         // 4. vi
@@ -77,7 +150,8 @@ class ZxlxViewController: UIViewController {
             make.centerX.equalTo(buttonAdj)
             make.top.equalTo(buttonVt.snp.bottom).offset(18)
         }
-        buttonVi.setTitle("vi.", for: .normal)
+        let vitxt = "vi.    " + "\(arrOnePageVi.count)" + "个单词"
+        buttonVi.setTitle(vitxt, for: .normal)
         buttonVi.addTarget(self, action: #selector(callbackVi), for: .touchUpInside)
         
         
@@ -89,7 +163,8 @@ class ZxlxViewController: UIViewController {
             make.centerX.equalTo(buttonAdj)
             make.top.equalTo(buttonVi.snp.bottom).offset(18)
         }
-        buttonN.setTitle("n.", for: .normal)
+        let ntxt = "n.    " + "\(arrOnePageN.count)" + "个单词"
+        buttonN.setTitle(ntxt, for: .normal)
         buttonN.addTarget(self, action: #selector(callbackN), for: .touchUpInside)
     }
     
