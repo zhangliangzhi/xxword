@@ -933,7 +933,8 @@ class HomeViewController: UIViewController {
     }
     // 点击 学习统计
     func callbackXxtj() -> Void {
-        print("xxtj Study")
+//        print("xxtj Study")
+        navigationController?.pushViewController(XxtjViewController(), animated: true)
     }
     // 点击 交通标志
     func callbackJtbz() -> Void {

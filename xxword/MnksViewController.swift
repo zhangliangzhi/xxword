@@ -1,7 +1,7 @@
 //
 //  MnksViewController.swift
 //  xxword
-//
+//  模拟考试
 //  Created by ZhangLiangZhi on 2017/5/17.
 //  Copyright © 2017年 xigk. All rights reserved.
 //
@@ -9,27 +9,37 @@
 import UIKit
 
 class MnksViewController: UIViewController {
-
+    var rootv: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = BG1_COLOR
+        self.title = "考试比赛"
+        
+        rootv = UIView()
+        self.view.addSubview(rootv)
+        rootv.snp.makeConstraints { (make) in
+            make.width.equalTo(self.view)
+            make.centerX.equalTo(self.view)
+            make.top.equalTo(self.view).offset(64)
+            make.bottom.equalTo(self.view)
+        }
+        
+        initUI()
+        
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func initUI() {
+        let buttonKaos50 = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Info)
+        rootv.addSubview(buttonKaos50)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func callbackGo50() {
+        
     }
-    */
-
+    
+    func callbackGo100() {
+        
+    }
 }

@@ -31,6 +31,8 @@
 		0B6C8E201E8F6E0D00D76B4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6C8E1E1E8F6E0D00D76B4E /* Main.storyboard */; };
 		0B6C8E221E8F6E0D00D76B4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B6C8E211E8F6E0D00D76B4E /* Assets.xcassets */; };
 		0B6C8E251E8F6E0D00D76B4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6C8E231E8F6E0D00D76B4E /* LaunchScreen.storyboard */; };
+		0B9597041ECC6E0A00CA2916 /* MnksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9597031ECC6E0A00CA2916 /* MnksViewController.swift */; };
+		0B9597061ECC98E800CA2916 /* XxtjViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9597051ECC98E800CA2916 /* XxtjViewController.swift */; };
 		0B9A30301E9C9E690091D7B0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */; };
 		0BCE0C1F1EAB97770049A01C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */; };
 		0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C201EABAF780049A01C /* RootTabBarController.swift */; };
@@ -78,6 +80,8 @@
 		0B6C8E211E8F6E0D00D76B4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B6C8E241E8F6E0D00D76B4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B6C8E261E8F6E0D00D76B4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B9597031ECC6E0A00CA2916 /* MnksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnksViewController.swift; sourceTree = "<group>"; };
+		0B9597051ECC98E800CA2916 /* XxtjViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XxtjViewController.swift; sourceTree = "<group>"; };
 		0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0BCDDF3E1E9CB31D003DEB80 /* xxword-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "xxword-Bridging-Header.h"; sourceTree = "<group>"; };
 		0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				0B38C63F1EC6B05700C3B140 /* CustomWordsViewController.swift */,
 				0B38C6411ECAC7F100C3B140 /* ZxlxViewController.swift */,
 				0B38C6431ECBE58900C3B140 /* CommentViewController.swift */,
+				0B9597031ECC6E0A00CA2916 /* MnksViewController.swift */,
+				0B9597051ECC98E800CA2916 /* XxtjViewController.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 				0BD6047A1E9BA09F001F364B /* BootstrapButton.swift in Sources */,
 				0B38C63A1EC5665700C3B140 /* CustomCollectionViewCell.swift in Sources */,
 				0B38C6401EC6B05700C3B140 /* CustomWordsViewController.swift in Sources */,
+				0B9597061ECC98E800CA2916 /* XxtjViewController.swift in Sources */,
 				0BCE0C1F1EAB97770049A01C /* HomeViewController.swift in Sources */,
 				0B38C63C1EC623C200C3B140 /* CustomTabBarController.swift in Sources */,
 				0BD067A21EB251A8000F975F /* StudyTabBarController.swift in Sources */,
@@ -361,6 +368,7 @@
 				0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */,
 				0BD909D71EC0A835007467F0 /* WordsViewController.swift in Sources */,
 				0BCE0C271EACEA1D0049A01C /* MyColor.swift in Sources */,
+				0B9597041ECC6E0A00CA2916 /* MnksViewController.swift in Sources */,
 				0B46063A1EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift in Sources */,
 				0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */,
 				0B2AEE061EBA776700E1A9F1 /* ocr.m in Sources */,
