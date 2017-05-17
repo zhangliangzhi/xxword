@@ -10,9 +10,13 @@ import UIKit
 
 class CommentViewController: UIViewController {
 
+    var rootV: UIView!
+    var word: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = BG1_COLOR
+        
         // Do any additional setup after loading the view.
     }
 
