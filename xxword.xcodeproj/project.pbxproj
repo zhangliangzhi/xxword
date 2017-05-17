@@ -33,6 +33,7 @@
 		0B6C8E251E8F6E0D00D76B4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6C8E231E8F6E0D00D76B4E /* LaunchScreen.storyboard */; };
 		0B9597041ECC6E0A00CA2916 /* MnksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9597031ECC6E0A00CA2916 /* MnksViewController.swift */; };
 		0B9597061ECC98E800CA2916 /* XxtjViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9597051ECC98E800CA2916 /* XxtjViewController.swift */; };
+		0B9597081ECCA3B500CA2916 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9597071ECCA3B500CA2916 /* WordListViewController.swift */; };
 		0B9A30301E9C9E690091D7B0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */; };
 		0BCE0C1F1EAB97770049A01C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */; };
 		0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C201EABAF780049A01C /* RootTabBarController.swift */; };
@@ -82,6 +83,7 @@
 		0B6C8E261E8F6E0D00D76B4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B9597031ECC6E0A00CA2916 /* MnksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnksViewController.swift; sourceTree = "<group>"; };
 		0B9597051ECC98E800CA2916 /* XxtjViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XxtjViewController.swift; sourceTree = "<group>"; };
+		0B9597071ECCA3B500CA2916 /* WordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0BCDDF3E1E9CB31D003DEB80 /* xxword-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "xxword-Bridging-Header.h"; sourceTree = "<group>"; };
 		0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				0B38C6431ECBE58900C3B140 /* CommentViewController.swift */,
 				0B9597031ECC6E0A00CA2916 /* MnksViewController.swift */,
 				0B9597051ECC98E800CA2916 /* XxtjViewController.swift */,
+				0B9597071ECCA3B500CA2916 /* WordListViewController.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				0BD909CC1EBC886F007467F0 /* ocword.m in Sources */,
 				0B0003781EB60DB100046B3A /* MyWord.swift in Sources */,
 				0B38C6381EC55C4B00C3B140 /* CustomViewController.swift in Sources */,
+				0B9597081ECCA3B500CA2916 /* WordListViewController.swift in Sources */,
 				0B6136591E9F3F3200FF31F2 /* MypbID.swift in Sources */,
 				0BD909D51EC048CC007467F0 /* TipsSwift.swift in Sources */,
 				0BCE0C251EABB2AA0049A01C /* FavorViewController.swift in Sources */,

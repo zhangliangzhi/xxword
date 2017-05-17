@@ -579,7 +579,7 @@ class HomeViewController: UIViewController {
             make.height.equalTo(20)
         }
         lblJtbz.textAlignment = .center
-        lblJtbz.text = "交通标志"
+        lblJtbz.text = "错词一览"
         lblJtbz.textColor = WZ1_COLOR
     }
     
@@ -938,7 +938,8 @@ class HomeViewController: UIViewController {
     }
     // 点击 交通标志
     func callbackJtbz() -> Void {
-        print("jtbz Study")
+//        print("jtbz Study")
+        navigationController?.pushViewController(WordListViewController(), animated: true)
     }
     
 }

@@ -29,7 +29,7 @@ class PlayLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.view.addSubview(tablev)
         tablev.snp.makeConstraints { (make) in
             make.width.equalTo(self.view)
-            make.bottom.equalTo(self.view)
+            make.bottom.equalTo(self.view).offset(-44)
             make.centerX.equalTo(self.view)
             make.top.equalTo(self.view).offset(64+30)
         }
