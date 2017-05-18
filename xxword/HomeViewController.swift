@@ -778,9 +778,35 @@ class HomeViewController: UIViewController {
         appDelegate.window?.rootViewController = StudyTabBarController()
         
     }
-    // 点击 顺序学习
+    // 点击 模拟考试
     func callbackMnks() -> Void {
-        print("mnks Study")
+//        print("mnks Study")
+        let tabbar = ExamTabBarController()
+        tabbar.itype = 8
+        
+        var total = 1000
+        let page = Int((nowGlobalSet?.indexPage)!)
+        if  page == 4 {
+            total = 1004
+        }
+        let startID = page*1000
+        let endID = startID + total
+        // 单词列表
+        var arrIds:[Int] = []
+        for i in startID..<endID {
+            arrIds.append(i)
+        }
+        arrIds.sort(by: { (_, _) -> Bool in
+            arc4random() > arc4random()
+        })
+        
+        for i in 0..<100 {
+            tabbar.arrIds.append(arrIds[i])
+        }
+        tabbar.creatSubViewControllers()
+        // 跳转到自定义 错题界面
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = tabbar
     }
     // 点击 随机练习
     func callbackSjlx() -> Void {

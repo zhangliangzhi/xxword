@@ -1,5 +1,5 @@
 //
-//  CustomCollectionViewCell.swift
+//  ExamCollectionViewCell.swift
 //  xxword
 //
 //  Created by ZhangLiangZhi on 2017/5/5.
@@ -11,7 +11,7 @@ import SnapKit
 import LTMorphingLabel
 import CoreData
 
-class CustomCollectionViewCell: UICollectionViewCell {
+class ExamCollectionViewCell: UICollectionViewCell {
 
     // 在外面的会重复利用, 要在init里面赋值才可以!注意
     var curIndexId = 0  // 序列号
@@ -189,7 +189,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         let selIndex = button.tag - 1
         selTag(selIndex: selIndex)
-        let sv = firstViewController() as! CustomViewController
+        let sv = firstViewController() as! WordExamViewController
         sv.addOneUse(curid: curIndexId, tag: selIndex)
         
         // 插入数据
@@ -226,7 +226,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         HomeViewController.getCoreData()
         if oneWrong.isRight == false {
             // 答错 更新次数
-            sv.setRightWrongCount()
+//            sv.setRightWrongCount()
         }
         
         gClickIndex = Int32(curIndexId)
