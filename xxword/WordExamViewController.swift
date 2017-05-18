@@ -17,7 +17,7 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
     var score = 0
     var startTime:NSDate!
     var useTime = 0
-    var totalTime = 30*60   // 秒
+    var totalTime = 30*60   // 考试时间限制
     
     var rootv:UIView!
     var collectionView:UICollectionView!
@@ -68,12 +68,16 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         colayout.itemSize = CGSize(width: self.view.frame.width, height: self.view.frame.height-93)
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(oneSecond), userInfo: nil, repeats: true)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "提交", style: .plain, target: self, action: #selector(callbackGoCommit))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "提交", style: .plain, target: self, action: #selector(commitBtn))
         self.navigationItem.title = "00:00"
     }
     
     func oneSecond() {
         self.navigationItem.title = getDtimeStr()
+        if useTime >= totalTime {
+            // 时间到提交考试
+            callbackGoCommit()
+        }
     }
     
     func callbackGoCommit() {
@@ -238,7 +242,11 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
     func getDtimeStr() -> String {
         let stime = startTime.timeIntervalSince1970
         let etime = NSDate().timeIntervalSince1970
-        let dtime:Int = Int(etime - stime)
+        useTime = Int(etime - stime)
+        var dtime = totalTime - useTime
+        if dtime <= 0 {
+            dtime = 0
+        }
         var str = ""
         if dtime >= 60 {
             let f:Int = dtime/60
@@ -266,7 +274,7 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         let one = NSEntityDescription.insertNewObject(forEntityName: "ExamList", into: context) as! ExamList
         one.score = Int32(score)
         one.date = NSDate()
-        one.useTime = Int32(dtime)
+        one.useTime = Int32(useTime)
         context.insert(one)
         appDelegate.saveContext()
         HomeViewController.getCoreData()
@@ -274,6 +282,17 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func commitBtn() {
         // 提交答卷
-        
+        let alertController = UIAlertController(title: "提交单词考试",
+                                                message: "您确定要提交单词考试吗？",
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "确定", style: .default, handler: {
+            action in
+//            print("点击了确定")
+            self.callbackGoCommit()
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
