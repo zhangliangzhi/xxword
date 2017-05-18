@@ -23,7 +23,7 @@ class KsxzViewController: UIViewController {
             make.centerY.equalTo(self.view)
             make.centerX.equalTo(self.view)
         }
-        nameLabel.text = "考试说明:\n考试时间为30/45分钟, 共50/100题,\n 时间结束自动提交成绩. 可查看成绩排名."
+        nameLabel.text = "考试说明:\n考试时间为30分钟, 共100题,\n 时间结束自动提交成绩. 可查看成绩排名."
         nameLabel.textColor = SX3_COLOR
         nameLabel.numberOfLines = 0
     }
