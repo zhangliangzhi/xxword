@@ -912,7 +912,7 @@ class HomeViewController: UIViewController {
     // 点击 我的收藏
     func callbackWdsc() -> Void {
 //        print("wdsc Study")
-        if setWrongID.count == 0 {
+        if setFavorID.count == 0 {
             TipsSwift.showCenterWithText("没有收藏的单词", duration: 3)
             return
         }
