@@ -236,12 +236,8 @@ class ExamCollectionViewCell: UICollectionViewCell {
         }
         
         gClickIndex = Int32(curIndexId)
-        // 是否自动跳到下一题
-        if oneWrong.isRight {
-            if (nowGlobalSet?.iskipword)! {
-                sv.goNextWord(nextIdIndex: self.curIndexId+1)
-            }
-        }
+        // 是否自动跳到下一题, 不管对错
+        sv.goNextWord(nextIdIndex: self.curIndexId+1)
         
     }
     

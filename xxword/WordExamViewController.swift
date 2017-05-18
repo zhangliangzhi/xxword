@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 var arrRightWrong:[Int:Int] = [:]
 class WordExamViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -14,6 +15,9 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
     var arrIds:[Int] = []
     var itype = 0   // 1-错误, 2-收藏
     var score = 0
+    var startTime:NSDate!
+    var useTime = 0
+    var totalTime = 30*60   // 秒
     
     var rootv:UIView!
     var collectionView:UICollectionView!
@@ -31,6 +35,7 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(backHome))
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "0分", style: .plain, target: self, action: #selector(showScore))
+        startTime = NSDate()
         
         // 检测设备方向
         NotificationCenter.default.addObserver(self, selector: #selector(receivedRotation), name: .UIDeviceOrientationDidChange, object: nil)
@@ -163,6 +168,8 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func goNextWord(nextIdIndex:Int) -> Void {
         if nextIdIndex >= arrIds.count {
+            // 自动结束考试
+            endStudy()
             return
         }
         collectionView.scrollToItem(at: IndexPath(item: nextIdIndex, section: 0), at: .left, animated: true)
@@ -206,5 +213,45 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         let txt:String = "\(score)" + " 分"
         self.navigationItem.rightBarButtonItem?.title = txt
+    }
+    
+    func getDtimeStr() -> String {
+        let stime = startTime.timeIntervalSince1970
+        let etime = NSDate().timeIntervalSince1970
+        let dtime:Int = Int(etime - stime)
+        var str = ""
+        if dtime >= 60 {
+            let f:Int = dtime/60
+            let m:Int = dtime % 60
+            str = "\(f)" + "分" + "\(m)" + "秒"
+        }else {
+            str = "0分" + "\(dtime)" + "秒"
+        }
+        return str
+    }
+    
+    func endStudy() {
+        let stime = startTime.timeIntervalSince1970
+        let etime = NSDate().timeIntervalSince1970
+        let dtime:Int = Int(etime - stime)
+//        var str = getDtimeStr()
+        
+        var score = 0
+        for one in arrRightWrong {
+            if one.value == 1 {
+                score += 1
+            }
+        }
+        let one = NSEntityDescription.insertNewObject(forEntityName: "ExamList", into: context) as! ExamList
+        one.score = Int32(score)
+        one.date = NSDate()
+        one.useTime = Int32(dtime)
+        context.insert(one)
+        appDelegate.saveContext()
+    }
+    
+    func commitBtn() {
+        // 提交答卷
+        
     }
 }
