@@ -35,11 +35,14 @@ class ExamLogViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.width.equalTo(rootv)
             make.bottom.equalTo(rootv)
             make.centerX.equalTo(rootv)
-            make.top.equalTo(rootv).offset(60)
+            make.top.equalTo(rootv).offset(30)
         }
         tablev.backgroundColor = BG1_COLOR
         tablev.delegate = self
         tablev.dataSource = self
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(delAllLog))
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -136,4 +139,36 @@ class ExamLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
     }
+    
+    func delAllLog() {
+        if arrExamList.count == 0 {
+            TipsSwift.showCenterWithText("没有考试记录可删除", duration: 3)
+            return
+        }
+        for one in arrExamList {
+            context.delete(one)
+        }
+        appDelegate.saveContext()
+        arrExamList = []
+        tablev.reloadData()
+        TipsSwift.showCenterWithText("已清除所有考试记录", duration: 2)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            let one = arrExamList[indexPath.row]
+            context.delete(one)
+            appDelegate.saveContext()
+            arrExamList.remove(at: indexPath.row)
+            tablev.deleteRows(at: [indexPath], with: .fade)
+            TipsSwift.showCenterWithText("成功删除一条学习记录", duration: 2)
+            
+        }
+    }
+    
 }
