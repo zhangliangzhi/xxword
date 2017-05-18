@@ -22,6 +22,7 @@
 		0B46063A1EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4606361EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift */; };
 		0B46063D1EA14FD70071FBEA /* xxword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B46063B1EA14FD70071FBEA /* xxword.xcdatamodeld */; };
 		0B48CB0A1EB8A09800A05E65 /* YdWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48CB091EB8A09800A05E65 /* YdWords.swift */; };
+		0B4F04B41ECDA543004AEE1F /* ExamResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F04B31ECDA543004AEE1F /* ExamResultViewController.swift */; };
 		0B58FB0F1EC3077B006F56AE /* StudySetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B58FB0E1EC3077B006F56AE /* StudySetViewController.swift */; };
 		0B6136551E9EA5DB00FF31F2 /* MyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6136541E9EA5DB00FF31F2 /* MyProtocol.swift */; };
 		0B6136571E9F3A2600FF31F2 /* MyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6136561E9F3A2600FF31F2 /* MyResponse.swift */; };
@@ -76,6 +77,7 @@
 		0B4606361EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+iOS10Additions.swift"; sourceTree = "<group>"; };
 		0B46063C1EA14FD70071FBEA /* xxword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = xxword.xcdatamodel; sourceTree = "<group>"; };
 		0B48CB091EB8A09800A05E65 /* YdWords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YdWords.swift; sourceTree = "<group>"; };
+		0B4F04B31ECDA543004AEE1F /* ExamResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamResultViewController.swift; sourceTree = "<group>"; };
 		0B58FB0E1EC3077B006F56AE /* StudySetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudySetViewController.swift; sourceTree = "<group>"; };
 		0B6136541E9EA5DB00FF31F2 /* MyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProtocol.swift; sourceTree = "<group>"; };
 		0B6136561E9F3A2600FF31F2 /* MyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyResponse.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				0B95970F1ECD574900CA2916 /* ExamTabBarController.swift */,
 				0B9597111ECD5C5600CA2916 /* ExamCollectionViewCell.swift */,
 				0B9597131ECD62C900CA2916 /* ExamWordsViewController.swift */,
+				0B4F04B31ECDA543004AEE1F /* ExamResultViewController.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 			files = (
 				0BD909D31EBCDD98007467F0 /* XxViewController.swift in Sources */,
 				0B4606391EA14FAA0071FBEA /* INSPersistentStoreDescription.swift in Sources */,
+				0B4F04B41ECDA543004AEE1F /* ExamResultViewController.swift in Sources */,
 				0BD604751E9AA04F001F364B /* LoginViewController.swift in Sources */,
 				0BD909D11EBCA4D1007467F0 /* XxCollectionViewCell.swift in Sources */,
 				0B38C6441ECBE58900C3B140 /* CommentViewController.swift in Sources */,
