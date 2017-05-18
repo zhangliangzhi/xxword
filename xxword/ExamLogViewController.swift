@@ -67,7 +67,7 @@ class ExamLogViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.centerY.equalTo(cell)
             make.centerX.equalTo(cell).offset(-15)
         }
-        nameLabel.text = "\(Int(oneData.score))"
+        nameLabel.text = "\(Int(oneData.score))分"
         nameLabel.textColor = SX3_COLOR
         
         // 序号
