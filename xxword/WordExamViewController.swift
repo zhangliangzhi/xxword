@@ -191,11 +191,24 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func goNextWord(nextIdIndex:Int) -> Void {
         if nextIdIndex >= arrIds.count {
-            // 自动结束考试
-            endStudy()
+            // 检查是否自动结束考试
+            checkAutoCommit()
             return
         }
         collectionView.scrollToItem(at: IndexPath(item: nextIdIndex, section: 0), at: .left, animated: true)
+    }
+    
+    func checkAutoCommit() {
+        var autoCommit = true
+        for one in arrRightWrong {
+            if one.value == 0 {
+                autoCommit = false
+                break
+            }
+        }
+        if autoCommit {
+            callbackGoCommit()
+        }
     }
     
     /*
