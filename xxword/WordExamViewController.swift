@@ -248,6 +248,7 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         one.useTime = Int32(dtime)
         context.insert(one)
         appDelegate.saveContext()
+        HomeViewController.getCoreData()
     }
     
     func commitBtn() {
