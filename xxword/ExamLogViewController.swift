@@ -43,6 +43,10 @@ class ExamLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(delAllLog))
         
+        arrExamList.sort { (a, b) -> Bool in
+            a.score > b.score
+        }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -166,9 +170,26 @@ class ExamLogViewController: UIViewController, UITableViewDelegate, UITableViewD
             appDelegate.saveContext()
             arrExamList.remove(at: indexPath.row)
             tablev.deleteRows(at: [indexPath], with: .fade)
-            TipsSwift.showCenterWithText("成功删除一条学习记录", duration: 2)
+            TipsSwift.showCenterWithText("删除一条学习记录", duration: 2)
             
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let one = arrExamList[indexPath.row]
+        let txt = "用时:" + getDtimeStr(dtime: Int(one.useTime))
+        TipsSwift.showCenterWithText(txt, duration: 2)
+    }
+    
+    func getDtimeStr(dtime:Int) -> String {
+        var str = ""
+        if dtime >= 60 {
+            let f:Int = dtime/60
+            let m:Int = dtime % 60
+            str = "\(f)" + "分" + "\(m)" + "秒"
+        }else {
+            str = "0分" + "\(dtime)" + "秒"
+        }
+        return str
+    }
 }

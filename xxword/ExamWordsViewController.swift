@@ -133,22 +133,25 @@ class ExamWordsViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func clickBtn(_ button:UIButton) {
         let tag = button.tag
-        let clickIndexID = Int32(tag)
-        gClickIndex = clickIndexID
+        let curIndexId = Int32(tag)
+        gClickIndex = curIndexId
         if itype == 1 {
-            nowGlobalSet?.curWrongIndex = clickIndexID
+            nowGlobalSet?.curWrongIndex = curIndexId
         }else if itype == 2 {
-            nowGlobalSet?.curFavorIndex = clickIndexID
+            nowGlobalSet?.curFavorIndex = curIndexId
         }
         appDelegate.saveContext()
         
         // 跳转到第一个界面
-        let tabbar = ExamTabBarController()
-        tabbar.itype = itype
-        tabbar.arrIds = arrIds
-        tabbar.creatSubViewControllers()
-        appDelegate.window?.rootViewController?.removeFromParentViewController()
-        appDelegate.window?.rootViewController = tabbar
+//        let tabbar = ExamTabBarController()
+//        tabbar.itype = itype
+//        tabbar.arrIds = arrIds
+//        tabbar.creatSubViewControllers()
+//        appDelegate.window?.rootViewController?.removeFromParentViewController()
+//        appDelegate.window?.rootViewController = tabbar
+        
+        collectionView.scrollToItem(at: IndexPath.init(row: Int(curIndexId), section: 0), at: .centeredVertically, animated: true)
+        self.tabBarController?.selectedIndex = 0
     }
     
     func getCurIndex() -> Int {

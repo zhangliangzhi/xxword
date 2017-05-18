@@ -94,6 +94,8 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         HomeViewController.getCoreData()
+        
+        collectionView.scrollToItem(at: IndexPath(item: Int(gClickIndex), section: 0), at: .left, animated: false)
     }
     
     //通知监听触发的方法
@@ -139,12 +141,13 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         if firstScroll == false {
             firstScroll = true
             let curidIndex = getCurIndex()
-            if curidIndex != 0 {
-                collectionView.scrollToItem(at: IndexPath(item: curidIndex, section: 0), at: .left, animated: false)
-                TipsSwift.showBottomWithText("跳转单词位置", duration: 2)
-                
-            }
+//            if curidIndex != 0 {
+//                collectionView.scrollToItem(at: IndexPath(item: curidIndex, section: 0), at: .left, animated: false)
+//                TipsSwift.showBottomWithText("跳转单词位置", duration: 2)
+//                
+//            }
         }
+        
         
         if arrTagIndex[indexPath.row] == nil {
             // 没点击过
@@ -168,6 +171,7 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         curwid = wid
         HomeViewController.getCoreData()
+        gClickIndex = Int32(indexPath.row)
     }
     
     
