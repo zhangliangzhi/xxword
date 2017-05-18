@@ -17,6 +17,7 @@ var arrGlobalSet:[CurGlobalSet] = []
 var arrStudyWord:[StudyWord] = []
 var arrMyErrorID:[MyErrorID] = []
 var arrMyFavorID:[MyFavorID] = []
+var arrExamList:[ExamList] = []
 var setFavorID = Set<Int>()
 var setWrongID = Set<Int>()
 var setDoneId = Set<Int>()
@@ -398,7 +399,7 @@ class HomeViewController: UIViewController {
             make.height.equalTo(20)
         }
         lblKsxz.textAlignment = .center
-        lblKsxz.text = "考核说明"
+        lblKsxz.text = "考试说明"
         lblKsxz.textColor = WZ1_COLOR
         lblKsxz.font = UIFont.systemFont(ofSize: 18)
         
@@ -629,6 +630,7 @@ class HomeViewController: UIViewController {
         arrGlobalSet = []
         arrMyErrorID = []
         arrMyFavorID = []
+        arrExamList = []
         
         do {
             arrStudyWord = try context.fetch(StudyWord.fetchRequest())
@@ -652,6 +654,12 @@ class HomeViewController: UIViewController {
             arrMyFavorID = try context.fetch(MyFavorID.fetchRequest())
         }catch {
             print("MyFavorID coreData error")
+        }
+        
+        do {
+            arrExamList = try context.fetch(ExamList.fetchRequest())
+        }catch {
+            print("ExamList coreData error")
         }
         
         if arrGlobalSet.count > 0 {
@@ -871,7 +879,8 @@ class HomeViewController: UIViewController {
     }
     // 点击 考试记录
     func callbackKsjl() -> Void {
-        print("ksjl Study")
+//        print("ksjl Study")
+        navigationController?.pushViewController(ExamLogViewController(), animated: true)
     }
     // 点击 成绩排行
     func callbackCjph() -> Void {
