@@ -181,7 +181,7 @@ class HomeViewController: UIViewController {
             make.height.equalTo(20)
         }
         lblMnks.textAlignment = .center
-        lblMnks.text = "模拟考试"
+        lblMnks.text = "单词考试"
         lblMnks.textColor = WZ1_COLOR
         lblMnks.font = UIFont.systemFont(ofSize: 20)
         
@@ -398,7 +398,7 @@ class HomeViewController: UIViewController {
             make.height.equalTo(20)
         }
         lblKsxz.textAlignment = .center
-        lblKsxz.text = "考试须知"
+        lblKsxz.text = "考核说明"
         lblKsxz.textColor = WZ1_COLOR
         lblKsxz.font = UIFont.systemFont(ofSize: 18)
         
@@ -562,13 +562,13 @@ class HomeViewController: UIViewController {
         }
         btnJtbz.backgroundColor = BG2_COLOR
         btnJtbz.addTarget(self, action: #selector(callbackJtbz), for: .touchUpInside)
-        let imgJtbz = UIImageView(image: UIImage(named: "ijtbz"))
+        let imgJtbz = UIImageView(image: UIImage(named: "wrong_list"))
         btnJtbz.addSubview(imgJtbz)
         imgJtbz.snp.makeConstraints { (make) in
             make.centerX.equalTo(btnJtbz)
             make.centerY.equalTo(btnJtbz).offset(-15)
-            make.width.equalTo(btnJtbz.snp.width).multipliedBy(0.3)
-            make.height.equalTo(btnJtbz.snp.width).multipliedBy(0.3)
+            make.width.equalTo(btnJtbz.snp.width).multipliedBy(0.35)
+            make.height.equalTo(btnJtbz.snp.width).multipliedBy(0.35)
         }
         let lblJtbz = UILabel()
         btnJtbz.addSubview(lblJtbz)
@@ -879,7 +879,8 @@ class HomeViewController: UIViewController {
     }
     // 点击 考试须知
     func callbackKsxz() -> Void {
-        print("ksxz Study")
+//        print("ksxz Study")
+        navigationController?.pushViewController(KsxzViewController(), animated: true)
     }
     // 点击 摇一摇
     func callbackYyy() -> Void {

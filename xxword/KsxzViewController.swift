@@ -1,7 +1,7 @@
 //
 //  KsxzViewController.swift
 //  xxword
-//
+//  考试须知
 //  Created by ZhangLiangZhi on 2017/5/18.
 //  Copyright © 2017年 xigk. All rights reserved.
 //
@@ -12,24 +12,21 @@ class KsxzViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.view.backgroundColor = BG1_COLOR
+        self.automaticallyAdjustsScrollViewInsets = false
+        self.title = "考核说明"
+        
+        let nameLabel = UILabel()
+        self.view.addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.view)
+            make.centerX.equalTo(self.view)
+        }
+        nameLabel.text = "考核说明"
+        nameLabel.textColor = SX3_COLOR
+        nameLabel.numberOfLines = 0
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
