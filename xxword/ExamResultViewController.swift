@@ -59,10 +59,13 @@ class ExamResultViewController: UIViewController {
         }
         nameLabel.text = getDtimeStr()
         nameLabel.textColor = SX3_COLOR
+        nameLabel.font = UIFont.systemFont(ofSize: 22)
         
         
         let buttonOK = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Info)
         rootv.addSubview(buttonOK)
+        buttonOK.setTitle("OK", for: .normal)
+        buttonOK.addTarget(self, action: #selector(goBack), for: .touchUpInside)
     }
 
     func getDtimeStr() -> String {
@@ -70,9 +73,11 @@ class ExamResultViewController: UIViewController {
         if dtime >= 60 {
             let f:Int = dtime/60
             let m:Int = dtime % 60
-            str = "\(f)" + ":" + "\(m)"
+//            str = "\(f)" + ":" + "\(m)"
+            str = String.init(format: "%02d:%02d", arguments: [f, m])
         }else {
-            str = "00:" + "\(dtime)"
+            str = String.init(format: "%02d:%02d", arguments: [0, dtime])
+//            str = "00:" + "\(Int(dtime))"
         }
         return str
     }
@@ -93,4 +98,8 @@ class ExamResultViewController: UIViewController {
     }
     */
 
+    func goBack() {
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = RootTabBarController()
+    }
 }

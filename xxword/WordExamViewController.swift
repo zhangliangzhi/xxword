@@ -26,6 +26,7 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
     var arrTagIndex:[Int:Int] = [:]
     var newImage:UIImageView!
     var curwid = 0
+    var timer:Timer!
     
     
     override func viewDidLoad() {
@@ -66,8 +67,26 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         colayout.itemSize = self.view.frame.size
         colayout.itemSize = CGSize(width: self.view.frame.width, height: self.view.frame.height-93)
         
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(oneSecond), userInfo: nil, repeats: true)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "提交", style: .plain, target: self, action: #selector(callbackGoCommit))
+        self.navigationItem.title = "00:00"
     }
     
+    func oneSecond() {
+        self.navigationItem.title = getDtimeStr()
+    }
+    
+    func callbackGoCommit() {
+        endStudy()
+        let examv = ExamResultViewController()
+        examv.dtime = useTime
+        examv.score = score
+        timer.invalidate()
+        timer = nil
+        
+        appDelegate.window?.rootViewController?.removeFromParentViewController()
+        appDelegate.window?.rootViewController = examv
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         HomeViewController.getCoreData()
@@ -140,7 +159,7 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         // 将要显示的界面
         let wid = arrIds[indexPath.row]
         //        self.title = gWord[wid]
-        self.navigationItem.title = gWord[wid]
+//        self.navigationItem.title = gWord[wid]
         self.tabBarItem.title = "\(indexPath.row+1)" + "/" + "\(arrIds.count)"
         
         curwid = wid
@@ -205,13 +224,14 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func showScore() {
-        var score = 0
+        var s = 0
         for one in arrRightWrong {
             if one.value == 1 {
-                score += 1
+                s += 1
             }
         }
-        let txt:String = "\(score)" + " 分"
+        score = s
+        let txt:String = "\(s)" + " 分"
         self.navigationItem.rightBarButtonItem?.title = txt
     }
     
@@ -234,6 +254,7 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         let stime = startTime.timeIntervalSince1970
         let etime = NSDate().timeIntervalSince1970
         let dtime:Int = Int(etime - stime)
+        useTime = dtime
 //        var str = getDtimeStr()
         
         var score = 0
