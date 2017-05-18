@@ -39,6 +39,7 @@
 		0B95970E1ECD570300CA2916 /* WordExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B95970D1ECD570300CA2916 /* WordExamViewController.swift */; };
 		0B9597101ECD574900CA2916 /* ExamTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B95970F1ECD574900CA2916 /* ExamTabBarController.swift */; };
 		0B9597121ECD5C5600CA2916 /* ExamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9597111ECD5C5600CA2916 /* ExamCollectionViewCell.swift */; };
+		0B9597141ECD62C900CA2916 /* ExamWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9597131ECD62C900CA2916 /* ExamWordsViewController.swift */; };
 		0B9A30301E9C9E690091D7B0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */; };
 		0BCE0C1F1EAB97770049A01C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */; };
 		0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C201EABAF780049A01C /* RootTabBarController.swift */; };
@@ -94,6 +95,7 @@
 		0B95970D1ECD570300CA2916 /* WordExamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordExamViewController.swift; sourceTree = "<group>"; };
 		0B95970F1ECD574900CA2916 /* ExamTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamTabBarController.swift; sourceTree = "<group>"; };
 		0B9597111ECD5C5600CA2916 /* ExamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B9597131ECD62C900CA2916 /* ExamWordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamWordsViewController.swift; sourceTree = "<group>"; };
 		0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0BCDDF3E1E9CB31D003DEB80 /* xxword-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "xxword-Bridging-Header.h"; sourceTree = "<group>"; };
 		0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				0B95970D1ECD570300CA2916 /* WordExamViewController.swift */,
 				0B95970F1ECD574900CA2916 /* ExamTabBarController.swift */,
 				0B9597111ECD5C5600CA2916 /* ExamCollectionViewCell.swift */,
+				0B9597131ECD62C900CA2916 /* ExamWordsViewController.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				0BD909D91EC3005B007467F0 /* ShouCangViewController.swift in Sources */,
 				0B6C8E1D1E8F6E0D00D76B4E /* ViewController.swift in Sources */,
 				0B95970E1ECD570300CA2916 /* WordExamViewController.swift in Sources */,
+				0B9597141ECD62C900CA2916 /* ExamWordsViewController.swift in Sources */,
 				0B95970A1ECD2B9A00CA2916 /* KsxzViewController.swift in Sources */,
 				0BCE0C231EABB22F0049A01C /* ShopViewController.swift in Sources */,
 				0BD6047A1E9BA09F001F364B /* BootstrapButton.swift in Sources */,

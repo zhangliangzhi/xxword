@@ -31,7 +31,7 @@ class ExamTabBarController: UITabBarController {
         let item1 : UITabBarItem = UITabBarItem (title: "1/1", image: UIImage(named: "fangkuai"), selectedImage: UIImage(named: "fangkuai"))
         v1.tabBarItem = item1
         
-        let v2 = CustomWordsViewController()
+        let v2 = ExamWordsViewController()
         let t2 = "单词列表"
         v2.arrIds = arrIds
         v2.itype = itype

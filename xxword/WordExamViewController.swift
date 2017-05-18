@@ -8,6 +8,7 @@
 
 import UIKit
 
+var arrRightWrong:[Int:Int] = [:]
 class WordExamViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     var arrIds:[Int] = []
@@ -36,6 +37,11 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
         
+        arrRightWrong = [:]
+        for i in 0..<100 {
+            // 0未做, 1正确, 2错误
+            arrRightWrong[i] = 0
+        }
         collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: colayout)
         self.view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
@@ -148,6 +154,13 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         
     }
+    
+    func setRightWrong(curid:Int, type:Int) -> Void {
+        // 0未做, 1正确, 2错误
+        arrRightWrong[curid] = type
+        showScore()
+    }
+    
     func goNextWord(nextIdIndex:Int) -> Void {
         if nextIdIndex >= arrIds.count {
             return
@@ -185,7 +198,12 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func showScore() {
-        let score = 0
+        var score = 0
+        for one in arrRightWrong {
+            if one.value == 1 {
+                score += 1
+            }
+        }
         let txt:String = "\(score)" + " 分"
         self.navigationItem.rightBarButtonItem?.title = txt
     }

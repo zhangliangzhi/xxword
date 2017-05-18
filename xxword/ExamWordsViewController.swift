@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ExamWordsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var arrIds:[Int] = []
     var itype = 0   // 1-错误, 2-收藏
@@ -103,7 +103,7 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
         }
         
         curIndexId = getCurIndex()
-        let wstatue = getWordStatue(wid: wid)
+        let wstatue = getWordStatue(indexId: indexPath.row)
         if wstatue == 0 {
             btn.backgroundColor = INFO_COLOR
         }else if wstatue == 1{
@@ -112,7 +112,7 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
             btn.backgroundColor = DANG_COLOR
         }
         
-        btn.setTitle("\(wid+1)", for: .normal)
+        btn.setTitle("\(indexPath.row+1)", for: .normal)
         btn.tintColor = UIColor.white
         btn.layer.cornerRadius = 5
         if curIndexId == indexPath.row {
@@ -143,7 +143,7 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
         appDelegate.saveContext()
         
         // 跳转到第一个界面
-        let tabbar = CustomTabBarController()
+        let tabbar = ExamTabBarController()
         tabbar.itype = itype
         tabbar.arrIds = arrIds
         tabbar.creatSubViewControllers()
@@ -170,21 +170,16 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
         return curidIndex
     }
     
-    func getWordStatue(wid:Int) -> Int {
+    func getWordStatue(indexId:Int) -> Int {
         // 未做题
-        var ret = 0
-        for one in arrMyErrorID {
-            if one.wid == Int32(wid) {
-                if one.isRight {
-                    // 对
-                    ret = 1
-                }else{
-                    // 错
-                    ret = 2
-                    break
-                }
-            }
-        }
+//        var ret = 0
+//        for one in arrRightWrong {
+//            if one.key == indexId {
+//                ret = one.value
+//                break
+//            }
+//        }
+        let ret:Int = arrRightWrong[indexId]!
         return ret
     }
     

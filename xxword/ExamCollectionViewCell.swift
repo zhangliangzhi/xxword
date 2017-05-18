@@ -187,6 +187,7 @@ class ExamCollectionViewCell: UICollectionViewCell {
             return
         }
         
+        var retStatue = 0
         let selIndex = button.tag - 1
         selTag(selIndex: selIndex)
         let sv = firstViewController() as! WordExamViewController
@@ -202,11 +203,16 @@ class ExamCollectionViewCell: UICollectionViewCell {
         oneWrong.date = NSDate()
         if selIndex == rightIndex {
             oneWrong.isRight = true
+            retStatue = 1
             // 正确的话自动跳转到下一页去
         }else{
             oneWrong.isRight = false
+            retStatue = 2
         }
         context.insert(oneWrong)
+        
+        // 0未做, 1正确, 2错误
+        sv.setRightWrong(curid: curIndexId, type: retStatue)
         // 保持学习到的当前序号
         var nextIndexId = curIndexId + 1
         if itype == 1 {
