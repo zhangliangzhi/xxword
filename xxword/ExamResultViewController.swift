@@ -41,7 +41,13 @@ class ExamResultViewController: UIViewController {
             make.edges.equalTo(self.view)
         }
         
-        let bg2 = UIImageView(image: UIImage(named: "t_perfect"))
+        var bgname = "t_fail"
+        if score > 90 {
+            bgname = "t_perfect"
+        }else if score > 60 {
+            bgname = "t_sucesse"
+        }
+        let bg2 = UIImageView(image: UIImage(named: bgname))
         rootv.addSubview(bg2)
         bg2.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.view)
@@ -50,22 +56,39 @@ class ExamResultViewController: UIViewController {
             make.height.equalTo(self.view.snp.width).multipliedBy(0.6)
         }
         
-        // 分数
+        // 时间
         let nameLabel = UILabel()
         bg2.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(bg2)
+            make.centerY.equalTo(bg2).offset(-10)
             make.centerX.equalTo(bg2)
         }
         nameLabel.text = getDtimeStr()
         nameLabel.textColor = SX3_COLOR
         nameLabel.font = UIFont.systemFont(ofSize: 22)
         
+        // 分数
+        let scoreLabel = UILabel()
+        bg2.addSubview(scoreLabel)
+        scoreLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(bg2).offset(30)
+            make.centerX.equalTo(bg2)
+        }
+        scoreLabel.text = "\(Int(score))分"
+        scoreLabel.textColor = SX3_COLOR
+        scoreLabel.font = UIFont.systemFont(ofSize: 33)
         
-        let buttonOK = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Info)
+        
+        let buttonOK = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Warning)
         rootv.addSubview(buttonOK)
-        buttonOK.setTitle("OK", for: .normal)
+        buttonOK.setTitle("确定", for: .normal)
         buttonOK.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        buttonOK.snp.makeConstraints { (make) in
+            make.width.equalTo(self.view).multipliedBy(0.618)
+            make.centerX.equalTo(self.view)
+            make.top.equalTo(bg2.snp.bottom).offset(10)
+            make.height.equalTo(40)
+        }
     }
 
     func getDtimeStr() -> String {
