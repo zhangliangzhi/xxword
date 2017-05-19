@@ -60,23 +60,33 @@ class ExamResultViewController: UIViewController {
         let nameLabel = UILabel()
         bg2.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(bg2).offset(-10)
+            make.centerY.equalTo(bg2).offset(45)
             make.centerX.equalTo(bg2)
         }
-        nameLabel.text = getDtimeStr()
-        nameLabel.textColor = SX3_COLOR
-        nameLabel.font = UIFont.systemFont(ofSize: 22)
+        nameLabel.text = "用时: " + getDtimeStr()
+        nameLabel.textColor = UIColor.white
+        nameLabel.font = UIFont.systemFont(ofSize: 20)
         
         // 分数
         let scoreLabel = UILabel()
         bg2.addSubview(scoreLabel)
         scoreLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(bg2).offset(30)
+            make.centerY.equalTo(bg2).offset(3)
             make.centerX.equalTo(bg2)
         }
-        scoreLabel.text = "\(Int(score))分"
-        scoreLabel.textColor = SX3_COLOR
-        scoreLabel.font = UIFont.systemFont(ofSize: 33)
+        scoreLabel.text = "\(Int(score))"
+        scoreLabel.textColor = UIColor.white
+        scoreLabel.font = UIFont.systemFont(ofSize: 60)
+        
+        let fenLabel = UILabel()
+        bg2.addSubview(fenLabel)
+        fenLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(scoreLabel.snp.top).offset(25)
+            make.left.equalTo(scoreLabel.snp.right).offset(3)
+        }
+        fenLabel.text = "分"
+        fenLabel.textColor = UIColor.white
+        fenLabel.font = UIFont.systemFont(ofSize: 22)
         
         
         let buttonOK = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Warning)
