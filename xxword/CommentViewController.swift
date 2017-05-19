@@ -1,7 +1,7 @@
 //
 //  CommentViewController.swift
 //  xxword
-//
+//  评论单词
 //  Created by ZhangLiangZhi on 2017/5/17.
 //  Copyright © 2017年 xigk. All rights reserved.
 //
