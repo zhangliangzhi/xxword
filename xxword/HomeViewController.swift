@@ -96,7 +96,7 @@ class HomeViewController: UIViewController {
         firstOpenAPP()
 //        getUserInfo()
         
-
+        changeTexValue()
     }
     
     func initHomeView() {
@@ -633,6 +633,7 @@ class HomeViewController: UIViewController {
         arrMyFavorID = []
         arrExamList = []
         
+        arrMyFavorID.removeAll()
         do {
             arrStudyWord = try context.fetch(StudyWord.fetchRequest())
         }catch {
@@ -656,7 +657,7 @@ class HomeViewController: UIViewController {
         }catch {
             print("MyFavorID coreData error")
         }
-        
+        print(arrMyFavorID.count)
         do {
             arrExamList = try context.fetch(ExamList.fetchRequest())
         }catch {

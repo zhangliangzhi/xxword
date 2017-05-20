@@ -42,7 +42,8 @@ class RootTabBarController: UITabBarController {
         
         let n1 = UINavigationController(rootViewController: v1)
         let n2 = UINavigationController(rootViewController: v2)
-        let tabArray = [n1, n2, v3, v4, v5]
+        let n4 = UINavigationController(rootViewController: v4)
+        let tabArray = [n1, n2, v3, n4, v5]
         self.viewControllers = tabArray
     }
 }

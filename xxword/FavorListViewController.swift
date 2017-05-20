@@ -67,6 +67,7 @@ class FavorListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         getData()
+        
         tablev.reloadData()
     }
     
@@ -204,22 +205,29 @@ class FavorListViewController: UIViewController, UITableViewDelegate, UITableVie
         wtype = segment.selectedSegmentIndex
         if wtype == 0 {
             otherTitleLabel.text = "单词序号"
+        }else if wtype == 1{
+            otherTitleLabel.text = "收藏次数"
+        }else if wtype == 2 {
+            otherTitleLabel.text = "收藏时间"
+        }
+        sortData()
+        tablev.reloadData()
+    }
+    
+    func sortData() {
+        if wtype == 0 {
             arrData.sort(by: { (a, b) -> Bool in
                 a.index < b.index
             })
         }else if wtype == 1{
-            otherTitleLabel.text = "收藏次数"
             arrData.sort(by: { (a, b) -> Bool in
                 a.count > b.count
             })
         }else if wtype == 2 {
-            otherTitleLabel.text = "收藏时间"
             arrData.sort(by: { (a, b) -> Bool in
                 a.timeStr > b.timeStr
             })
         }
-        
-        tablev.reloadData()
     }
     
     func getData() {
@@ -255,6 +263,7 @@ class FavorListViewController: UIViewController, UITableViewDelegate, UITableVie
             let da = IdCount(wid: wid, count: count, index: i, timeStr:timeStr)
             arrData.append(da)
         }
+        sortData()
     }
     
     func goStudy() {
@@ -269,6 +278,30 @@ class FavorListViewController: UIViewController, UITableViewDelegate, UITableVie
         // 跳转到自定义 错题界面
         appDelegate.window?.rootViewController?.removeFromParentViewController()
         appDelegate.window?.rootViewController = tabbar
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let wid:Int = arrData[indexPath.row].wid
+        let word:String = gWord[wid]
+        if editingStyle == .delete {
+            for i in 0..<arrMyFavorID.count {
+                let one = arrMyFavorID[i]
+                if one.wid == Int32(wid) {
+                    context.delete(one)
+                }
+            }
+            appDelegate.saveContext()
+            HomeViewController.getCoreData()
+            
+            arrData.remove(at: indexPath.row)
+            tablev.deleteRows(at: [indexPath], with: .fade)
+            TipsSwift.showCenterWithText("已删除收藏单词:" + word, duration: 2)
+            
+        }
     }
     
 }
