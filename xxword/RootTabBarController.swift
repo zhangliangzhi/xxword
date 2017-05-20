@@ -31,7 +31,8 @@ class RootTabBarController: UITabBarController {
         let item3 : UITabBarItem = UITabBarItem (title: "交流", image: UIImage(named: "message"), selectedImage: UIImage(named: "message_1"))
         v3.tabBarItem = item3
 
-        let v4 = FavorViewController()
+//        let v4 = FavorViewController()
+        let v4 = FavorListViewController()
         let item4 : UITabBarItem = UITabBarItem (title: "收藏", image: UIImage(named: "favor"), selectedImage: UIImage(named: "favor_1"))
         v4.tabBarItem = item4
         

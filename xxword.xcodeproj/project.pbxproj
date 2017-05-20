@@ -42,6 +42,7 @@
 		0B9597121ECD5C5600CA2916 /* ExamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9597111ECD5C5600CA2916 /* ExamCollectionViewCell.swift */; };
 		0B9597141ECD62C900CA2916 /* ExamWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9597131ECD62C900CA2916 /* ExamWordsViewController.swift */; };
 		0B9A30301E9C9E690091D7B0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */; };
+		0BA4F0431ED0529D0044680E /* FavorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4F0421ED0529D0044680E /* FavorListViewController.swift */; };
 		0BCE0C1F1EAB97770049A01C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */; };
 		0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C201EABAF780049A01C /* RootTabBarController.swift */; };
 		0BCE0C231EABB22F0049A01C /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C221EABB22F0049A01C /* ShopViewController.swift */; };
@@ -99,6 +100,7 @@
 		0B9597111ECD5C5600CA2916 /* ExamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B9597131ECD62C900CA2916 /* ExamWordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamWordsViewController.swift; sourceTree = "<group>"; };
 		0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0BA4F0421ED0529D0044680E /* FavorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorListViewController.swift; sourceTree = "<group>"; };
 		0BCDDF3E1E9CB31D003DEB80 /* xxword-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "xxword-Bridging-Header.h"; sourceTree = "<group>"; };
 		0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0BCE0C201EABAF780049A01C /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				0B9597111ECD5C5600CA2916 /* ExamCollectionViewCell.swift */,
 				0B9597131ECD62C900CA2916 /* ExamWordsViewController.swift */,
 				0B4F04B31ECDA543004AEE1F /* ExamResultViewController.swift */,
+				0BA4F0421ED0529D0044680E /* FavorListViewController.swift */,
 			);
 			path = xxword;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				0BD909D51EC048CC007467F0 /* TipsSwift.swift in Sources */,
 				0BCE0C251EABB2AA0049A01C /* FavorViewController.swift in Sources */,
 				0B38C6361EC4D55F00C3B140 /* PlayLogViewController.swift in Sources */,
+				0BA4F0431ED0529D0044680E /* FavorListViewController.swift in Sources */,
 				0B46063D1EA14FD70071FBEA /* xxword.xcdatamodeld in Sources */,
 				0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */,
 				0BD909D71EC0A835007467F0 /* WordsViewController.swift in Sources */,

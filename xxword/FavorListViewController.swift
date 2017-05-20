@@ -1,14 +1,14 @@
 //
-//  WordListViewController.swift
+//  FavorListViewController.swift
 //  xxword
-//  错词一览
-//  Created by ZhangLiangZhi on 2017/5/17.
+//  收藏
+//  Created by ZhangLiangZhi on 2017/5/20.
 //  Copyright © 2017年 xigk. All rights reserved.
 //
 
 import UIKit
 
-class WordListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FavorListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var rootv: UIView!
     var tablev: UITableView!
     var arrData:[IdCount] = []
@@ -20,7 +20,8 @@ class WordListViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.view.backgroundColor = BG1_COLOR
         self.automaticallyAdjustsScrollViewInsets = false
-        self.title = "错词一览"
+//        self.title = "收藏单词"
+        self.navigationItem.title = "收藏单词"
         
         rootv = UIView()
         self.view.addSubview(rootv)
@@ -56,7 +57,7 @@ class WordListViewController: UIViewController, UITableViewDelegate, UITableView
             make.centerX.equalTo(rootv)
             make.bottom.equalTo(rootv)
         }
-        btngoStudy.setTitle("复习错词", for: .normal)
+        btngoStudy.setTitle("复习收藏单词", for: .normal)
         btngoStudy.addTarget(self, action: #selector(goStudy), for: .touchUpInside)
     }
 
@@ -146,7 +147,7 @@ class WordListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func addHeadV() {
-        let segments = ["单词序号", "错误次数", "学习时间"]
+        let segments = ["单词序号", "收藏次数", "收藏时间"]
         let seg = UISegmentedControl(items: segments)
         self.view.addSubview(seg)
         seg.snp.makeConstraints { (make) in
@@ -155,7 +156,7 @@ class WordListViewController: UIViewController, UITableViewDelegate, UITableView
             make.height.equalTo(30)
             make.width.equalTo(self.view)
         }
-        seg.selectedSegmentIndex = 0
+        seg.selectedSegmentIndex = wtype
         seg.addTarget(self, action: #selector(changeSegment(_:)), for: .valueChanged)
         
         // 字段名字
@@ -207,12 +208,12 @@ class WordListViewController: UIViewController, UITableViewDelegate, UITableView
                 a.index < b.index
             })
         }else if wtype == 1{
-            otherTitleLabel.text = "错误次数"
+            otherTitleLabel.text = "收藏次数"
             arrData.sort(by: { (a, b) -> Bool in
                 a.count > b.count
             })
         }else if wtype == 2 {
-            otherTitleLabel.text = "学习时间"
+            otherTitleLabel.text = "收藏时间"
             arrData.sort(by: { (a, b) -> Bool in
                 a.timeStr > b.timeStr
             })
@@ -224,14 +225,14 @@ class WordListViewController: UIViewController, UITableViewDelegate, UITableView
     func getData() {
         arrData = []
         var arrIds:[Int] = []
-        for one in setWrongID {
+        for one in setFavorID {
             arrIds.append(one)
         }
         arrIds.sort(by: {$0<$1})
         
-        var arrAll:[MyErrorID] = []
-        for one in arrMyErrorID {
-            if (one.indexPage == nowGlobalSet?.indexPage) && one.isRight == false {
+        var arrAll:[MyFavorID] = []
+        for one in arrMyFavorID {
+            if (one.indexPage == nowGlobalSet?.indexPage)  {
                 arrAll.append(one)
             }
         }
@@ -262,7 +263,7 @@ class WordListViewController: UIViewController, UITableViewDelegate, UITableView
             arrIds.append(one.wid)
         }
         let tabbar = CustomTabBarController()
-        tabbar.itype = 7
+        tabbar.itype = 9
         tabbar.arrIds = arrIds
         tabbar.creatSubViewControllers()
         // 跳转到自定义 错题界面
