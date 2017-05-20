@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+
 
 class CommentViewController: UIViewController {
 
@@ -17,23 +19,25 @@ class CommentViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = BG1_COLOR
         
-        // Do any additional setup after loading the view.
+        getNetComment()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        getNetComment()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func getNetComment() {
+        Alamofire.request("").responseString { (resp) in
+            if resp.result.isFailure {
+                TipsSwift.showCenterWithText("没有网络无法获取评论")
+                return
+            }
+            
+        }
     }
-    */
-
+    
+    
 }

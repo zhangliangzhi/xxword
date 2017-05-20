@@ -27,6 +27,7 @@ var gClickIndex:Int32 = 0 // 临时点击的值,没编号itype的
 
 let gWord = ocGetWord() as! [String]
 let gDetail = ocGetDetail() as! [[String]]
+let gKey = ocGetKey() as! [String]
 
 class HomeViewController: UIViewController {
 
