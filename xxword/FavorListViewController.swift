@@ -268,7 +268,7 @@ class FavorListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func goStudy() {
         if arrData.count == 0 {
-            TipsSwift.showCenterWithText("没有收藏的单词:" + word, duration: 2)
+            TipsSwift.showCenterWithText("没有收藏的单词:", duration: 2)
             return
         }
         var arrIds:[Int] = []
