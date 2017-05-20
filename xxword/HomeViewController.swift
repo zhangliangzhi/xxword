@@ -657,7 +657,7 @@ class HomeViewController: UIViewController {
         }catch {
             print("MyFavorID coreData error")
         }
-        print(arrMyFavorID.count)
+        
         do {
             arrExamList = try context.fetch(ExamList.fetchRequest())
         }catch {
