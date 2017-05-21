@@ -46,8 +46,8 @@ class MeViewController: UIViewController {
             make.centerX.equalTo(rootv)
             make.bottom.equalTo(rootv).offset(-60)
         }
-        labelIcon.text = "不上培训班 爱上玩单词"
-        labelIcon.textColor = WZ1_COLOR
+        labelIcon.text = "不上培训班, 爱上玩单词"
+        labelIcon.textColor = WARN_COLOR
         
         let outIconButton = UIButton(type: .system)
         outIconButton.setBackgroundImage(UIImage(named: "icon"), for: .normal)
@@ -147,7 +147,7 @@ class MeViewController: UIViewController {
     }
     
     func btnGoVip() {
-        TipsSwift.showCenterWithText("订购VIP会员\n无限制使用[象形单词]app", duration: 3)
+        TipsSwift.showCenterWithText("订购VIP会员\n可无限制使用[象形单词]app", duration: 3)
     }
     
     func btnGoIcon() {
