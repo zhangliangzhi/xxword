@@ -738,7 +738,7 @@ class HomeViewController: UIViewController {
         
         if strToken == "" {
             // 游客注册 register2
-            self.view.makeToastActivity(.center)
+//            self.view.makeToastActivity(.center)
             let url = rootUrl + "register2.php"
             Alamofire.request(url).responseString(completionHandler: { (response) in
                 if response.result.isSuccess {
@@ -752,11 +752,11 @@ class HomeViewController: UIViewController {
                 }else {
                     print("get protocol fail")
                 }
-                self.view.hideToastActivity()
+//                self.view.hideToastActivity()
             })
         } else if nowGlobalSet?.phone == "" {
             // 游客登录
-            self.view.makeToastActivity(.center)
+//            self.view.makeToastActivity(.center)
             let url = rootUrl + "login2.php"
             Alamofire.request(url, method: .get, parameters: ["token": strToken]).responseString { (response) in
                 if response.result.isSuccess {
@@ -766,11 +766,11 @@ class HomeViewController: UIViewController {
                 }else {
                     print("get protocol fail")
                 }
-                self.view.hideToastActivity()
+//                self.view.hideToastActivity()
             }
         } else {
             // 手机登录 use phone login
-            self.view.makeToastActivity(.center)
+//            self.view.makeToastActivity(.center)
             let url = rootUrl + "login1.php"
             Alamofire.request(url, method: .get, parameters: ["phone": strNum, "pwd": strPwd]).responseString { (response) in
                 if response.result.isSuccess {
@@ -779,7 +779,7 @@ class HomeViewController: UIViewController {
                 }else {
                     print("get protocol fail")
                 }
-                self.view.hideToastActivity()
+//                self.view.hideToastActivity()
             }
         }
     }
