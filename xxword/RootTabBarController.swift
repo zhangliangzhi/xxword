@@ -36,14 +36,16 @@ class RootTabBarController: UITabBarController {
         let item4 : UITabBarItem = UITabBarItem (title: "收藏", image: UIImage(named: "favor"), selectedImage: UIImage(named: "favor_1"))
         v4.tabBarItem = item4
         
-        let v5 = FavorViewController()
+        
+        let v5 = MeViewController()
         let item5 : UITabBarItem = UITabBarItem (title: "我的", image: UIImage(named: "me"), selectedImage: UIImage(named: "me_1"))
         v5.tabBarItem = item5
         
         let n1 = UINavigationController(rootViewController: v1)
         let n2 = UINavigationController(rootViewController: v2)
         let n4 = UINavigationController(rootViewController: v4)
-        let tabArray = [n1, n2, v3, n4, v5]
+        let n5 = UINavigationController(rootViewController: v5)
+        let tabArray = [n1, n2, v3, n4, n5]
         self.viewControllers = tabArray
     }
 }

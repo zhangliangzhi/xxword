@@ -10,26 +10,31 @@ import UIKit
 
 class MeViewController: UIViewController {
 
+    var rootv: UIView!
+    var nickName:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.view.backgroundColor = BG1_COLOR
+        self.title = "我的账号"
+        
+        rootv = UIView()
+        self.view.addSubview(rootv)
+        rootv.snp.makeConstraints { (make) in
+            make.width.equalTo(self.view)
+            make.centerX.equalTo(self.view)
+            make.top.equalTo(self.view).offset(64)
+            make.bottom.equalTo(self.view)
+        }
+        
+        initUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
-    */
-
+    
+    func initUI() {
+        
+    }
 }

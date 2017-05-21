@@ -14,6 +14,7 @@ class CommentViewController: UIViewController {
 
     var rootV: UIView!
     var word: String!
+    let url = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
