@@ -129,6 +129,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         outLoginButton.setTitle("立即注册", for: .normal)
         outLoginButton.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
         
+        /*
         // 登录按钮
         let outSignUp = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 120, height: 30), btButtonType: .Success)
         v.addSubview(outSignUp)
@@ -143,6 +144,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         // 取消按钮
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(closeV))
+        */
     }
     
     func closeV(){
