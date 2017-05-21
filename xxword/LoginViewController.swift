@@ -259,12 +259,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         Alamofire.request(url, method: .get, parameters: ["phone": phone, "pwd": pwd]).responseString { (response) in
             if response.result.isSuccess {
                 let str:String = response.result.value!
-                nowGlobalSet?.phone = phone
-                nowGlobalSet?.pwd = pwd
-                appDelegate.saveContext()
-                rootResponse(strjson: str, id: PBID.loginPhone)
+                
+                if let data = resLoginData.deserialize(from: str) {
+                    let code = data.code
+                    let token = data.token
+                    if code == 0 {
+                        nowGlobalSet?.phone = phone
+                        nowGlobalSet?.pwd = pwd
+                        nowGlobalSet?.token = token
+                        nowGlobalSet?.uid = data.uid
+                        appDelegate.saveContext()
+                        self.backV()
+                    }else if code == 30{
+                        TipsSwift.showCenterWithText("账号或密码出错", duration: 2)
+                        self.outPwdTextField.resignFirstResponder()
+                        self.outPwdTextField.text = ""
+                    }else{
+                        TipsSwift.showCenterWithText("登录出错", duration: 2)
+                    }
+                }else{
+                    TipsSwift.showCenterWithText("网络出错", duration: 2)
+                }
+                
                 self.view.hideToastActivity()
-                self.backV()
             }else {
                 self.view.hideToastActivity()
                 print("get protocol fail")

@@ -129,7 +129,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         outLoginButton.setTitle("立即注册", for: .normal)
         outLoginButton.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
         
-        /*
+        
         // 登录按钮
         let outSignUp = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 120, height: 30), btButtonType: .Success)
         v.addSubview(outSignUp)
@@ -144,7 +144,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         // 取消按钮
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(closeV))
-        */
+        
         
         outNumTextField.becomeFirstResponder()
     }
@@ -266,18 +266,43 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // 网络请求, 已注册者绑定手机密码
     func netConnectSignIn(phone:String, pwd:String) {
+        let gtoken:String = (nowGlobalSet?.token)!
         self.view.makeToastActivity(.center)
         let url = rootUrl + "register3.php"
-        Alamofire.request(url, method: .get, parameters: ["phone": phone, "pwd": pwd]).responseString { (response) in
+        Alamofire.request(url, method: .get, parameters: ["phone": phone, "pwd": pwd, "token":gtoken]).responseString { (response) in
             if response.result.isSuccess {
                 let str:String = response.result.value!
-                rootResponse(strjson: str, id: PBID.registerBindPhone)
-                self.backV()
+//                rootResponse(strjson: str, id: PBID.registerBindPhone)
+//                self.callbackReqSignIn(str)
+//                self.backV()
+                if let data = resRegisterBindTouristData.deserialize(from: str) {
+                    let code = data.code
+                    let token = data.token
+                    if code == 0 {
+                        nowGlobalSet?.token = token
+                        nowGlobalSet?.phone = phone
+                        nowGlobalSet?.pwd = pwd
+                        appDelegate.saveContext()
+                        self.backV()
+                    }else if code == 24{
+                        TipsSwift.showCenterWithText("电话号码已经注册过了")
+                    }else if code == 25{
+                        TipsSwift.showCenterWithText("注册失败, 稍后在试")
+                    }else{
+                        TipsSwift.showCenterWithText("注册失败")
+                    }
+                    
+                }
             }else {
                 print("get protocol fail")
+                TipsSwift.showCenterWithText("网络出错")
             }
             self.view.hideToastActivity()
         }
+    }
+    
+    func callbackReqSignIn(_ strJson:String) {
+        
     }
     
     func backV() {

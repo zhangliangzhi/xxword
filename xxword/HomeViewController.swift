@@ -97,6 +97,7 @@ class HomeViewController: UIViewController {
         loginNow()
         
         changeTexValue()
+        print(nowGlobalSet?.phone, nowGlobalSet?.pwd, nowGlobalSet?.token)
     }
     
     func initHomeView() {
