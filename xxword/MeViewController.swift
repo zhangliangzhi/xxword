@@ -38,20 +38,26 @@ class MeViewController: UIViewController {
     }
     
     func initUI() {
-        let imgIcon = UIImageView(image: UIImage(named: "icon"))
-        rootv.addSubview(imgIcon)
-        imgIcon.snp.makeConstraints { (make) in
-            make.center.equalTo(rootv)
-        }
+        
+        // 愿景
         let labelIcon = UILabel()
         rootv.addSubview(labelIcon)
         labelIcon.snp.makeConstraints { (make) in
-            make.centerX.equalTo(imgIcon)
-            make.top.equalTo(imgIcon.snp.bottom).offset(20)
+            make.centerX.equalTo(rootv)
+            make.bottom.equalTo(rootv).offset(-60)
         }
-        labelIcon.text = "不上培训班\n爱上玩单词"
+        labelIcon.text = "不上培训班 爱上玩单词"
         labelIcon.textColor = WZ1_COLOR
-        labelIcon.numberOfLines = 0
+        
+        let outIconButton = UIButton(type: .system)
+        outIconButton.setBackgroundImage(UIImage(named: "icon"), for: .normal)
+        rootv.addSubview(outIconButton)
+        outIconButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(rootv)
+            make.bottom.equalTo(labelIcon.snp.top).offset(-8)
+        }
+        outIconButton.addTarget(self, action: #selector(btnGoIcon), for: .touchUpInside)
+        
         
         // 1
         let labelnctitle = UILabel()
@@ -95,6 +101,16 @@ class MeViewController: UIViewController {
         labelIsVip.textColor = WZ1_COLOR
         labelIsVip.textAlignment = .left
         
+        let vipButton = UIButton(type: .system)
+        vipButton.setBackgroundImage(UIImage(named: "hy"), for: .normal)
+        rootv.addSubview(vipButton)
+        vipButton.snp.makeConstraints { (make) in
+            make.centerY.equalTo(labelVipTitle)
+            make.right.equalTo(labelVipTitle.snp.left)
+            make.width.height.equalTo(50)
+        }
+        vipButton.addTarget(self, action: #selector(btnGoVip), for: .touchUpInside)
+        
         // 立即注册
         outSignupButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 150, height: 40), btButtonType: .Info)
         rootv.addSubview(outSignupButton)
@@ -102,7 +118,7 @@ class MeViewController: UIViewController {
             make.width.equalTo(rootv).multipliedBy(0.618)
             make.height.equalTo(40)
             make.centerX.equalTo(rootv)
-            make.top.equalTo(labelVipTitle.snp.bottom).offset(40)
+            make.top.equalTo(labelVipTitle.snp.bottom).offset(20)
         }
         outSignupButton.setTitle("立即注册", for: .normal)
         outSignupButton.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
@@ -119,14 +135,7 @@ class MeViewController: UIViewController {
         outLoginButton.setTitle("登录", for: .normal)
         outLoginButton.addTarget(self, action: #selector(btnGoSignIn), for: .touchUpInside)
         
-        let vipButton = UIButton(type: .system)
-        vipButton.setBackgroundImage(UIImage(named: "hy"), for: .normal)
-        rootv.addSubview(vipButton)
-        vipButton.snp.makeConstraints { (make) in
-            make.centerY.equalTo(labelVipTitle)
-            make.centerX.equalTo(rootv).multipliedBy(0.3)
-        }
-        vipButton.addTarget(self, action: #selector(btnGoVip), for: .touchUpInside)
+        
     }
     
     func btnGoSignUp() {
@@ -139,6 +148,10 @@ class MeViewController: UIViewController {
     
     func btnGoVip() {
         TipsSwift.showCenterWithText("订购VIP会员\n无限制使用[象形单词]app", duration: 3)
+    }
+    
+    func btnGoIcon() {
+        TipsSwift.showCenterWithText("象形单词 v1.0", duration: 1)
     }
     
 }
