@@ -34,7 +34,11 @@ class MeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        changeTxt()
+    }
+    
+    func changeTxt() {
+        labelNickName.text = nowGlobalSet?.nickName
     }
     
     func initUI() {
@@ -76,7 +80,7 @@ class MeViewController: UIViewController {
             make.top.equalTo(labelnctitle)
             make.left.equalTo(labelnctitle.snp.right).offset(5)
         }
-        labelNickName.text = "游客"
+        labelNickName.text = nowGlobalSet?.nickName
         labelNickName.textColor = WZ1_COLOR
         labelNickName.textAlignment = .left
         

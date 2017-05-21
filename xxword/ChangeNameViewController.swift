@@ -114,6 +114,7 @@ class ChangeNameViewController: UIViewController, UITextFieldDelegate {
         
         TipsSwift.showCenterWithText("改名成功")
         nowGlobalSet?.nickName = strNum
+        appDelegate.saveContext()
         navigationController?.popViewController(animated: true)
     }
 
