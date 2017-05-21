@@ -263,14 +263,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 nowGlobalSet?.pwd = pwd
                 appDelegate.saveContext()
                 rootResponse(strjson: str, id: PBID.loginPhone)
+                self.view.hideToastActivity()
+                self.backV()
             }else {
+                self.view.hideToastActivity()
                 print("get protocol fail")
             }
-            self.view.hideToastActivity()
         }
 
     }
     
+    func backV() {
+        navigationController?.popViewController(animated: true)
+    }
     
     
     

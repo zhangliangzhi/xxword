@@ -45,8 +45,10 @@ class MeViewController: UIViewController {
             labelIsVip.text = "否"
         }
         
-        if nowGlobalSet?.phone != "" {
-            outLoginButton.isHidden = true
+        if nowGlobalSet?.phone == "" {
+            outLoginButton.setTitle("登录", for: .normal)
+        }else {
+            outLoginButton.setTitle("已登录", for: .normal)
         }
         
     }
@@ -58,7 +60,8 @@ class MeViewController: UIViewController {
         rootv.addSubview(labelIcon)
         labelIcon.snp.makeConstraints { (make) in
             make.centerX.equalTo(rootv).offset(20)
-            make.bottom.equalTo(rootv).offset(-80)
+//            make.bottom.equalTo(rootv).offset(-80)
+            make.centerY.equalTo(rootv).offset(20)
         }
         labelIcon.text = "不上培训班, 爱上玩单词✅"
         labelIcon.textColor = WARN_COLOR
@@ -171,7 +174,12 @@ class MeViewController: UIViewController {
     }
     
     func btnGoSignIn() {
-        navigationController?.pushViewController(LoginViewController(), animated: true)
+        if nowGlobalSet?.phone == "" {
+            navigationController?.pushViewController(LoginViewController(), animated: true)
+        }else {
+            TipsSwift.showCenterWithText("已经登录", duration: 3)
+        }
+        
     }
     
     func btnGoVip() {

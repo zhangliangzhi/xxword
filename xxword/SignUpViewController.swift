@@ -172,6 +172,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     // 注册
     func btnGoSignUp() {
+        
         outNumTextField.resignFirstResponder()
         outPwdTextField.resignFirstResponder()
         
@@ -203,6 +204,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
 
         netConnectSignIn(phone: strNum, pwd: strPwd)
+ 
     }
 
     
@@ -270,6 +272,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             if response.result.isSuccess {
                 let str:String = response.result.value!
                 rootResponse(strjson: str, id: PBID.registerBindPhone)
+                self.backV()
             }else {
                 print("get protocol fail")
             }
@@ -277,6 +280,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func backV() {
+        navigationController?.popToRootViewController(animated: true)
+    }
     
         
 }
