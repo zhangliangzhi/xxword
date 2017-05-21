@@ -50,7 +50,7 @@ class MeViewController: UIViewController {
             make.top.equalTo(imgIcon.snp.bottom).offset(20)
         }
         labelIcon.text = "不上培训班\n爱上玩单词"
-        labelIcon.textColor = WZ2_COLOR
+        labelIcon.textColor = WZ1_COLOR
         labelIcon.numberOfLines = 0
         
         // 1
