@@ -135,6 +135,17 @@ class MeViewController: UIViewController {
         outLoginButton.setTitle("登录", for: .normal)
         outLoginButton.addTarget(self, action: #selector(btnGoSignIn), for: .touchUpInside)
         
+        // 改名按钮
+        let outEditNameButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 60, height: 26), btButtonType: .Primary)
+        rootv.addSubview(outEditNameButton)
+        outEditNameButton.snp.makeConstraints { (make) in
+            make.width.equalTo(60)
+            make.height.equalTo(26)
+            make.right.equalTo(labelnctitle.snp.left)
+            make.centerY.equalTo(labelnctitle)
+        }
+        outEditNameButton.setTitle("改名", for: .normal)
+        outEditNameButton.addTarget(self, action: #selector(btnEditName), for: .touchUpInside)
         
     }
     
@@ -148,6 +159,10 @@ class MeViewController: UIViewController {
     
     func btnGoVip() {
         TipsSwift.showCenterWithText("订购VIP会员\n可无限制使用[象形单词]app", duration: 3)
+    }
+    
+    func btnEditName() {
+        navigationController?.pushViewController(ChangeNameViewController(), animated: true)
     }
     
     func btnGoIcon() {

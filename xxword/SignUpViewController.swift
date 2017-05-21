@@ -145,6 +145,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         // 取消按钮
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(closeV))
         */
+        
+        outNumTextField.becomeFirstResponder()
     }
     
     func closeV(){

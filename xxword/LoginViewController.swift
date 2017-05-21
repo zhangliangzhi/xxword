@@ -33,6 +33,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = UIColor.white
         initLgv()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -141,6 +142,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // 右上角 注册按钮
         let rightBtn = UIBarButtonItem(title: "立即注册", style: .plain, target: self, action: #selector(btnGoSignUp))
         self.navigationItem.rightBarButtonItem = rightBtn
+        
+        outNumTextField.becomeFirstResponder()
     }
     
     func delNumTextField() {
