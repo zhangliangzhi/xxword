@@ -39,6 +39,14 @@ class MeViewController: UIViewController {
     
     func changeTxt() {
         labelNickName.text = nowGlobalSet?.nickName
+        if (nowGlobalSet?.isVIP)! {
+            labelIsVip.text = "是"
+        }else {
+            labelIsVip.text = "否"
+        }
+        
+        
+        
     }
     
     func initUI() {
@@ -47,8 +55,8 @@ class MeViewController: UIViewController {
         let labelIcon = UILabel()
         rootv.addSubview(labelIcon)
         labelIcon.snp.makeConstraints { (make) in
-            make.centerX.equalTo(rootv)
-            make.bottom.equalTo(rootv).offset(-60)
+            make.centerX.equalTo(rootv).offset(20)
+            make.bottom.equalTo(rootv).offset(-80)
         }
         labelIcon.text = "不上培训班, 爱上玩单词"
         labelIcon.textColor = WARN_COLOR
@@ -57,8 +65,9 @@ class MeViewController: UIViewController {
         outIconButton.setBackgroundImage(UIImage(named: "icon"), for: .normal)
         rootv.addSubview(outIconButton)
         outIconButton.snp.makeConstraints { (make) in
-            make.centerX.equalTo(rootv)
-            make.bottom.equalTo(labelIcon.snp.top).offset(-8)
+            make.centerY.equalTo(labelIcon)
+            make.right.equalTo(labelIcon.snp.left).offset(-8)
+            make.width.height.equalTo(38)
         }
         outIconButton.addTarget(self, action: #selector(btnGoIcon), for: .touchUpInside)
         

@@ -715,6 +715,7 @@ class HomeViewController: UIViewController {
         oneGlobalSet.curFavorIndex = 0  // 收藏 学到哪了
         oneGlobalSet.curWrongIndex = 0  // 错误的 学到哪了
         oneGlobalSet.nickName = "游客"
+        oneGlobalSet.isVIP = false
         
         context.insert(oneGlobalSet)
         appDelegate.saveContext()
