@@ -56,16 +56,6 @@ class ExamResultViewController: UIViewController {
             make.height.equalTo(self.view.snp.width).multipliedBy(0.6)
         }
         
-        // 时间
-        let nameLabel = UILabel()
-        bg2.addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(bg2).offset(45)
-            make.centerX.equalTo(bg2)
-        }
-        nameLabel.text = "用时: " + getDtimeStr()
-        nameLabel.textColor = UIColor.white
-        nameLabel.font = UIFont.systemFont(ofSize: 20)
         
         // 分数
         let scoreLabel = UILabel()
@@ -76,17 +66,28 @@ class ExamResultViewController: UIViewController {
         }
         scoreLabel.text = "\(Int(score))"
         scoreLabel.textColor = UIColor.white
-        scoreLabel.font = UIFont.systemFont(ofSize: 60)
+        scoreLabel.font = UIFont.systemFont(ofSize: 50)
         
         let fenLabel = UILabel()
         bg2.addSubview(fenLabel)
         fenLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(scoreLabel.snp.top).offset(25)
+            make.bottom.equalTo(scoreLabel.snp.top).offset(20)
             make.left.equalTo(scoreLabel.snp.right).offset(3)
         }
         fenLabel.text = "分"
         fenLabel.textColor = UIColor.white
-        fenLabel.font = UIFont.systemFont(ofSize: 22)
+        fenLabel.font = UIFont.systemFont(ofSize: 20)
+        // 时间
+        let nameLabel = UILabel()
+        bg2.addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(scoreLabel.snp.bottom).offset(-8)
+            make.centerX.equalTo(bg2)
+        }
+        nameLabel.text = "用时: " + getDtimeStr()
+        nameLabel.textColor = UIColor.white
+        nameLabel.font = UIFont.systemFont(ofSize: 18)
+        
         
         
         let buttonOK = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Warning)
