@@ -13,7 +13,7 @@ class MeViewController: UIViewController {
     var rootv: UIView!
     var labelNickName:UILabel!
     var labelIsVip:UILabel!
-    var outSignupButton:BootstrapBtn!
+//    var outSignupButton:BootstrapBtn!
     var outLoginButton:BootstrapBtn!
     
     override func viewDidLoad() {
@@ -45,7 +45,9 @@ class MeViewController: UIViewController {
             labelIsVip.text = "否"
         }
         
-        
+        if nowGlobalSet?.phone != "" {
+            outLoginButton.isHidden = true
+        }
         
     }
     
@@ -58,7 +60,7 @@ class MeViewController: UIViewController {
             make.centerX.equalTo(rootv).offset(20)
             make.bottom.equalTo(rootv).offset(-80)
         }
-        labelIcon.text = "不上培训班, 爱上玩单词"
+        labelIcon.text = "不上培训班, 爱上玩单词✅"
         labelIcon.textColor = WARN_COLOR
         
         let outIconButton = UIButton(type: .system)
@@ -124,6 +126,7 @@ class MeViewController: UIViewController {
         }
         vipButton.addTarget(self, action: #selector(btnGoVip), for: .touchUpInside)
         
+        /*
         // 立即注册
         outSignupButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 150, height: 40), btButtonType: .Info)
         rootv.addSubview(outSignupButton)
@@ -135,6 +138,7 @@ class MeViewController: UIViewController {
         }
         outSignupButton.setTitle("立即注册", for: .normal)
         outSignupButton.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
+        */
         
         // 登入按钮
         outLoginButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 150, height: 40), btButtonType: .Success)
@@ -143,7 +147,7 @@ class MeViewController: UIViewController {
             make.width.equalTo(rootv).multipliedBy(0.618)
             make.height.equalTo(40)
             make.centerX.equalTo(rootv)
-            make.top.equalTo(outSignupButton.snp.bottom).offset(30)
+            make.top.equalTo(labelVipTitle.snp.bottom).offset(30)
         }
         outLoginButton.setTitle("登录", for: .normal)
         outLoginButton.addTarget(self, action: #selector(btnGoSignIn), for: .touchUpInside)

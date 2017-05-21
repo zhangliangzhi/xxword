@@ -94,7 +94,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         HomeViewController.getCoreData()
         firstOpenAPP()
-//        getUserInfo()
+        loginNow()
         
         changeTexValue()
     }
@@ -716,16 +716,22 @@ class HomeViewController: UIViewController {
         oneGlobalSet.curWrongIndex = 0  // 错误的 学到哪了
         oneGlobalSet.nickName = "游客"
         oneGlobalSet.isVIP = false
+        oneGlobalSet.today = ""
         
         context.insert(oneGlobalSet)
         appDelegate.saveContext()
         HomeViewController.getCoreData()
     }
     
-
-    
-    // request account info
-    func getUserInfo() {
+    func loginNow() {
+        // 1天登录一次
+        let today = getToday()
+        if today == (nowGlobalSet?.today)! {
+            return
+        }
+        
+        nowGlobalSet?.today = today
+        appDelegate.saveContext()
         let strToken:String = (nowGlobalSet?.token!)!
         let strNum:String = (nowGlobalSet?.phone!)!
         let strPwd:String = (nowGlobalSet?.pwd!)!
@@ -738,8 +744,11 @@ class HomeViewController: UIViewController {
                 if response.result.isSuccess {
                     let str:String = response.result.value!
                     rootResponse(strjson: str, id: PBID.registerTourist)
+                    let token:String = (nowGlobalSet?.token!)!
                     // 游客登录下
-                    Alamofire.request(rootUrl + "login2.php", method: .get, parameters: ["token": nowGlobalSet?.token!])
+                    Alamofire.request(rootUrl + "login2.php", method: .get, parameters: ["token": token]).response(completionHandler: { (r) in
+                        
+                    })
                 }else {
                     print("get protocol fail")
                 }

@@ -4,6 +4,7 @@ PODS:
   - HandyJSON (1.6.1)
   - LTMorphingLabel (0.5.0)
   - SnapKit (3.2.0)
+  - SwiftyStoreKit (0.8.4)
   - Toast-Swift (2.0.0)
   - UMengAnalytics-NO-IDFA (4.2.5)
 
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - HandyJSON (~> 1.6.1)
   - LTMorphingLabel
   - SnapKit (~> 3.2.0)
+  - SwiftyStoreKit
   - Toast-Swift (~> 2.0.0)
   - UMengAnalytics-NO-IDFA
 
@@ -22,9 +24,10 @@ SPEC CHECKSUMS:
   HandyJSON: dcc98115467462a4749db81bc8a9052607600bdf
   LTMorphingLabel: bc170be74b219b7dae0e5543a44676d16da70ff7
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SwiftyStoreKit: b235756bd6e541cafbed6e75d28b29b8a1c1caef
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
 
-PODFILE CHECKSUM: 1c3298ec765d7e55edf1349b445d77f4c2688ef0
+PODFILE CHECKSUM: 8132823670df9b325ce098efd64c2e5d08c916e9
 
 COCOAPODS: 1.2.0
