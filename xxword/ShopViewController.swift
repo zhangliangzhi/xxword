@@ -13,6 +13,8 @@ import SwiftyStoreKit
 class ShopViewController: UIViewController {
     var outBuyButton:BootstrapBtn!
     var outRestoreButton:BootstrapBtn!
+    var outLabelLastBuy:UILabel!
+    var lastBuyStr:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = BG1_COLOR
@@ -65,6 +67,17 @@ class ShopViewController: UIViewController {
         labelDescVip.textColor = WZ1_COLOR
         labelDescVip.numberOfLines = 0
         
+        let outLabelLastBuy = UILabel()
+        self.view.addSubview(outLabelLastBuy)
+        outLabelLastBuy.snp.makeConstraints { (make) in
+            make.top.equalTo(outRestoreButton.snp.bottom).offset(10)
+            make.centerX.equalTo(self.view)
+        }
+        outLabelLastBuy.textAlignment = .center
+        outLabelLastBuy.text = lastBuyStr
+        outLabelLastBuy.textColor = WZ1_COLOR
+        outLabelLastBuy.numberOfLines = 0
+        
     }
     
     func reqShop()  {
@@ -91,9 +104,11 @@ class ShopViewController: UIViewController {
         print("buy one click")
         self.view.makeToastActivity(.center)
         outBuyButton.isUserInteractionEnabled = false
+        outRestoreButton.isUserInteractionEnabled = false
         SwiftyStoreKit.purchaseProduct("xxwordHY", atomically: true) { result in
             self.view.hideToastActivity()
             self.outBuyButton.isUserInteractionEnabled = true
+            self.outRestoreButton.isUserInteractionEnabled = true
             if case .success(let purchase) = result {
                 // Deliver content from server, then:
                 if purchase.needsFinishTransaction {
@@ -192,13 +207,21 @@ class ShopViewController: UIViewController {
             nowGlobalSet?.vipsjc = 0
             nowGlobalSet?.isVIP = false
             appDelegate.saveContext()
-            return alertWithTitle("Product expired", message: "Product is expired since \(expiryDate)")
+//            return alertWithTitle("Product expired", message: "Product is expired since \(expiryDate)")
+            let formatter = DateFormatter()
+            formatter.timeZone = NSTimeZone.system
+            formatter.dateFormat = "yyyy-MM-dd hh:mm"
+            let dstr:String = formatter.string(from: expiryDate)
+            let txt:String = "最近购买时间为: " + dstr
+//            lastBuyStr = txt
+            return alertWithTitle("会员过期", message: txt)
         case .notPurchased:
             print("This product has never been purchased")
             nowGlobalSet?.vipsjc = 0
             nowGlobalSet?.isVIP = false
             appDelegate.saveContext()
-            return alertWithTitle("Not purchased", message: "This product has never been purchased")
+//            return alertWithTitle("Not purchased", message: "This product has never been purchased")
+            return alertWithTitle("没有购买", message: "没有购买过会员VIP")
         }
     }
     func alertForVerifyReceipt(_ result: VerifyReceiptResult) -> UIAlertController {
@@ -220,7 +243,42 @@ class ShopViewController: UIViewController {
         }
     }
     
+    // 恢复购买
     func restoreOneMonthPurchase() {
+        self.view.makeToastActivity(.center)
+        outBuyButton.isUserInteractionEnabled = false
+        outRestoreButton.isUserInteractionEnabled = false
+        SwiftyStoreKit.restorePurchases(atomically: true) { results in
+            self.view.hideToastActivity()
+            self.outBuyButton.isUserInteractionEnabled = true
+            self.outRestoreButton.isUserInteractionEnabled = true
+            
+            for purchase in results.restoredProducts where purchase.needsFinishTransaction {
+                // Deliver content from server, then:
+                SwiftyStoreKit.finishTransaction(purchase.transaction)
+            }
+            self.showAlert(self.alertForRestorePurchases(results))
+        }
+    }
+    func alertForRestorePurchases(_ results: RestoreResults) -> UIAlertController {
+        
+        if results.restoreFailedProducts.count > 0 {
+            print("Restore Failed: \(results.restoreFailedProducts)")
+//            return alertWithTitle("Restore failed", message: "Unknown error. Please contact support")
+            
+            return alertWithTitle("恢复失败", message: "无法连接到 iTunes Store")
+        } else if results.restoredProducts.count > 0 {
+            print("Restore Success: \(results.restoredProducts)")
+//            return alertWithTitle("Purchases Restored", message: "All purchases have been restored")
+            let one = results.restoredProducts[0]
+            print("------", one.needsFinishTransaction, one.productId, one.transaction)
+            verifyPurchase()
+            return alertWithTitle("已恢复", message: "成功恢复购买")
+        } else {
+            print("Nothing to Restore")
+//            return alertWithTitle("Nothing to restore", message: "No previous purchases were found")
+            return alertWithTitle("没有购买过", message: "没有购买过会员VIP服务")
+        }
     }
     
     
