@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
     var v:UIScrollView!
     var labelWrongNum:UILabel!
     var labelFavorNum:UILabel!
-    let svh:CGFloat = 1.1
+    var svh:CGFloat = 1.1
     var segment:UISegmentedControl!
     
     override func viewDidLoad() {
@@ -47,10 +47,13 @@ class HomeViewController: UIViewController {
         self.view.addSubview(v)
         v.snp.makeConstraints { (make) in
             make.top.equalTo(self.view).offset(64+30)
-            make.bottom.equalTo(self.view)
+            make.bottom.equalTo(self.view).offset(-44)
             make.width.equalTo(self.view)
+            make.centerX.equalTo(self.view)
         }
-        v.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.width * svh + 50)
+        svh = 0.415 + 0.415 + (0.415 * 0.5 * 1.2)
+        
+        v.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.width * svh + 50 + 30)
         
 
         // init something
@@ -68,7 +71,7 @@ class HomeViewController: UIViewController {
     func receivedRotation(){
         if UIDevice.current.orientation.isPortrait {
         }
-        v.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.width * svh + 50)
+        v.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.width * svh + 50 + 30)
         
         // 横竖的时候顶部按钮的变化
         segment.snp.updateConstraints { (make) in
@@ -584,6 +587,19 @@ class HomeViewController: UIViewController {
         lblJtbz.textAlignment = .center
         lblJtbz.text = "错词一览"
         lblJtbz.textColor = WZ1_COLOR
+        
+        // 去学习按钮
+        let outGoXxButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 150, height: 40), btButtonType: .Success)
+        v.addSubview(outGoXxButton)
+        outGoXxButton.snp.makeConstraints { (make) in
+            make.width.equalTo(v).multipliedBy(0.618)
+            make.height.equalTo(40)
+            make.centerX.equalTo(v)
+            make.top.equalTo(btnJtbz.snp.bottom).offset(8)
+        }
+        outGoXxButton.setTitle("爱上玩单词", for: .normal)
+        outGoXxButton.addTarget(self, action: #selector(callbackNormalStudy), for: .touchUpInside)
+        
     }
     
     // 第几排单词 1k,2k,3k,4k,5k

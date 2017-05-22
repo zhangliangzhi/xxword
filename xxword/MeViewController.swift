@@ -19,7 +19,7 @@ class MeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = BG1_COLOR
-        self.title = "我的账号"
+        self.title = "我的"
         
         rootv = UIView()
         self.view.addSubview(rootv)
@@ -48,7 +48,8 @@ class MeViewController: UIViewController {
         if nowGlobalSet?.phone == "" {
             outLoginButton.setTitle("登录", for: .normal)
         }else {
-            outLoginButton.setTitle("已登录", for: .normal)
+            outLoginButton.setTitle("立刻学习", for: .normal)
+//            outLoginButton.isHidden = true
         }
         
     }
@@ -177,7 +178,9 @@ class MeViewController: UIViewController {
         if nowGlobalSet?.phone == "" {
             navigationController?.pushViewController(LoginViewController(), animated: true)
         }else {
-            TipsSwift.showCenterWithText("已经登录", duration: 3)
+//            TipsSwift.showCenterWithText("已经登录", duration: 3)
+            appDelegate.window?.rootViewController?.removeFromParentViewController()
+            appDelegate.window?.rootViewController = StudyTabBarController()
         }
         
     }
