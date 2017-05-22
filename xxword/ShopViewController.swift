@@ -116,8 +116,6 @@ class ShopViewController: UIViewController {
                 }
             }
             if let alert = self.alertForPurchaseResult(result) {
-                print(alert)
-                
                 self.showAlert(alert)
             }
             
@@ -257,10 +255,15 @@ class ShopViewController: UIViewController {
                 // Deliver content from server, then:
                 SwiftyStoreKit.finishTransaction(purchase.transaction)
             }
-            self.showAlert(self.alertForRestorePurchases(results))
+            
+//            self.showAlert(self.alertForRestorePurchases(results))
+            
+            if let alert = self.alertForRestorePurchases(results) {
+                self.showAlert(alert)
+            }
         }
     }
-    func alertForRestorePurchases(_ results: RestoreResults) -> UIAlertController {
+    func alertForRestorePurchases(_ results: RestoreResults) -> UIAlertController? {
         
         if results.restoreFailedProducts.count > 0 {
             print("Restore Failed: \(results.restoreFailedProducts)")
@@ -273,7 +276,10 @@ class ShopViewController: UIViewController {
             let one = results.restoredProducts[0]
             print("------", one.needsFinishTransaction, one.productId, one.transaction)
             verifyPurchase()
-            return alertWithTitle("已恢复", message: "成功恢复购买")
+            
+            TipsSwift.showCenterWithText("成功恢复购买, 检查是否过期", duration: 3)
+//            return alertWithTitle("已恢复", message: "成功恢复购买")
+            return nil
         } else {
             print("Nothing to Restore")
 //            return alertWithTitle("Nothing to restore", message: "No previous purchases were found")
