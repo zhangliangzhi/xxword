@@ -136,8 +136,22 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         return cell
     }
     
+    func ishy() -> Bool {
+        let isv:Bool = (nowGlobalSet?.isVIP)!
+        return isv
+    }
+    func tipsVIP() {
+        TipsSwift.showCenterWithText("非会员只能学习前100个单词", duration: 5)
+    }
+    
     func clickBtn(_ button:UIButton) {
         let wid = button.tag
+        if ishy() == false {
+            if wid > 99 {
+                tipsVIP()
+                return
+            }
+        }
         if (indexPage == 0) {
             // 显示是1-1000, 实际是0-999
             nowGlobalSet?.curIndex0 = Int32(wid)

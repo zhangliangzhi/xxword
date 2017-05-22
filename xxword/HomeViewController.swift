@@ -829,6 +829,14 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func ishy() -> Bool {
+        let isv:Bool = (nowGlobalSet?.isVIP)!
+        return isv
+    }
+    func tipsVIP() {
+        TipsSwift.showCenterWithText("非会员只能学习前100个单词", duration: 5)
+    }
+    
     // 点击 顺序学习
     func callbackNormalStudy() -> Void {
         // 太聪明了，赞
@@ -838,6 +846,7 @@ class HomeViewController: UIViewController {
     }
     // 点击 模拟考试
     func callbackMnks() -> Void {
+        
 //        print("mnks Study")
         let tabbar = ExamTabBarController()
         tabbar.itype = 8
@@ -860,6 +869,14 @@ class HomeViewController: UIViewController {
         
         for i in 0..<100 {
             tabbar.arrIds.append(arrIds[i])
+        }
+        
+        if ishy() == false {
+            TipsSwift.showCenterWithText("非会员只能学习前100个单词", duration: 5)
+            tabbar.arrIds = []
+            for i in 0..<100 {
+                tabbar.arrIds.append(i)
+            }
         }
         tabbar.creatSubViewControllers()
         // 跳转到自定义 错题界面

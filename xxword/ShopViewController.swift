@@ -63,7 +63,7 @@ class ShopViewController: UIViewController {
             make.width.equalTo(self.view).multipliedBy(0.8)
         }
         labelDescVip.textAlignment = .center
-        labelDescVip.text = "购买VIP会员服务, \n可无限制使用[象形单词]"
+        labelDescVip.text = "非会员只能学习前100个单词\n购买VIP会员服务, \n可无限制使用[象形单词]"
         labelDescVip.textColor = WZ1_COLOR
         labelDescVip.numberOfLines = 0
         
@@ -136,6 +136,7 @@ class ShopViewController: UIViewController {
             return alertWithTitle("🎉恭喜🎉", message: "已成为[象形单词]VIP会员")
         case .error(let error):
             print("Purchase Failed: \(error)")
+            delVip()
             switch error.code {
             case .unknown: return alertWithTitle("Purchase failed", message: "无法连接到 iTunes Store")
             case .clientInvalid: // client is not allowed to issue the request, etc.
@@ -268,24 +269,29 @@ class ShopViewController: UIViewController {
         if results.restoreFailedProducts.count > 0 {
             print("Restore Failed: \(results.restoreFailedProducts)")
 //            return alertWithTitle("Restore failed", message: "Unknown error. Please contact support")
-            
+            delVip()
             return alertWithTitle("恢复失败", message: "无法连接到 iTunes Store")
         } else if results.restoredProducts.count > 0 {
             print("Restore Success: \(results.restoredProducts)")
 //            return alertWithTitle("Purchases Restored", message: "All purchases have been restored")
-            let one = results.restoredProducts[0]
-            print("------", one.needsFinishTransaction, one.productId, one.transaction)
+            
             verifyPurchase()
             
-            TipsSwift.showCenterWithText("成功恢复购买, 检查是否过期", duration: 3)
+            TipsSwift.showCenterWithText("成功恢复购买", duration: 5)
 //            return alertWithTitle("已恢复", message: "成功恢复购买")
             return nil
         } else {
             print("Nothing to Restore")
 //            return alertWithTitle("Nothing to restore", message: "No previous purchases were found")
+            delVip()
             return alertWithTitle("没有购买过", message: "没有购买过会员VIP服务")
         }
     }
     
+    func delVip() {
+        nowGlobalSet?.vipsjc = 0
+        nowGlobalSet?.isVIP = false
+        appDelegate.saveContext()
+    }
     
 }

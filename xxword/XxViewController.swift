@@ -135,6 +135,13 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
 //            cell.selTag(selIndex: arrTagIndex[cell.wid]!)
             
         }
+        
+        if ishy() == false {
+            if indexPath.row >= 100 {
+                tipsVIP()
+                cell.clickCount = 1
+            }
+        }
         cell.createLzLabel(itype: 1)
         return cell
     }
@@ -142,6 +149,12 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // 将要显示的界面
         let currow = indexPath.row
+        if ishy() == false {
+            if currow > 99 {
+                tipsVIP()
+                return
+            }
+        }
 //        print("will display",index)
         let wid = indexPage*1000 + currow
 //        self.title = gWord[wid]
@@ -204,6 +217,14 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         }
         let wid = Int(curIndex)
         return wid
+    }
+    
+    func ishy() -> Bool {
+        let isv:Bool = (nowGlobalSet?.isVIP)!
+        return isv
+    }
+    func tipsVIP() {
+        TipsSwift.showCenterWithText("非会员只能学习前100个单词", duration: 3)
     }
 
     func setRightWrongCount() {

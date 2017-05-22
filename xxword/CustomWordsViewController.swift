@@ -131,8 +131,21 @@ class CustomWordsViewController: UIViewController, UICollectionViewDelegate, UIC
         return cell
     }
     
+    func ishy() -> Bool {
+        let isv:Bool = (nowGlobalSet?.isVIP)!
+        return isv
+    }
+    func tipsVIP() {
+        TipsSwift.showCenterWithText("非会员只能学习前100个单词", duration: 5)
+    }
     func clickBtn(_ button:UIButton) {
         let tag = button.tag
+        if ishy() == false {
+            if tag > 99 {
+                tipsVIP()
+                return
+            }
+        }
         let clickIndexID = Int32(tag)
         gClickIndex = clickIndexID
         if itype == 1 {

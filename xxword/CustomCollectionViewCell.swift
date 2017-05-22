@@ -177,7 +177,11 @@ class CustomCollectionViewCell: UICollectionViewCell {
         }
         
         
-        
+        if ishy() == false {
+            if wid>=99 {
+                self.clickCount = 1
+            }
+        }
         
     }
     
@@ -309,13 +313,22 @@ class CustomCollectionViewCell: UICollectionViewCell {
         //        print(rightIndex)
     }
     
+    func ishy() -> Bool {
+        let isv:Bool = (nowGlobalSet?.isVIP)!
+        return isv
+    }
     // 动态粒子字体
     func createLzLabel(itype:Int) {
         if centerLabel != nil {
             centerLabel.removeFromSuperview()
             centerLabel = nil
         }
-        let ew =  gWord[wid]
+        var ew =  gWord[wid]
+        if ishy() == false {
+            if wid>=99 {
+                ew = "非会员无法学习"
+            }
+        }
         centerLabel = LTMorphingLabel()
         if itype == 1 {
             centerLabel.morphingEffect = .anvil

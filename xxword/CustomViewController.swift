@@ -127,14 +127,35 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
 //            cell.selTag(selIndex: arrTagIndex[cell.wid]!)
             
         }
+        if ishy() == false {
+            if indexPath.row >= 100 {
+                tipsVIP()
+                cell.clickCount = 1
+            }
+        }
         cell.createLzLabel(itype: 1)
         return cell
     }
     
+    func ishy() -> Bool {
+        let isv:Bool = (nowGlobalSet?.isVIP)!
+        return isv
+    }
+    func tipsVIP() {
+        TipsSwift.showCenterWithText("非会员只能学习前100个单词", duration: 3)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
         // 将要显示的界面
         let wid = arrIds[indexPath.row]
-//        self.title = gWord[wid]
+        if ishy() == false {
+            if indexPath.row > 99 {
+                tipsVIP()
+                return
+            }
+        }
+        
         self.navigationItem.title = gWord[wid]
         self.tabBarItem.title = "\(indexPath.row+1)" + "/" + "\(arrIds.count)"
         
