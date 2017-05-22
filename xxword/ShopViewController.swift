@@ -43,23 +43,23 @@ class ShopViewController: UIViewController {
     func initUI() {
         
         
-        outBuyButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Success)
+        outBuyButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Warning)
         self.view.addSubview(outBuyButton)
         outBuyButton.snp.makeConstraints { (make) in
             make.center.equalTo(self.view)
             make.width.equalTo(self.view).multipliedBy(0.8)
-            make.height.equalTo(50)
+            make.height.equalTo(60)
         }
-        outBuyButton.setTitle("月会员VIP \n 🛒￥30.00", for: .normal)
+        outBuyButton.setTitle("🛒月会员VIP \n￥30.00", for: .normal)
         outBuyButton.titleLabel?.numberOfLines = 0
+        outBuyButton.titleLabel?.textAlignment = .center
         
         let labelDescVip = UILabel()
         self.view.addSubview(labelDescVip)
         labelDescVip.snp.makeConstraints { (make) in
             make.bottom.equalTo(outBuyButton.snp.top).offset(-30)
             make.centerX.equalTo(self.view)
-            make.width.equalTo(self.view)
-            make.height.equalTo(20)
+            make.width.equalTo(self.view).multipliedBy(0.8)
         }
         labelDescVip.textAlignment = .center
         labelDescVip.text = "购买VIP会员服务, \n可无限制使用[象形单词]"
