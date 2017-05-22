@@ -98,7 +98,7 @@ class HomeViewController: UIViewController {
         HomeViewController.getCoreData()
         firstOpenAPP()
         loginNow()
-        
+        jchy()
         changeTexValue()
 //        print(nowGlobalSet?.phone, nowGlobalSet?.pwd, nowGlobalSet?.token)
         
@@ -687,6 +687,35 @@ class HomeViewController: UIViewController {
         }
         
         //        print(nowGlobalSet)
+    }
+    
+    func jchy() {
+        let isVip:Bool = (nowGlobalSet?.isVIP)!
+        if isVip == false {
+            return
+        }
+        let vipdate = nowGlobalSet?.vipDate
+        if vipdate == nil {
+            nowGlobalSet?.isVIP = false
+            appDelegate.saveContext()
+            return
+        }
+        let sjc:Int32 = Int32((vipdate?.timeIntervalSince1970)!)
+        if sjc != nowGlobalSet?.vipsjc {
+            nowGlobalSet?.isVIP = false
+            appDelegate.saveContext()
+            return
+        }
+        // 是否在31天以内
+        let nowdate = Date()
+        print(nowdate, nowdate.timeIntervalSince1970)
+        let nowsjc:Int32 = Int32(Date().timeIntervalSince1970)
+        let endSecond:Int32 = sjc + 31*24*3600
+        if nowsjc > endSecond || nowsjc<=sjc-86400 {
+            nowGlobalSet?.isVIP = false
+            appDelegate.saveContext()
+            return
+        }
     }
     
     static func goStudyingUI() {
