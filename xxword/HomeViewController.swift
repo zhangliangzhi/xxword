@@ -707,8 +707,6 @@ class HomeViewController: UIViewController {
             return
         }
         // 是否在31天以内
-        let nowdate = Date()
-        print(nowdate, nowdate.timeIntervalSince1970)
         let nowsjc:Int64 = Int64(Date().timeIntervalSince1970)
         let endSecond:Int64 = sjc + 31*24*3600
         if nowsjc > endSecond || nowsjc<=sjc-86400 {

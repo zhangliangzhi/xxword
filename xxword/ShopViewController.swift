@@ -12,6 +12,7 @@ import SwiftyStoreKit
 
 class ShopViewController: UIViewController {
     var outBuyButton:BootstrapBtn!
+    var outRestoreButton:BootstrapBtn!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = BG1_COLOR
@@ -36,6 +37,22 @@ class ShopViewController: UIViewController {
         outBuyButton.titleLabel?.textAlignment = .center
         outBuyButton.addTarget(self, action: #selector(buyOneMonthPurchase), for: .touchUpInside)
         
+        // 恢复购买
+        outRestoreButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Danger)
+        self.view.addSubview(outRestoreButton)
+        outRestoreButton.snp.makeConstraints { (make) in
+            make.width.equalTo(self.view).multipliedBy(0.5)
+            make.height.equalTo(38)
+            make.right.equalTo(outBuyButton)
+            make.top.equalTo(outBuyButton.snp.bottom).offset(20)
+        }
+        outRestoreButton.setTitle("恢复购买", for: .normal)
+        outRestoreButton.titleLabel?.numberOfLines = 0
+        outRestoreButton.titleLabel?.textAlignment = .center
+        outRestoreButton.addTarget(self, action: #selector(restoreOneMonthPurchase), for: .touchUpInside)
+        
+        
+        
         let labelDescVip = UILabel()
         self.view.addSubview(labelDescVip)
         labelDescVip.snp.makeConstraints { (make) in
@@ -53,9 +70,10 @@ class ShopViewController: UIViewController {
     func reqShop()  {
         SwiftyStoreKit.retrieveProductsInfo(["xxwordHY"]) { result in
             if let product = result.retrievedProducts.first {
-                let priceString = product.localizedPrice!
-                
-                print("Product title: \(product.localizedTitle), price: \(priceString)")
+//                let priceString = product.localizedPrice!
+//                let txt:String = "🛒" + product.localizedTitle + " \n" + priceString
+//                self.outBuyButton.setTitle(txt, for: .normal)
+//                print("Product title: \(product.localizedTitle), price: \(priceString)")
             }
             else if let invalidProductId = result.invalidProductIDs.first {
 //                return alertWithTitle("Could not retrieve product info", message: "Invalid product identifier: \(invalidProductId)")
