@@ -60,6 +60,7 @@
 		0BD909D91EC3005B007467F0 /* ShouCangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D81EC3005B007467F0 /* ShouCangViewController.swift */; };
 		0BF035191ED1610000E1CA45 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF035181ED1610000E1CA45 /* MeViewController.swift */; };
 		0BF0351B1ED1F32700E1CA45 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0351A1ED1F32700E1CA45 /* ChangeNameViewController.swift */; };
+		0BF0351E1ED364C600E1CA45 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF0351D1ED364C600E1CA45 /* StoreKit.framework */; };
 		75AF06A683A708C84E55D089 /* Pods_xxword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228065594F704138570DAF96 /* Pods_xxword.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		0BF035181ED1610000E1CA45 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		0BF0351A1ED1F32700E1CA45 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 		0BF0351C1ED2CD8C00E1CA45 /* xxword.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxword.entitlements; sourceTree = "<group>"; };
+		0BF0351D1ED364C600E1CA45 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		228065594F704138570DAF96 /* Pods_xxword.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xxword.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3375C031DF91B6152A20BFD2 /* Pods-xxword.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xxword.release.xcconfig"; path = "Pods/Target Support Files/Pods-xxword/Pods-xxword.release.xcconfig"; sourceTree = "<group>"; };
 		D25065F2A0961C42A9AED138 /* Pods-xxword.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xxword.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xxword/Pods-xxword.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75AF06A683A708C84E55D089 /* Pods_xxword.framework in Frameworks */,
+				0BF0351E1ED364C600E1CA45 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +246,7 @@
 		635763797A6F5C26EF275D32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0BF0351D1ED364C600E1CA45 /* StoreKit.framework */,
 				228065594F704138570DAF96 /* Pods_xxword.framework */,
 			);
 			name = Frameworks;
@@ -287,6 +291,9 @@
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
