@@ -420,12 +420,12 @@ class HomeViewController: UIViewController {
         }
         btnYyy.backgroundColor = BG2_COLOR
         btnYyy.addTarget(self, action: #selector(callbackYyy), for: .touchUpInside)
-        let imgYyy = UIImageView(image: UIImage(named: "yyy"))
+        let imgYyy = UIImageView(image: UIImage(named: "hy"))
         btnYyy.addSubview(imgYyy)
         imgYyy.snp.makeConstraints { (make) in
             make.centerX.equalTo(btnYyy)
             make.centerY.equalTo(btnYyy).offset(-10)
-            make.width.height.equalTo(btnYyy.snp.width).multipliedBy(0.3)
+            make.width.height.equalTo(btnYyy.snp.width).multipliedBy(0.4)
         }
         let lblYyy = UILabel()
         btnYyy.addSubview(lblYyy)
@@ -436,7 +436,7 @@ class HomeViewController: UIViewController {
             make.height.equalTo(20)
         }
         lblYyy.textAlignment = .center
-        lblYyy.text = "摇一摇"
+        lblYyy.text = "会员购买"
         lblYyy.textColor = WZ1_COLOR
         lblYyy.font = UIFont.systemFont(ofSize: 18)
         
@@ -995,7 +995,8 @@ class HomeViewController: UIViewController {
     }
     // 点击 摇一摇
     func callbackYyy() -> Void {
-        print("yyy Study")
+//        print("yyy Study")
+        self.tabBarController?.selectedIndex = 1
     }
     
     // 点击 我的错题
