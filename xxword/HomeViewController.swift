@@ -101,6 +101,7 @@ class HomeViewController: UIViewController {
         
         changeTexValue()
 //        print(nowGlobalSet?.phone, nowGlobalSet?.pwd, nowGlobalSet?.token)
+        
     }
     
     func initHomeView() {
@@ -709,7 +710,7 @@ class HomeViewController: UIViewController {
         oneGlobalSet.phone = ""
         oneGlobalSet.pwd = ""
         oneGlobalSet.token = ""
-        oneGlobalSet.vip = 0
+        oneGlobalSet.vipsjc = 0
         oneGlobalSet.uid = ""
         oneGlobalSet.ismusic = true     // 播放单词声音
         oneGlobalSet.iskipword = true   // 正确自动跳转
