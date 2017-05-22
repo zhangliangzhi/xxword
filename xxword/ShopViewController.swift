@@ -11,7 +11,6 @@ import SnapKit
 import SwiftyStoreKit
 
 class ShopViewController: UIViewController {
-    let aukey:String = "0c24952dcdf0473fa2ce7763f022a95c"
     var outBuyButton:BootstrapBtn!
     override func viewDidLoad() {
         super.viewDidLoad()
