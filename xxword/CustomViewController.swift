@@ -128,7 +128,7 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
             
         }
         if ishy() == false {
-            if indexPath.row >= 100 {
+            if indexPath.row > 99 || cell.wid > 99 {
                 tipsVIP()
                 cell.clickCount = 1
             }

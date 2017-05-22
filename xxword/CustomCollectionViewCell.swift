@@ -177,11 +177,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         }
         
         
-        if ishy() == false {
-            if wid>=99 {
-                self.clickCount = 1
-            }
-        }
         
     }
     

@@ -168,23 +168,50 @@ class ZxlxViewController: UIViewController {
         buttonN.addTarget(self, action: #selector(callbackN), for: .touchUpInside)
     }
     
+    func ishy() -> Bool {
+        let isv:Bool = (nowGlobalSet?.isVIP)!
+        return isv
+    }
+    func tipsVIP() {
+        TipsSwift.showCenterWithText("非会员只能学习前100个单词", duration: 5)
+    }
     func callbackAdj() {
+        if ishy() == false {
+            tipsVIP()
+            return
+        }
         goStudyCustomWords(arrIds: arrOnePageAdj)
     }
 
     func callbackAdv() {
+        if ishy() == false {
+            tipsVIP()
+            return
+        }
         goStudyCustomWords(arrIds: arrOnePageAdv)
     }
     
     func callbackVt() {
+        if ishy() == false {
+            tipsVIP()
+            return
+        }
         goStudyCustomWords(arrIds: arrOnePageVt)
     }
     
     func callbackVi() {
+        if ishy() == false {
+            tipsVIP()
+            return
+        }
         goStudyCustomWords(arrIds: arrOnePageVi)
     }
     
     func callbackN() {
+        if ishy() == false {
+            tipsVIP()
+            return
+        }
         goStudyCustomWords(arrIds: arrOnePageN)
     }
     

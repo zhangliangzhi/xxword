@@ -872,7 +872,7 @@ class HomeViewController: UIViewController {
         }
         
         if ishy() == false {
-            TipsSwift.showCenterWithText("非会员只能学习前100个单词", duration: 5)
+            tipsVIP()
             tabbar.arrIds = []
             for i in 0..<100 {
                 tabbar.arrIds.append(i)
@@ -922,6 +922,7 @@ class HomeViewController: UIViewController {
     // 点击 未做题
     func callbackWzt() -> Void {
 //        print("Wzt Study")
+        
         let tabbar = CustomTabBarController()
         tabbar.itype = 4
         
