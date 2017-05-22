@@ -164,7 +164,7 @@ class ShopViewController: UIViewController {
         case .purchased(let expiryDate):
             print("Product is valid until \(expiryDate)")
             nowGlobalSet?.vipDate = expiryDate as NSDate
-            nowGlobalSet?.vipsjc = Int32(expiryDate.timeIntervalSince1970)
+            nowGlobalSet?.vipsjc = Int64(expiryDate.timeIntervalSince1970)
             nowGlobalSet?.isVIP = true
             appDelegate.saveContext()
 //            return alertWithTitle("Product is purchased", message: "Product is valid until \(expiryDate)")

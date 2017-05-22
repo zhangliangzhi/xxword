@@ -700,7 +700,7 @@ class HomeViewController: UIViewController {
             appDelegate.saveContext()
             return
         }
-        let sjc:Int32 = Int32((vipdate?.timeIntervalSince1970)!)
+        let sjc:Int64 = Int64((vipdate?.timeIntervalSince1970)!)
         if sjc != nowGlobalSet?.vipsjc {
             nowGlobalSet?.isVIP = false
             appDelegate.saveContext()
@@ -709,8 +709,8 @@ class HomeViewController: UIViewController {
         // 是否在31天以内
         let nowdate = Date()
         print(nowdate, nowdate.timeIntervalSince1970)
-        let nowsjc:Int32 = Int32(Date().timeIntervalSince1970)
-        let endSecond:Int32 = sjc + 31*24*3600
+        let nowsjc:Int64 = Int64(Date().timeIntervalSince1970)
+        let endSecond:Int64 = sjc + 31*24*3600
         if nowsjc > endSecond || nowsjc<=sjc-86400 {
             nowGlobalSet?.isVIP = false
             appDelegate.saveContext()
