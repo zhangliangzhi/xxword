@@ -44,13 +44,13 @@ class CustomTabBarController: UITabBarController {
         v2.tabBarItem = item2
         
         let v3 = CommentViewController()
-        let item3 : UITabBarItem = UITabBarItem (title: "评论单词", image: UIImage(named: "message"), selectedImage: UIImage(named: "message_1"))
+        let item3 : UITabBarItem = UITabBarItem (title: "翻译", image: UIImage(named: "message"), selectedImage: UIImage(named: "message_1"))
         v3.tabBarItem = item3
         
         let n1 = UINavigationController(rootViewController: v1)
         let n2 = UINavigationController(rootViewController: v2)
-        let n3 = UINavigationController(rootViewController: v3)
-        let tabArray = [n1, n2, n3]
+//        let n3 = UINavigationController(rootViewController: v3)
+        let tabArray = [n1, n2, v3]
         self.viewControllers = tabArray
         
         //默认选中的是游戏主界面视图

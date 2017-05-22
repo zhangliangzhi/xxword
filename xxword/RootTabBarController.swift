@@ -27,9 +27,9 @@ class RootTabBarController: UITabBarController {
         v2.tabBarItem = item2
         
         
-        let v3 = FavorViewController()
-        let item3 : UITabBarItem = UITabBarItem (title: "交流", image: UIImage(named: "message"), selectedImage: UIImage(named: "message_1"))
-        v3.tabBarItem = item3
+//        let v3 = FavorViewController()
+//        let item3 : UITabBarItem = UITabBarItem (title: "交流", image: UIImage(named: "message"), selectedImage: UIImage(named: "message_1"))
+//        v3.tabBarItem = item3
 
 //        let v4 = FavorViewController()
         let v4 = FavorListViewController()
@@ -43,10 +43,10 @@ class RootTabBarController: UITabBarController {
         
         let n1 = UINavigationController(rootViewController: v1)
         let n2 = UINavigationController(rootViewController: v2)
-        let n3 = UINavigationController(rootViewController: v3)
+//        let n3 = UINavigationController(rootViewController: v3)
         let n4 = UINavigationController(rootViewController: v4)
         let n5 = UINavigationController(rootViewController: v5)
-        let tabArray = [n1, n2, n3, n4, n5]
+        let tabArray = [n1, n2,  n4, n5]
         self.viewControllers = tabArray
     }
     
