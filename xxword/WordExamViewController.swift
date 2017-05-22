@@ -171,7 +171,7 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         curwid = wid
         HomeViewController.getCoreData()
-        gClickIndex = Int32(indexPath.row)
+        gClickIndex = indexPath.row
     }
     
     
@@ -233,7 +233,7 @@ class WordExamViewController: UIViewController, UICollectionViewDelegate, UIColl
             curIndex = (nowGlobalSet?.curFavorIndex)!
         } else {
             // 没编号itype的
-            curIndex = gClickIndex
+            curIndex = Int32(gClickIndex)
         }
         
         // 删除了, 就返回打开第一个吧

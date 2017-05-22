@@ -159,6 +159,7 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.navigationItem.title = gWord[wid]
         self.tabBarItem.title = "\(indexPath.row+1)" + "/" + "\(arrIds.count)"
         
+        gClickIndex = wid
         curwid = wid
         HomeViewController.getCoreData()
         setRightWrongCount()
@@ -201,7 +202,7 @@ class CustomViewController: UIViewController, UICollectionViewDelegate, UICollec
             curIndex = (nowGlobalSet?.curFavorIndex)!
         } else {
             // 没编号itype的
-            curIndex = gClickIndex
+            curIndex = Int32(gClickIndex)
         }
         
         // 删除了, 就返回打开第一个吧

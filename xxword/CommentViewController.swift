@@ -13,7 +13,6 @@ import Alamofire
 class CommentViewController: UIViewController {
 
     var rootv: UIView!
-    var word: String!
     var webv:UIWebView!
     let googleUrl   = "https://translate.google.cn/#en/zh-CN/"
     let baiduUrl    = "https://fanyi.baidu.com/#en/zh/"
@@ -82,7 +81,7 @@ class CommentViewController: UIViewController {
     }
     
     func goChange() {
-        let word:String = gWord[Int(gClickIndex)]
+        let word:String = gWord[gClickIndex]
         if selIndex == 0 {
             let url = URLRequest(url: URL(string: googleUrl+word)!)
             webv.loadRequest(url)

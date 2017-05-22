@@ -235,7 +235,7 @@ class ExamCollectionViewCell: UICollectionViewCell {
 //            sv.setRightWrongCount()
         }
         
-        gClickIndex = Int32(curIndexId)
+        gClickIndex = curIndexId
         // 是否自动跳到下一题, 不管对错
         sv.goNextWord(nextIdIndex: self.curIndexId+1)
         

@@ -228,7 +228,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
             sv.setRightWrongCount()
         }
         
-        gClickIndex = Int32(curIndexId)
         // 是否自动跳到下一题
         if oneWrong.isRight {
             if (nowGlobalSet?.iskipword)! {

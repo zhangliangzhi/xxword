@@ -134,7 +134,7 @@ class ExamWordsViewController: UIViewController, UICollectionViewDelegate, UICol
     func clickBtn(_ button:UIButton) {
         let tag = button.tag
         let curIndexId = Int32(tag)
-        gClickIndex = curIndexId
+        gClickIndex = Int(curIndexId)
         if itype == 1 {
             nowGlobalSet?.curWrongIndex = curIndexId
         }else if itype == 2 {
@@ -162,7 +162,7 @@ class ExamWordsViewController: UIViewController, UICollectionViewDelegate, UICol
             curIndex = (nowGlobalSet?.curFavorIndex)!
         }else {
             // 没编号itype的
-            curIndex = gClickIndex
+            curIndex = Int32(gClickIndex)
         }
         
         // 删除了, 就返回打开第一个吧

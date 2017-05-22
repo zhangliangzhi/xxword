@@ -83,6 +83,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     func backHome() {
+        gClickIndex = 0
         appDelegate.window?.rootViewController?.removeFromParentViewController()
         appDelegate.window?.rootViewController = RootTabBarController()
     }
@@ -119,6 +120,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         if firstScroll == false {
             firstScroll = true
             let wid = getWid()
+            gClickIndex = wid
             let ati:Int = wid - (indexPage * 1000)
             if (wid % 1000 ) != 0 {
                 collectionView.scrollToItem(at: IndexPath(item: ati, section: 0), at: .left, animated: false)
@@ -161,6 +163,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         self.navigationItem.title = gWord[wid]
         self.tabBarItem.title = "\(wid+1)" + "/5004"
         
+        gClickIndex = wid
         curwid = wid
         HomeViewController.getCoreData()
         setRightWrongCount()
@@ -216,6 +219,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         }else{
         }
         let wid = Int(curIndex)
+        
         return wid
     }
     
