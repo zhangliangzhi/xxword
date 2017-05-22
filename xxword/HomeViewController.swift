@@ -100,7 +100,7 @@ class HomeViewController: UIViewController {
         loginNow()
         
         changeTexValue()
-        print(nowGlobalSet?.phone, nowGlobalSet?.pwd, nowGlobalSet?.token)
+//        print(nowGlobalSet?.phone, nowGlobalSet?.pwd, nowGlobalSet?.token)
     }
     
     func initHomeView() {
@@ -597,7 +597,7 @@ class HomeViewController: UIViewController {
             make.centerX.equalTo(v)
             make.top.equalTo(btnJtbz.snp.bottom).offset(8)
         }
-        outGoXxButton.setTitle("爱上玩单词", for: .normal)
+        outGoXxButton.setTitle("❤️爱上玩单词👻", for: .normal)
         outGoXxButton.addTarget(self, action: #selector(callbackNormalStudy), for: .touchUpInside)
         
     }

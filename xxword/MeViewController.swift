@@ -64,7 +64,7 @@ class MeViewController: UIViewController {
 //            make.bottom.equalTo(rootv).offset(-80)
             make.centerY.equalTo(rootv).offset(20)
         }
-        labelIcon.text = "不上培训班, 爱上玩单词✅"
+        labelIcon.text = "✅不上培训班, ❤️爱上玩单词"
         labelIcon.textColor = WARN_COLOR
         
         let outIconButton = UIButton(type: .system)

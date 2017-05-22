@@ -23,26 +23,8 @@ class ShopViewController: UIViewController {
         initUI()
         reqShop()
     }
-
-    func reqShop()  {
-        SwiftyStoreKit.retrieveProductsInfo(["xxwordHY"]) { result in
-            if let product = result.retrievedProducts.first {
-                let priceString = product.localizedPrice!
-                print("Product: \(product.localizedDescription), price: \(priceString)")
-            }
-            else if let invalidProductId = result.invalidProductIDs.first {
-//                return alertWithTitle("Could not retrieve product info", message: "Invalid product identifier: \(invalidProductId)")
-                print("can not retrieve product info")
-            }
-            else {
-                print("Error: \(result.error)")
-            }
-        }
-    }
     
     func initUI() {
-        
-        
         outBuyButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Warning)
         self.view.addSubview(outBuyButton)
         outBuyButton.snp.makeConstraints { (make) in
@@ -53,6 +35,7 @@ class ShopViewController: UIViewController {
         outBuyButton.setTitle("🛒月会员VIP \n￥30.00", for: .normal)
         outBuyButton.titleLabel?.numberOfLines = 0
         outBuyButton.titleLabel?.textAlignment = .center
+        outBuyButton.addTarget(self, action: #selector(buyOneMonthPurchase), for: .touchUpInside)
         
         let labelDescVip = UILabel()
         self.view.addSubview(labelDescVip)
@@ -67,4 +50,51 @@ class ShopViewController: UIViewController {
         labelDescVip.numberOfLines = 0
         
     }
+    
+    func reqShop()  {
+        SwiftyStoreKit.retrieveProductsInfo(["xxwordHY"]) { result in
+            if let product = result.retrievedProducts.first {
+                let priceString = product.localizedPrice!
+                
+                print("Product title: \(product.localizedTitle), price: \(priceString)")
+            }
+            else if let invalidProductId = result.invalidProductIDs.first {
+//                return alertWithTitle("Could not retrieve product info", message: "Invalid product identifier: \(invalidProductId)")
+                print("can not retrieve product info")
+            }
+            else {
+                print("Error: \(result.error)")
+            }
+        }
+    }
+    
+    
+    
+    func buyOneMonthPurchase() {
+        SwiftyStoreKit.purchaseProduct("xxwordHY") { result in
+
+            switch result {
+            case .success(let purchase):
+                purchase.transaction
+                print("Purchase Success: \(purchase.productId)")
+            case .error(let error):
+                switch error.code {
+                case .unknown: print("Unknown error. Please contact support")
+                case .clientInvalid: print("Not allowed to make the payment")
+                case .paymentCancelled: break
+                case .paymentInvalid: print("The purchase identifier was invalid")
+                case .paymentNotAllowed: print("The device is not allowed to make the payment")
+                case .storeProductNotAvailable: print("The product is not available in the current storefront")
+                case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
+                case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
+                case .cloudServiceRevoked: print("User has revoked permission to use this cloud service")
+                }
+            }
+        }
+    }
+    
+    func restoreOneMonthPurchase() {
+    }
+    
+    
 }
