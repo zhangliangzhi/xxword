@@ -24,7 +24,19 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.view.backgroundColor = BG1_COLOR
         self.automaticallyAdjustsScrollViewInsets = false
-        self.title = "成绩排行"
+        
+        let indexPage = nowGlobalSet?.indexPage
+        if indexPage == 0 {
+            self.title = "成绩排行 [1-1000)单词"
+        }else if indexPage == 1 {
+            self.title = "成绩排行 [1000-2000)单词"
+        }else if indexPage == 2 {
+            self.title = "成绩排行 [2000-3000)单词"
+        }else if indexPage == 3 {
+            self.title = "成绩排行 [3000-4000)单词"
+        }else if indexPage == 4 {
+            self.title = "成绩排行 [4000-5004)单词"
+        }
         
         rootv = UIView()
         self.view.addSubview(rootv)
@@ -70,7 +82,14 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let one:oneRank = arrData[indexPath.row]
+        let name:String = one.name!
+        let uid:String = one.uid!
+        if uid == nowGlobalSet?.uid {
+            TipsSwift.showCenterWithText("我自己")
+        }else {
+            TipsSwift.showCenterWithText("用户: " + name)
+        }
         
     }
     
@@ -82,6 +101,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let useTime:Int = one.useTime!
         let name:String = one.name!
         let strUseTime = getDtimeStr(useTime)
+        let uid:String = one.uid!
         
         // 分数
         let scoreLabel = UILabel()
@@ -123,6 +143,9 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         userNameLabel.text = name
         userNameLabel.textColor = INFO_COLOR
+        if uid == nowGlobalSet?.uid {
+            userNameLabel.textColor = WARN_COLOR
+        }
         
         return cell
     }

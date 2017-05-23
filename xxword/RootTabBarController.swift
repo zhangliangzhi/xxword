@@ -12,6 +12,14 @@ class RootTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        UINavigationBar.appearance().barTintColor = BG2_COLOR
+//        let textAttr = [ NSForegroundColorAttributeName: WZ1_COLOR ]
+//        UINavigationBar.appearance().titleTextAttributes = textAttr
+        
+//        UINavigationBar.appearance().barTintColor = WZ2_COLOR
+//        let textAttr = [ NSForegroundColorAttributeName: BG2_COLOR ]
+//        UINavigationBar.appearance().titleTextAttributes = textAttr
+        
         creatSubViewControllers()
         // rgb 241,235,223
     }

@@ -14,6 +14,8 @@ let BG1_COLOR = UIColor(red: 233/255, green: 228/255, blue: 217/255, alpha: 1)
 // 背景2
 let BG2_COLOR = UIColor(red: 249/255, green: 247/255, blue: 242/255, alpha: 1)
 
+let TI_COLOR = UIColor(red: 249/255, green: 247/255, blue: 242/255, alpha: 1)
+
 // 首页文字1 大字
 let WZ1_COLOR = UIColor(red: 120/255, green: 105/255, blue: 90/255, alpha: 1)
 
