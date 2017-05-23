@@ -141,6 +141,7 @@ class ChangeNameViewController: UIViewController, UITextFieldDelegate {
                         nowGlobalSet?.token = ""
                         nowGlobalSet?.phone = ""
                         nowGlobalSet?.pwd = ""
+                        nowGlobalSet?.today = ""
                         appDelegate.saveContext()
                         TipsSwift.showCenterWithText("服务端出错啦...")
                     }
