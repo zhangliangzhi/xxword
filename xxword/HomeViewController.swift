@@ -789,7 +789,16 @@ class HomeViewController: UIViewController {
             Alamofire.request(url).responseString(completionHandler: { (response) in
                 if response.result.isSuccess {
                     let str:String = response.result.value!
-                    rootResponse(strjson: str, id: PBID.registerTourist)
+                    
+                    if let data = resRegisterTouristData.deserialize(from: str) {
+                        let code = data.code
+                        let token = data.token
+                        if code == 0 {
+                            nowGlobalSet?.token = token
+                            appDelegate.saveContext()
+                        }
+                    }
+                    
                     let token:String = (nowGlobalSet?.token!)!
                     // 游客登录下
                     Alamofire.request(rootUrl + "login2.php", method: .get, parameters: ["token": token]).response(completionHandler: { (r) in
@@ -808,7 +817,7 @@ class HomeViewController: UIViewController {
                 if response.result.isSuccess {
                     let str:String = response.result.value!
                     // 游客登录不需要处理
-                    rootResponse(strjson: str, id: PBID.loginTourist)
+                    
                 }else {
                     print("get protocol fail")
                 }
@@ -821,12 +830,45 @@ class HomeViewController: UIViewController {
             Alamofire.request(url, method: .get, parameters: ["phone": strNum, "pwd": strPwd]).responseString { (response) in
                 if response.result.isSuccess {
                     let str:String = response.result.value!
-                    rootResponse(strjson: str, id: PBID.loginPhone)
+                    
+                    if let data = resLoginData.deserialize(from: str) {
+                        let code = data.code
+                        let token = data.token
+                        if code == 0 {
+                            nowGlobalSet?.token = token
+                            nowGlobalSet?.uid = data.uid
+                            appDelegate.saveContext()
+                        }else {
+                        }
+                    }
+                    
                 }else {
                     print("get protocol fail")
                 }
 //                self.view.hideToastActivity()
             }
+        }
+    }
+    
+    // 错误提示
+    func TipsError(_ code:Int) {
+        switch code {
+        case 20:
+            print("uid出错")
+        case 21:
+            print("手机格式出错")
+        case 22:
+            print("密码要大于6个字符")
+        case 23:
+            TipsSwift.showCenterWithText("已经注册过了")
+        case 24:
+            TipsSwift.showCenterWithText("电话号码已用过")
+        case 30:
+            TipsSwift.showCenterWithText("账号或密码出错")
+        case 31:
+            TipsSwift.showCenterWithText("账号请重新登录")
+        default:
+            print("def err")
         }
     }
     

@@ -138,6 +138,10 @@ class ChangeNameViewController: UIViewController, UITextFieldDelegate {
                         appDelegate.saveContext()
                         TipsSwift.showCenterWithText("改名成功", duration: 3)
                     }else if code == -1 {
+                        nowGlobalSet?.token = ""
+                        nowGlobalSet?.phone = ""
+                        nowGlobalSet?.pwd = ""
+                        appDelegate.saveContext()
                         TipsSwift.showCenterWithText("服务端出错啦...")
                     }
                 }
