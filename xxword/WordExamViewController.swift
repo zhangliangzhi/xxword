@@ -1,7 +1,7 @@
 //
 //  WordExamViewController.swift
 //  xxword
-//
+//  模拟考试-> 单词考试
 //  Created by ZhangLiangZhi on 2017/5/18.
 //  Copyright © 2017年 xigk. All rights reserved.
 //

@@ -109,7 +109,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func addHeadV() {
-        let segments = ["每日排行", "周排行榜", "所有排行"]
+        let segments = ["每日排行", "周排行榜", "月排行榜"]
         let seg = UISegmentedControl(items: segments)
         self.view.addSubview(seg)
         seg.snp.makeConstraints { (make) in

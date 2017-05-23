@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ExamResultViewController: UIViewController {
 
@@ -29,9 +30,38 @@ class ExamResultViewController: UIViewController {
             make.bottom.equalTo(self.view)
         }
         
+        commitRank()
         initUI()
         
         
+    }
+    
+    func commitRank() {
+        let url = rootUrl + "rankTJ.php"
+        let token:String = (nowGlobalSet?.token)!
+        let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
+        let name:String = (nowGlobalSet?.nickName)!
+        let uid:String = (nowGlobalSet?.uid)!
+        
+        Alamofire.request(url, method: .post, parameters: ["name": name, "token":token, "score":score, "indexPage":indexPage, "utime":dtime, "uid":uid]).responseString { (response) in
+            if response.result.isSuccess {
+                let str:String = response.result.value!
+                
+                if let data = resRegisterCode.deserialize(from: str) {
+                    let code = data.code
+                    if code == 0 {
+                        // 打败了多少的人
+//                        TipsSwift.showCenterWithText("改名成功", duration: 3)
+                        print("提交成功")
+                    }else if code == -1 {
+                    }
+                }
+            }else {
+                print("get protocol fail")
+                TipsSwift.showCenterWithText("没有网络, 无法提交到排行榜")
+            }
+//            self.view.hideToastActivity()
+        }
     }
     
     func initUI() {
