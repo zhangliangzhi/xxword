@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		0B0003781EB60DB100046B3A /* MyWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0003771EB60DB100046B3A /* MyWord.swift */; };
 		0B1866021ED4447300D0EEEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1866011ED4447300D0EEEA /* Foundation.framework */; };
-		0B1866041ED4447F00D0EEEA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1866031ED4447F00D0EEEA /* CoreTelephony.framework */; };
-		0B1866061ED4449500D0EEEA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1866051ED4449500D0EEEA /* libz.tbd */; };
-		0B1866081ED444A500D0EEEA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1866071ED444A500D0EEEA /* SystemConfiguration.framework */; };
-		0B18660A1ED444B000D0EEEA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1866091ED444B000D0EEEA /* CoreLocation.framework */; };
 		0B2AEE061EBA776700E1A9F1 /* ocr.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AEE051EBA776700E1A9F1 /* ocr.m */; };
 		0B38C6361EC4D55F00C3B140 /* PlayLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6351EC4D55F00C3B140 /* PlayLogViewController.swift */; };
 		0B38C6381EC55C4B00C3B140 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */; };
@@ -150,10 +146,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B18660A1ED444B000D0EEEA /* CoreLocation.framework in Frameworks */,
-				0B1866081ED444A500D0EEEA /* SystemConfiguration.framework in Frameworks */,
-				0B1866061ED4449500D0EEEA /* libz.tbd in Frameworks */,
-				0B1866041ED4447F00D0EEEA /* CoreTelephony.framework in Frameworks */,
 				0B1866021ED4447300D0EEEA /* Foundation.framework in Frameworks */,
 				0BE0E2441ED403A700FA7F41 /* UserNotifications.framework in Frameworks */,
 				0BE0E2421ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
