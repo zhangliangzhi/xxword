@@ -21,7 +21,7 @@ class ShopViewController: UIViewController {
         self.navigationItem.title = "商店"
         // Do any additional setup after loading the view.
         
-        
+        MobClick.event("WatchShopView")
         initUI()
         reqShop()
     }
@@ -102,6 +102,7 @@ class ShopViewController: UIViewController {
     
     func buyOneMonthPurchase() {
         print("buy one click")
+        MobClick.event("WantBuyVIP")
         self.view.makeToastActivity(.center)
         outBuyButton.isUserInteractionEnabled = false
         outRestoreButton.isUserInteractionEnabled = false
@@ -133,6 +134,7 @@ class ShopViewController: UIViewController {
         case .success(let purchase):
             print("Purchase Success: \(purchase.productId)")
             verifyPurchase()
+            MobClick.event("DoneBuyVIP")
             return alertWithTitle("🎉恭喜🎉", message: "已成为[象形单词]VIP会员")
         case .error(let error):
             print("Purchase Failed: \(error)")
@@ -244,6 +246,7 @@ class ShopViewController: UIViewController {
     
     // 恢复购买
     func restoreOneMonthPurchase() {
+        MobClick.event("WantRestore")
         self.view.makeToastActivity(.center)
         outBuyButton.isUserInteractionEnabled = false
         outRestoreButton.isUserInteractionEnabled = false

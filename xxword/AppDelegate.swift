@@ -18,9 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // umeng统计观看次数
+        let obj = UMAnalyticsConfig()
+        obj.appKey = "592288a58630f51f8f00052b"
+        MobClick.start(withConfigure: obj)
+        MobClick.event("UMLogin")
         
-//        self.window = UIWindow(frame: UIScreen.main.bounds)
-//        self.window?.makeKeyAndVisible()
         let root  = RootTabBarController()
         self.window?.rootViewController = root
         
