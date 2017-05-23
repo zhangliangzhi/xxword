@@ -36,7 +36,17 @@ class ExamResultViewController: UIViewController {
         
     }
     
+    func alertTitle(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "确定", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func commitRank() {
+        if nowGlobalSet?.isVIP == false {
+            TipsSwift.showTopWithText("非VIP会员无法提交到 [成绩排行] 哦", duration: 3)
+            return
+        }
         let url = rootUrl + "rankTJ.php"
         let token:String = (nowGlobalSet?.token)!
         let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
