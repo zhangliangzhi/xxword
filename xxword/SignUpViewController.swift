@@ -307,5 +307,4 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         navigationController?.popToRootViewController(animated: true)
     }
     
-        
 }

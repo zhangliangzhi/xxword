@@ -285,6 +285,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }else {
                 self.view.hideToastActivity()
                 print("get protocol fail")
+                TipsSwift.showCenterWithText("网络出错")
             }
         }
 
