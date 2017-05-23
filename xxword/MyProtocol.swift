@@ -44,17 +44,16 @@ struct resInfoFromSvr:HandyJSON {
     var getVipTime:Int?
 }
 
-// ranking
-struct oneRank {
+// 排行榜 数组格式 {"uid":"U7CDbSzrAa","name":"\u6e38\u5ba2","score":"0","useTime":"9","indexPage":"0","curTime":1495565984},{
+class oneRank: HandyJSON {
     var uid:String?
     var name:String?
     var score:Int?
     var useTime:Int?
     var curTime:Int?
     var indexPage:Int?
-}
-struct resRank:HandyJSON {
-    var arrRank:[oneRank]?
+    
+    required init() {}
 }
 
 

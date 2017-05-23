@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Alamofire
 
 class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var rootv: UIView!
     var tablev: UITableView!
-    var arrData:[IdCount] = []
+    var arrData:[oneRank] = []
+    var firstLoad = true
     var wtype = 0
     
     override func viewDidLoad() {
@@ -30,8 +32,6 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.bottom.equalTo(self.view).offset(-44)
         }
         
-        
-        getData()
         
         addHeadV()
         
@@ -54,8 +54,12 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getData()
-        tablev.reloadData()
+        // 只第一次加载数据吧, 慢的半死
+        if firstLoad {
+            getData()
+            firstLoad = false
+        }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,6 +67,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return arrData.count
     }
     
@@ -74,15 +79,21 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
+        let one:oneRank = arrData[indexPath.row]
+        let score:Int = one.score!
+        let useTime:Int = one.useTime!
+        let name:String = one.name!
+        let strUseTime = getDtimeStr(useTime)
+        
         // 分数
         let scoreLabel = UILabel()
         cell.addSubview(scoreLabel)
         scoreLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(cell)
-            make.centerX.equalTo(cell).offset(-15)
+            make.centerX.equalTo(cell).offset(30)
         }
-        scoreLabel.text = "score"
-        scoreLabel.textColor = SX3_COLOR
+        scoreLabel.text = "\(score)分"
+        scoreLabel.textColor = WZ1_COLOR
         
         // 用时
         let useTimeLabel = UILabel()
@@ -91,8 +102,8 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.centerY.equalTo(scoreLabel)
             make.right.equalTo(cell).offset(-20)
         }
-        useTimeLabel.text = "time"
-        useTimeLabel.textColor = INFO_COLOR
+        useTimeLabel.text = strUseTime
+        useTimeLabel.textColor = WZ1_COLOR
         useTimeLabel.numberOfLines = 0
         
         // 排行
@@ -104,6 +115,16 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         indexLabel.text = "\(indexPath.row+1)"
         indexLabel.textColor = WARN_COLOR
+        
+        // 玩家名字
+        let userNameLabel = UILabel()
+        cell.addSubview(userNameLabel)
+        userNameLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(scoreLabel)
+            make.left.equalTo(cell).offset(50)
+        }
+        userNameLabel.text = name
+        userNameLabel.textColor = INFO_COLOR
         
         return cell
     }
@@ -137,9 +158,10 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         hv.addSubview(wordLabel)
         wordLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(hv)
-            make.centerX.equalTo(hv).offset(-10)
+            make.centerX.equalTo(hv).offset(35)
         }
         wordLabel.text = "得分"
+        
         
         let indexLabel = UILabel()
         hv.addSubview(indexLabel)
@@ -149,13 +171,16 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         indexLabel.text = "排行"
         
+        
         let nameLabel = UILabel()
         hv.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(wordLabel)
-            make.left.equalTo(indexLabel.snp.right).offset(10)
+            make.left.equalTo(hv).offset(80)
         }
         nameLabel.text = "名字"
+        nameLabel.textAlignment = .left
+        
         
         let useTimeTitleLabel = UILabel()
         hv.addSubview(useTimeTitleLabel)
@@ -177,9 +202,47 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         tablev.reloadData()
     }
     
+    // 服务器获取数据
     func getData() {
         arrData = []
         
+        let url = rootUrl + "rankCX.php"
+        let token:String = (nowGlobalSet?.token)!
+        let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
+        
+        self.view.makeToastActivity(.center)
+        Alamofire.request(url, method: .post, parameters: ["token":token, "indexPage":indexPage]).responseString { (response) in
+            
+            self.view.hideToastActivity()
+            
+            if response.result.isSuccess {
+                let str:String = response.result.value!
+                
+                if let ranks = [oneRank].deserialize(from: str) {
+                    ranks.forEach({ (rank) in
+                        self.arrData.append(rank!)
+                    })
+                    // 数据排序, 然后显示
+                    self.tablev.reloadData()
+                }else{
+                    print("no", str)
+                }
+            }else {
+                print("get protocol fail")
+                TipsSwift.showCenterWithText("没有网络, 无法查询排行榜")
+            }
+        }
     }
     
+    func getDtimeStr(_ dtime:Int) -> String {
+        var str = ""
+        if dtime >= 60 {
+            let f:Int = dtime/60
+            let m:Int = dtime % 60
+            str = String.init(format: "%02d:%02d", arguments: [f, m])
+        }else {
+            str = String.init(format: "%02d:%02d", arguments: [0, dtime])
+        }
+        return str
+    }
 }
