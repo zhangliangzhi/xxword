@@ -102,6 +102,7 @@ class HomeViewController: UIViewController {
         changeTexValue()
 //        print(nowGlobalSet?.phone, nowGlobalSet?.pwd, nowGlobalSet?.token)
         
+        
     }
     
     func initHomeView() {
@@ -1055,5 +1056,40 @@ class HomeViewController: UIViewController {
         navigationController?.pushViewController(WordListViewController(), animated: true)
     }
     
+    static func getInfo() {
+        let url = rootUrl + "xxinfo2.php"
+        let token:String = (nowGlobalSet?.token)!
+        Alamofire.request(url, method: .get, parameters: ["token":token]).responseString { (response) in
+            if response.result.isSuccess {
+                let str:String = response.result.value!
+                if let data = resInfoFromSvr.deserialize(from: str) {
+                    let phone:String = (nowGlobalSet?.phone)!
+                    if phone == "" {
+                        return
+                    }
+                    let iphone = Int(phone)
+                    if iphone == nil{
+                        return
+                    }
+                    let newphone:Int = Int(iphone!)
+                    
+                    let state = data.state
+                    let isVIP = data.isVIP
+                    let pnum:Int = newphone + 168666
+                    let tmp:Int = pnum%88 - pnum%30 + 86
+                    let checknum:Int = tmp*tmp*tmp*66 - tmp*tmp*13 + 168
+                    if state == checknum && isVIP == true {
+                        nowGlobalSet?.isVIP = true
+                        let date = Date()
+                        nowGlobalSet?.vipDate = date as NSDate
+                        nowGlobalSet?.vipsjc = Int64(date.timeIntervalSince1970)
+                        appDelegate.saveContext()
+                    }
+                }
+            }else {
+                print("get protocol fail")
+            }
+        }
+    }
     
 }

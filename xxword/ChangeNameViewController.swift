@@ -32,6 +32,7 @@ class ChangeNameViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.white
         initLgv()
+        
     }
     
 
@@ -110,8 +111,8 @@ class ChangeNameViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
+        HomeViewController.getInfo()
         netConnectChangeName(strNum)
-        
         
     }
 

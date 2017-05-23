@@ -194,7 +194,7 @@ class MeViewController: UIViewController {
     }
     
     func btnGoIcon() {
-        TipsSwift.showCenterWithText("象形单词 v1.0", duration: 1)
+        TipsSwift.showCenterWithText("象形单词 v1.0\n 客服邮箱: 521401@qq.com", duration: 1)
     }
     
 }

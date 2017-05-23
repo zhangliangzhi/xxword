@@ -34,7 +34,13 @@ struct resLoginData:HandyJSON {
     var token:String?
 }
 
-// 游客登录
-
+// 登录信息2 {"state":0,"isVIP":false,"getVipTime":1495551803,"code":0}
+struct resInfoFromSvr:HandyJSON {
+    var code:Int?
+    var uid:String?
+    var state:Int?
+    var isVIP:Bool?
+    var getVipTime:Int?
+}
 
 
