@@ -101,6 +101,7 @@ class ChangeNameViewController: UIViewController, UITextFieldDelegate {
 
     // 确定
     func btnGoOK() {
+        outNameTextField.resignFirstResponder()
         // 去除头尾空格
         var strNum:String = outNameTextField.text!
         strNum = strNum.trimmingCharacters(in: .whitespaces)
