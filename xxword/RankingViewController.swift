@@ -121,7 +121,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.addSubview(userNameLabel)
         userNameLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(scoreLabel)
-            make.left.equalTo(cell).offset(50)
+            make.left.equalTo(cell).offset(60)
         }
         userNameLabel.text = name
         userNameLabel.textColor = INFO_COLOR
@@ -202,11 +202,24 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         tablev.reloadData()
     }
     
+    func sortData() {
+        let formatter = DateFormatter()
+        formatter.timeZone = NSTimeZone.system
+        
+        if wtype == 0 {
+            
+        }else if wtype == 1 {
+            
+        }else if wtype == 2 {
+            
+        }
+    }
+    
     // 服务器获取数据
     func getData() {
         arrData = []
         
-        let url = rootUrl + "rankCX.php"
+        let url = rootUrl + "rankingCX.php"
         let token:String = (nowGlobalSet?.token)!
         let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
         
