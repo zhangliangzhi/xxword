@@ -49,7 +49,8 @@ struct oneRank {
     var uid:String?
     var name:String?
     var score:Int?
-    var time:Int?
+    var useTime:Int?
+    var curTime:Int?
     var indexPage:Int?
 }
 struct resRank:HandyJSON {
