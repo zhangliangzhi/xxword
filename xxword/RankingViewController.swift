@@ -12,7 +12,6 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     var rootv: UIView!
     var tablev: UITableView!
     var arrData:[IdCount] = []
-    var otherTitleLabel:UILabel!
     var wtype = 0
     
     override func viewDidLoad() {
@@ -42,7 +41,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.width.equalTo(rootv)
             make.bottom.equalTo(rootv)
             make.centerX.equalTo(rootv)
-            make.top.equalTo(rootv).offset(60)
+            make.top.equalTo(rootv).offset(62)
         }
         tablev.backgroundColor = BG1_COLOR
         tablev.delegate = self
@@ -117,7 +116,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.top.equalTo(self.view).offset(64)
             make.centerX.equalTo(self.view)
             make.height.equalTo(30)
-            make.width.equalTo(self.view).multipliedBy(0.96)
+            make.width.equalTo(self.view)
         }
         seg.selectedSegmentIndex = 0
         seg.addTarget(self, action: #selector(changeSegment(_:)), for: .valueChanged)
@@ -130,7 +129,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.centerX.equalTo(rootv)
             make.width.equalTo(rootv)
             make.height.equalTo(30)
-            make.top.equalTo(rootv.snp.top).offset(30)
+            make.top.equalTo(rootv.snp.top).offset(32)
         }
         hv.backgroundColor = UIColor.white
         
@@ -158,17 +157,18 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         nameLabel.text = "名字"
         
-        otherTitleLabel = UILabel()
-        hv.addSubview(otherTitleLabel)
-        otherTitleLabel.snp.makeConstraints { (make) in
+        let useTimeTitleLabel = UILabel()
+        hv.addSubview(useTimeTitleLabel)
+        useTimeTitleLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(wordLabel)
             make.right.equalTo(hv).offset(-15)
         }
-        otherTitleLabel.text = "用时"
+        useTimeTitleLabel.text = "用时"
         
         wordLabel.textColor = WZ2_COLOR
         indexLabel.textColor = WZ2_COLOR
-        otherTitleLabel.textColor = WZ2_COLOR
+        useTimeTitleLabel.textColor = WZ2_COLOR
+        nameLabel.textColor = WZ2_COLOR
     }
     
     func changeSegment(_ segment:UISegmentedControl) {
