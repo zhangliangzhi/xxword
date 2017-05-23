@@ -43,4 +43,15 @@ struct resInfoFromSvr:HandyJSON {
     var getVipTime:Int?
 }
 
+// ranking
+struct oneRank {
+    var uid:String?
+    var name:String?
+    var score:Int?
+    var time:Int?
+}
+struct resRank:HandyJSON {
+    var arrRank:[oneRank]?
+}
+
 

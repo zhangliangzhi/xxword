@@ -1,23 +1,26 @@
 //
-//  ExamLogViewController.swift
+//  RankingViewController.swift
 //  xxword
-//
-//  Created by ZhangLiangZhi on 2017/5/18.
+//  排行榜
+//  Created by ZhangLiangZhi on 2017/5/24.
 //  Copyright © 2017年 xigk. All rights reserved.
 //
 
 import UIKit
 
-class ExamLogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var rootv: UIView!
     var tablev: UITableView!
+    var arrData:[IdCount] = []
+    var otherTitleLabel:UILabel!
+    var wtype = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = BG1_COLOR
         self.automaticallyAdjustsScrollViewInsets = false
-        self.title = "考试记录"
+        self.title = "成绩排行"
         
         rootv = UIView()
         self.view.addSubview(rootv)
@@ -27,6 +30,10 @@ class ExamLogViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.top.equalTo(self.view).offset(64)
             make.bottom.equalTo(self.view).offset(-44)
         }
+        
+        
+        getData()
+        
         addHeadV()
         
         tablev = UITableView()
@@ -35,18 +42,21 @@ class ExamLogViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.width.equalTo(rootv)
             make.bottom.equalTo(rootv)
             make.centerX.equalTo(rootv)
-            make.top.equalTo(rootv).offset(30)
+            make.top.equalTo(rootv).offset(60)
         }
         tablev.backgroundColor = BG1_COLOR
         tablev.delegate = self
         tablev.dataSource = self
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(delAllLog))
-        
-        arrExamList.sort { (a, b) -> Bool in
-            a.score > b.score
-        }
-        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getData()
+        tablev.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,63 +64,75 @@ class ExamLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrExamList.count
+        return arrData.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let oneData = arrExamList[indexPath.row]
+        
         // 分数
-        let nameLabel = UILabel()
-        cell.addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { (make) in
+        let scoreLabel = UILabel()
+        cell.addSubview(scoreLabel)
+        scoreLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(cell)
             make.centerX.equalTo(cell).offset(-15)
         }
-        nameLabel.text = "\(Int(oneData.score))分"
-        nameLabel.textColor = SX3_COLOR
+        scoreLabel.text = "score"
+        scoreLabel.textColor = SX3_COLOR
         
-        // 序号
+        // 用时
+        let useTimeLabel = UILabel()
+        cell.addSubview(useTimeLabel)
+        useTimeLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(scoreLabel)
+            make.right.equalTo(cell).offset(-20)
+        }
+        useTimeLabel.text = "time"
+        useTimeLabel.textColor = INFO_COLOR
+        useTimeLabel.numberOfLines = 0
+        
+        // 排行
         let indexLabel = UILabel()
         cell.addSubview(indexLabel)
         indexLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(nameLabel)
+            make.centerY.equalTo(scoreLabel)
             make.left.equalTo(cell).offset(15)
         }
         indexLabel.text = "\(indexPath.row+1)"
         indexLabel.textColor = WARN_COLOR
         
-        
-        let dformatter = DateFormatter()
-        dformatter.dateFormat = "YYYY-MM-dd\nhh:mm:ss"
-        dformatter.timeZone = NSTimeZone.system
-        let timeStr = dformatter.string(from: oneData.date! as Date)
-        // 时间
-        let otherLabel = UILabel()
-        cell.addSubview(otherLabel)
-        otherLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(nameLabel)
-            make.right.equalTo(cell).offset(-20)
-        }
-        otherLabel.text = timeStr
-        otherLabel.textColor = INFO_COLOR
-        otherLabel.numberOfLines = 0
-        
-        
-        
         return cell
     }
     
     func addHeadV() {
+        let segments = ["每日排行", "周排行榜", "所有排行"]
+        let seg = UISegmentedControl(items: segments)
+        self.view.addSubview(seg)
+        seg.snp.makeConstraints { (make) in
+            make.top.equalTo(self.view).offset(64)
+            make.centerX.equalTo(self.view)
+            make.height.equalTo(30)
+            make.width.equalTo(self.view).multipliedBy(0.96)
+        }
+        seg.selectedSegmentIndex = 0
+        seg.addTarget(self, action: #selector(changeSegment(_:)), for: .valueChanged)
+        
+        // 字段名字
         let hv = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        //        tablev.tableHeaderView = hv
         self.view.addSubview(hv)
         hv.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self.view)
-            make.width.equalTo(self.view)
+            make.centerX.equalTo(rootv)
+            make.width.equalTo(rootv)
             make.height.equalTo(30)
-            make.top.equalTo(self.view).offset(64)
+            make.top.equalTo(rootv.snp.top).offset(30)
         }
-        hv.backgroundColor = BG2_COLOR
+        hv.backgroundColor = UIColor.white
         
         let wordLabel = UILabel()
         hv.addSubview(wordLabel)
@@ -118,78 +140,46 @@ class ExamLogViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.centerY.equalTo(hv)
             make.centerX.equalTo(hv).offset(-10)
         }
-        wordLabel.text = "考试成绩"
+        wordLabel.text = "得分"
         
-        let rwLabel = UILabel()
-        hv.addSubview(rwLabel)
-        rwLabel.snp.makeConstraints { (make) in
+        let indexLabel = UILabel()
+        hv.addSubview(indexLabel)
+        indexLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(wordLabel)
             make.left.equalTo(hv).offset(10)
         }
-        rwLabel.text = "ID"
+        indexLabel.text = "排行"
         
-        let dateLabel = UILabel()
-        hv.addSubview(dateLabel)
-        dateLabel.snp.makeConstraints { (make) in
+        let nameLabel = UILabel()
+        hv.addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(wordLabel)
+            make.left.equalTo(indexLabel.snp.right).offset(10)
+        }
+        nameLabel.text = "名字"
+        
+        otherTitleLabel = UILabel()
+        hv.addSubview(otherTitleLabel)
+        otherTitleLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(wordLabel)
             make.right.equalTo(hv).offset(-15)
         }
-        dateLabel.text = "考试时间"
-        
+        otherTitleLabel.text = "用时"
         
         wordLabel.textColor = WZ2_COLOR
-        dateLabel.textColor = WZ2_COLOR
-        rwLabel.textColor = WZ2_COLOR
-        
-        
+        indexLabel.textColor = WZ2_COLOR
+        otherTitleLabel.textColor = WZ2_COLOR
     }
     
-    func delAllLog() {
-        if arrExamList.count == 0 {
-            TipsSwift.showCenterWithText("没有考试记录可删除", duration: 3)
-            return
-        }
-        for one in arrExamList {
-            context.delete(one)
-        }
-        appDelegate.saveContext()
-        arrExamList = []
+    func changeSegment(_ segment:UISegmentedControl) {
+        wtype = segment.selectedSegmentIndex
+        
         tablev.reloadData()
-        TipsSwift.showCenterWithText("已清除所有考试记录", duration: 2)
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func getData() {
+        arrData = []
         
-        if editingStyle == .delete {
-            let one = arrExamList[indexPath.row]
-            context.delete(one)
-            appDelegate.saveContext()
-            arrExamList.remove(at: indexPath.row)
-            tablev.deleteRows(at: [indexPath], with: .fade)
-            TipsSwift.showCenterWithText("删除一条学习记录", duration: 2)
-            
-        }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let one = arrExamList[indexPath.row]
-        let txt = "用时:" + getDtimeStr(dtime: Int(one.useTime))
-        TipsSwift.showCenterWithText(txt, duration: 2)
-    }
-    
-    func getDtimeStr(dtime:Int) -> String {
-        var str = ""
-        if dtime >= 60 {
-            let f:Int = dtime/60
-            let m:Int = dtime % 60
-            str = "\(f)" + "分" + "\(m)" + "秒"
-        }else {
-            str = "0分" + "\(dtime)" + "秒"
-        }
-        return str
-    }
 }

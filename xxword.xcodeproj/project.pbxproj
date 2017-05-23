@@ -10,6 +10,7 @@
 		0B0003781EB60DB100046B3A /* MyWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0003771EB60DB100046B3A /* MyWord.swift */; };
 		0B1866021ED4447300D0EEEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1866011ED4447300D0EEEA /* Foundation.framework */; };
 		0B2AEE061EBA776700E1A9F1 /* ocr.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2AEE051EBA776700E1A9F1 /* ocr.m */; };
+		0B33ED131ED4981D00002A6A /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B33ED121ED4981D00002A6A /* RankingViewController.swift */; };
 		0B38C6361EC4D55F00C3B140 /* PlayLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6351EC4D55F00C3B140 /* PlayLogViewController.swift */; };
 		0B38C6381EC55C4B00C3B140 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */; };
 		0B38C63A1EC5665700C3B140 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */; };
@@ -76,6 +77,7 @@
 		0B1866091ED444B000D0EEEA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0B2AEE051EBA776700E1A9F1 /* ocr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ocr.m; sourceTree = "<group>"; };
 		0B2AEE071EBA777500E1A9F1 /* ocr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ocr.h; sourceTree = "<group>"; };
+		0B33ED121ED4981D00002A6A /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		0B38C6351EC4D55F00C3B140 /* PlayLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayLogViewController.swift; sourceTree = "<group>"; };
 		0B38C6371EC55C4B00C3B140 /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		0B38C6391EC5665700C3B140 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				0BF0351A1ED1F32700E1CA45 /* ChangeNameViewController.swift */,
 				0B6C8E1A1E8F6E0D00D76B4E /* AppDelegate.swift */,
 				0B6C8E1C1E8F6E0D00D76B4E /* ViewController.swift */,
+				0B33ED121ED4981D00002A6A /* RankingViewController.swift */,
 				0B6C8E1E1E8F6E0D00D76B4E /* Main.storyboard */,
 				0B6C8E211E8F6E0D00D76B4E /* Assets.xcassets */,
 				0B6C8E231E8F6E0D00D76B4E /* LaunchScreen.storyboard */,
@@ -459,6 +462,7 @@
 				0B46063A1EA14FAA0071FBEA /* NSManagedObjectContext+iOS10Additions.swift in Sources */,
 				0B4606381EA14FAA0071FBEA /* INSPersistentContainer.swift in Sources */,
 				0B2AEE061EBA776700E1A9F1 /* ocr.m in Sources */,
+				0B33ED131ED4981D00002A6A /* RankingViewController.swift in Sources */,
 				0B4606371EA14FAA0071FBEA /* INSDataStackContainer.swift in Sources */,
 				0B6136551E9EA5DB00FF31F2 /* MyProtocol.swift in Sources */,
 				0B6C8E1B1E8F6E0D00D76B4E /* AppDelegate.swift in Sources */,

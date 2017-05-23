@@ -1029,7 +1029,8 @@ class HomeViewController: UIViewController {
     }
     // 点击 成绩排行
     func callbackCjph() -> Void {
-        print("cjph Study")
+//        print("cjph Study")
+        navigationController?.pushViewController(RankingViewController(), animated: true)
     }
     // 点击 考试须知
     func callbackKsxz() -> Void {
