@@ -269,9 +269,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let gtoken:String = (nowGlobalSet?.token)!
         self.view.makeToastActivity(.center)
         let url = rootUrl + "register3.php"
+        outLoginButton.isUserInteractionEnabled = false
         Alamofire.request(url, method: .get, parameters: ["phone": phone, "pwd": pwd, "token":gtoken]).responseString { (response) in
             if response.result.isSuccess {
                 let str:String = response.result.value!
+                self.outLoginButton.isUserInteractionEnabled = false
                 
                 if let data = resRegisterBindTouristData.deserialize(from: str) {
                     let code = data.code

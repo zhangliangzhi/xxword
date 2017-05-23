@@ -127,7 +127,9 @@ class ChangeNameViewController: UIViewController, UITextFieldDelegate {
         self.view.makeToastActivity(.center)
         let url = rootUrl + "changeName.php"
         let token:String = (nowGlobalSet?.token)!
+        outOkButton.isUserInteractionEnabled = false
         Alamofire.request(url, method: .get, parameters: ["name": name, "token":token]).responseString { (response) in
+            self.outOkButton.isUserInteractionEnabled = true
             if response.result.isSuccess {
                 let str:String = response.result.value!
                 
