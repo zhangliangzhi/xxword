@@ -792,9 +792,9 @@ class HomeViewController: UIViewController {
                     
                     if let data = resRegisterTouristData.deserialize(from: str) {
                         let code = data.code
-                        let token = data.token
                         if code == 0 {
-                            nowGlobalSet?.token = token
+                            nowGlobalSet?.token = data.token
+                            nowGlobalSet?.uid = data.uid
                             appDelegate.saveContext()
                         }
                     }
@@ -833,9 +833,8 @@ class HomeViewController: UIViewController {
                     
                     if let data = resLoginData.deserialize(from: str) {
                         let code = data.code
-                        let token = data.token
                         if code == 0 {
-                            nowGlobalSet?.token = token
+                            nowGlobalSet?.token = data.token
                             nowGlobalSet?.uid = data.uid
                             appDelegate.saveContext()
                         }else {

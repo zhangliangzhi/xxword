@@ -19,6 +19,7 @@ struct resRegisterCode:HandyJSON {
 struct resRegisterTouristData:HandyJSON {
     var code:Int?
     var token:String?
+    var uid:String?
 }
 
 // 游客绑定

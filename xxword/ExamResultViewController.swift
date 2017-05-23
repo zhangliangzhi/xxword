@@ -42,7 +42,8 @@ class ExamResultViewController: UIViewController {
         let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
         let name:String = (nowGlobalSet?.nickName)!
         let uid:String = (nowGlobalSet?.uid)!
-        
+        print("uid" , indexPage)
+        print("uid" , uid)
         Alamofire.request(url, method: .post, parameters: ["name": name, "token":token, "score":score, "indexPage":indexPage, "utime":dtime, "uid":uid]).responseString { (response) in
             if response.result.isSuccess {
                 let str:String = response.result.value!
