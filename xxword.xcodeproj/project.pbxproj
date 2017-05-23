@@ -58,6 +58,8 @@
 		0BD909D51EC048CC007467F0 /* TipsSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D41EC048CC007467F0 /* TipsSwift.swift */; };
 		0BD909D71EC0A835007467F0 /* WordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D61EC0A835007467F0 /* WordsViewController.swift */; };
 		0BD909D91EC3005B007467F0 /* ShouCangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D81EC3005B007467F0 /* ShouCangViewController.swift */; };
+		0BE0E2421ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE0E2401ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a */; };
+		0BE0E2441ED403A700FA7F41 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE0E2431ED403A700FA7F41 /* UserNotifications.framework */; };
 		0BF035191ED1610000E1CA45 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF035181ED1610000E1CA45 /* MeViewController.swift */; };
 		0BF0351B1ED1F32700E1CA45 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0351A1ED1F32700E1CA45 /* ChangeNameViewController.swift */; };
 		0BF0351E1ED364C600E1CA45 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF0351D1ED364C600E1CA45 /* StoreKit.framework */; };
@@ -121,6 +123,9 @@
 		0BD909D41EC048CC007467F0 /* TipsSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsSwift.swift; sourceTree = "<group>"; };
 		0BD909D61EC0A835007467F0 /* WordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordsViewController.swift; sourceTree = "<group>"; };
 		0BD909D81EC3005B007467F0 /* ShouCangViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShouCangViewController.swift; sourceTree = "<group>"; };
+		0BE0E2401ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.5.0a.a; sourceTree = "<group>"; };
+		0BE0E2411ED3D79100FA7F41 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		0BE0E2431ED403A700FA7F41 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		0BF035181ED1610000E1CA45 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		0BF0351A1ED1F32700E1CA45 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 		0BF0351C1ED2CD8C00E1CA45 /* xxword.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxword.entitlements; sourceTree = "<group>"; };
@@ -135,6 +140,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE0E2441ED403A700FA7F41 /* UserNotifications.framework in Frameworks */,
+				0BE0E2421ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
 				75AF06A683A708C84E55D089 /* Pods_xxword.framework in Frameworks */,
 				0BF0351E1ED364C600E1CA45 /* StoreKit.framework in Frameworks */,
 			);
@@ -176,6 +183,7 @@
 		0B6C8E191E8F6E0D00D76B4E /* xxword */ = {
 			isa = PBXGroup;
 			children = (
+				0BE0E23F1ED3D79100FA7F41 /* UMessage_Sdk_1.5.0a */,
 				0BF0351C1ED2CD8C00E1CA45 /* xxword.entitlements */,
 				0BD909D41EC048CC007467F0 /* TipsSwift.swift */,
 				0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */,
@@ -234,6 +242,15 @@
 			path = xxword;
 			sourceTree = "<group>";
 		};
+		0BE0E23F1ED3D79100FA7F41 /* UMessage_Sdk_1.5.0a */ = {
+			isa = PBXGroup;
+			children = (
+				0BE0E2401ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a */,
+				0BE0E2411ED3D79100FA7F41 /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.5.0a;
+			sourceTree = "<group>";
+		};
 		5A3D727E897860820BB029A6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +263,7 @@
 		635763797A6F5C26EF275D32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0BE0E2431ED403A700FA7F41 /* UserNotifications.framework */,
 				0BF0351D1ED364C600E1CA45 /* StoreKit.framework */,
 				228065594F704138570DAF96 /* Pods_xxword.framework */,
 			);
@@ -289,7 +307,7 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = ZNVH9D6AWM;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -560,6 +578,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = xxword/xxword.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ZNVH9D6AWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -569,8 +588,14 @@
 				INFOPLIST_FILE = xxword/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/xxword/UMessage_Sdk_1.5.0a",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xigk.xxword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = xxword_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "xxword-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -584,6 +609,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = xxword/xxword.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = ZNVH9D6AWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -593,8 +619,14 @@
 				INFOPLIST_FILE = xxword/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/xxword/UMessage_Sdk_1.5.0a",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xigk.xxword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = xxword_AppStore;
 				SWIFT_OBJC_BRIDGING_HEADER = "xxword-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
