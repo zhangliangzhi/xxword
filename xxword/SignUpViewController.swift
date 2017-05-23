@@ -272,9 +272,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         Alamofire.request(url, method: .get, parameters: ["phone": phone, "pwd": pwd, "token":gtoken]).responseString { (response) in
             if response.result.isSuccess {
                 let str:String = response.result.value!
-//                rootResponse(strjson: str, id: PBID.registerBindPhone)
-//                self.callbackReqSignIn(str)
-//                self.backV()
+                
                 if let data = resRegisterBindTouristData.deserialize(from: str) {
                     let code = data.code
                     let token = data.token

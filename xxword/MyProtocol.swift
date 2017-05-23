@@ -9,7 +9,10 @@
 import Foundation
 import HandyJSON
 
-// 注册
+// code
+struct resRegisterCode:HandyJSON {
+    var code:Int?
+}
 
 // 游客注册
 // {"code":"0","token":"AKAqng6ELdPqpVAk7dVa"}

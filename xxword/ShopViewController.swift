@@ -78,6 +78,16 @@ class ShopViewController: UIViewController {
         outLabelLastBuy.textColor = WZ1_COLOR
         outLabelLastBuy.numberOfLines = 0
         
+        let outLabelKF = UILabel()
+        self.view.addSubview(outLabelKF)
+        outLabelKF.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.view)
+            make.bottom.equalTo(self.view).offset(-55)
+        }
+        outLabelKF.textAlignment = .center
+        outLabelKF.text = "客服联系邮箱: 521401@qq.com"
+        outLabelKF.textColor = WZ2_COLOR
+        outLabelKF.font = UIFont.systemFont(ofSize: 13)
     }
     
     func reqShop()  {

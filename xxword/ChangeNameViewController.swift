@@ -110,12 +110,9 @@ class ChangeNameViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
-//        netConnectChangeName(strNum)
+        netConnectChangeName(strNum)
         
-        TipsSwift.showCenterWithText("改名成功")
-        nowGlobalSet?.nickName = strNum
-        appDelegate.saveContext()
-        navigationController?.popViewController(animated: true)
+        
     }
 
     
@@ -131,18 +128,36 @@ class ChangeNameViewController: UIViewController, UITextFieldDelegate {
         Alamofire.request(url, method: .get, parameters: ["name": name, "token":token]).responseString { (response) in
             if response.result.isSuccess {
                 let str:String = response.result.value!
-                nowGlobalSet?.nickName = name
-                appDelegate.saveContext()
-                rootResponse(strjson: str, id: PBID.loginPhone)
+                
+                if let data = resRegisterCode.deserialize(from: str) {
+                    let code = data.code
+                    if code == 0 {
+                        nowGlobalSet?.nickName = name
+                        appDelegate.saveContext()
+                        TipsSwift.showCenterWithText("改名成功", duration: 3)
+                    }else if code == -1 {
+                        TipsSwift.showCenterWithText("服务端出错啦...")
+                    }
+                }
+                // 返回界面
+                self.view.hideToastActivity()
+                self.navigationController?.popViewController(animated: true)
+                
             }else {
                 print("get protocol fail")
+                self.view.hideToastActivity()
+                self.alertTitle(title: "修改失败", message: "网络错误, 无法修改名字")
             }
-            self.view.hideToastActivity()
+            
         }
 
     }
     
-    
+    func alertTitle(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "确定", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     
 }
