@@ -13,8 +13,11 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     var rootv: UIView!
     var tablev: UITableView!
     var arrData:[oneRank] = []
-    var firstLoad = true
     var wtype = 0
+    var arr1Data:[oneRank] = []
+    var arr7Data:[oneRank] = []
+    var arr30Data:[oneRank] = []
+    var segment:UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +57,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // 只第一次加载数据吧, 慢的半死
-        if firstLoad {
-            getData()
-            firstLoad = false
-        }
-        
+        getData(wtype)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,16 +129,16 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func addHeadV() {
         let segments = ["每日排行", "周排行榜", "月排行榜"]
-        let seg = UISegmentedControl(items: segments)
-        self.view.addSubview(seg)
-        seg.snp.makeConstraints { (make) in
+        segment = UISegmentedControl(items: segments)
+        self.view.addSubview(segment)
+        segment.snp.makeConstraints { (make) in
             make.top.equalTo(self.view).offset(64)
             make.centerX.equalTo(self.view)
             make.height.equalTo(30)
             make.width.equalTo(self.view)
         }
-        seg.selectedSegmentIndex = 0
-        seg.addTarget(self, action: #selector(changeSegment(_:)), for: .valueChanged)
+        segment.selectedSegmentIndex = 0
+        segment.addTarget(self, action: #selector(changeSegment(_:)), for: .valueChanged)
         
         // 字段名字
         let hv = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
@@ -198,8 +196,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func changeSegment(_ segment:UISegmentedControl) {
         wtype = segment.selectedSegmentIndex
-        
-        tablev.reloadData()
+        getData(wtype)
     }
     
     func sortData() {
@@ -216,26 +213,56 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // 服务器获取数据
-    func getData() {
+    func getData(_ itype:Int) {
         arrData = []
+        if itype == 0 {
+            arrData = arr1Data
+        }else if itype == 1{
+            arrData = arr7Data
+        }else if itype == 2{
+            arrData = arr30Data
+        }
+        if arrData.count > 0 {
+            tablev.reloadData()
+            print("already data return go.")
+            return
+        }
         
+        segment.isUserInteractionEnabled = false
         let url = rootUrl + "rankingCX.php"
         let token:String = (nowGlobalSet?.token)!
         let indexPage:Int = Int((nowGlobalSet?.indexPage)!)
         
         self.view.makeToastActivity(.center)
-        Alamofire.request(url, method: .post, parameters: ["token":token, "indexPage":indexPage]).responseString { (response) in
+        Alamofire.request(url, method: .post, parameters: ["token":token, "indexPage":indexPage, "wtype":wtype]).responseString { (response) in
             
             self.view.hideToastActivity()
+            self.segment.isUserInteractionEnabled = true
             
             if response.result.isSuccess {
                 let str:String = response.result.value!
                 
                 if let ranks = [oneRank].deserialize(from: str) {
-                    ranks.forEach({ (rank) in
-                        self.arrData.append(rank!)
-                    })
+                    for i in 0..<ranks.count {
+                        if itype == 0 {
+                            self.arr1Data.append(ranks[i]!)
+                        }else if itype == 1{
+                            self.arr7Data.append(ranks[i]!)
+                        }else if itype == 2{
+                            self.arr30Data.append(ranks[i]!)
+                        }
+                    }
                     // 数据排序, 然后显示
+                    if itype == 0 {
+                        self.arrData = self.arr1Data
+                    }else if itype == 1{
+                        self.arrData = self.arr7Data
+                    }else if itype == 2{
+                        self.arrData = self.arr30Data
+                    }
+                    if self.arrData.count == 0 {
+                        TipsSwift.showCenterWithText("还没有排行榜, 快去参加 [单词考试] 吧", duration: 3)
+                    }
                     self.tablev.reloadData()
                 }else{
                     print("no", str)
