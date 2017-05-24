@@ -9,7 +9,6 @@ target 'xxword' do
   pod 'Toast-Swift', '~> 2.0.0'
   pod 'Alamofire', '~> 4.4'
   pod 'HandyJSON', '~> 1.6.1'
-  pod "ESTabBarController-swift"
   pod 'LTMorphingLabel'
   pod 'SwiftyStoreKit'
 end
