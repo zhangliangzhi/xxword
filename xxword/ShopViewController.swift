@@ -12,7 +12,7 @@ import SwiftyStoreKit
 
 class ShopViewController: UIViewController {
     var rootv: UIView!
-    var outBuyButton:BootstrapBtn!
+    var outBuyButton:UIButton!
     var outRestoreButton:BootstrapBtn!
     var outLabelLastBuy:UILabel!
     var lastBuyStr:String = ""
@@ -39,67 +39,18 @@ class ShopViewController: UIViewController {
     }
     
     func initUI() {
-        outBuyButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Warning)
-        rootv.addSubview(outBuyButton)
-        outBuyButton.snp.makeConstraints { (make) in
-            make.center.equalTo(rootv)
-            make.width.equalTo(rootv).multipliedBy(0.8)
-            make.height.equalTo(60)
-        }
-        outBuyButton.setTitle("🛒月会员VIP \n￥30.00", for: .normal)
-        outBuyButton.titleLabel?.numberOfLines = 0
-        outBuyButton.titleLabel?.textAlignment = .center
-        outBuyButton.addTarget(self, action: #selector(buyOneMonthPurchase), for: .touchUpInside)
-        
-        // 恢复购买
-        outRestoreButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Danger)
-        rootv.addSubview(outRestoreButton)
-        outRestoreButton.snp.makeConstraints { (make) in
-            make.width.equalTo(rootv).multipliedBy(0.5)
-            make.height.equalTo(38)
-            make.right.equalTo(outBuyButton)
-            make.top.equalTo(outBuyButton.snp.bottom).offset(20)
-        }
-        outRestoreButton.setTitle("恢复购买", for: .normal)
-        outRestoreButton.titleLabel?.numberOfLines = 0
-        outRestoreButton.titleLabel?.textAlignment = .center
-        outRestoreButton.addTarget(self, action: #selector(restoreOneMonthPurchase), for: .touchUpInside)
-        
-        
-        
+        // 说明
         let labelDescVip = UILabel()
         rootv.addSubview(labelDescVip)
         labelDescVip.snp.makeConstraints { (make) in
-            make.bottom.equalTo(outBuyButton.snp.top).offset(-30)
+            make.top.equalTo(rootv).offset(10)
             make.centerX.equalTo(rootv)
-            make.width.equalTo(rootv).multipliedBy(0.8)
+            make.width.equalTo(rootv).multipliedBy(0.9)
         }
         labelDescVip.textAlignment = .center
-        labelDescVip.text = "非会员只能学习前100个单词\n购买VIP会员服务, \n可无限制使用[象形单词]"
+        labelDescVip.text = "非会员只能学习前100个单词。\n非会员单词考试无法参加排行榜。\n购买会员可无限制使用。"
         labelDescVip.textColor = WZ1_COLOR
         labelDescVip.numberOfLines = 0
-        
-        let outLabelLastBuy = UILabel()
-        rootv.addSubview(outLabelLastBuy)
-        outLabelLastBuy.snp.makeConstraints { (make) in
-            make.top.equalTo(outRestoreButton.snp.bottom).offset(10)
-            make.centerX.equalTo(rootv)
-        }
-        outLabelLastBuy.textAlignment = .center
-        outLabelLastBuy.text = lastBuyStr
-        outLabelLastBuy.textColor = WZ1_COLOR
-        outLabelLastBuy.numberOfLines = 0
-        
-        let outLabelKF = UILabel()
-        rootv.addSubview(outLabelKF)
-        outLabelKF.snp.makeConstraints { (make) in
-            make.centerX.equalTo(rootv)
-            make.top.equalTo(rootv).offset(5)
-        }
-        outLabelKF.textAlignment = .center
-        outLabelKF.text = "客服联系邮箱: 521401@qq.com"
-        outLabelKF.textColor = WZ2_COLOR
-        outLabelKF.font = UIFont.systemFont(ofSize: 13)
         
         // 条款和隐私政策
         let outTkysButton = UIButton(type: .system)
@@ -112,6 +63,78 @@ class ShopViewController: UIViewController {
         outTkysButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         outTkysButton.addTarget(self, action: #selector(callbackTkys), for: .touchUpInside)
         
+        
+        // 购买
+//        outBuyButton = UIButton(type: .system)
+        outBuyButton =  BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Success)
+        rootv.addSubview(outBuyButton)
+        outBuyButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(rootv)
+            make.centerY.equalTo(rootv).offset(-60)
+            make.width.equalTo(rootv).multipliedBy(0.618)
+            make.height.equalTo(68)
+        }
+        outBuyButton.setTitle("￥30.00", for: .normal)
+        outBuyButton.titleLabel?.textAlignment = .center
+        outBuyButton.titleLabel?.font = UIFont.systemFont(ofSize: 38)
+        outBuyButton.addTarget(self, action: #selector(buyOneMonthPurchase), for: .touchUpInside)
+//        outBuyButton.layer.borderColor = WARN_COLOR.cgColor
+//        outBuyButton.layer.borderWidth = 3
+        outBuyButton.layer.cornerRadius = 34
+        outBuyButton.backgroundColor = CG_COLOR
+        outBuyButton.setTitleColor(UIColor.white, for: .normal)
+        
+        // 恢复购买
+        outRestoreButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Danger)
+        rootv.addSubview(outRestoreButton)
+        outRestoreButton.snp.makeConstraints { (make) in
+            make.width.equalTo(rootv).multipliedBy(0.4)
+            make.height.equalTo(38)
+            make.top.equalTo(outBuyButton.snp.bottom).offset(50)
+            make.centerX.equalTo(rootv)
+        }
+        outRestoreButton.setTitle("恢复购买", for: .normal)
+        outRestoreButton.titleLabel?.numberOfLines = 0
+        outRestoreButton.titleLabel?.textAlignment = .center
+        outRestoreButton.addTarget(self, action: #selector(restoreOneMonthPurchase), for: .touchUpInside)
+        
+        // 月
+        let outLabelKF = UILabel()
+        rootv.addSubview(outLabelKF)
+        outLabelKF.snp.makeConstraints { (make) in
+            make.centerX.equalTo(outBuyButton)
+            make.bottom.equalTo(outBuyButton.snp.top).offset(-8)
+        }
+        outLabelKF.textAlignment = .center
+        outLabelKF.text = "会员VIP, 无限制使用\n月度"
+        outLabelKF.numberOfLines = 0
+        outLabelKF.textColor = WZ1_COLOR
+        outLabelKF.font = UIFont.systemFont(ofSize:16)
+        
+        // 自动续期
+        let outLabelAuto = UILabel()
+        rootv.addSubview(outLabelAuto)
+        outLabelAuto.snp.makeConstraints { (make) in
+            make.centerX.equalTo(outBuyButton)
+            make.top.equalTo(outBuyButton.snp.bottom).offset(10)
+        }
+        outLabelAuto.textAlignment = .center
+        outLabelAuto.text = "自动续期"
+        outLabelAuto.textColor = WZ2_COLOR
+        outLabelAuto.font = UIFont.systemFont(ofSize: 13)
+        
+        
+        // 最后购买时间
+        let outLabelLastBuy = UILabel()
+        rootv.addSubview(outLabelLastBuy)
+        outLabelLastBuy.snp.makeConstraints { (make) in
+            make.top.equalTo(outRestoreButton.snp.bottom).offset(10)
+            make.centerX.equalTo(rootv)
+        }
+        outLabelLastBuy.textAlignment = .center
+        outLabelLastBuy.text = lastBuyStr
+        outLabelLastBuy.textColor = WZ1_COLOR
+        outLabelLastBuy.numberOfLines = 0
     }
     
     func callbackTkys() {
@@ -147,8 +170,10 @@ class ShopViewController: UIViewController {
     
     
     func buyOneMonthPurchase() {
-        print("buy one click")
+//        print("buy one click")
         MobClick.event("WantBuyVIP")
+        
+        TipsSwift.showTopWithText("你可以随时取消:\niTunes设置-> 查看Apple ID-> 管理", topOffset: 80, duration: 2)
         self.view.makeToastActivity(.center)
         outBuyButton.isUserInteractionEnabled = false
         outRestoreButton.isUserInteractionEnabled = false

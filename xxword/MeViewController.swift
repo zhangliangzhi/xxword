@@ -27,7 +27,7 @@ class MeViewController: UIViewController {
             make.width.equalTo(self.view)
             make.centerX.equalTo(self.view)
             make.top.equalTo(self.view).offset(64)
-            make.bottom.equalTo(self.view)
+            make.bottom.equalTo(self.view).offset(-44)
         }
         
         initUI()
@@ -77,6 +77,16 @@ class MeViewController: UIViewController {
         }
         outIconButton.addTarget(self, action: #selector(btnGoIcon), for: .touchUpInside)
         
+        let outLabelKF = UILabel()
+        rootv.addSubview(outLabelKF)
+        outLabelKF.snp.makeConstraints { (make) in
+            make.centerX.equalTo(rootv)
+            make.bottom.equalTo(rootv).offset(-10)
+        }
+        outLabelKF.textAlignment = .center
+        outLabelKF.text = "联系客服邮箱: 521401@qq.com"
+        outLabelKF.textColor = WZ2_COLOR
+        outLabelKF.font = UIFont.systemFont(ofSize: 13)
         
         // 1
         let labelnctitle = UILabel()
