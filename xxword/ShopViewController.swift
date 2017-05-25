@@ -135,7 +135,7 @@ class ShopViewController: UIViewController {
     }
     
     func callbackDesc() {
-        let txt = "- 会员功能: 无限使用【象形单词】\n- 订阅期限: 1个月会员\n- 订购价格: 30元\n- 确认购买时将向iTunes帐户收取付款\n- 本期结束前24小时内收取续费费用\n- 订阅将自动更新，除非在本期结束前至少24小时关闭自动续订\n"
+        let txt = "- 会员功能: 无限制使用【象形单词】\n- 订阅期限: 1个月会员\n- 订购价格: 30元\n- 确认购买时将向iTunes帐户收取付款\n- 本期结束前24小时内收取续费费用\n- 订阅将自动更新，除非在本期结束前至少24小时关闭自动续订\n"
 
         let alert = UIAlertController(title: "月度会员", message: txt, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
