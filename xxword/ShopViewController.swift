@@ -11,10 +11,12 @@ import SnapKit
 import SwiftyStoreKit
 
 class ShopViewController: UIViewController {
+    var rootv: UIView!
     var outBuyButton:BootstrapBtn!
     var outRestoreButton:BootstrapBtn!
     var outLabelLastBuy:UILabel!
     var lastBuyStr:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = BG1_COLOR
@@ -22,16 +24,26 @@ class ShopViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         MobClick.event("WatchShopView")
+        
+        rootv = UIView()
+        self.view.addSubview(rootv)
+        rootv.snp.makeConstraints { (make) in
+            make.width.equalTo(self.view)
+            make.centerX.equalTo(self.view)
+            make.top.equalTo(self.view).offset(64)
+            make.bottom.equalTo(self.view).offset(-44)
+        }
+        
         initUI()
         reqShop()
     }
     
     func initUI() {
         outBuyButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Warning)
-        self.view.addSubview(outBuyButton)
+        rootv.addSubview(outBuyButton)
         outBuyButton.snp.makeConstraints { (make) in
-            make.center.equalTo(self.view)
-            make.width.equalTo(self.view).multipliedBy(0.8)
+            make.center.equalTo(rootv)
+            make.width.equalTo(rootv).multipliedBy(0.8)
             make.height.equalTo(60)
         }
         outBuyButton.setTitle("🛒月会员VIP \n￥30.00", for: .normal)
@@ -41,9 +53,9 @@ class ShopViewController: UIViewController {
         
         // 恢复购买
         outRestoreButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Danger)
-        self.view.addSubview(outRestoreButton)
+        rootv.addSubview(outRestoreButton)
         outRestoreButton.snp.makeConstraints { (make) in
-            make.width.equalTo(self.view).multipliedBy(0.5)
+            make.width.equalTo(rootv).multipliedBy(0.5)
             make.height.equalTo(38)
             make.right.equalTo(outBuyButton)
             make.top.equalTo(outBuyButton.snp.bottom).offset(20)
@@ -56,11 +68,11 @@ class ShopViewController: UIViewController {
         
         
         let labelDescVip = UILabel()
-        self.view.addSubview(labelDescVip)
+        rootv.addSubview(labelDescVip)
         labelDescVip.snp.makeConstraints { (make) in
             make.bottom.equalTo(outBuyButton.snp.top).offset(-30)
-            make.centerX.equalTo(self.view)
-            make.width.equalTo(self.view).multipliedBy(0.8)
+            make.centerX.equalTo(rootv)
+            make.width.equalTo(rootv).multipliedBy(0.8)
         }
         labelDescVip.textAlignment = .center
         labelDescVip.text = "非会员只能学习前100个单词\n购买VIP会员服务, \n可无限制使用[象形单词]"
@@ -68,10 +80,10 @@ class ShopViewController: UIViewController {
         labelDescVip.numberOfLines = 0
         
         let outLabelLastBuy = UILabel()
-        self.view.addSubview(outLabelLastBuy)
+        rootv.addSubview(outLabelLastBuy)
         outLabelLastBuy.snp.makeConstraints { (make) in
             make.top.equalTo(outRestoreButton.snp.bottom).offset(10)
-            make.centerX.equalTo(self.view)
+            make.centerX.equalTo(rootv)
         }
         outLabelLastBuy.textAlignment = .center
         outLabelLastBuy.text = lastBuyStr
@@ -79,15 +91,39 @@ class ShopViewController: UIViewController {
         outLabelLastBuy.numberOfLines = 0
         
         let outLabelKF = UILabel()
-        self.view.addSubview(outLabelKF)
+        rootv.addSubview(outLabelKF)
         outLabelKF.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self.view)
-            make.bottom.equalTo(self.view).offset(-55)
+            make.centerX.equalTo(rootv)
+            make.top.equalTo(rootv).offset(5)
         }
         outLabelKF.textAlignment = .center
         outLabelKF.text = "客服联系邮箱: 521401@qq.com"
         outLabelKF.textColor = WZ2_COLOR
         outLabelKF.font = UIFont.systemFont(ofSize: 13)
+        
+        // 条款和隐私政策
+        let outTkysButton = UIButton(type: .system)
+        rootv.addSubview(outTkysButton)
+        outTkysButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(rootv)
+            make.bottom.equalTo(rootv).offset(-5)
+        }
+        outTkysButton.setTitle("条款和隐私政策", for: .normal)
+        outTkysButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        outTkysButton.addTarget(self, action: #selector(callbackTkys), for: .touchUpInside)
+        
+    }
+    
+    func callbackTkys() {
+        let webv = UIWebView()
+        rootv.addSubview(webv)
+        webv.snp.makeConstraints { (make) in
+            make.width.equalTo(rootv)
+            make.bottom.equalTo(rootv)
+            make.top.equalTo(rootv).offset(30)
+        }
+        let url = URLRequest(url: URL(string: ysUrl)!)
+        webv.loadRequest(url)
     }
     
     func reqShop()  {

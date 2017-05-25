@@ -23,6 +23,7 @@ var setWrongID = Set<Int>()
 var setDoneId = Set<Int>()
 var nowGlobalSet:CurGlobalSet?
 let rootUrl = "https://xx5000.duapp.com/xx/"
+let ysUrl = "https://xx5000.duapp.com/ys/xxword.html"
 var gClickIndex:Int = 0 // 临时点击的值,没编号itype的
 
 let gWord = ocGetWord() as! [String]
