@@ -105,7 +105,7 @@ class ShopViewController: UIViewController {
             make.bottom.equalTo(outBuyButton.snp.top).offset(-8)
         }
         outLabelKF.textAlignment = .center
-        outLabelKF.text = "订购会员VIP, 无限制使用\n\n月度"
+        outLabelKF.text = "订购会员VIP, 使用 [象形单词] 无任何限制\n\n月度"
         outLabelKF.numberOfLines = 0
         outLabelKF.textColor = WZ1_COLOR
         outLabelKF.font = UIFont.systemFont(ofSize:16)
