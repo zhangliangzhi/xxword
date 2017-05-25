@@ -167,6 +167,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             outPwdTextField.becomeFirstResponder()
         }else if textField == outPwdTextField {
             outPwdTextField.resignFirstResponder()
+            // 立即去注册呀
+            btnGoSignUp()
         }
         return true
     }
