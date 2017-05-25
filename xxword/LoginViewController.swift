@@ -165,6 +165,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     // 登入
     func btnGoSignIn() {
+        outPwdTextField.resignFirstResponder()
+        outPwdTextField.resignFirstResponder()
         // 去除头尾空格
         var strNum:String = outNumTextField.text!
         strNum = strNum.trimmingCharacters(in: .whitespaces)
@@ -173,30 +175,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // 不为空
         if strNum == "" {
-            Toast(str: "手机号码不能为空")
+            Toast("手机号码不能为空")
             return
         }
         // 手机是数字,香港手机8位数
         let num = Int64(strNum)
         if num == nil || num! < 10000000 || strNum.characters.count > 20{
-            Toast(str: "输入的是一个无效的手机号码")
+            Toast("输入的是一个无效的手机号码")
             return
         }
         // 密码不为空
         if strPwd == "" {
-            Toast(str: "密码不能为空")
+            Toast("密码不能为空")
             return
         }
         if strPwd.characters.count < 6 || strPwd.characters.count > 20 {
-            Toast(str: "密码要大于6位数")
+            Toast("密码要大于6位数")
             return
         }
 
+        HomeViewController.getInfo()
         netConnectSignIn(phone: strNum, pwd: strPwd)
     }
 
     
-    func Toast(str:String) {
+    func Toast(_ str:String) {
         self.view.makeToast(str, duration: 1.2, position: .init(x: self.view.bounds.size.width / 2.0, y: 100))
     }
     
@@ -271,21 +274,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         appDelegate.saveContext()
                         self.backV()
                     }else if code == 30{
-                        TipsSwift.showCenterWithText("账号或密码出错", duration: 2)
+                        TipsSwift.showCenterWithText("账号或密码出错", duration: 3)
                         self.outPwdTextField.resignFirstResponder()
                         self.outPwdTextField.text = ""
                     }else{
-                        TipsSwift.showCenterWithText("登录出错", duration: 2)
+                        TipsSwift.showCenterWithText("登录出错", duration: 3)
                     }
                 }else{
-                    TipsSwift.showCenterWithText("网络出错", duration: 2)
+                    TipsSwift.showCenterWithText("网络出错", duration: 3)
                 }
                 
                 self.view.hideToastActivity()
             }else {
                 self.view.hideToastActivity()
                 print("get protocol fail")
-                TipsSwift.showCenterWithText("网络出错")
+                TipsSwift.showCenterWithText("无法连接网络")
             }
         }
 
