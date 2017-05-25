@@ -159,6 +159,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             outPwdTextField.becomeFirstResponder()
         }else if textField == outPwdTextField {
             outPwdTextField.resignFirstResponder()
+            // 输入完密码直接登录啊
+            btnGoSignIn()
         }
         return true
     }
@@ -194,7 +196,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
-        HomeViewController.getInfo()
         netConnectSignIn(phone: strNum, pwd: strPwd)
     }
 
@@ -272,6 +273,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         nowGlobalSet?.token = token
                         nowGlobalSet?.uid = data.uid
                         appDelegate.saveContext()
+                        // 登入成功,获取一下信息
+                        HomeViewController.getInfo()
                         self.backV()
                     }else if code == 30{
                         TipsSwift.showCenterWithText("账号或密码出错", duration: 3)
