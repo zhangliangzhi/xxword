@@ -65,8 +65,7 @@ class ShopViewController: UIViewController {
         
         
         // 购买
-//        outBuyButton = UIButton(type: .system)
-        outBuyButton =  BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Success)
+        outBuyButton =  BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Warning)
         rootv.addSubview(outBuyButton)
         outBuyButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(rootv)
@@ -78,10 +77,10 @@ class ShopViewController: UIViewController {
         outBuyButton.titleLabel?.textAlignment = .center
         outBuyButton.titleLabel?.font = UIFont.systemFont(ofSize: 38)
         outBuyButton.addTarget(self, action: #selector(buyOneMonthPurchase), for: .touchUpInside)
-//        outBuyButton.layer.borderColor = WARN_COLOR.cgColor
-//        outBuyButton.layer.borderWidth = 3
+        outBuyButton.layer.borderColor = UIColor.white.cgColor
+        outBuyButton.layer.borderWidth = 1
         outBuyButton.layer.cornerRadius = 34
-        outBuyButton.backgroundColor = CG_COLOR
+//        outBuyButton.backgroundColor = CG_COLOR
         outBuyButton.setTitleColor(UIColor.white, for: .normal)
         
         // 恢复购买
