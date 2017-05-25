@@ -14,8 +14,8 @@ class ShopViewController: UIViewController {
     var rootv: UIView!
     var outBuyButton:UIButton!
     var outRestoreButton:BootstrapBtn!
-    var outLabelLastBuy:UILabel!
-    var lastBuyStr:String = ""
+    var webv:UIWebView!
+    var outTkysButton:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class ShopViewController: UIViewController {
         labelDescVip.numberOfLines = 0
         
         // 条款和隐私政策
-        let outTkysButton = UIButton(type: .system)
+        outTkysButton = UIButton(type: .system)
         rootv.addSubview(outTkysButton)
         outTkysButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(rootv)
@@ -77,8 +77,8 @@ class ShopViewController: UIViewController {
         outBuyButton.titleLabel?.textAlignment = .center
         outBuyButton.titleLabel?.font = UIFont.systemFont(ofSize: 38)
         outBuyButton.addTarget(self, action: #selector(buyOneMonthPurchase), for: .touchUpInside)
-        outBuyButton.layer.borderColor = UIColor.white.cgColor
-        outBuyButton.layer.borderWidth = 1
+//        outBuyButton.layer.borderColor = UIColor.white.cgColor
+//        outBuyButton.layer.borderWidth = 1
         outBuyButton.layer.cornerRadius = 34
 //        outBuyButton.backgroundColor = CG_COLOR
         outBuyButton.setTitleColor(UIColor.white, for: .normal)
@@ -105,7 +105,7 @@ class ShopViewController: UIViewController {
             make.bottom.equalTo(outBuyButton.snp.top).offset(-8)
         }
         outLabelKF.textAlignment = .center
-        outLabelKF.text = "会员VIP, 无限制使用\n月度"
+        outLabelKF.text = "订购会员VIP, 无限制使用\n\n月度"
         outLabelKF.numberOfLines = 0
         outLabelKF.textColor = WZ1_COLOR
         outLabelKF.font = UIFont.systemFont(ofSize:16)
@@ -123,29 +123,31 @@ class ShopViewController: UIViewController {
         outLabelAuto.font = UIFont.systemFont(ofSize: 13)
         
         
-        // 最后购买时间
-        let outLabelLastBuy = UILabel()
-        rootv.addSubview(outLabelLastBuy)
-        outLabelLastBuy.snp.makeConstraints { (make) in
-            make.top.equalTo(outRestoreButton.snp.bottom).offset(10)
-            make.centerX.equalTo(rootv)
-        }
-        outLabelLastBuy.textAlignment = .center
-        outLabelLastBuy.text = lastBuyStr
-        outLabelLastBuy.textColor = WZ1_COLOR
-        outLabelLastBuy.numberOfLines = 0
     }
     
     func callbackTkys() {
-        let webv = UIWebView()
+        if webv != nil {
+            
+            if webv.isHidden {
+                webv.isHidden = false
+                
+                outTkysButton.setTitle("关闭隐私政策", for: .normal)
+            }else{
+                webv.isHidden = true
+                outTkysButton.setTitle("条款和隐私政策", for: .normal)
+            }
+            return
+        }
+        webv = UIWebView()
         rootv.addSubview(webv)
         webv.snp.makeConstraints { (make) in
             make.width.equalTo(rootv)
-            make.bottom.equalTo(rootv)
-            make.top.equalTo(rootv).offset(30)
+            make.bottom.equalTo(rootv).offset(-30)
+            make.top.equalTo(rootv)
         }
         let url = URLRequest(url: URL(string: ysUrl)!)
         webv.loadRequest(url)
+        outTkysButton.setTitle("关闭隐私政策", for: .normal)
     }
     
     func reqShop()  {
@@ -172,7 +174,7 @@ class ShopViewController: UIViewController {
 //        print("buy one click")
         MobClick.event("WantBuyVIP")
         
-        TipsSwift.showTopWithText("你可以随时取消:\niTunes设置-> 查看Apple ID-> 管理", topOffset: 80, duration: 2)
+        TipsSwift.showTopWithText("你可以随时取消:\niTunes设置-> 查看Apple ID-> 管理", topOffset: 80, duration: 3)
         self.view.makeToastActivity(.center)
         outBuyButton.isUserInteractionEnabled = false
         outRestoreButton.isUserInteractionEnabled = false
