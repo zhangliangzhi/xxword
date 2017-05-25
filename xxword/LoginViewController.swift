@@ -1,7 +1,7 @@
 //
 //  LoginViewController.swift
 //  xxword
-//
+//  登录界面
 //  Created by ZhangLiangZhi on 2017/4/10.
 //  Copyright © 2017年 xigk. All rights reserved.
 //
@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var outNumTextField:UITextField!
     var outPwdTextField:UITextField!
     var outLoginButton:UIButton!
+    var outSignUpButton:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,16 +129,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         outLoginButton.addTarget(self, action: #selector(btnGoSignIn), for: .touchUpInside)
         
         // 注册按钮
-        let outSignUp = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 120, height: 30), btButtonType: .Info)
-        v.addSubview(outSignUp)
-        outSignUp.snp.makeConstraints { (make) in
+        outSignUpButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 120, height: 30), btButtonType: .Info)
+        v.addSubview(outSignUpButton)
+        outSignUpButton.snp.makeConstraints { (make) in
             make.width.equalTo(120)
             make.height.equalTo(30)
             make.top.equalTo(outLoginButton.snp.bottom).offset(25)
             make.right.equalTo(outLoginButton).offset(-10)
         }
-        outSignUp.setTitle("立即注册", for: .normal)
-        outSignUp.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
+        outSignUpButton.setTitle("立即注册", for: .normal)
+        outSignUpButton.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
         
         // 右上角 注册按钮
         let rightBtn = UIBarButtonItem(title: "立即注册", style: .plain, target: self, action: #selector(btnGoSignUp))
@@ -258,9 +259,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // 网络请求 手机密码登录
     func netConnectSignIn(phone:String, pwd:String) {
+        outLoginButton.isUserInteractionEnabled = false
+        outSignUpButton.isUserInteractionEnabled = false
         self.view.makeToastActivity(.center)
         let url = rootUrl + "login1.php"
         Alamofire.request(url, method: .get, parameters: ["phone": phone, "pwd": pwd]).responseString { (response) in
+            
+            self.outLoginButton.isUserInteractionEnabled = true
+            self.outSignUpButton.isUserInteractionEnabled = true
             if response.result.isSuccess {
                 let str:String = response.result.value!
                 

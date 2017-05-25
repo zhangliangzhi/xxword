@@ -1,7 +1,7 @@
 //
 //  LoginViewController.swift
 //  xxword
-//
+//  注册界面
 //  Created by ZhangLiangZhi on 2017/4/10.
 //  Copyright © 2017年 xigk. All rights reserved.
 //
@@ -19,6 +19,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     var v:UIView!
     var outNumTextField:UITextField!
     var outPwdTextField:UITextField!
+    var outSignUpButton:UIButton!
     var outLoginButton:UIButton!
     
     override func viewDidLoad() {
@@ -117,30 +118,30 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         // first responder
 //        outNumTextField.becomeFirstResponder()
         
-        // 登入按钮
-        outLoginButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 150, height: 40), btButtonType: .Info)
-        v.addSubview(outLoginButton)
-        outLoginButton.snp.makeConstraints { (make) in
+        // 立即注册
+        outSignUpButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 150, height: 40), btButtonType: .Info)
+        v.addSubview(outSignUpButton)
+        outSignUpButton.snp.makeConstraints { (make) in
             make.width.equalTo(outPwdTextField)
             make.height.equalTo(40)
             make.centerX.equalTo(outPwdTextField)
             make.top.equalTo(outPwdTextField.snp.bottom).offset(40)
         }
-        outLoginButton.setTitle("立即注册", for: .normal)
-        outLoginButton.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
+        outSignUpButton.setTitle("立即注册", for: .normal)
+        outSignUpButton.addTarget(self, action: #selector(btnGoSignUp), for: .touchUpInside)
         
         
-        // 登录按钮
-        let outSignUp = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 120, height: 30), btButtonType: .Success)
-        v.addSubview(outSignUp)
-        outSignUp.snp.makeConstraints { (make) in
+        // 登录界面
+        outLoginButton = BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 120, height: 30), btButtonType: .Success)
+        v.addSubview(outLoginButton)
+        outLoginButton.snp.makeConstraints { (make) in
             make.width.equalTo(120)
             make.height.equalTo(30)
-            make.top.equalTo(outLoginButton.snp.bottom).offset(25)
-            make.right.equalTo(outLoginButton).offset(-10)
+            make.top.equalTo(outSignUpButton.snp.bottom).offset(25)
+            make.right.equalTo(outSignUpButton).offset(-10)
         }
-        outSignUp.setTitle("登录界面", for: .normal)
-        outSignUp.addTarget(self, action: #selector(btnGoSignIn), for: .touchUpInside)
+        outLoginButton.setTitle("登录界面", for: .normal)
+        outLoginButton.addTarget(self, action: #selector(btnGoSignIn), for: .touchUpInside)
         
         // 取消按钮
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(closeV))
@@ -269,11 +270,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let gtoken:String = (nowGlobalSet?.token)!
         self.view.makeToastActivity(.center)
         let url = rootUrl + "register3.php"
+        outSignUpButton.isUserInteractionEnabled = false
         outLoginButton.isUserInteractionEnabled = false
         Alamofire.request(url, method: .get, parameters: ["phone": phone, "pwd": pwd, "token":gtoken]).responseString { (response) in
             if response.result.isSuccess {
                 let str:String = response.result.value!
-                self.outLoginButton.isUserInteractionEnabled = false
+                self.outSignUpButton.isUserInteractionEnabled = true
+                self.outLoginButton.isUserInteractionEnabled = true
                 
                 if let data = resRegisterBindTouristData.deserialize(from: str) {
                     let code = data.code
