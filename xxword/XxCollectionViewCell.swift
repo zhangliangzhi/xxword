@@ -350,7 +350,7 @@ class XxCollectionViewCell: UICollectionViewCell {
         var ew =  gWord[wid]
         if ishy() == false {
             if wid>99 {
-                ew = "非会员无法学习"
+                ew = "未解锁无法学习"
             }
         }
         centerLabel = LTMorphingLabel()

@@ -228,7 +228,7 @@ class XxViewController: UIViewController, UICollectionViewDelegate, UICollection
         return isv
     }
     func tipsVIP() {
-        TipsSwift.showCenterWithText("非会员只能学习前100个单词", duration: 3)
+        TipsSwift.showCenterWithText("未解锁只能学习前100个单词", duration: 3)
     }
 
     func setRightWrongCount() {

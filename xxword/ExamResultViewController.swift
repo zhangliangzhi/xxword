@@ -44,7 +44,7 @@ class ExamResultViewController: UIViewController {
     
     func commitRank() {
         if nowGlobalSet?.isVIP == false {
-            TipsSwift.showTopWithText("非VIP会员无法提交到 [成绩排行] 哦", duration: 3)
+            TipsSwift.showTopWithText("未解锁无法提交到 [成绩排行] 哦", duration: 3)
             return
         }
         let url = rootUrl + "rankingTJ.php"

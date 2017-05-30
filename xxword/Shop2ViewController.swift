@@ -10,12 +10,12 @@ import UIKit
 import SnapKit
 import SwiftyStoreKit
 
-class ShopViewController: UIViewController {
+class Shop2ViewController: UIViewController {
     var rootv: UIView!
     var outBuyButton:UIButton!
     var outRestoreButton:BootstrapBtn!
     var webv:UIWebView!
-    var outTkysButton:UIButton!
+    let PRODUCT_Id1:String = "com.xigk.xxword.1"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,21 +48,9 @@ class ShopViewController: UIViewController {
             make.width.equalTo(rootv).multipliedBy(0.9)
         }
         labelDescVip.textAlignment = .center
-        labelDescVip.text = "非会员只能学习前100个单词。\n非会员单词考试无法参加排行榜。\n购买会员可无限制使用。"
+        labelDescVip.text = "没有解锁只能学习前100个单词。\n未解锁单词考试无法参加排行榜。\n解锁所有单词可无限制使用。"
         labelDescVip.textColor = WZ1_COLOR
         labelDescVip.numberOfLines = 0
-        
-        // 条款和隐私政策
-        outTkysButton = UIButton(type: .system)
-        rootv.addSubview(outTkysButton)
-        outTkysButton.snp.makeConstraints { (make) in
-            make.centerX.equalTo(rootv)
-            make.bottom.equalTo(rootv).offset(-5)
-        }
-        outTkysButton.setTitle("条款和隐私政策", for: .normal)
-        outTkysButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        outTkysButton.addTarget(self, action: #selector(callbackTkys), for: .touchUpInside)
-        
         
         // 购买
         outBuyButton =  BootstrapBtn(frame: CGRect(x: 0, y: 0, width: 50, height: 30), btButtonType: .Warning)
@@ -70,10 +58,10 @@ class ShopViewController: UIViewController {
         outBuyButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(rootv)
             make.centerY.equalTo(rootv).offset(-60)
-            make.width.equalTo(rootv).multipliedBy(0.618)
+            make.width.equalTo(rootv).multipliedBy(0.8)
             make.height.equalTo(68)
         }
-        outBuyButton.setTitle("￥30.00", for: .normal)
+        outBuyButton.setTitle("￥30  🔐单词", for: .normal)
         outBuyButton.titleLabel?.textAlignment = .center
         outBuyButton.titleLabel?.font = UIFont.systemFont(ofSize: 38)
         outBuyButton.addTarget(self, action: #selector(buyOneMonthPurchase), for: .touchUpInside)
@@ -105,7 +93,7 @@ class ShopViewController: UIViewController {
             make.bottom.equalTo(outBuyButton.snp.top).offset(-8)
         }
         outLabelKF.textAlignment = .center
-        outLabelKF.text = "🚀订购会员VIP，使用【象形单词】无任何限制。\n\n月度"
+        outLabelKF.text = "🚀解锁所有单词，使用【象形单词】无任何限制。"
         outLabelKF.numberOfLines = 0
         outLabelKF.textColor = WZ1_COLOR
         outLabelKF.font = UIFont.systemFont(ofSize:16)
@@ -118,20 +106,20 @@ class ShopViewController: UIViewController {
             make.top.equalTo(outBuyButton.snp.bottom).offset(10)
         }
         outLabelAuto.textAlignment = .center
-        outLabelAuto.text = "自动续期"
+        outLabelAuto.text = "解锁所有单词, 快乐学习"
         outLabelAuto.textColor = WZ2_COLOR
         outLabelAuto.font = UIFont.systemFont(ofSize: 13)
         
         // 订购说明
-        let descBtn = UIButton(type: .system)
-        rootv.addSubview(descBtn)
-        descBtn.snp.makeConstraints { (make) in
-            make.centerY.equalTo(outLabelAuto)
-            make.left.equalTo(outLabelAuto.snp.right).offset(15)
-        }
-        descBtn.setTitle("订购说明", for: .normal)
-        descBtn.addTarget(self, action: #selector(callbackDesc), for: .touchUpInside)
-        descBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+//        let descBtn = UIButton(type: .system)
+//        rootv.addSubview(descBtn)
+//        descBtn.snp.makeConstraints { (make) in
+//            make.centerY.equalTo(outLabelAuto)
+//            make.left.equalTo(outLabelAuto.snp.right).offset(15)
+//        }
+//        descBtn.setTitle("订购说明", for: .normal)
+//        descBtn.addTarget(self, action: #selector(callbackDesc), for: .touchUpInside)
+//        descBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
     }
     
     func callbackDesc() {
@@ -142,30 +130,6 @@ class ShopViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func callbackTkys() {
-        if webv != nil {
-            
-            if webv.isHidden {
-                webv.isHidden = false
-                
-                outTkysButton.setTitle("关闭隐私政策", for: .normal)
-            }else{
-                webv.isHidden = true
-                outTkysButton.setTitle("条款和隐私政策", for: .normal)
-            }
-            return
-        }
-        webv = UIWebView()
-        rootv.addSubview(webv)
-        webv.snp.makeConstraints { (make) in
-            make.width.equalTo(rootv)
-            make.bottom.equalTo(rootv).offset(-30)
-            make.top.equalTo(rootv)
-        }
-        let url = URLRequest(url: URL(string: ysUrl)!)
-        webv.loadRequest(url)
-        outTkysButton.setTitle("关闭隐私政策", for: .normal)
-    }
     
     func reqShop()  {
         SwiftyStoreKit.retrieveProductsInfo(["xxwordHY"]) { result in
@@ -191,11 +155,10 @@ class ShopViewController: UIViewController {
 //        print("buy one click")
         MobClick.event("WantBuyVIP")
         
-        TipsSwift.showTopWithText("你可以随时取消:\niTunes设置-> 查看Apple ID-> 管理", topOffset: 80, duration: 3)
         self.view.makeToastActivity(.center)
         outBuyButton.isUserInteractionEnabled = false
         outRestoreButton.isUserInteractionEnabled = false
-        SwiftyStoreKit.purchaseProduct("xxwordHY", atomically: true) { result in
+        SwiftyStoreKit.purchaseProduct(PRODUCT_Id1, atomically: true) { result in
             self.view.hideToastActivity()
             self.outBuyButton.isUserInteractionEnabled = true
             self.outRestoreButton.isUserInteractionEnabled = true
@@ -224,7 +187,7 @@ class ShopViewController: UIViewController {
             print("Purchase Success: \(purchase.productId)")
             verifyPurchase()
             MobClick.event("DoneBuyVIP")
-            return alertWithTitle("🎉恭喜🎉", message: "已成为[象形单词]VIP会员")
+            return alertWithTitle("🎉恭喜🎉", message: "已成解锁所有单词!")
         case .error(let error):
             print("Purchase Failed: \(error)")
             delVip()
@@ -258,7 +221,7 @@ class ShopViewController: UIViewController {
     func verifyReceipt(completion: @escaping (VerifyReceiptResult) -> Void) {
         
         let appleValidator = AppleReceiptValidator(service: .production)
-        let password = "0c24952dcdf0473fa2ce7763f022a95c"
+        let password = ""
         SwiftyStoreKit.verifyReceipt(using: appleValidator, password: password, completion: completion)
     }
     // 二次验证
@@ -268,7 +231,7 @@ class ShopViewController: UIViewController {
             
             switch result {
             case .success(let receipt):
-                let productId = "xxwordHY"
+                let productId = self.PRODUCT_Id1
                 let purchaseResult = SwiftyStoreKit.verifySubscription(
                     type: .autoRenewable,
                     productId: productId,
@@ -311,7 +274,7 @@ class ShopViewController: UIViewController {
             nowGlobalSet?.isVIP = false
             appDelegate.saveContext()
 //            return alertWithTitle("Not purchased", message: "This product has never been purchased")
-            return alertWithTitle("没有购买", message: "没有购买过会员VIP")
+            return alertWithTitle("没有购买", message: "没有购买过解锁服务")
         }
     }
     func alertForVerifyReceipt(_ result: VerifyReceiptResult) -> UIAlertController {
@@ -376,7 +339,7 @@ class ShopViewController: UIViewController {
             print("Nothing to Restore")
 //            return alertWithTitle("Nothing to restore", message: "No previous purchases were found")
             delVip()
-            return alertWithTitle("没有购买过", message: "没有购买过会员VIP服务")
+            return alertWithTitle("没有购买过", message: "没有购买过解锁服务")
         }
     }
     

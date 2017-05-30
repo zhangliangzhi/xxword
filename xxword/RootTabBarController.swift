@@ -30,7 +30,7 @@ class RootTabBarController: UITabBarController {
         v1.tabBarItem = item1
         
         
-        let v2 = ShopViewController()
+        let v2 = Shop2ViewController()
         let item2 : UITabBarItem = UITabBarItem (title: "商店", image: UIImage(named: "shop"), selectedImage: UIImage(named: "shop_1"))
         v2.tabBarItem = item2
         

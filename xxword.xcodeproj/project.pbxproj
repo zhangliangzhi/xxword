@@ -60,6 +60,7 @@
 		0BD909D51EC048CC007467F0 /* TipsSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D41EC048CC007467F0 /* TipsSwift.swift */; };
 		0BD909D71EC0A835007467F0 /* WordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D61EC0A835007467F0 /* WordsViewController.swift */; };
 		0BD909D91EC3005B007467F0 /* ShouCangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D81EC3005B007467F0 /* ShouCangViewController.swift */; };
+		0BDFABB41EDD9B81005C92F5 /* Shop2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDFABB31EDD9B81005C92F5 /* Shop2ViewController.swift */; };
 		0BE0E2421ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE0E2401ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a */; };
 		0BE0E2441ED403A700FA7F41 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE0E2431ED403A700FA7F41 /* UserNotifications.framework */; };
 		0BF035191ED1610000E1CA45 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF035181ED1610000E1CA45 /* MeViewController.swift */; };
@@ -131,6 +132,7 @@
 		0BD909D41EC048CC007467F0 /* TipsSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsSwift.swift; sourceTree = "<group>"; };
 		0BD909D61EC0A835007467F0 /* WordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordsViewController.swift; sourceTree = "<group>"; };
 		0BD909D81EC3005B007467F0 /* ShouCangViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShouCangViewController.swift; sourceTree = "<group>"; };
+		0BDFABB31EDD9B81005C92F5 /* Shop2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shop2ViewController.swift; sourceTree = "<group>"; };
 		0BE0E2401ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.5.0a.a; sourceTree = "<group>"; };
 		0BE0E2411ED3D79100FA7F41 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		0BE0E2431ED403A700FA7F41 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -196,6 +198,7 @@
 				0BF0351C1ED2CD8C00E1CA45 /* xxword.entitlements */,
 				0B6136541E9EA5DB00FF31F2 /* MyProtocol.swift */,
 				0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */,
+				0BDFABB31EDD9B81005C92F5 /* Shop2ViewController.swift */,
 				0BCE0C221EABB22F0049A01C /* ShopViewController.swift */,
 				0BCE0C241EABB2AA0049A01C /* FavorViewController.swift */,
 				0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */,
@@ -445,6 +448,7 @@
 				0BD067A01EAE1161000F975F /* SxlxViewController.swift in Sources */,
 				0BD909CC1EBC886F007467F0 /* ocword.m in Sources */,
 				0B0003781EB60DB100046B3A /* MyWord.swift in Sources */,
+				0BDFABB41EDD9B81005C92F5 /* Shop2ViewController.swift in Sources */,
 				0B38C6381EC55C4B00C3B140 /* CustomViewController.swift in Sources */,
 				0B9597121ECD5C5600CA2916 /* ExamCollectionViewCell.swift in Sources */,
 				0B9597081ECCA3B500CA2916 /* WordListViewController.swift in Sources */,

@@ -141,7 +141,7 @@ class WordsViewController: UIViewController, UICollectionViewDelegate, UICollect
         return isv
     }
     func tipsVIP() {
-        TipsSwift.showCenterWithText("非会员只能学习前100个单词", duration: 5)
+        TipsSwift.showCenterWithText("未解锁只能学习前100个单词", duration: 5)
     }
     
     func clickBtn(_ button:UIButton) {

@@ -209,7 +209,7 @@ class MeViewController: UIViewController {
     }
     
     func btnGoVip() {
-        TipsSwift.showCenterWithText("订购VIP会员\n可无限制使用[象形单词]app", duration: 3)
+        TipsSwift.showCenterWithText("解锁单词\n可无限制使用[象形单词]app", duration: 3)
     }
     
     func btnEditName() {
@@ -217,7 +217,7 @@ class MeViewController: UIViewController {
     }
     
     func btnGoIcon() {
-        TipsSwift.showCenterWithText("象形单词 v1.0\n 客服邮箱: 521401@qq.com", duration: 1)
+        TipsSwift.showCenterWithText("象形单词 v2.0\n 客服邮箱: 521401@qq.com", duration: 1)
     }
     
 }
