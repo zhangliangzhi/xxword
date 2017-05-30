@@ -129,7 +129,7 @@ class MeViewController: UIViewController {
             make.top.equalTo(labelnctitle.snp.bottom).offset(20)
             make.centerX.equalTo(labelnctitle)
         }
-        labelVipTitle.text = "是否VIP会员: "
+        labelVipTitle.text = "是否解锁: "
         labelVipTitle.textColor = WZ2_COLOR
         labelVipTitle.textAlignment = .right
         

@@ -438,7 +438,7 @@ class HomeViewController: UIViewController {
             make.height.equalTo(20)
         }
         lblYyy.textAlignment = .center
-        lblYyy.text = "会员购买"
+        lblYyy.text = "永久解锁"
         lblYyy.textColor = WZ1_COLOR
         lblYyy.font = UIFont.systemFont(ofSize: 18)
         
