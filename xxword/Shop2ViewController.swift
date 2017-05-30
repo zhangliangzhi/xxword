@@ -114,7 +114,7 @@ class Shop2ViewController: UIViewController {
     
     
     func reqShop()  {
-        SwiftyStoreKit.retrieveProductsInfo(["xxwordHY"]) { result in
+        SwiftyStoreKit.retrieveProductsInfo([PRODUCT_Id1]) { result in
             if let product = result.retrievedProducts.first {
 //                let priceString = product.localizedPrice!
 //                let txt:String = "🛒" + product.localizedTitle + " \n" + priceString
@@ -202,9 +202,8 @@ class Shop2ViewController: UIViewController {
     }
     
     func verifyReceipt(completion: @escaping (VerifyReceiptResult) -> Void) {
-        
         let appleValidator = AppleReceiptValidator(service: .production)
-        let password = ""
+        let password = "0c24952dcdf0473fa2ce7763f022a95c"
         SwiftyStoreKit.verifyReceipt(using: appleValidator, password: password, completion: completion)
     }
     // 二次验证
@@ -215,41 +214,40 @@ class Shop2ViewController: UIViewController {
             switch result {
             case .success(let receipt):
                 let productId = self.PRODUCT_Id1
-                let purchaseResult = SwiftyStoreKit.verifySubscription(
-                    type: .nonRenewing(validDuration: 60),
+                let purchaseResult = SwiftyStoreKit.verifyPurchase(
                     productId: productId,
-                    inReceipt: receipt,
-                    validUntil: Date()
+                    inReceipt: receipt
                 )
-                self.alertForVerifySubscription(purchaseResult)
+                self.alertForVerifyPurchase(purchaseResult)
             case .error:
-//                self.showAlert(self.alertForVerifyReceipt(result))
+                self.showAlert(self.alertForVerifyReceipt(result))
+                print("eerror")
                 break
             }
         }
     }
     
-    func alertForVerifySubscription(_ result: VerifySubscriptionResult) {
+    func alertForVerifyPurchase(_ result: VerifyPurchaseResult){
         
         switch result {
-        case .purchased(let expiryDate):
-            print("Product is valid until \(expiryDate)")
+        case .purchased:
+            print("Product is purchased")
+//            return alertWithTitle("Product is purchased", message: "Product will not expire")
             let ndate = Date()
             nowGlobalSet?.vipDate = ndate as NSDate
             nowGlobalSet?.vipsjc = Int64(ndate.timeIntervalSince1970)
             nowGlobalSet?.isVIP = true
             appDelegate.saveContext()
-            //            return alertWithTitle("Product is purchased", message: "Product is valid until \(expiryDate)")
-        case .expired(let expiryDate):
-            print("Product is expired since \(expiryDate)")
         case .notPurchased:
+            print("This product has never been purchased")
+//            return alertWithTitle("Not purchased", message: "This product has never been purchased")
             print("This product has never been purchased")
             nowGlobalSet?.vipsjc = 0
             nowGlobalSet?.isVIP = false
             appDelegate.saveContext()
-//            return alertWithTitle("没有购买", message: "没有解锁过单词")
         }
     }
+    
     
     func alertForVerifyReceipt(_ result: VerifyReceiptResult) -> UIAlertController {
         
