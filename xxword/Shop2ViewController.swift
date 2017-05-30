@@ -58,16 +58,16 @@ class Shop2ViewController: UIViewController {
         outBuyButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(rootv)
             make.centerY.equalTo(rootv).offset(-60)
-            make.width.equalTo(rootv).multipliedBy(0.8)
-            make.height.equalTo(68)
+            make.width.equalTo(rootv).multipliedBy(0.618)
+            make.height.equalTo(60)
         }
-        outBuyButton.setTitle("￥30  🔐单词", for: .normal)
+        outBuyButton.setTitle("￥30元", for: .normal)
         outBuyButton.titleLabel?.textAlignment = .center
         outBuyButton.titleLabel?.font = UIFont.systemFont(ofSize: 38)
         outBuyButton.addTarget(self, action: #selector(buyOneMonthPurchase), for: .touchUpInside)
 //        outBuyButton.layer.borderColor = UIColor.white.cgColor
 //        outBuyButton.layer.borderWidth = 1
-        outBuyButton.layer.cornerRadius = 34
+        outBuyButton.layer.cornerRadius = 30
 //        outBuyButton.backgroundColor = CG_COLOR
         outBuyButton.setTitleColor(UIColor.white, for: .normal)
         
