@@ -20,7 +20,7 @@ class Shop2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = BG1_COLOR
-        self.navigationItem.title = "商店"
+        self.navigationItem.title = "永久解锁单词"
         // Do any additional setup after loading the view.
         
         MobClick.event("WatchShopView")
@@ -149,6 +149,7 @@ class Shop2ViewController: UIViewController {
                 if purchase.needsFinishTransaction {
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
                 }
+                
             }
             if let alert = self.alertForPurchaseResult(result) {
                 self.showAlert(alert)
@@ -169,7 +170,7 @@ class Shop2ViewController: UIViewController {
             print("Purchase Success: \(purchase.productId)")
             verifyPurchase()
             MobClick.event("DoneBuyVIP")
-            return alertWithTitle("🎉恭喜🎉", message: "已成解锁所有单词!")
+            return alertWithTitle("🎉恭喜🎉", message: "已永久解锁所有单词!")
         case .error(let error):
             print("Purchase Failed: \(error)")
             delVip()
@@ -215,50 +216,41 @@ class Shop2ViewController: UIViewController {
             case .success(let receipt):
                 let productId = self.PRODUCT_Id1
                 let purchaseResult = SwiftyStoreKit.verifySubscription(
-                    type: .autoRenewable,
+                    type: .nonRenewing(validDuration: 60),
                     productId: productId,
                     inReceipt: receipt,
                     validUntil: Date()
                 )
-                self.showAlert(self.alertForVerifySubscription(purchaseResult))
+                self.alertForVerifySubscription(purchaseResult)
             case .error:
-                self.showAlert(self.alertForVerifyReceipt(result))
+//                self.showAlert(self.alertForVerifyReceipt(result))
+                break
             }
         }
     }
-    func alertForVerifySubscription(_ result: VerifySubscriptionResult) -> UIAlertController {
+    
+    func alertForVerifySubscription(_ result: VerifySubscriptionResult) {
         
         switch result {
         case .purchased(let expiryDate):
             print("Product is valid until \(expiryDate)")
-            nowGlobalSet?.vipDate = expiryDate as NSDate
-            nowGlobalSet?.vipsjc = Int64(expiryDate.timeIntervalSince1970)
+            let ndate = Date()
+            nowGlobalSet?.vipDate = ndate as NSDate
+            nowGlobalSet?.vipsjc = Int64(ndate.timeIntervalSince1970)
             nowGlobalSet?.isVIP = true
             appDelegate.saveContext()
-//            return alertWithTitle("Product is purchased", message: "Product is valid until \(expiryDate)")
-            return alertWithTitle("🎉恭喜🎉", message: "已成为[象形单词]VIP会员")
+            //            return alertWithTitle("Product is purchased", message: "Product is valid until \(expiryDate)")
         case .expired(let expiryDate):
             print("Product is expired since \(expiryDate)")
-            nowGlobalSet?.vipsjc = 0
-            nowGlobalSet?.isVIP = false
-            appDelegate.saveContext()
-//            return alertWithTitle("Product expired", message: "Product is expired since \(expiryDate)")
-            let formatter = DateFormatter()
-            formatter.timeZone = NSTimeZone.system
-            formatter.dateFormat = "yyyy-MM-dd hh:mm"
-            let dstr:String = formatter.string(from: expiryDate)
-            let txt:String = "最近购买时间为: " + dstr
-//            lastBuyStr = txt
-            return alertWithTitle("会员过期", message: txt)
         case .notPurchased:
             print("This product has never been purchased")
             nowGlobalSet?.vipsjc = 0
             nowGlobalSet?.isVIP = false
             appDelegate.saveContext()
-//            return alertWithTitle("Not purchased", message: "This product has never been purchased")
-            return alertWithTitle("没有购买", message: "没有购买过解锁服务")
+//            return alertWithTitle("没有购买", message: "没有解锁过单词")
         }
     }
+    
     func alertForVerifyReceipt(_ result: VerifyReceiptResult) -> UIAlertController {
         
         switch result {
