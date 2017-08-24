@@ -98,8 +98,8 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         HomeViewController.getCoreData()
         firstOpenAPP()
-        loginNow()
-        jchy()
+//        loginNow()
+//        jchy()
         changeTexValue()
 //        print(nowGlobalSet?.phone, nowGlobalSet?.pwd, nowGlobalSet?.token)
         
@@ -596,12 +596,19 @@ class HomeViewController: UIViewController {
         v.addSubview(outGoXxButton)
         outGoXxButton.snp.makeConstraints { (make) in
             make.width.equalTo(v).multipliedBy(0.618)
-            make.height.equalTo(40)
+            make.height.equalTo(60)
             make.centerX.equalTo(v)
             make.top.equalTo(btnJtbz.snp.bottom).offset(8)
         }
-        outGoXxButton.setTitle("❤️爱上玩单词👻", for: .normal)
-        outGoXxButton.addTarget(self, action: #selector(callbackNormalStudy), for: .touchUpInside)
+        outGoXxButton.setTitle("❤️按页码考核👻", for: .normal)
+        outGoXxButton.addTarget(self, action: #selector(callbackGoPage), for: .touchUpInside)
+        outGoXxButton.layer.cornerRadius = 30
+    }
+    
+    func callbackGoPage() {
+        
+//        navigationController?.pushViewController(PageViewController(), animated: true)
+        self.tabBarController?.selectedIndex = 1
         
     }
     
@@ -759,10 +766,11 @@ class HomeViewController: UIViewController {
         oneGlobalSet.curIndex15 = 0
         oneGlobalSet.curIndex16 = 0
         
+        oneGlobalSet.lastPage = 1
         oneGlobalSet.curFavorIndex = 0  // 收藏 学到哪了
         oneGlobalSet.curWrongIndex = 0  // 错误的 学到哪了
         oneGlobalSet.nickName = "游客"
-        oneGlobalSet.isVIP = false
+        oneGlobalSet.isVIP = true
         oneGlobalSet.today = ""
         
         context.insert(oneGlobalSet)

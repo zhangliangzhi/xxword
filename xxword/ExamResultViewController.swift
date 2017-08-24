@@ -30,7 +30,7 @@ class ExamResultViewController: UIViewController {
             make.bottom.equalTo(self.view)
         }
         
-        commitRank()
+//        commitRank()
         initUI()
         
         

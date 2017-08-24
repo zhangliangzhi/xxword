@@ -10,7 +10,7 @@ import UIKit
 import SwiftyStoreKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var gRootTabBar:UITabBarController!
@@ -23,31 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         obj.appKey = "592288a58630f51f8f00052b"
         MobClick.start(withConfigure: obj)
         MobClick.event("UMLogin")
-        
-        //umeng push
-        UMessage.start(withAppkey: "592288a58630f51f8f00052b", launchOptions: launchOptions, httpsEnable: true)
-        
-        //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
-        UMessage.registerForRemoteNotifications()
-        //iOS10必须加下面这段代码。
-        if #available(iOS 10.0, *) {
-            let center:UNUserNotificationCenter = UNUserNotificationCenter.current()
-            center.delegate = self
-            let types10:UNAuthorizationOptions = [.badge, .alert, .sound]
-            center.requestAuthorization(options: types10, completionHandler: { (granted, err) in
-                if (granted) {
-                    //点击允许
-                    //这里可以添加一些自己的逻辑
-                    
-                } else {
-                    //点击不允许
-                    //这里可以添加一些自己的逻辑
-                }
-            })
-        } else {
-            // Fallback on earlier versions
-        }
-        UMessage.openDebugMode(true)
         
         
         let root  = RootTabBarController()
@@ -136,42 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
 
-    // new add 2017-05-23 11:24:01
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        UMessage.didReceiveRemoteNotification(userInfo)
-    }
     
-    @available(iOS 10.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        let userInfo = notification.request.content.userInfo 
-        if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))! {
-            //应用处于前台时的远程推送接受
-            //关闭U-Push自带的弹出框
-            UMessage.setAutoAlert(false)
-            //必须加这句代码
-            UMessage.didReceiveRemoteNotification(userInfo)
-        }else{
-            //应用处于前台时的本地推送接受
-        }
-        //当应用处于前台时提示设置，需要哪个可以设置哪一个
-        completionHandler([.badge, .alert, .sound])
-        
-    }
-    
-    @available(iOS 10.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        let userInfo = response.notification.request.content.userInfo
-        if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))! {
-            //应用处于后台时的远程推送接受
-            //必须加这句代码
-            UMessage.didReceiveRemoteNotification(userInfo)
-        }else {
-            //应用处于后台时的本地推送接受
-        }
-        
-    }
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
 //        let device = NSData(data: deviceToken)

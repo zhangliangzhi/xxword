@@ -44,6 +44,8 @@
 		0B9597121ECD5C5600CA2916 /* ExamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9597111ECD5C5600CA2916 /* ExamCollectionViewCell.swift */; };
 		0B9597141ECD62C900CA2916 /* ExamWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9597131ECD62C900CA2916 /* ExamWordsViewController.swift */; };
 		0B9A30301E9C9E690091D7B0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */; };
+		0BA42AE01F499916007DBC60 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA42ADF1F499916007DBC60 /* PageViewController.swift */; };
+		0BA42AE21F4D3181007DBC60 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA42AE11F4D3181007DBC60 /* StoreKit.framework */; };
 		0BA4F0431ED0529D0044680E /* FavorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4F0421ED0529D0044680E /* FavorListViewController.swift */; };
 		0BCE0C1F1EAB97770049A01C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */; };
 		0BCE0C211EABAF780049A01C /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCE0C201EABAF780049A01C /* RootTabBarController.swift */; };
@@ -61,11 +63,9 @@
 		0BD909D71EC0A835007467F0 /* WordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D61EC0A835007467F0 /* WordsViewController.swift */; };
 		0BD909D91EC3005B007467F0 /* ShouCangViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD909D81EC3005B007467F0 /* ShouCangViewController.swift */; };
 		0BDFABB41EDD9B81005C92F5 /* Shop2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDFABB31EDD9B81005C92F5 /* Shop2ViewController.swift */; };
-		0BE0E2421ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE0E2401ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a */; };
 		0BE0E2441ED403A700FA7F41 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE0E2431ED403A700FA7F41 /* UserNotifications.framework */; };
 		0BF035191ED1610000E1CA45 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF035181ED1610000E1CA45 /* MeViewController.swift */; };
 		0BF0351B1ED1F32700E1CA45 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF0351A1ED1F32700E1CA45 /* ChangeNameViewController.swift */; };
-		0BF0351E1ED364C600E1CA45 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF0351D1ED364C600E1CA45 /* StoreKit.framework */; };
 		75AF06A683A708C84E55D089 /* Pods_xxword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228065594F704138570DAF96 /* Pods_xxword.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +114,8 @@
 		0B9597111ECD5C5600CA2916 /* ExamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B9597131ECD62C900CA2916 /* ExamWordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamWordsViewController.swift; sourceTree = "<group>"; };
 		0B9A302F1E9C9E690091D7B0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0BA42ADF1F499916007DBC60 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		0BA42AE11F4D3181007DBC60 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0BA4F0421ED0529D0044680E /* FavorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorListViewController.swift; sourceTree = "<group>"; };
 		0BCDDF3E1E9CB31D003DEB80 /* xxword-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "xxword-Bridging-Header.h"; sourceTree = "<group>"; };
 		0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -133,13 +135,9 @@
 		0BD909D61EC0A835007467F0 /* WordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordsViewController.swift; sourceTree = "<group>"; };
 		0BD909D81EC3005B007467F0 /* ShouCangViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShouCangViewController.swift; sourceTree = "<group>"; };
 		0BDFABB31EDD9B81005C92F5 /* Shop2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shop2ViewController.swift; sourceTree = "<group>"; };
-		0BE0E2401ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.5.0a.a; sourceTree = "<group>"; };
-		0BE0E2411ED3D79100FA7F41 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		0BE0E2431ED403A700FA7F41 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		0BF035181ED1610000E1CA45 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		0BF0351A1ED1F32700E1CA45 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
-		0BF0351C1ED2CD8C00E1CA45 /* xxword.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxword.entitlements; sourceTree = "<group>"; };
-		0BF0351D1ED364C600E1CA45 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		228065594F704138570DAF96 /* Pods_xxword.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xxword.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3375C031DF91B6152A20BFD2 /* Pods-xxword.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xxword.release.xcconfig"; path = "Pods/Target Support Files/Pods-xxword/Pods-xxword.release.xcconfig"; sourceTree = "<group>"; };
 		D25065F2A0961C42A9AED138 /* Pods-xxword.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xxword.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xxword/Pods-xxword.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,9 +150,8 @@
 			files = (
 				0B1866021ED4447300D0EEEA /* Foundation.framework in Frameworks */,
 				0BE0E2441ED403A700FA7F41 /* UserNotifications.framework in Frameworks */,
-				0BE0E2421ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
+				0BA42AE21F4D3181007DBC60 /* StoreKit.framework in Frameworks */,
 				75AF06A683A708C84E55D089 /* Pods_xxword.framework in Frameworks */,
-				0BF0351E1ED364C600E1CA45 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,9 +191,8 @@
 		0B6C8E191E8F6E0D00D76B4E /* xxword */ = {
 			isa = PBXGroup;
 			children = (
-				0BE0E23F1ED3D79100FA7F41 /* UMessage_Sdk_1.5.0a */,
-				0BF0351C1ED2CD8C00E1CA45 /* xxword.entitlements */,
 				0B6136541E9EA5DB00FF31F2 /* MyProtocol.swift */,
+				0BA42ADF1F499916007DBC60 /* PageViewController.swift */,
 				0BCE0C1E1EAB97770049A01C /* HomeViewController.swift */,
 				0BDFABB31EDD9B81005C92F5 /* Shop2ViewController.swift */,
 				0BCE0C221EABB22F0049A01C /* ShopViewController.swift */,
@@ -255,15 +251,6 @@
 			path = xxword;
 			sourceTree = "<group>";
 		};
-		0BE0E23F1ED3D79100FA7F41 /* UMessage_Sdk_1.5.0a */ = {
-			isa = PBXGroup;
-			children = (
-				0BE0E2401ED3D79100FA7F41 /* libUMessage_Sdk_1.5.0a.a */,
-				0BE0E2411ED3D79100FA7F41 /* UMessage.h */,
-			);
-			path = UMessage_Sdk_1.5.0a;
-			sourceTree = "<group>";
-		};
 		5A3D727E897860820BB029A6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,13 +263,13 @@
 		635763797A6F5C26EF275D32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0BA42AE11F4D3181007DBC60 /* StoreKit.framework */,
 				0B1866091ED444B000D0EEEA /* CoreLocation.framework */,
 				0B1866071ED444A500D0EEEA /* SystemConfiguration.framework */,
 				0B1866051ED4449500D0EEEA /* libz.tbd */,
 				0B1866031ED4447F00D0EEEA /* CoreTelephony.framework */,
 				0B1866011ED4447300D0EEEA /* Foundation.framework */,
 				0BE0E2431ED403A700FA7F41 /* UserNotifications.framework */,
-				0BF0351D1ED364C600E1CA45 /* StoreKit.framework */,
 				228065594F704138570DAF96 /* Pods_xxword.framework */,
 			);
 			name = Frameworks;
@@ -323,7 +310,6 @@
 				TargetAttributes = {
 					0B6C8E161E8F6E0D00D76B4E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = ZNVH9D6AWM;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -331,7 +317,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -446,6 +432,7 @@
 				0BD067A21EB251A8000F975F /* StudyTabBarController.swift in Sources */,
 				0B9597101ECD574900CA2916 /* ExamTabBarController.swift in Sources */,
 				0BD067A01EAE1161000F975F /* SxlxViewController.swift in Sources */,
+				0BA42AE01F499916007DBC60 /* PageViewController.swift in Sources */,
 				0BD909CC1EBC886F007467F0 /* ocword.m in Sources */,
 				0B0003781EB60DB100046B3A /* MyWord.swift in Sources */,
 				0BDFABB41EDD9B81005C92F5 /* Shop2ViewController.swift in Sources */,
@@ -597,9 +584,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = xxword/xxword.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = ZNVH9D6AWM;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/xxword/Framework",
@@ -612,10 +598,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/xxword/UMessage_Sdk_1.5.0a",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xigk.xxword;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xigk.xx5k;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = xxword_dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "xxword-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -628,7 +614,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = xxword/xxword.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = ZNVH9D6AWM;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -643,10 +628,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/xxword/UMessage_Sdk_1.5.0a",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xigk.xxword;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xigk.xx5k;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = xxword_AppStore;
+				PROVISIONING_PROFILE = "e188a5b3-8b62-4381-86aa-1dd1853e48af";
+				PROVISIONING_PROFILE_SPECIFIER = xx5kkh_appstore;
 				SWIFT_OBJC_BRIDGING_HEADER = "xxword-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
